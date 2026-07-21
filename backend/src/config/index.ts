@@ -43,7 +43,7 @@ export const config = {
   cors: {
     origins: getEnvVarWithDefault(
       'ALLOWED_ORIGINS',
-      'http://localhost:3001,http://localhost:3002'
+      'http://localhost:3100,http://localhost:3101'
     ).split(','),
   },
   rateLimit: {

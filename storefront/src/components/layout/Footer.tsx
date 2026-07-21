@@ -8,6 +8,7 @@ import NewsletterForm from '@/components/NewsletterForm';
 import { storefrontTrust } from '@/config/storefront-trust';
 import { api } from '@/lib/api';
 import { ArtisanFooterAnimation } from '@/components/layout/ArtisanFooterAnimation';
+import { brandConfig } from '@/config/brand';
 
 const shopLinks = [
   { label: 'New Kantha Short Kimono', href: '/categories/new-kantha-short-kimono' },
@@ -37,7 +38,7 @@ const companyLinks: { label: string; href: string; highlight?: boolean }[] = [
 const socialLinks = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/odhvica.store/',
+    href: brandConfig.instagramUrl,
     icon: Instagram,
     color: 'kf-social-instagram',
   },
@@ -89,7 +90,7 @@ export function Footer() {
           className="footer-watermark overflow-hidden px-[var(--ds-space-md)] pt-[var(--ds-space-md)] sm:px-[var(--ds-space-md)] md:px-[var(--ds-space-lg)] md:pt-[var(--ds-space-md)] select-none relative z-10"
           aria-hidden="true"
         >
-          Odhvica
+          {brandConfig.name}
         </div>
 
         <div className="ds-page-container mx-auto max-w-page px-[var(--ds-space-md)] pb-[var(--ds-space-md)] pt-[var(--ds-space-md)] sm:px-[var(--ds-space-md)] md:px-[var(--ds-space-lg)] md:pb-[var(--ds-space-lg)] md:pt-12 lg:px-20 lg:pt-24 relative z-10">
@@ -98,7 +99,7 @@ export function Footer() {
             <div className="space-y-5 col-span-2 sm:col-span-2 lg:col-span-1">
               <Link href="/" className="block">
                 <span className="kf-logo font-body text-display-sm font-semibold tracking-token-wider">
-                  ODHVICA
+                  {brandConfig.name}
                 </span>
               </Link>
               <p className="kf-link font-body text-body-md font-light leading-token-relaxed">
@@ -208,7 +209,7 @@ export function Footer() {
           <div className="ds-page-container mx-auto max-w-page px-[var(--ds-space-md)] py-[var(--ds-space-md)] sm:px-[var(--ds-space-md)] md:px-[var(--ds-space-lg)] md:py-[var(--ds-space-lg)] lg:px-20">
             <PaymentIcons className="mb-4" />
             <div className="kf-legal font-body flex flex-col items-center justify-between gap-[var(--ds-space-sm)] text-center text-body-xs sm:flex-row sm:text-left">
-              <p>Copyright {new Date().getFullYear()} Odhvica. All rights reserved.</p>
+              <p>Copyright {new Date().getFullYear()} {brandConfig.legalName}. All rights reserved.</p>
               <div className="flex gap-[var(--ds-space-md)]">
                 <Link
                   href={storefrontTrust.policyRoutes.privacy}

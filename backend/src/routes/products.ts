@@ -674,7 +674,7 @@ productsRouter.get(
           'priceCurrency': 'INR',
           'price': minPrice.toFixed(2),
           'availability': hasStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-          'url': `${process.env.STOREFRONT_URL || 'https://odhvica.com'}/products/${product.handle}`,
+          'url': `${process.env.STOREFRONT_URL || 'http://localhost:3100'}/products/${product.handle}`,
         },
       };
 

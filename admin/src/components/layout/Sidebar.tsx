@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, LogOut, X } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
+import { adminBrandConfig } from '@/config/brand';
 import {
   getDashboardMode,
   getNavGroupsForMode,
@@ -97,7 +98,9 @@ function SidebarContent({
           </div>
           <div>
             <span className="block font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-bold text-white leading-none">
-              {mode === 'wholesale' ? 'Odhvica Wholesale' : 'Odhvica Admin'}
+              {mode === 'wholesale'
+                ? `${adminBrandConfig.storeName} Wholesale`
+                : adminBrandConfig.adminTitle}
             </span>
             <span className="block text-[10px] text-slate-400 font-medium mt-0.5 capitalize">
               {user?.role || 'Super User'}

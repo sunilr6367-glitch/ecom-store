@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 const connectionString =
   process.env.DATABASE_URL ||
-  'postgresql://postgres:postgres@localhost:5432/odhvica_dev';
+  'postgresql://postgres:postgres@localhost:5432/kvastram_store_dev';
 
 const sql = postgres(connectionString, {
   ssl: connectionString.includes('supabase.com') || connectionString.includes('aws-0-')
@@ -13,7 +13,7 @@ const sql = postgres(connectionString, {
 });
 
 async function migrate() {
-  console.log('🚀 Running Odhvica new tables migration...\n');
+  console.log('Running commerce platform table migration...\n');
 
   try {
     // --- 1. SAVED CARTS ---

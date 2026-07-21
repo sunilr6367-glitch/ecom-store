@@ -3,12 +3,18 @@ import { settings } from '../src/db/schema';
 import { eq } from 'drizzle-orm';
 import 'dotenv/config';
 
+const storeName = process.env.STORE_NAME || 'Kvastram Store';
+const supportEmail = process.env.SUPPORT_EMAIL || 'support@example.com';
+const supportPhone = process.env.SUPPORT_PHONE || '+00 00000 00000';
+const storeAddress = process.env.STORE_ADDRESS || 'Configure your business address';
+const instagramUrl = process.env.INSTAGRAM_URL || 'https://www.instagram.com/';
+
 const DEFAULT_SETTINGS = [
   // General store info
-  { key: 'store_name',                  value: 'Odhvica',                          category: 'general' },
-  { key: 'store_email',                 value: 'support@odhvica.com',              category: 'general' },
-  { key: 'store_phone',                 value: '+91 98765 43210',                   category: 'general' },
-  { key: 'store_address',               value: 'Jaipur, Rajasthan, India',          category: 'general' },
+  { key: 'store_name',                  value: storeName,                           category: 'general' },
+  { key: 'store_email',                 value: supportEmail,                        category: 'general' },
+  { key: 'store_phone',                 value: supportPhone,                        category: 'general' },
+  { key: 'store_address',               value: storeAddress,                        category: 'general' },
   { key: 'store_currency',              value: 'INR',                               category: 'general' },
   { key: 'store_country',               value: 'IN',                                category: 'general' },
 
@@ -29,15 +35,15 @@ const DEFAULT_SETTINGS = [
   { key: 'announcement_bar_enabled',    value: true,                                category: 'content' },
   { key: 'hero_title',                  value: 'Handcrafted Indian Fashion',        category: 'content' },
   { key: 'hero_subtitle',               value: 'Discover the art of traditional Indian textiles', category: 'content' },
-  { key: 'newsletter_title',            value: 'Join the Odhvica Family',          category: 'content' },
+  { key: 'newsletter_title',            value: `Join the ${storeName} community`,  category: 'content' },
   { key: 'newsletter_subtitle',         value: 'Subscribe for exclusive deals and new arrivals', category: 'content' },
 
   // SEO defaults
-  { key: 'seo_title',                   value: 'Odhvica — Handcrafted Indian Fashion', category: 'seo' },
-  { key: 'seo_description',             value: 'Shop authentic handcrafted Indian clothing, sarees, dupattas and accessories at Odhvica.', category: 'seo' },
+  { key: 'seo_title',                   value: `${storeName} — Online Store`,       category: 'seo' },
+  { key: 'seo_description',             value: `Shop curated products from ${storeName}.`, category: 'seo' },
 
   // Social links
-  { key: 'social_instagram',            value: 'https://instagram.com/odhvica',    category: 'social' },
+  { key: 'social_instagram',            value: instagramUrl,                       category: 'social' },
   { key: 'social_facebook',             value: '',                                  category: 'social' },
   { key: 'social_twitter',              value: '',                                  category: 'social' },
   { key: 'social_youtube',              value: '',                                  category: 'social' },

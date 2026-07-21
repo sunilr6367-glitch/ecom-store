@@ -9,7 +9,7 @@ import Sidebar from '@/components/layout/Sidebar';
 import TopHeader from '@/components/layout/TopHeader';
 import MobileBottomTab from '@/components/layout/MobileBottomTab';
 
-const DASHBOARD_MODE_STORAGE_KEY = 'odhvica.dashboardMode';
+const DASHBOARD_MODE_STORAGE_KEY = 'kvastram.dashboardMode';
 const WHOLESALE_COUPONS_ROUTE = '/dashboard/wholesale/tiers';
 const LEGACY_WHOLESALE_ROUTES: Record<string, string> = {
   '/dashboard/settings/tiers': '/dashboard/wholesale/tiers',

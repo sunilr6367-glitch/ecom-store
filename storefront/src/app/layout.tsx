@@ -28,16 +28,14 @@ import {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: `Indian Ethnic Wear | ${SITE_NAME}`,
-  description:
-    'Shop handcrafted kurtis, shawls, sarees, wraps and artisanal ethnic wear for women at Odhvica.',
+  description: `Shop curated products and collections from ${SITE_NAME}.`,
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: SITE_URL,
     siteName: SITE_NAME,
     title: `Indian Ethnic Wear | ${SITE_NAME}`,
-    description:
-      'Shop handcrafted kurtis, shawls, sarees, wraps and artisanal ethnic wear for women at Odhvica.',
+    description: `Shop curated products and collections from ${SITE_NAME}.`,
     images: [
       {
         url: DEFAULT_OG_IMAGE,
@@ -48,8 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `Indian Ethnic Wear | ${SITE_NAME}`,
-    description:
-      'Shop handcrafted kurtis, shawls, sarees, wraps and artisanal ethnic wear for women at Odhvica.',
+    description: `Shop curated products and collections from ${SITE_NAME}.`,
     images: [DEFAULT_OG_IMAGE],
   },
 };
@@ -123,7 +120,7 @@ export default async function RootLayout({
       <head>
         <link
           rel="preconnect"
-          href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}
+          href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4100'}
         />
         <link rel="preconnect" href={SITE_URL} />
         {csrfToken && <meta name="csrf-token" content={csrfToken} />}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { adminBrandConfig } from '@/config/brand';
 
 interface GoogleSerpPreviewProps {
   title: string;
@@ -6,42 +7,48 @@ interface GoogleSerpPreviewProps {
   url: string;
 }
 
-export default function GoogleSerpPreview({ title, description, url }: GoogleSerpPreviewProps) {
-  // Google truncates title at ~60 chars and description at ~155-160 chars in pixel length, but for simulation we use char counts
-  const displayTitle = title ? (title.length > 65 ? `${title.substring(0, 65)}...` : title) : 'Page Title Example | Odhvica';
-  const displayDesc = description ? (description.length > 160 ? `${description.substring(0, 160)}...` : description) : 'This is how your product will appear in Google search results. Please provide a compelling description to improve your click-through rate.';
-  
-  // Format URL nicely (e.g. https://odhvica.com > products > ...)
-  const domain = 'odhvica.com';
-  let formattedUrl = `https://${domain}`;
-  if (url) {
-    formattedUrl = `https://${domain} › products › ${url}`;
-  }
+export default function GoogleSerpPreview({
+  title,
+  description,
+  url,
+}: GoogleSerpPreviewProps) {
+  const displayTitle = title
+    ? title.length > 65
+      ? `${title.substring(0, 65)}...`
+      : title
+    : `Page Title Example | ${adminBrandConfig.storeName}`;
+  const displayDesc = description
+    ? description.length > 160
+      ? `${description.substring(0, 160)}...`
+      : description
+    : 'This is how your product will appear in Google search results. Add a compelling description to improve click-through rate.';
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://store.example.com').replace(/\/$/, '');
+  const formattedUrl = url ? `${siteUrl} › products › ${url}` : siteUrl;
+  const brandInitial = adminBrandConfig.storeName.charAt(0).toUpperCase() || 'K';
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 font-sans text-[14px] leading-normal shadow-sm mt-6">
-      <h3 className="mb-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Search Engine Preview</h3>
+    <div className="mt-6 rounded-lg border border-gray-200 bg-white p-4 font-sans text-[14px] leading-normal shadow-sm">
+      <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">
+        Search Engine Preview
+      </h3>
       <div className="max-w-[600px]">
-        {/* URL and Breadcrumb */}
-        <div className="flex items-center gap-2 mb-1">
+        <div className="mb-1 flex items-center gap-2">
           <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 p-1">
-            <span className="text-xs font-bold text-gray-600">O</span>
+            <span className="text-xs font-bold text-gray-600">{brandInitial}</span>
           </div>
-          <div className="flex flex-col min-w-0 flex-1">
-            <span className="text-[14px] text-[#202124] leading-tight font-medium truncate">Odhvica</span>
-            <span className="text-[12px] text-[#4d5156] leading-tight truncate">
+          <div className="flex min-w-0 flex-1 flex-col">
+            <span className="truncate text-[14px] font-medium leading-tight text-[#202124]">
+              {adminBrandConfig.storeName}
+            </span>
+            <span className="truncate text-[12px] leading-tight text-[#4d5156]">
               {formattedUrl}
             </span>
           </div>
         </div>
-        
-        {/* Title link */}
-        <div className="text-[20px] text-[#1a0dab] leading-[1.3] font-medium truncate mb-1 hover:underline cursor-pointer">
+        <div className="mb-1 cursor-pointer truncate text-[20px] font-medium leading-[1.3] text-[#1a0dab] hover:underline">
           {displayTitle}
         </div>
-        
-        {/* Description text */}
-        <div className="text-[14px] text-[#4d5156] leading-[1.58] break-words">
+        <div className="break-words text-[14px] leading-[1.58] text-[#4d5156]">
           {displayDesc}
         </div>
       </div>

@@ -49,7 +49,7 @@ export function useInventoryWebSocket(
     const WS_URL =
       process.env.NEXT_PUBLIC_WS_URL ||
       process.env.NEXT_PUBLIC_API_URL ||
-      'http://localhost:4000';
+      'http://localhost:4100';
     const isE2E = process.env.NEXT_PUBLIC_E2E === 'true';
 
     // Don't connect in development if explicitly disabled

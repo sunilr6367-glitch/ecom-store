@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Building2, Mail, Phone, Menu } from 'lucide-react';
 import { IconButton } from '@/design-system';
+import { brandConfig } from '@/config/brand';
 
 export function WholesaleHeader() {
   return (
@@ -19,11 +20,11 @@ export function WholesaleHeader() {
           </div>
           <div className="flex items-center gap-[var(--ds-space-sm)]">
             <a
-              href="mailto:wholesale@odhvica.com"
+              href={`mailto:${brandConfig.wholesaleEmail}`}
               className="hover:text-inverse flex items-center gap-1"
             >
               <Mail size={12} />
-              <span className="hidden sm:inline">wholesale@odhvica.com</span>
+              <span className="hidden sm:inline">{brandConfig.wholesaleEmail}</span>
             </a>
             <a
               href="tel:+1234567890"
@@ -40,7 +41,7 @@ export function WholesaleHeader() {
       <div className="ds-page-container mx-auto flex h-16 max-w-page items-center justify-between lg:h-20">
         {/* Logo */}
         <Link href="/wholesale" className="flex items-center gap-[var(--ds-space-xs)]">
-          <div className="text-display-md font-bold tracking-token-tight">ODHVICA</div>
+          <div className="text-display-md font-bold tracking-token-tight">{brandConfig.name}</div>
           <div className="h-8 w-px bg-secondary"></div>
           <div className="text-body-xs  tracking-token-wider text-accent-gold font-bold">
             Wholesale

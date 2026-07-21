@@ -4,15 +4,15 @@ const cwd = process.cwd();
 const isWindows = process.platform === 'win32';
 const npmCommand = isWindows ? 'npm.cmd' : 'npm';
 const nextCommand = process.execPath;
-const nextArgs = ['node_modules/next/dist/bin/next', 'start', '-p', '3000', '-H', '0.0.0.0'];
+const nextArgs = ['node_modules/next/dist/bin/next', 'start', '-p', '3100', '-H', '0.0.0.0'];
 
 const sharedEnv = {
   ...process.env,
   DESIGN_SYSTEM_LAB: 'true',
   NEXT_PUBLIC_DESIGN_SYSTEM_LAB: 'true',
   NEXT_PUBLIC_E2E: 'true',
-  INTERNAL_API_URL: process.env.INTERNAL_API_URL || 'http://127.0.0.1:4000',
-  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:4000',
+  INTERNAL_API_URL: process.env.INTERNAL_API_URL || 'http://127.0.0.1:4100',
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:4100',
 };
 
 function runBuild() {

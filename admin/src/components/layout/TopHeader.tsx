@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, LogOut, Menu, Shield, Truck } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
+import { adminBrandConfig } from '@/config/brand';
 import {
   getDashboardMode,
   getNavItemsForMode,
@@ -15,7 +16,7 @@ interface TopHeaderProps {
 }
 
 const PAGE_TITLES: Record<string, string> = {
-  '/dashboard': 'Odhvica',
+  '/dashboard': adminBrandConfig.storeName,
   '/dashboard/orders': 'Orders',
   '/dashboard/products': 'Products',
   '/dashboard/customers': 'Customers',
@@ -41,7 +42,7 @@ function getPageTitle(pathname: string) {
     }
   }
 
-  return mode === 'wholesale' ? 'Wholesale' : 'Odhvica';
+  return mode === 'wholesale' ? 'Wholesale' : adminBrandConfig.storeName;
 }
 
 export default function TopHeader({
@@ -117,7 +118,7 @@ export default function TopHeader({
                 {user?.first_name || 'Admin'}
               </p>
               <p className="mt-1 text-[11px] text-[var(--on-surface-variant)]">
-                {user?.email || 'admin@odhvica.com'}
+                {user?.email || 'admin@example.com'}
               </p>
             </div>
 

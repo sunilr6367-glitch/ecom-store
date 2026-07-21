@@ -5,6 +5,7 @@
 
 import { createHash } from 'crypto';
 import { db } from '../../db/client';
+import { brandConfig } from '../../config/brand';
 import {
   products,
   product_variants,
@@ -258,7 +259,9 @@ export class ProductMutationService {
   private buildSeoTitle(data: CreateProductInput | UpdateProductInput) {
     const raw = (data.seo_title || data.title || '').trim();
     if (!raw) return null;
-    const branded = raw.toLowerCase().includes('odhvica') ? raw : `${raw} | Odhvica`;
+    const branded = raw.toLowerCase().includes(brandConfig.name.toLowerCase())
+      ? raw
+      : `${raw} | ${brandConfig.name}`;
     return branded.slice(0, 70);
   }
 
@@ -344,7 +347,7 @@ export class ProductMutationService {
 
   private inferSemanticEntities(data: CreateProductInput | UpdateProductInput) {
     const text = this.inferText(data);
-    const entities = new Set(['Odhvica', 'handcrafted', 'slow fashion']);
+    const entities = new Set([brandConfig.name, 'handcrafted', 'slow fashion']);
     if (/(jaipur|rajasthan|rajasthani)/.test(text)) entities.add('Jaipur');
     if (/block print|bagru|sanganeri/.test(text)) entities.add('block print');
     if (/kantha/.test(text)) entities.add('Kantha');

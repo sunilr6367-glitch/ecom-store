@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: 'list',
   timeout: 60000,
   use: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    baseURL: process.env.BASE_URL || 'http://localhost:3100',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     headless: true,
@@ -19,7 +19,7 @@ export default defineConfig({
     : [
         {
           command: 'node scripts/e2e-mock-api.mjs',
-          url: 'http://127.0.0.1:4000/health',
+          url: 'http://127.0.0.1:4100/health',
           reuseExistingServer: !process.env.CI,
           timeout: 30000,
           gracefulShutdown: {
@@ -29,7 +29,7 @@ export default defineConfig({
         },
         {
           command: 'node scripts/playwright-storefront-server.mjs',
-          url: 'http://127.0.0.1:3000/health',
+          url: 'http://127.0.0.1:3100/health',
           reuseExistingServer: !process.env.CI,
           timeout: 240000,
           gracefulShutdown: {

@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { brandConfig } from '../config/brand';
 
 // PHASE-2 FIX: HTML escape utility to prevent XSS in email templates
 function escapeHtml(str: string): string {
@@ -13,6 +14,14 @@ function escapeHtml(str: string): string {
 // Helper to safely escape strings for HTML with fallback
 function safeString(str: string | undefined | null, fallback = ''): string {
   return escapeHtml(str || fallback);
+}
+
+function applyBrand(value: string | undefined): string | undefined {
+  return value
+    ?.replaceAll('ODHVICA', brandConfig.name.toUpperCase())
+    .replaceAll('Odhvica', brandConfig.name)
+    .replaceAll('support@odhvica.com', brandConfig.supportEmail)
+    .replaceAll('wholesale@odhvica.com', brandConfig.wholesaleEmail);
 }
 
 // Helper to safely format currency (handles cents vs major units)
@@ -76,7 +85,7 @@ class EmailService {
     return (
       process.env.STOREFRONT_URL ||
       process.env.FRONTEND_URL ||
-      'http://localhost:3000'
+      'http://localhost:3100'
     );
   }
 
@@ -151,11 +160,11 @@ class EmailService {
     try {
       await this.ensureReady(); // OPT-001: Wait for transporter initialization
       const info = await sendWithRetry(this.transporter, {
-        from: process.env.SMTP_FROM || '"Odhvica Support" <noreply@odhvica.com>', // sender address
+        from: process.env.SMTP_FROM || `"${brandConfig.senderName}" <${brandConfig.supportEmail}>`,
         to: options.to, // list of receivers
-        subject: options.subject, // Subject line
-        text: options.text, // plain text body
-        html: options.html, // html body
+        subject: applyBrand(options.subject),
+        text: applyBrand(options.text),
+        html: applyBrand(options.html),
       });
 
       console.log(`Message sent: ${info.messageId}`);
@@ -259,7 +268,10 @@ class EmailService {
             </div>
         `;
     // Send to admin email
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@odhvica.com';
+    const adminEmail = process.env.ADMIN_EMAIL;
+    if (!adminEmail) {
+      throw new Error('ADMIN_EMAIL is required to send admin notifications');
+    }
     return this.sendEmail({ to: adminEmail, subject, text, html });
   }
 
@@ -295,7 +307,7 @@ class EmailService {
     const tierDisplay = data.discount_tier
       ? data.discount_tier.charAt(0).toUpperCase() + data.discount_tier.slice(1)
       : 'Standard';
-    const subject = 'Welcome to Odhvica Wholesale - Set Up Your Account';
+    const subject = `Welcome to ${brandConfig.name} Wholesale - Set Up Your Account`;
     const text = `Hi ${data.contact_name},\n\nWelcome to Odhvica Wholesale! Your application for ${data.company_name} has been approved.\n\nYour discount tier: ${tierDisplay}\n\nPlease set up your password by clicking the link below:\n\n${setupUrl}\n\nThis link will expire in 7 days.\n\nBest regards,\nOdhvica Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
@@ -355,7 +367,7 @@ class EmailService {
     first_name: string;
     token: string;
   }) {
-    const subject = 'Your Odhvica Verification Code';
+    const subject = `Your ${brandConfig.name} Verification Code`;
     const text = `Hi ${data.first_name},\n\nWelcome to Odhvica! Your verification code is: ${data.token}\n\nThis code will expire in 10 minutes.\n\nBest regards,\nOdhvica Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; text-align: center;">
@@ -388,7 +400,7 @@ class EmailService {
     token: string;
   }) {
     const resetUrl = `${this.getStorefrontUrl()}/reset-password?token=${encodeURIComponent(data.token)}`;
-    const subject = 'Reset Your Password - Odhvica';
+    const subject = `Reset Your Password - ${brandConfig.name}`;
     const text = `Hi ${data.first_name},\n\nYou requested to reset your password.\n\nClick the link below to create a new password:\n${resetUrl}\n\nThis link will expire in 1 hour.\n\nIf you didn't request this, please ignore this email.\n\nBest regards,\nOdhvica Team`;
 
     const html = `
@@ -427,7 +439,7 @@ class EmailService {
     shipping_carrier?: string;
     tracking_link?: string;
   }) {
-    const subject = `Your Odhvica order #${data.order_number} has shipped!`;
+    const subject = `Your ${brandConfig.name} order #${data.order_number} has shipped!`;
     const storeUrl = this.getStorefrontUrl();
     const trackingLine = data.tracking_link
       ? `<a href="${data.tracking_link}" style="color:#007bff;">${safeString(data.tracking_number)}</a>`
@@ -567,7 +579,7 @@ class EmailService {
     message: string;
     conversation_url: string;
   }) {
-    const subject = `Odhvica Studio replied about ${data.product_title}`;
+    const subject = `${brandConfig.name} Studio replied about ${data.product_title}`;
     const safeName = safeString(data.customer_name || 'there');
     const safeProduct = safeString(data.product_title);
     const safeMessage = safeString(data.message);

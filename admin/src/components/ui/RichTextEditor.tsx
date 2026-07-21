@@ -26,6 +26,7 @@ export function RichTextEditor({ value, onChange, placeholder }: RichTextEditorP
     editorProps: {
       attributes: {
         class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl focus:outline-none min-h-[150px] px-3 py-2',
+        'data-placeholder': placeholder || '',
       },
     },
   });

@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production' && !process.env.DATABASE_URL) {
 
 const connectionString =
   process.env.DATABASE_URL ||
-  'postgresql://postgres:postgres@localhost:5432/odhvica_dev';
+  'postgresql://postgres:postgres@localhost:5432/kvastram_store_dev';
 
 // Determine if SSL is required for the database connection.
 // Supabase pooler URLs contain 'supabase.com' or 'aws-0-'.

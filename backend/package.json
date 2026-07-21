@@ -1,5 +1,5 @@
 {
-  "name": "odhvica-backend",
+  "name": "kvastram-commerce-backend",
   "version": "1.0.0",
   "scripts": {
     "lint": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc -p tsconfig.lint.core.json",

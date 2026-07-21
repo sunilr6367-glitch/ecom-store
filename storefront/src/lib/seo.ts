@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 
 import type { Product } from '@/types';
+import { brandConfig } from '@/config/brand';
 
-export const SITE_NAME = 'Odhvica';
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://odhvica.com';
+export const SITE_NAME = brandConfig.name;
+export const SITE_URL = brandConfig.siteUrl;
 export const DEFAULT_OG_IMAGE = '/images/home/hero-main.jpg';
 
 export function getProductPath(product: Pick<Product, 'handle' | 'id'>): string {

@@ -7,10 +7,10 @@ import 'dotenv/config';
 async function seed() {
   console.log('🌱 Starting Seed...');
 
-  const email = 'admin@odhvica.com';
+  const email = process.env.ADMIN_EMAIL;
   const password = process.env.ADMIN_PASSWORD;
 
-  if (!password) {
+  if (!email || !password) {
     console.error('❌ ADMIN_PASSWORD environment variable is required');
     console.error(
       "   Set it with: export ADMIN_PASSWORD='your-secure-password'"

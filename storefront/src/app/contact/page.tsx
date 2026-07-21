@@ -3,14 +3,13 @@ import { Suspense } from 'react';
 
 import { PageHero } from '@/components/content/ContentPageSystem';
 import { ContactClient } from './ContactClient';
-import { buildBasicPageMetadata } from '@/lib/seo';
+import { buildBasicPageMetadata, SITE_NAME } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Contact Odhvica | Customer Support & Jaipur Atelier',
-  description:
-    'Contact Odhvica for sizing questions, order tracking, payment help, returns, WhatsApp support, and Jaipur atelier enquiries.',
+  title: `Contact ${SITE_NAME} | Customer Support`,
+  description: `Contact ${SITE_NAME} for product questions, order tracking, payment help, and returns.`,
   path: '/contact',
-  keywords: ['Odhvica contact', 'Odhvica support', 'Odhvica WhatsApp'],
+  keywords: [`${SITE_NAME} contact`, `${SITE_NAME} support`],
 });
 
 export default function ContactPage() {
@@ -18,7 +17,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Concierge"
-        title="Contact Odhvica"
+        title={`Contact ${SITE_NAME}`}
         intro="Questions about sizing, payments, order tracking, returns, or atelier visits reach the same Jaipur support desk."
         breadcrumbs={[
           { label: 'Home', href: '/' },

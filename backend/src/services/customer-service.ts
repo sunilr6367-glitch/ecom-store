@@ -160,7 +160,7 @@ class CustomerService {
 
     const totalOrders = customerOrders.length;
     const totalSpent = customerOrders
-      .filter(o => ['completed', 'delivered'].includes(o.status))
+      .filter(o => o.status !== null && ['completed', 'delivered'].includes(o.status))
       .reduce((sum, order) => sum + Number(order.total || 0), 0);
     const averageOrderValue = totalOrders > 0 ? totalSpent / totalOrders : 0;
 

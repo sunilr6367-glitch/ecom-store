@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 
-const port = Number.parseInt(process.env.MOCK_API_PORT || '4000', 10);
+const port = Number.parseInt(process.env.MOCK_API_PORT || '4100', 10);
 
 function svgDataUri(label, width = 1200, height = 1500, background = '#e5e5e5', foreground = '#111111') {
   const markup = `

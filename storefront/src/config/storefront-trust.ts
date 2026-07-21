@@ -1,10 +1,12 @@
+import { brandConfig } from './brand';
+
 export const storefrontTrust = {
-  supportEmail: 'support@odhvica.com',
-  supportPhone: '+91-9588078064',
-  supportHours: 'Monday-Friday, 9 AM - 6 PM IST',
+  supportEmail: brandConfig.supportEmail,
+  supportPhone: brandConfig.supportPhone,
+  supportHours: brandConfig.supportHours,
   supportResponseSla: '',
-  locationLabel: 'Jaipur, Rajasthan, India',
-  addressLines: ['44C, Vijaypura, Sumel', 'Jaipur, Rajasthan 302031', 'India'],
+  locationLabel: brandConfig.location,
+  addressLines: brandConfig.addressLines,
   cancellationWindow: 'Same business day, before dispatch.',
   refundTimeline:
     'Refunds are processed within 5-7 business days after we receive the returned item.',
@@ -59,7 +61,7 @@ export const storefrontFaqs = [
   {
     question: 'How can I contact support?',
     answer:
-      'You can contact support at support@odhvica.com or on WhatsApp at +91-9588078064 during business hours: Monday-Friday, 9 AM - 6 PM IST.',
+      `You can contact support at ${brandConfig.supportEmail} or on WhatsApp at ${brandConfig.supportPhone} during business hours: ${brandConfig.supportHours}.`,
   },
   {
     question: 'How do I track my order after purchase?',

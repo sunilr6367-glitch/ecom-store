@@ -1,5 +1,5 @@
 /**
- * Seed default tags for Odhvica platform
+ * Seed default tags for the commerce platform
  * Run this once to populate default tags that products can be tagged with
  * Safe to run multiple times - checks for existing tags before creating
  */

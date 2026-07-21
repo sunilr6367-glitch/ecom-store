@@ -6,6 +6,7 @@ import { ArrowRight, Lock, Mail, Shield } from 'lucide-react';
 import { useNotification } from '@/context/notification-context';
 import { useAuth } from '@/context/auth-context';
 import type { ApiError } from '@/lib/api';
+import { adminBrandConfig } from '@/config/brand';
 
 export default function LoginPage() {
   const { showNotification } = useNotification();
@@ -55,7 +56,7 @@ export default function LoginPage() {
         <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-blue-500/30 blur-3xl"></div>
 
         <div className="relative z-10 text-center">
-          <h1 className="mb-2 text-3xl font-bold text-white">Odhvica Admin</h1>
+          <h1 className="mb-2 text-3xl font-bold text-white">{adminBrandConfig.adminTitle}</h1>
           <p className="text-gray-300">
             {show2FA ? 'Two-Factor Authentication' : 'Sign in to your account'}
           </p>
@@ -78,7 +79,7 @@ export default function LoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="admin@odhvica.com"
+                  placeholder="admin@example.com"
                 />
               </div>
 

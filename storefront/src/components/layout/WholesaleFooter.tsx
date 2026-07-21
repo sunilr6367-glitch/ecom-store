@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
+import { brandConfig } from '@/config/brand';
 import {
   Building2,
   Mail,
@@ -47,7 +48,7 @@ export function WholesaleFooter() {
             <div className="space-y-4">
               <div className="flex items-center gap-[var(--ds-space-xs)] mb-[var(--ds-space-md)]">
                 <div className="text-display-md font-bold tracking-token-tight">
-                  ODHVICA
+                  {brandConfig.name}
                 </div>
                 <div className="h-6 w-px bg-secondary"></div>
                 <div className="text-body-xs  tracking-token-wider text-accent-gold font-bold">
@@ -226,10 +227,10 @@ export function WholesaleFooter() {
                   <div>
                     <div className="text-inverse font-medium mb-1">Email</div>
                     <a
-                      href="mailto:wholesale@odhvica.com"
+                      href={`mailto:${brandConfig.wholesaleEmail}`}
                       className="hover:text-inverse transition-colors"
                     >
-                      wholesale@odhvica.com
+                      {brandConfig.wholesaleEmail}
                     </a>
                   </div>
                 </li>
@@ -279,7 +280,7 @@ export function WholesaleFooter() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-body-xs text-muted">
             <div className="flex items-center gap-[var(--ds-space-md)]">
               <span>
-                &copy; {new Date().getFullYear()} Odhvica Wholesale. All rights
+                &copy; {new Date().getFullYear()} {brandConfig.legalName} Wholesale. All rights
                 reserved.
               </span>
               <span className="hidden md:block">|</span>
@@ -339,5 +340,4 @@ export function WholesaleFooter() {
     </footer>
   );
 }
-
 

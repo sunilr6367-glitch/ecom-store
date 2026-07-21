@@ -3,6 +3,7 @@ import { AuthProvider } from '@/context/auth-context';
 import { NotificationProvider } from '@/context/notification-context';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import AdminShell from '@/components/layout/AdminShell';
+import { adminBrandConfig } from '@/config/brand';
 import './globals.css';
 
 // Fonts disabled due to Turbopack compatibility issue
@@ -10,13 +11,13 @@ import './globals.css';
 // TODO: Re-enable next/font/google after Turbopack fix
 
 export const metadata: Metadata = {
-  title: 'Odhvica Admin',
-  description: 'Odhvica Platform Administration',
+  title: adminBrandConfig.adminTitle,
+  description: `${adminBrandConfig.storeName} platform administration`,
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Odhvica Admin',
+    title: adminBrandConfig.adminTitle,
   },
   icons: {
     icon: '/favicon.ico',
@@ -35,7 +36,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Odhvica" />
+        <meta name="apple-mobile-web-app-title" content={adminBrandConfig.storeName} />
       </head>
       <body
         suppressHydrationWarning

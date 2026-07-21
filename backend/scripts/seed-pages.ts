@@ -4,22 +4,27 @@ import { pages } from "../src/db/schema";
 import { eq } from "drizzle-orm";
 import { randomUUID } from "crypto";
 
+const storeName = process.env.STORE_NAME || "Kvastram Store";
+const supportEmail = process.env.SUPPORT_EMAIL || "support@example.com";
+const supportPhone = process.env.SUPPORT_PHONE || "+00 00000 00000";
+const storeAddress = process.env.STORE_ADDRESS || "Configure your business address";
+
 const standardPages = [
     {
         title: "Contact Us",
         slug: "contact",
         content: `
-<h1>Contact Odhvica</h1>
+<h1>Contact ${storeName}</h1>
 <p>We'd love to hear from you. For inquiries about our products, orders, or wholesale opportunities, please reach out.</p>
 <ul>
-    <li>Email: support@odhvica.com</li>
-    <li>Phone: +91 98765 43210</li>
-    <li>Address: 123 Artisan Lane, Jaipur, Rajasthan, India</li>
+    <li>Email: ${supportEmail}</li>
+    <li>Phone: ${supportPhone}</li>
+    <li>Address: ${storeAddress}</li>
 </ul>
         `,
         is_visible: true,
-        seo_title: "Contact Odhvica | Customer Support",
-        seo_description: "Contact Odhvica for any queries regarding our artisanal products."
+        seo_title: `Contact ${storeName} | Customer Support`,
+        seo_description: `Contact ${storeName} for product and order support.`
     },
     {
         title: "Shipping & Returns",

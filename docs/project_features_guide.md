@@ -318,3 +318,43 @@ This guide is the definitive registry of all backend features implemented in the
 * **Operational Commands**:
   * Run `npm.cmd run audit:design-system`, `npm.cmd run audit:design-system:metrics`, `npm.cmd run lint`, `npm.cmd run verify:design-system -- --pool=threads`, and `npm.cmd run build`.
   * Run desktop and mobile Playwright homepage smoke tests after changing this composition.
+# Reusable client template foundation
+
+The repository can operate as an isolated ecommerce template without inheriting a
+previous client's runtime identity or production target. Storefront branding is
+owned by `storefront/src/config/brand.ts`, admin branding by
+`admin/src/config/brand.ts`, and backend operational identity by
+`backend/src/config/brand.ts`. These modules read environment variables and use safe
+local placeholders when configuration is absent.
+
+Required client onboarding configuration includes store and legal names, storefront,
+admin and API URLs, support and wholesale email addresses, phone, support hours,
+business address, social links, database credentials, admin credentials, media
+storage, SMTP/email, and enabled payment gateways. Public storefront variables use
+the `NEXT_PUBLIC_` prefix and are baked into browser bundles; secrets must remain in
+backend or deployment environment files.
+
+Local services use isolated defaults: storefront `3100`, admin `3101`, and backend
+`4100`. Run `npm run setup` once, then use `npm run dev:backend`,
+`npm run dev:storefront`, and `npm run dev:admin` in separate terminals. Root
+`lint`, `test`, and `build` commands coordinate the maintained applications.
+
+Store settings and standard contact pages are seeded from `STORE_NAME`,
+`SUPPORT_EMAIL`, `SUPPORT_PHONE`, `STORE_ADDRESS`, and `INSTAGRAM_URL`.
+`ADMIN_EMAIL` and `ADMIN_PASSWORD` are mandatory for admin seeding; no default client
+credential is provided. Existing database rows are not overwritten by seed scripts,
+so changing environment variables after initial seeding requires an intentional admin
+update or migration.
+
+The obsolete standalone `wholesale/` prototype was removed. Wholesale storefront
+routes and admin/backend wholesale functionality remain in the maintained applications.
+Production SSH workflows and fixed-server bootstrap scripts were also removed because
+they contained client-specific server paths and domains. `deploy/hostinger/docker-compose.yml`
+is only a starting point; every client must use an independent Compose project name,
+database, volumes, secrets, repository, domains, deployment path, and reviewed CI/CD
+workflow. No deployment should run directly from this template repository.
+
+Operational edge cases: public brand variables require a rebuild when changed; production
+CORS must explicitly list the client storefront and admin origins; production API URL is
+required by Compose; and verification screenshots/build artifacts are generated locally
+but ignored by Git.

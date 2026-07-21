@@ -585,7 +585,7 @@ export default function NewProductPage() {
               Search Engine Optimisation
             </h2>
             <p className="mb-4 text-xs leading-relaxed text-gray-500">
-              On save, Odhvica auto-creates the advanced SEO baseline: canonical, robots, schema-ready discovery document,
+              On save, the platform auto-creates the advanced SEO baseline: canonical, robots, schema-ready discovery document,
               structured attribute guesses, media SEO, Merchant draft fields, and vector-ready product text. Review the full
               SEO & Discovery panel on the next screen.
             </p>
@@ -596,7 +596,7 @@ export default function NewProductPage() {
                   id="seo_title" type="text" name="seo_title"
                   value={formData.seo_title || ''} onChange={handleChange}
                   className={inputCls}
-                  placeholder="e.g. Elegant Summer Linen Shirt | Odhvica"
+                  placeholder="e.g. Elegant Summer Linen Shirt | Your Store"
                 />
               </div>
               <div>
@@ -643,7 +643,7 @@ export default function NewProductPage() {
                       value={seoCanonicalUrl}
                       onChange={(e) => setSeoCanonicalUrl(e.target.value)}
                       className={inputCls}
-                      placeholder="e.g. https://odhvica.com/products/original-shirt"
+                      placeholder="e.g. https://store.example.com/products/original-shirt"
                     />
                     <p className="text-xs text-gray-500 mt-1">Leave blank to auto-generate.</p>
                   </div>

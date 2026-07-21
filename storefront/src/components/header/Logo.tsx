@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { brandConfig } from '@/config/brand';
 
 interface LogoProps {
   size?: 'desktop' | 'mobile';
@@ -14,8 +15,8 @@ export function Logo({ size = 'desktop', isTransparent = false }: LogoProps) {
   const textColor = isTransparent ? 'text-inverse' : 'text-primary';
 
   return (
-    <Link href="/" aria-label="Odhvica — Home" className={`${cls} ${textColor}`}>
-      Odhvi<span className="text-accent">c</span>a
+    <Link href="/" aria-label={`${brandConfig.name} — Home`} className={`${cls} ${textColor}`}>
+      {brandConfig.name}
     </Link>
   );
 }

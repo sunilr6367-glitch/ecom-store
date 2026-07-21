@@ -7,9 +7,9 @@ const sharedEnv = {
   DESIGN_SYSTEM_LAB: 'true',
   NEXT_PUBLIC_DESIGN_SYSTEM_LAB: 'true',
   NEXT_PUBLIC_E2E: 'true',
-  INTERNAL_API_URL: 'http://127.0.0.1:4000',
-  NEXT_PUBLIC_API_URL: 'http://127.0.0.1:4000',
-  BASE_URL: 'http://127.0.0.1:3000',
+  INTERNAL_API_URL: 'http://127.0.0.1:4100',
+  NEXT_PUBLIC_API_URL: 'http://127.0.0.1:4100',
+  BASE_URL: 'http://127.0.0.1:3100',
 };
 
 let shuttingDown = false;
@@ -81,13 +81,13 @@ try {
   mockApi.once('exit', (code) => {
     if (!shuttingDown && code !== 0) terminateChildren(code ?? 1);
   });
-  await waitForHealth('http://127.0.0.1:4000/health', 'mock API', 30000);
+  await waitForHealth('http://127.0.0.1:4100/health', 'mock API', 30000);
 
   const storefront = spawnChild(['scripts/playwright-storefront-server.mjs'], 'storefront');
   storefront.once('exit', (code) => {
     if (!shuttingDown && code !== 0) terminateChildren(code ?? 1);
   });
-  await waitForHealth('http://127.0.0.1:3000/health', 'storefront server');
+  await waitForHealth('http://127.0.0.1:3100/health', 'storefront server');
 
   const matrix = spawnChild(['scripts/architecture-route-matrix.mjs'], 'route-matrix');
   matrix.once('exit', (code) => terminateChildren(code ?? 0));

@@ -1027,7 +1027,7 @@ export default function EditProductPage() {
                   id="seo_title" type="text" name="seo_title"
                   value={formData.seo_title || ''} onChange={handleChange}
                   className={inputCls}
-                  placeholder="e.g. Elegant Summer Linen Shirt | Odhvica"
+                  placeholder="e.g. Elegant Summer Linen Shirt | Your Store"
                 />
               </div>
               <div>
@@ -1074,7 +1074,7 @@ export default function EditProductPage() {
                       value={seoCanonicalUrl}
                       onChange={(e) => setSeoCanonicalUrl(e.target.value)}
                       className={inputCls}
-                      placeholder="e.g. https://odhvica.com/products/original-shirt"
+                      placeholder="e.g. https://store.example.com/products/original-shirt"
                     />
                     <p className="text-xs text-gray-500 mt-1">Leave blank to auto-generate.</p>
                   </div>

@@ -82,7 +82,7 @@ export async function sendAbandonedCartEmails() {
       if (targetStage === 2) templateId = templateStage2;
       if (targetStage === 3) templateId = templateStage3;
 
-      const storefrontUrl = process.env.STOREFRONT_URL || 'https://odhvica.com';
+      const storefrontUrl = process.env.STOREFRONT_URL || 'http://localhost:3100';
       const cartUrl = `${storefrontUrl}/cart`;
 
       try {

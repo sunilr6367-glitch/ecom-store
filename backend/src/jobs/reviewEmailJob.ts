@@ -3,6 +3,7 @@ import { and, asc, inArray, lte, or, sql } from 'drizzle-orm';
 import { db } from '../db/client';
 import { line_items, orders } from '../db/schema';
 import { emailService } from '../services/email-service';
+import { brandConfig } from '../config/brand';
 
 type MetadataRecord = Record<string, unknown>;
 
@@ -23,14 +24,6 @@ function escapeHtml(value: string) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
-}
-
-function getStorefrontUrl() {
-  return (
-    process.env.STOREFRONT_URL ||
-    process.env.FRONTEND_URL ||
-    'https://odhvica.com'
-  ).replace(/\/$/, '');
 }
 
 function getReviewDelayDays() {
@@ -90,7 +83,7 @@ export async function sendReviewRequestEmails() {
   let sent = 0;
   let failed = 0;
   const now = new Date().toISOString();
-  const storefrontUrl = getStorefrontUrl();
+  const storefrontUrl = brandConfig.storefrontUrl;
 
   for (const order of eligibleOrders) {
     const orderNumber = order.display_id ? `#${order.display_id}` : order.id.slice(0, 8);
@@ -98,18 +91,18 @@ export async function sendReviewRequestEmails() {
     const productLine =
       itemNames.length > 0
         ? `for ${itemNames.map(escapeHtml).join(', ')}`
-        : 'for your recent Odhvica purchase';
+        : `for your recent ${brandConfig.name} purchase`;
     const reviewUrl = `${storefrontUrl}/account/orders`;
-    const subject = `How was your Odhvica order ${orderNumber}?`;
+    const subject = `How was your ${brandConfig.name} order ${orderNumber}?`;
     const text = [
-      `Thank you for shopping with Odhvica.`,
+      `Thank you for shopping with ${brandConfig.name}.`,
       `We would love your review ${productLine.replace(/&amp;/g, '&')}.`,
       `You can leave feedback from your orders page: ${reviewUrl}`,
     ].join('\n\n');
     const html = `
       <div style="font-family:Arial,sans-serif;color:#333;line-height:1.5">
-        <h1 style="font-size:20px;margin:0 0 16px">How was your Odhvica order ${escapeHtml(orderNumber)}?</h1>
-        <p>Thank you for shopping with Odhvica. We would love your review ${productLine}.</p>
+        <h1 style="font-size:20px;margin:0 0 16px">How was your ${escapeHtml(brandConfig.name)} order ${escapeHtml(orderNumber)}?</h1>
+        <p>Thank you for shopping with ${escapeHtml(brandConfig.name)}. We would love your review ${productLine}.</p>
         <p><a href="${escapeHtml(reviewUrl)}" style="display:inline-block;background:#1c1917;color:#fff;padding:12px 18px;text-decoration:none">Leave a review</a></p>
         <p style="color:#57534e;font-size:13px">Your feedback helps other customers choose handmade pieces with confidence.</p>
       </div>

@@ -1,5 +1,6 @@
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { apiReference } from '@scalar/hono-api-reference';
+import { brandConfig } from '../config/brand';
 
 const app = new OpenAPIHono();
 
@@ -8,11 +9,11 @@ app.doc('/doc', {
   openapi: '3.0.0',
   info: {
     version: '1.0.0',
-    title: 'Odhvica API',
+    title: `${brandConfig.name} API`,
     description: `
-# Odhvica E-Commerce Platform API
+# ${brandConfig.name} E-Commerce Platform API
 
-Welcome to the Odhvica API documentation. This API provides endpoints for managing products, categories, orders, customers, and more.
+Welcome to the ${brandConfig.name} API documentation. This API provides endpoints for managing products, categories, orders, customers, and more.
 
 ## Authentication
 
@@ -54,11 +55,11 @@ Errors return a consistent format:
   },
   servers: [
     {
-      url: 'http://localhost:4000',
+      url: 'http://localhost:4100',
       description: 'Local Server',
     },
     {
-      url: 'https://api.odhvica.com',
+      url: process.env.PUBLIC_API_URL || 'http://localhost:4100',
       description: 'Production Server',
     },
   ],
@@ -71,7 +72,7 @@ app.get(
     spec: {
       url: '/docs/doc',
     },
-    pageTitle: 'Odhvica API Documentation',
+    pageTitle: `${brandConfig.name} API Documentation`,
   })
 );
 
@@ -107,12 +108,15 @@ export function getOpenAPISpec() {
     openapi: '3.0.0',
     info: {
       version: '1.0.0',
-      title: 'Odhvica API',
+      title: `${brandConfig.name} API`,
       description: 'E-commerce Platform API Documentation',
     },
     servers: [
-      { url: 'http://localhost:4000', description: 'Local Server' },
-      { url: 'https://api.odhvica.com', description: 'Production Server' },
+      { url: 'http://localhost:4100', description: 'Local Server' },
+      {
+        url: process.env.PUBLIC_API_URL || 'http://localhost:4100',
+        description: 'Configured API server',
+      },
     ],
     paths: {
       '/health-check': {

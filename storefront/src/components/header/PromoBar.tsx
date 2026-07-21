@@ -19,7 +19,7 @@ const SESSION_KEY = 'kv_promobar_dismissed';
 const SOCIAL_LINKS = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/odhvica.store/',
+    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/',
     icon: Instagram,
   },
 ];

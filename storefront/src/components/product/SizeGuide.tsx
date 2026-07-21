@@ -2,6 +2,7 @@
 
 import type { SizeGuide as SizeGuideType, SizeMeasurement } from '@/types';
 import { Modal } from '@/design-system';
+import { storefrontTrust } from '@/config/storefront-trust';
 
 interface SizeGuideProps {
   isOpen: boolean;
@@ -229,7 +230,7 @@ export function SizeGuide({ isOpen, onClose, sizeGuide }: SizeGuideProps) {
               Our garments are cut for a relaxed, contemporary fit. If you are
               between sizes, we recommend sizing down for a closer fit or sizing
               up for a more oversized silhouette. For detailed measurements of a
-              specific item, please contact support@odhvica.com or use the
+              specific item, please contact {storefrontTrust.supportEmail} or use the
               chat widget.
             </p>
           </div>
@@ -237,4 +238,3 @@ export function SizeGuide({ isOpen, onClose, sizeGuide }: SizeGuideProps) {
     </Modal>
   );
 }
-

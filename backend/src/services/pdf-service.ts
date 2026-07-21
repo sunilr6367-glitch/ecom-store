@@ -1,4 +1,5 @@
 import PDFDocument from 'pdfkit';
+import { brandConfig } from '../config/brand';
 
 // Type definitions for invoice data
 export interface InvoiceLineItem {
@@ -37,11 +38,11 @@ export const generateInvoice = async (
     .fillColor('#000000')
     .font('Times-Bold')
     .fontSize(24)
-    .text('ODHVICA', 50, 55)
+    .text(brandConfig.name.toUpperCase(), 50, 55)
     .font('Times-Roman')
     .fontSize(10)
     .fillColor('#666666')
-    .text('support@odhvica.com', 50, 82)
+    .text(brandConfig.supportEmail, 50, 82)
     .font('Times-Bold')
     .fontSize(14)
     .fillColor('#111111')

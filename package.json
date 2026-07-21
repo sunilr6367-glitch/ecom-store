@@ -1,16 +1,20 @@
 {
-  "name": "odhvica-platform",
+  "name": "kvastram-commerce-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reusable full-stack ecommerce template with storefront, admin, and API applications.",
   "main": "index.js",
   "scripts": {
     "audit:repository": "node scripts/check-repository-state.mjs",
     "setup:repository": "git config core.hooksPath .githooks",
     "verify:system": "npx tsx scripts/verify-system.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "cd backend && npm install --legacy-peer-deps",
-    "build": "cd backend && npm run build",
-    "start": "cd backend && npm run start"
+    "setup": "npm ci --legacy-peer-deps --prefix backend && npm ci --legacy-peer-deps --prefix storefront && npm ci --legacy-peer-deps --prefix admin",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:storefront": "npm --prefix storefront run dev",
+    "dev:admin": "npm --prefix admin run dev",
+    "lint": "npm --prefix backend run lint && npm --prefix storefront run lint && npm --prefix admin run lint",
+    "test": "npm --prefix backend run test:run && npm --prefix storefront run test:unit -- --run",
+    "build": "npm --prefix backend run build && npm --prefix storefront run build && npm --prefix admin run build",
+    "start": "npm --prefix backend run start"
   },
   "keywords": [],
   "author": "sunil kumar saini",

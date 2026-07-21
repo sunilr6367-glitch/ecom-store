@@ -399,7 +399,7 @@ export default function SettingsPage() {
                     type="text"
                     value={settings.store_name || ''}
                     onChange={(e) => handleChange('store_name', e.target.value)}
-                    placeholder="Odhvica Store"
+                    placeholder="Your Store"
                     className="w-full rounded-xl border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-4 py-3 text-sm text-[var(--on-surface)] placeholder:text-[var(--on-surface-variant)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30"
                   />
                 </div>
@@ -435,7 +435,7 @@ export default function SettingsPage() {
                     onChange={(e) =>
                       handleChange('contact_email', e.target.value)
                     }
-                    placeholder="admin@odhvica.com"
+                    placeholder="admin@example.com"
                     className="w-full rounded-xl border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-4 py-3 text-sm text-[var(--on-surface)] placeholder:text-[var(--on-surface-variant)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30"
                   />
                 </div>
@@ -610,7 +610,7 @@ export default function SettingsPage() {
                         onChange={(e) =>
                           handleChange('from_name', e.target.value)
                         }
-                        placeholder="Odhvica Support"
+                        placeholder="Your Store Support"
                         className="w-full rounded-xl border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-4 py-3 text-sm text-[var(--on-surface)] placeholder:text-[var(--on-surface-variant)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30"
                       />
                     </div>
@@ -628,7 +628,7 @@ export default function SettingsPage() {
                         onChange={(e) =>
                           handleChange('from_email', e.target.value)
                         }
-                        placeholder="support@odhvica.com"
+                        placeholder="support@example.com"
                         className="w-full rounded-xl border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-4 py-3 text-sm text-[var(--on-surface)] placeholder:text-[var(--on-surface-variant)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30"
                       />
                     </div>
@@ -649,7 +649,7 @@ export default function SettingsPage() {
                       onChange={(e) =>
                         handleChange('email_reply_to', e.target.value)
                       }
-                      placeholder="hello@odhvica.com"
+                      placeholder="hello@example.com"
                       className="w-full lg:w-1/2 px-4 py-2 border border-[var(--outline-variant)] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <p className="text-xs text-[var(--on-surface-variant)] mt-1">

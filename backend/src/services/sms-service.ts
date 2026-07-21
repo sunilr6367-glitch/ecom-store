@@ -1,4 +1,5 @@
 import twilio from 'twilio';
+import { brandConfig } from '../config/brand';
 import { eq } from 'drizzle-orm';
 
 export class SMSService {
@@ -48,7 +49,7 @@ export class SMSService {
             mobile: formattedPhone,
             authkey: this.msg91AuthKey,
             otp: otp,
-            message: `Your Odhvica verification code is ${otp}. It will expire in 10 minutes.`,
+            message: `Your ${brandConfig.name} verification code is ${otp}. It will expire in 10 minutes.`,
             sender: this.msg91SenderId,
           };
 

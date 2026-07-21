@@ -1,3 +1,5 @@
+import { brandConfig } from './brand';
+
 /**
  * Site Configuration - Site Text Strings
  *
@@ -76,13 +78,13 @@ export const siteConfig = {
 
     // Contact Info
     emailUs: 'Email Us',
-    emailAddress: 'support@odhvica.com',
+    emailAddress: brandConfig.supportEmail,
     emailReplyTime: 'Monday-Friday, 9 AM - 6 PM IST',
     callOrWhatsApp: 'Call or WhatsApp',
-    phoneNumber: '+91-9588078064',
+    phoneNumber: brandConfig.supportPhone,
     phoneHours: 'Monday-Friday, 9 AM - 6 PM IST',
     atelier: 'Atelier',
-    address: '44C, Vijaypura, Sumel, Jaipur, Rajasthan 302031, India',
+    address: brandConfig.addressLines.join(', '),
 
     // Form Actions
     sendMessage: 'Send Message',
@@ -155,12 +157,12 @@ export const siteConfig = {
     label: 'B2B Partnership',
     title: 'Wholesale & Bulk Orders',
     subtitle:
-      'Partner with Odhvica to bring authentic artisanal luxury to your customers. Exclusive pricing, dedicated support, and global logistics for retailers and distributors worldwide.',
+      `Partner with ${brandConfig.name} to bring authentic products to your customers. Exclusive pricing, dedicated support, and global logistics for retailers and distributors worldwide.`,
     ctaRequestPricing: 'Request Pricing',
     ctaLearnMore: 'Learn More',
 
     benefits: {
-      title: 'Why Partner With Odhvica?',
+      title: `Why Partner With ${brandConfig.name}?`,
       subtitle:
         'We provide everything you need to offer premium artisanal products to your market.',
 
@@ -298,7 +300,7 @@ export const siteConfig = {
 
     contactCta: {
       emailUs: 'Email Us',
-      emailAddress: 'wholesale@odhvica.com',
+      emailAddress: brandConfig.wholesaleEmail,
       callUs: 'Call Us',
       phoneNumber: '+1 (234) 567-890',
       downloadCatalog: 'Download Catalog',

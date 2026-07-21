@@ -9,10 +9,12 @@ COPY . .
 
 # NEXT_PUBLIC_* vars must be baked in at build time for client-side code.
 # Pass via docker-compose build.args or --build-arg on the CLI.
-ARG NEXT_PUBLIC_API_URL=http://localhost:4000
+ARG NEXT_PUBLIC_API_URL=http://localhost:4100
+ARG NEXT_PUBLIC_STORE_NAME="Kvastram Store"
 ARG APP_GIT_SHA=unknown
 ARG BACKEND_URL=http://backend:4000
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_STORE_NAME=$NEXT_PUBLIC_STORE_NAME
 ENV APP_GIT_SHA=$APP_GIT_SHA
 ENV BACKEND_URL=$BACKEND_URL
 

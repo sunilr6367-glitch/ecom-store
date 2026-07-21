@@ -56,7 +56,7 @@ async function getAccessToken() {
 
 export async function syncGSCPerformance() {
   const token = await getAccessToken();
-  const siteUrl = process.env.GSC_SITE_URL || 'https://odhvica.com';
+  const siteUrl = process.env.GSC_SITE_URL || process.env.STOREFRONT_URL || 'http://localhost:3100';
   if (!token) {
     return { synced: 0, skipped: true, reason: 'GSC credentials are not configured' };
   }

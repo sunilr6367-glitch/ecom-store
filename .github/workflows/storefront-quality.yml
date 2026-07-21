@@ -40,8 +40,10 @@ jobs:
       - name: Build storefront
         working-directory: storefront
         env:
-          INTERNAL_API_URL: http://127.0.0.1:4000
-          NEXT_PUBLIC_API_URL: http://127.0.0.1:4000
+          INTERNAL_API_URL: http://127.0.0.1:4100
+          NEXT_PUBLIC_API_URL: http://127.0.0.1:4100
+          NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3100
+          NEXT_PUBLIC_STORE_NAME: Kvastram Store
         run: npm run build
       - name: Install Playwright Chromium
         working-directory: storefront

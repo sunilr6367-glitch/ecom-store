@@ -46,6 +46,8 @@ interface Product {
   variants?: Array<{ id: string; title: string; inventory_quantity: number; sku?: string; prices?: Array<{ amount: number }> }>;
 }
 
+type ProductVariant = NonNullable<Product['variants']>[number];
+
 interface ProductStats {
   total_products: number;
   published_products: number;
@@ -121,10 +123,9 @@ export default function ProductsPage() {
   const [isBulkActionRunning, setIsBulkActionRunning] = useState(false);
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
   const [inlineEditId, setInlineEditId] = useState<string | null>(null);
-  const [inlinePrice, setInlinePrice] = useState<string>('');
   const [inlineStock, setInlineStock] = useState<string>('');
   const [expandedVariantId, setExpandedVariantId] = useState<string | null>(null);
-  const [variantsCache, setVariantsCache] = useState<Record<string, any[]>>({});
+  const [variantsCache, setVariantsCache] = useState<Record<string, ProductVariant[]>>({});
   const [isLoadingVariants, setIsLoadingVariants] = useState(false);
   const [quickViewProductId, setQuickViewProductId] = useState<string | null>(null);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
@@ -253,8 +254,8 @@ export default function ProductsPage() {
     try {
       const data = await api.getProduct(product.id);
       setQuickViewProduct(data.product || data);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
       setQuickViewProductId(null);
     }
   };
@@ -323,7 +324,7 @@ export default function ProductsPage() {
       });
       setInlineEditId(null);
       await Promise.all([fetchProducts(), fetchStats()]);
-    } catch (e) {
+    } catch {
       alert('Failed to save inline edit');
     }
   };

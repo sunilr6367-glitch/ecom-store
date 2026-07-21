@@ -16,7 +16,7 @@ import { normalizeCloudinaryUrl } from '../utils/cloudinary';
 
 const merchantRouter = new Hono();
 
-const SITE_URL = process.env.STOREFRONT_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://odhvica.com';
+const SITE_URL = process.env.STOREFRONT_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3100';
 
 merchantRouter.get(
   '/feeds/health',

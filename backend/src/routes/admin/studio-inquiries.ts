@@ -226,7 +226,7 @@ router.post('/:id/messages', verifyAdmin, async (c) => {
     });
 
     if (existing.email && existing.conversation_token) {
-      const productPath = existing.product_url || `${process.env.STOREFRONT_URL || process.env.FRONTEND_URL || 'https://odhvica.com'}/products/${existing.product_handle || id}`;
+      const productPath = existing.product_url || `${process.env.STOREFRONT_URL || process.env.FRONTEND_URL || 'http://localhost:3100'}/products/${existing.product_handle || id}`;
       const separator = productPath.includes('?') ? '&' : '?';
       const conversationUrl = `${productPath}${separator}chat=${encodeURIComponent(id)}&token=${encodeURIComponent(existing.conversation_token)}`;
       import('../../services/email-service')

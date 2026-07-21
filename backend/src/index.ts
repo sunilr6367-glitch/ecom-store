@@ -151,7 +151,7 @@ app.use('/store/payments/paypal/webhook', webhookTimeout);
 
 // CORS Configuration
 // In production set ALLOWED_ORIGINS in backend/.env.production, e.g.:
-//   ALLOWED_ORIGINS=https://odhvica.com,https://www.odhvica.com,https://admin.odhvica.com
+//   ALLOWED_ORIGINS=https://store.example.com,https://admin.example.com
 const isProd = process.env.NODE_ENV === 'production';
 const allowedOrigins =
   process.env.ALLOWED_ORIGINS
@@ -159,16 +159,16 @@ const allowedOrigins =
     .map(origin => origin.trim())
     .filter(Boolean) ||
   (isProd
-    ? ['https://odhvica.com', 'https://www.odhvica.com', 'https://admin.odhvica.com']
+    ? []
     : [
-        'http://localhost:3000',
-        'http://localhost:3001',
+        'http://localhost:3100',
+        'http://localhost:3101',
         'http://localhost:3002',
-        'http://localhost:4000',
-        'http://127.0.0.1:3000',
-        'http://127.0.0.1:3001',
+        'http://localhost:4100',
+        'http://127.0.0.1:3100',
+        'http://127.0.0.1:3101',
         'http://127.0.0.1:3002',
-        'http://127.0.0.1:4000',
+        'http://127.0.0.1:4100',
       ]);
 app.use(
   '*',
@@ -284,7 +284,7 @@ app.get('/', (c) => {
   return successResponse(
     c,
     {
-      name: 'Odhvica API',
+      name: `${brandConfig.name} API`,
       version: '1.0.0',
       description: 'E-commerce platform API',
       documentation: '/api/docs',
@@ -296,7 +296,7 @@ app.get('/', (c) => {
         store: '/store',
       },
     },
-    'Welcome to Odhvica API'
+    `Welcome to ${brandConfig.name} API`
   );
 });
 
@@ -511,7 +511,7 @@ app.notFound((c) => {
 // Global Error Handler
 app.onError(errorHandler);
 
-const port = Number(process.env.PORT) || 4000;
+const port = Number(process.env.PORT) || 4100;
 
 console.log(`Server starting on port ${port}`);
 console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);

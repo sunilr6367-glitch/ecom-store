@@ -37,6 +37,7 @@ import type {
   WorkflowPackage,
 } from '../utils/order-workflow';
 import type { CarrierProvider } from '../services/carrier-service';
+import { brandConfig } from '../config/brand';
 
 // --- TYPES ---
 export type OrderStatus =
@@ -1042,7 +1043,7 @@ class OrderService {
           data.notify_buyer !== false ? new Date().toISOString() : null,
       }
     );
-    const autoNotificationSubject = `Your Odhvica order #${
+    const autoNotificationSubject = `Your ${brandConfig.name} order #${
       existingOrder.order_number ?? id.slice(0, 8)
     } has shipped`;
     const autoNotificationMessage =
@@ -1153,7 +1154,7 @@ class OrderService {
           data.notify_buyer !== false ? new Date().toISOString() : null,
       }
     );
-    const addPackageSubject = `Package update for your Odhvica order #${
+    const addPackageSubject = `Package update for your ${brandConfig.name} order #${
       existingOrder.order_number ?? id.slice(0, 8)
     }`;
     const addPackageMessage =
@@ -1308,8 +1309,8 @@ class OrderService {
         : existingOrder.status;
     const updateSubject =
       updateStatus === 'delivered'
-        ? `Your Odhvica order #${existingOrder.order_number ?? id.slice(0, 8)} was marked delivered`
-        : `Shipping details updated for your Odhvica order #${existingOrder.order_number ?? id.slice(0, 8)}`;
+        ? `Your ${brandConfig.name} order #${existingOrder.order_number ?? id.slice(0, 8)} was marked delivered`
+        : `Shipping details updated for your ${brandConfig.name} order #${existingOrder.order_number ?? id.slice(0, 8)}`;
     const updateMessage =
       updateStatus === 'delivered'
         ? 'Your order has been marked as delivered.'
@@ -1806,7 +1807,7 @@ class OrderService {
       const workflowStatus = deriveWorkflowStatus(row);
       countByStatus[workflowStatus] = (countByStatus[workflowStatus] || 0) + 1;
 
-      if (workflowStatus === 'completed' || workflowStatus === 'delivered') {
+      if (workflowStatus === 'delivered') {
         totalRevenueNum += Number(row.total || 0);
       }
     }

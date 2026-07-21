@@ -4,7 +4,7 @@ const API_URL =
   process.env.INTERNAL_API_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
   process.env.API_URL ||
-  'http://localhost:4000';
+  'http://localhost:4100';
 
 const PUBLIC_FILE = /\.(?:avif|css|gif|ico|jpg|jpeg|js|json|map|png|svg|txt|webp|xml)$/i;
 const LOCALES = new Set(['en-in', 'en-us', 'en-gb', 'en-au', 'en-eu']);
