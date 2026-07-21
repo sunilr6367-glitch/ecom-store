@@ -1,0 +1,91 @@
+﻿--- STEP 1 ---
+
+Line                                                         
+----                                                         
+# Get Google Client ID from: https://console.cloud.google.com
+--- STEP 2 ---
+  images: {                                                  
+        hostname: 'localhost',                               
+        hostname: 'api.odhvica.com',                         
+        hostname: 'res.cloudinary.com',                      
+        hostname: 'images.unsplash.com',                     
+        hostname: 'plus.unsplash.com',                       
+    formats: ['image/avif', 'image/webp'],                   
+--- STEP 3 ---
+=== E:\Kvastram projects\storefront\src\components\ui\OptimizedImage.tsx ===
+'use client';
+
+import Image, { type ImageProps } from 'next/image';
+import { cloudinaryImageLoader, isCloudinaryUrl, optimizeCloudinaryUrl } from '@/lib/media';
+
+interface OptimizedImageProps extends Omit<ImageProps, 'onError' | 'onLoad'> {
+  fallbackSrc?: string;
+}
+
+export default function OptimizedImage({
+  alt,
+  quality = 75,
+  loading,
+  sizes,
+  ...props
+}: OptimizedImageProps) {
+  const originalSrc = typeof props.src === 'string' ? props.src : null;
+  // Auto-convert HEIC/HEIF and optimize format for browser via Cloudinary
+  if (typeof props.src === 'string') {
+    props = {
+      ...props,
+      src: isCloudinaryUrl(props.src) ? props.src : optimizeCloudinaryUrl(props.src),
+    };
+  }
+  // Default loading behavior: lazy unless explicitly priority
+  const resolvedLoading: NonNullable<ImageProps['loading']> =
+    loading ?? (props.priority ? 'eager' : 'lazy');
+
+  // Default sizes for responsive images when not provided
+  const resolvedSizes = sizes ?? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+
+  // If neither width/height nor fill provided, provide sensible defaults
+  const shouldProvideDefaults = !props.fill && props.width === undefined && props.height === undefined;
+  const defaultWidth = 400;
+  const defaultHeight = 400;
+
+  const finalProps: Omit<ImageProps, 'alt'> = {
+    quality,
+    loading: resolvedLoading,
+    sizes: resolvedSizes,
+    ...(originalSrc && isCloudinaryUrl(originalSrc)
+      ? { loader: cloudinaryImageLoader }
+      : {}),
+    ...(shouldProvideDefaults ? { width: defaultWidth, height: defaultHeight } : {}),
+    ...props,
+  };
+
+  return <Image {...finalProps} alt={alt} />;
+}
+--- STEP 4 ---
+            src={story.image_url}                            
+              src={category.image_url}                       
+              src={category.image_url}                       
+                src={circle.image_url || ''}                 
+                {slide.mobile_image_url ? (                  
+                  <source media="(max-width: 767px)" srcSe...
+                  src={slide.image_url}                      
+      {slot.image_url ? (                                    
+          src={slot.image_url}                               
+                src={post.image_url}                         
+--- STEP 5 ---
+NODE_ENV=production
+
+NEXT_PUBLIC_API_URL=https://api.odhvica.com
+
+# REVALIDATE_SECRET must be set via runtime environment variable (Docker/VPS)
+# Do NOT commit the actual secret value here. Generate with: openssl rand -hex 32
+# REVALIDATE_SECRET=
+
+# Razorpay (India / INR) â€” fill when payment goes live
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_live_YOUR_KEY_ID_HERE
+
+# PayPal (International) â€” fill when payment goes live
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=YOUR_PAYPAL_CLIENT_ID_HERE
+
+

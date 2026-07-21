@@ -1,0 +1,10 @@
+# Repository and production governance
+/.github/ @sainisun
+/deploy/ @sainisun
+/AGENTS.md @sainisun
+
+# Storefront design system
+/storefront/src/styles/tokens.css @sainisun
+/storefront/src/styles/typography.css @sainisun
+/storefront/src/components/ui/ @sainisun
+/docs/design-system/ @sainisun

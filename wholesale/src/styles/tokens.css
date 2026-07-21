@@ -1,0 +1,281 @@
+/* Odhvica Storefront Design System v1
+   Phase 0 and Phase 1 source of truth.
+   Typography direction: editorial serif display with a restrained grotesk body.
+   Final accent token: TERRACOTTA.
+*/
+
+:root {
+  /* Typography */
+  --ds-font-display: 'Amiri', 'Cardo', serif;
+  --ds-font-body: 'Cardo', serif;
+  --ds-font-ui: var(--ds-font-body);
+  --ds-font-label: var(--ds-font-ui);
+
+  --ds-text-display-xl: clamp(1.875rem, 3vw, 2.75rem); /* 30px → 44px */
+  --ds-text-display-lg: clamp(1.5rem, 2vw, 1.875rem); /* 24px → 30px */
+  --ds-text-display-md: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px → 24px */
+  --ds-text-display-sm: clamp(1.125rem, 1.2vw, 1.25rem); /* 18px → 20px */
+  --ds-text-body-xl: clamp(1rem, 1vw, 1.125rem); /* 16px → 18px */
+  --ds-text-body-lg: 1rem; /* 16px */
+  --ds-text-body-md: 0.9375rem; /* 15px */
+  --ds-text-body-sm: 0.875rem; /* 14px */
+  --ds-text-body-xs: 0.75rem; /* 12px */
+  --ds-text-count-xs: 0.625rem; /* 10px */
+
+  --ds-weight-light: 300;
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  --ds-leading-tight: 1.2;
+  --ds-leading-snug: 1.375;
+  --ds-leading-normal: 1.5;
+  --ds-leading-relaxed: 1.625;
+
+  --ds-tracking-tight: 0em;
+  --ds-tracking-normal: 0em;
+  --ds-tracking-wide: 0.015em;
+  --ds-tracking-wider: 0.025em;
+
+  /* Typography role contract. Components should consume these roles instead of
+     inventing local font, weight, transform, or tracking values. */
+  --ds-type-body-font: var(--ds-font-body);
+  --ds-type-heading-font: var(--ds-font-display);
+  --ds-type-ui-font: var(--ds-font-ui);
+  --ds-type-label-font: var(--ds-font-label);
+  --ds-type-body-weight: var(--ds-weight-regular);
+  --ds-type-light-weight: var(--ds-weight-light);
+  --ds-type-heading-weight: var(--ds-weight-regular);
+  --ds-type-subheading-weight: var(--ds-weight-regular);
+  --ds-type-ui-weight: var(--ds-weight-medium);
+  --ds-type-label-weight: var(--ds-weight-medium);
+  --ds-type-strong-weight: var(--ds-weight-semibold);
+  --ds-type-heading-transform: none;
+  --ds-type-label-transform: none;
+  --ds-type-button-transform: none;
+  --ds-type-heading-tracking: var(--ds-tracking-normal);
+  --ds-type-body-tracking: var(--ds-tracking-normal);
+  --ds-type-label-tracking: var(--ds-tracking-wide);
+  --ds-type-button-tracking: var(--ds-tracking-wide);
+  --ds-type-product-title-font: var(--ds-font-body);
+  --ds-type-product-title-size: var(--ds-text-body-md);
+  --ds-type-product-title-weight: var(--ds-weight-medium);
+  --ds-type-product-meta-tracking: 0.05em;
+  --ds-type-product-meta-transform: uppercase;
+
+  /* ═══════════════════════════════════════════════
+     PRIMITIVE COLORS — Brand's raw color palette
+     Never use these directly in components.
+     Always use semantic tokens below.
+     ═══════════════════════════════════════════════ */
+
+  /* Terracotta — Jaipur ki mitti, Amber Fort walls */
+  --ds-terracotta-50:  #F5F5F5;
+  --ds-terracotta-100: #E5E5E5;
+  --ds-terracotta-200: #D4D4D4;
+  --ds-terracotta-400: #737373;
+  --ds-terracotta-600: #000000;
+  --ds-terracotta-800: #000000;
+  --ds-terracotta-950: #000000;
+
+  /* Gold — artisan gold thread, Kantha embroidery */
+  --ds-gold-50:  #FAF5E9;
+  --ds-gold-100: #F5EEDC;
+  --ds-gold-400: #C9AE77;
+  --ds-gold-600: #B89B5E;
+  --ds-gold-800: #7A6335;
+
+  /* Parchment — aged paper, handmade feel */
+  --ds-parchment-50:  #FFFFFF;
+  --ds-parchment-100: #F7F7F7;
+  --ds-parchment-200: #E5E5E5;
+  --ds-parchment-300: #D4D4D4;
+
+  /* Ink — warm charcoal, not cold black */
+  --ds-ink-50:  #666666;
+  --ds-ink-100: #333333;
+  --ds-ink-200: #1A1A1A;
+  --ds-ink-600: #000000;
+  --ds-ink-900: #000000;
+
+  /* ═══════════════════════════════════════════════
+     SEMANTIC TOKENS — What components use
+     Always reference primitives above.
+     ═══════════════════════════════════════════════ */
+
+  /* Surfaces */
+  --ds-surface-page:      #FFFFFF;
+  --ds-surface-paper:     #FFFFFF;
+  --ds-surface-soft:      var(--ds-parchment-100);
+  --ds-surface-subtle:    var(--ds-parchment-100);
+  --ds-surface-warm:      var(--ds-parchment-200);
+  --ds-surface-parchment: var(--ds-parchment-100);
+  --ds-surface-parchment-2: var(--ds-parchment-200);
+  --ds-surface-dark:      var(--ds-ink-600);
+  --ds-surface-darkest:   var(--ds-ink-900);
+
+  /* Text */
+  --ds-text-primary:      #000000;
+  --ds-text-secondary:    var(--ds-ink-100);
+  --ds-text-muted:        var(--ds-ink-50);
+  --ds-text-disabled:     var(--ds-parchment-300);
+  --ds-text-inverse:      #FFFFFF;
+  --ds-text-on-dark:      #FFFFFF;
+  --ds-text-on-accent:    #FFFFFF;
+  --ds-text-price:        var(--ds-ink-600);
+  --ds-text-price-old:    var(--ds-ink-50);
+
+  /* Accent — Primary CTA (Terracotta) */
+  --ds-accent-primary:    #000000;
+  --ds-accent-hover:      #000000;
+  --ds-accent-subtle:     var(--ds-terracotta-100);
+  --ds-accent-focus:      var(--ds-terracotta-400);
+  --ds-accent-soft:       var(--ds-terracotta-50);
+  --ds-accent-rgb:        0, 0, 0;
+
+  /* Accent — Gold (secondary, eyebrows, badges) */
+  --ds-accent-gold:       var(--ds-gold-600);
+  --ds-accent-gold-soft:  var(--ds-gold-100);
+  --ds-accent-gold-rgb:   184, 155, 94;
+
+  /* Borders */
+  --ds-border-subtle:     var(--ds-parchment-200);
+  --ds-border-medium:     var(--ds-parchment-300);
+  --ds-border-strong:     var(--ds-ink-100);
+  --ds-border-dark:       var(--ds-ink-200);
+
+  /* RGB values for rgba() usage */
+  --ds-ink-rgb:               0, 0, 0;
+  --ds-text-primary-rgb:      0, 0, 0;
+  --ds-text-secondary-rgb:    51, 51, 51;
+  --ds-cream-rgb:             255, 255, 255;
+  --ds-surface-page-rgb:      255, 255, 255;
+  --ds-surface-paper-rgb:     255, 255, 255;
+  --ds-surface-soft-rgb:      247, 247, 247;
+  --ds-surface-parchment-rgb: 247, 247, 247;
+  --ds-white-rgb:             255, 255, 255;
+  --ds-black-rgb:             0, 0, 0;
+
+  /* Footer */
+  --ds-footer-bg:         var(--ds-surface-dark);
+  --ds-footer-text:       var(--ds-text-on-dark);
+  --ds-footer-heading:    var(--ds-parchment-50);
+  --ds-footer-link:       var(--ds-parchment-200);
+  --ds-footer-dim:        var(--ds-gold-400);
+  --ds-footer-border:     var(--ds-ink-200);
+  --ds-footer-highlight:  var(--ds-accent-gold);
+  --ds-footer-surface:    var(--ds-surface-darkest);
+  --ds-footer-muted:      var(--ds-footer-dim);
+  --ds-footer-hover:      var(--ds-footer-heading);
+  --ds-footer-highlight-hover: var(--ds-gold-100);
+
+  /* Semantic states */
+  --ds-danger:        #b91c1c;
+  --ds-danger-bg:     #fcebeb;
+  --ds-danger-border: color-mix(in srgb, var(--ds-danger) 40%, transparent);
+  --ds-danger-dot:    var(--ds-danger);
+  --ds-success:       #3e8a5f;
+  --ds-success-bg:    #f0fdf4;
+  --ds-success-text:  #166534;
+  --ds-success-dark:  #14532d;
+  --ds-success-rgb:   62, 138, 95;
+  --ds-success-border: color-mix(in srgb, #16a34a 40%, transparent);
+  --ds-warning:       #ba7517;
+  --ds-warning-bg:    #faeeda;
+  --ds-warning-text:  #633806;
+  --ds-warning-rgb:   186, 117, 23;
+  --ds-warning-border: color-mix(in srgb, #d97706 40%, transparent);
+  --ds-info:          #2563eb;
+  --ds-info-bg:       #e6f1fb;
+  --ds-info-text:     #124779;
+  --ds-info-border:   color-mix(in srgb, #2563eb 40%, transparent);
+  --ds-whatsapp:      #128c7e;
+  --ds-whatsapp-bg:   #e1f5ee;
+  --ds-online:        var(--ds-success);
+
+  /* Product swatch tokens */
+  --ds-swatch-cream:     #fdfbf7;
+  --ds-swatch-off-white: #f8f3ea;
+  --ds-swatch-pink:      #f4a6b7;
+  --ds-swatch-grey:      #6b7280;
+  --ds-swatch-navy:      #1f2a44;
+  --ds-swatch-blue:      #3b82b8;
+  --ds-swatch-olive:     #7a7f45;
+  --ds-swatch-green:     #3e8a5f;
+  --ds-swatch-red:       #b63d2f;
+  --ds-swatch-orange:    var(--ds-terracotta-600);
+  --ds-swatch-yellow:    var(--ds-gold-400);
+  --ds-swatch-beige:     var(--ds-parchment-200);
+  --ds-swatch-brown:     #7a4d32;
+  --ds-swatch-purple:    #7c5a83;
+  --ds-swatch-fallback:  var(--ds-surface-soft);
+
+  /* Social brand accents */
+  --ds-social-facebook: #1877f2;
+  --ds-social-twitter:  #1d9bf0;
+
+  /* Shadow */
+  --ds-shadow: 0 10px 34px rgba(var(--ds-ink-rgb), 0.12);
+  --ds-shadow-sm: 0 4px 16px rgba(var(--ds-ink-rgb), 0.1);
+
+  /* ── Spacing scale (8pt base grid) ── */
+  --ds-space-2xs: 0.25rem;    /* 4px  — icon gaps, micro spacing */
+  --ds-space-xs:  0.5rem;     /* 8px  — badge gaps, tight pairs */
+  --ds-space-sm:  1rem;       /* 16px — component internal padding */
+  --ds-space-md:  1.5rem;     /* 24px — card padding, form gaps */
+  --ds-space-lg:  2.5rem;     /* 40px — within-section gaps */
+  --ds-space-xl:  clamp(3rem, 5vw, 4.5rem);   /* 48→72px — section padding */
+  --ds-space-2xl: clamp(4rem, 7vw, 6rem);     /* 64→96px — major sections */
+  --ds-space-3xl: clamp(5rem, 9vw, 8rem);     /* 80→128px — hero, editorial */
+
+  /* Layout */
+  --ds-prose-width: 65ch;
+  --ds-heading-width: 20ch;
+  --ds-caption-width: 45ch;
+  --ds-content-width: 1280px;
+  --ds-narrow-width: 860px;
+  --ds-home-content-width: 1520px;
+  --ds-page-width: 1440px;
+  /* ── Page gutters ── */
+  --ds-home-gutter-mobile:  1.25rem;   /* 20px — premium mobile feel */
+  --ds-home-gutter-tablet:  2rem;      /* 32px */
+  --ds-home-gutter-desktop: 3rem;      /* 48px — editorial breathing room */
+
+  /* ── Section spacing (homepage) ── */
+  --ds-home-section-space-mobile:  var(--ds-space-2xl);  /* 64→96px */
+  --ds-home-section-space-desktop: var(--ds-space-3xl);  /* 80→128px */
+
+  /* ── Component spacing rules ── */
+  --ds-btn-padding-y:    0.875rem;  /* 14px — 52px total height with line-height */
+  --ds-btn-padding-x:    1.75rem;   /* 28px */
+  --ds-btn-gap:          var(--ds-space-xs);    /* 8px between buttons */
+  --ds-btn-whitespace:   var(--ds-space-sm);    /* 16px around CTA (research: +49% tap rate) */
+
+  --ds-card-padding:     var(--ds-space-md);    /* 24px card internal */
+  --ds-card-gap:         var(--ds-space-md);    /* 24px between cards desktop */
+  --ds-card-gap-mobile:  var(--ds-space-sm);    /* 16px between cards mobile */
+
+  --ds-section-head-gap: var(--ds-space-xs);    /* 8px eyebrow→heading */
+  --ds-section-body-gap: var(--ds-space-md);    /* 24px heading→body */
+
+  /* Radius */
+  --ds-radius-xs: 2px;
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-pill: 999px;
+
+  /* Z-index */
+  --ds-z-dropdown: 50;
+  --ds-z-sticky: 100;
+  --ds-z-overlay: 200;
+  --ds-z-modal: 300;
+
+
+  --ds-transition-fast: 150ms ease;
+  --ds-transition-normal: 220ms ease;
+  --ds-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+

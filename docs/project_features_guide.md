@@ -1,0 +1,320 @@
+# Odhvica E-Commerce Platform — Comprehensive Features Guide
+
+## UI/UX Architecture & Tailwind v4
+- **Primitives System:** Core UI components (`Button`, `Badge`, `Input`, etc.) are built using `class-variance-authority` (cva) pattern for strict, type-safe variant mapping.
+- **Design Tokens:** The storefront uses native Tailwind v4 CSS variables injected via `globals.css` (e.g., `--color-accent`, `--color-surface-paper`). Raw `var(--ds-*)` usage in `.tsx` is allowed only as a Tailwind arbitrary-value escape hatch when no semantic utility exists. Runtime TSX must not consume `--ink`, `--cream`, or `--line`; use `--ds-*` tokens or semantic utilities like `bg-surface-paper` and `text-accent-hover`.
+- **Layout Logic:** Global layout CSS (`.products-grid`, etc.) is deprecated. Layouts MUST be explicitly defined in React components using Tailwind grid utilities (e.g., `grid grid-cols-2`).
+
+## UI/UX & Tailwind Refactoring (v1.0)
+* **Technical Flow**: Transitioning legacy custom CSS components (`product-card.css`, `collections.css`, `home-sections.css`) to utility-first Tailwind CSS. 
+* **Architecture**: Enforces a strict separation of concerns where global resets reside in `tokens.css` and `base.css`, while all component-level styles are handled via inline Tailwind classes (e.g. `bg-[var(--ds-surface-paper)]`, `text-body-sm`).
+* **Dependencies**: Depends on the custom `design-system-audit.mjs` ratcheting scripts. When adding new inline styles, developers must allowlist them in `design-system-audit.mjs` to prevent pipeline failures.
+* **Commands**: Run `npm run audit:css-ownership -- --write-baseline` after removing legacy CSS classes to establish a new duplication baseline.
+
+This guide is the definitive registry of all backend features implemented in the Odhvica codebase. It outlines the technical mechanics, configuration keys, user requirements, and operational steps for each system.
+
+---
+
+## 1. Cart Recovery & Marketing Automations
+
+### A. Multi-Stage Abandoned Cart Reminders (Email & SMS)
+* **Technical Flow**:
+  * An hourly background cron checker compares `updated_at` timestamps of active `saved_carts` database records against specific cutoff points.
+  * **Stage 1 (1 hour)**: Sends the first recovery email (Brevo) and SMS (Twilio - if opted-in).
+  * **Stage 2 (24 hours)**: Sends the second recovery email and SMS containing a 10% cart discount link.
+  * **Stage 3 (72 hours)**: Sends the final urgency recovery email and SMS before marking the cart as expired.
+  * Status tracker: Progress is stored inside the database `saved_carts.metadata` as `recovery_stage` (1, 2, or 3) to prevent double sending.
+* **What you need to do**:
+  * Create corresponding transactional email templates in the Brevo panel. Insert variables `{{ params.CART_URL }}` and `{{ params.FIRST_NAME }}` in the template design.
+  * Register template IDs in your production `.env`:
+    ```ini
+    BREVO_API_KEY=your_brevo_api_key
+    BREVO_TEMPLATE_AC_1=1
+    BREVO_TEMPLATE_AC_2=2
+    BREVO_TEMPLATE_AC_3=3
+    ```
+  * Set up Twilio keys in `.env` to enable SMS alerts:
+    ```ini
+    TWILIO_ACCOUNT_SID=your_twilio_sid
+    TWILIO_AUTH_TOKEN=your_twilio_token
+    TWILIO_PHONE_NUMBER=your_twilio_virtual_number
+    ```
+* **Edge Cases & DLT Compliance**:
+  * SMS only triggers if the customer explicitly consents during checkout (mapped to `metadata.sms_opt_in === true`).
+  * For Indian customers, if using local SMS sender names, register SMS templates under DLT (Distributed Ledger Technology) rules in India before live broadcasting.
+
+### B. Back-in-Stock Notifications
+* **Technical Flow**:
+  * When a product is out of stock, customers subscribe to an notification list (`back_in_stock_subscriptions`).
+  * On inventory replenishment in `product-mutation-service.ts`, the database trigger evaluates if quantity > 0. It spawns an async email/SMS job notifying all subscribed users before purging their subscription records.
+* **What you need to do**:
+  * **Fully Automated**: Requires Brevo templates setup for transactional inventory alerts.
+
+---
+
+## 2. Storefront Search & Core Performance
+
+### A. Real-Time Meilisearch Fuzzy Search & Live Sync
+* **Technical Flow**:
+  * **Live Sync**: Event hooks inside product mutation actions (`create`, `update`, `delete`) propagate updates to the Meilisearch index instantly.
+  * **Fallback Search**: Product query service checks if `MEILISEARCH_HOST` is reachable. If online, queries Meilisearch for matching IDs and hydrates the list from PostgreSQL. If offline, runs fallback database vector search.
+* **What you need to do**:
+  * Ensure Meilisearch server is running on port `7700` and config credentials in `.env`:
+    ```ini
+    MEILISEARCH_HOST=http://localhost:7700
+    MEILISEARCH_API_KEY=your_search_api_key
+    ```
+  * For initial indexing, run:
+    `npx tsx src/jobs/syncMeilisearch.ts`
+
+### B. 12-Hour Reconciliation Cron Sync
+* **Technical Flow**:
+  * A scheduled cron runs every 12 hours (`sync_meilisearch`) performing a complete index build to fix any potential sync drifts.
+* **What you need to do**:
+  * **Fully Automated**: Set up `SEO_CRON_ENABLED=true` in `.env` to start the background scheduler.
+
+---
+
+## 3. Merchant Channels & Feeds
+
+### A. Multi-Language Feed Generator
+* **Technical Flow**:
+  * Compiles products and variants, formatting them into XML/JSON/CSV structures required by Google Merchant Center, Meta, Pinterest, and TikTok.
+  * Accepts `?lang=XX`. The engine reads translations from `product.metadata.translations[lang]` and swaps default descriptions with localized parameters dynamically.
+* **What you need to do**:
+  * Set up merchant center feeds to pull from:
+    `https://api.odhvica.com/merchant/feeds/google/products.xml?lang=de`
+  * Add translations JSON to product metadata using the admin panel dashboard.
+
+---
+
+## 4. Checkout, Region Taxation & Payment Core
+
+### A. Razorpay Card & UPI Integration (INR)
+* **Technical Flow**:
+  * Standard checkout path for Indian shoppers. Generates a secure Razorpay Order ID. 
+  * Verifies payments via webhook HMAC signature verification before updating database records.
+* **What you need to do**:
+  * Set keys in `.env`:
+    ```ini
+    RAZORPAY_ID=rzp_live_...
+    RAZORPAY_SECRET=...
+    RAZORPAY_WEBHOOK_SECRET=your_webhook_signature_secret
+    ```
+  * Set up webhook URL pointing to `https://api.odhvica.com/store/payments/razorpay/webhook` inside the Razorpay Dashboard.
+
+### B. PayPal gateway (USD)
+* **Technical Flow**:
+  * Processes checkout sessions for international transactions, converting base pricing to USD.
+* **What you need to do**:
+  * Set credentials in `.env`:
+    ```ini
+    PAYPAL_CLIENT_ID=...
+    PAYPAL_CLIENT_SECRET=...
+    ```
+
+---
+
+## 5. Security & Accounts Management
+
+### A. Account Lockout Security Guard
+* **Technical Flow**:
+  * Intercepts login attempts. If failed attempts count reaches 5, locks account for 15 minutes (`locked_until` field in `customers` table).
+* **What you need to do**:
+  * **Fully Automated**: Customize timeout values in code configuration if needed.
+
+### B. Admin Password Reset CLI
+* **Technical Flow**:
+  * Utility scripts to override admin parameters and clear locks in case of admin lockout.
+* **What you need to do**:
+  * Run: `npx tsx src/scripts/reset-admin.ts`
+
+---
+
+## 6. UI/UX Design System Enhancements (v1.1)
+
+### A. Accessibility & Layout Polish
+* **Technical Flow**:
+  * **Typography Integration**: The root layout vendors official `Cardo` and `Amiri` font files through `next/font/local`, exposing `--font-cardo` and `--font-amiri` variables to internal CSS tokens (`--ds-font-body`, `--ds-font-display`) without relying on runtime Google font fetches.
+  * **Motion Accessiblity**: Animations are wrapped in an `(prefers-reduced-motion: reduce)` media query across the application. When a user enables reduced motion on their OS, animations and smooth scrolling are stripped globally by resetting `animation-duration` to `0.01ms`.
+  * **Interactive Focus Trap**: Navigational elements like `Drawer.tsx` capture focus via a custom `useEffect` trap keeping keyboard navigation (Tab & Shift-Tab) strictly bound to internal interactable elements when the drawer is open.
+* **What you need to do**:
+  * Ensure the design system audits (`npm run verify:design-system`) pass without warnings.
+  * Use the tokens `var(--font-cardo)` mapped internally when expanding any future layout elements.
+
+### B. Storefront Architecture Recovery (v1.2)
+* **Technical Flow**:
+  * **Runtime-First Contract**: `storefront/src/styles/tokens.css` is the single source of truth for typography and homepage layout. Active values are `Amiri` for `--ds-font-display`, `Cardo` for `--ds-font-body`, homepage gutters `20px / 32px / 48px`, and homepage section rhythm `48px / 80px`.
+  * **Homepage Primitives**: Homepage layout ownership is centralized in `src/components/ui/HomepageSection.tsx` through `HomepageContainer`, `HomepageSection`, and `HomepageSectionHeader`. Homepage sections must use these primitives instead of repeating `w-[min(calc(...))]` formulas or malformed utility fragments.
+  * **Chrome Modes**: `MainLayout` now resolves explicit `store`, `checkout`, and `wholesale` chrome modes. Checkout routes render without consumer site chrome, while wholesale routes keep their own dedicated header and footer.
+  * **Touch Targets**: Shared button tokens now enforce `44px` minimum small controls and `48px` default controls. Header actions, product-card wishlist/cart actions, cookie controls, and checkout/cart inline actions were normalized to this contract.
+  * **Audit Hardening**: `scripts/design-system-audit.mjs` now validates live token declarations, homepage spacing contract, malformed utility fragments, legacy alias usage, and known touch-target regressions instead of relying on comment-only matches.
+* **What you need to do**:
+  * Keep homepage sections on `HomepageContainer`/`HomepageSection` primitives when adding or editing merchandising blocks.
+  * Treat compatibility aliases in `globals.css` as CSS bridge-only; do not introduce new runtime TSX consumers of `--ink`, `--cream`, `--line`, `--soft`, or `--muted`.
+  * Run the full storefront verification chain after touching homepage layout, checkout shell, or shared primitives:
+    `npm.cmd run audit:design-system`
+    `npm.cmd run audit:design-system:metrics`
+    `npm.cmd run lint`
+    `npm.cmd run verify:design-system -- --pool=threads`
+    `npm.cmd run build`
+
+### C. Storefront Consistency Closure (v1.3)
+* **Technical Flow**:
+  * **Shared Interaction Closure**: Remaining runtime chip and pagination patterns now close over shared button primitives instead of route-local legacy classes. This applies to bestsellers size chips, search attribute chips, search overlay chips, mobile filter chips, listing/catalog pagination, and account order pagination.
+  * **Dead Selector Reduction**: After migrating those runtime consumers, the unused selector contracts for `kv-text-chip`, `catalog-page-button`, `filter-tag-button`, and `account-page-button` are removed from the live storefront typography layer to reduce duplicate ownership and drift.
+  * **Claim Discipline**: “100% consistency” can only be claimed for the verified storefront runtime scope after audits, lint, design-system verification, and build are all green. It must not be used as a blanket claim for untouched historical code.
+* **What you need to do**:
+  * Add future chip-like filters and pagination controls through shared button variants instead of introducing new page-local classes.
+  * Keep consistency claims scoped to the audited storefront runtime.
+  * Re-run the storefront verification chain before treating any closure pass as complete:
+    `npm.cmd run audit:design-system`
+    `npm.cmd run audit:design-system:metrics`
+    `npm.cmd run lint`
+    `npm.cmd run verify:design-system -- --pool=threads`
+    `npm.cmd run build`
+
+### D. CSS Ownership Closure (v1.4)
+* **Technical Flow**:
+  * **Single Owner Cleanup**: Duplicate selector ownership across utility, typography, responsive, mobile override, animation, and component CSS layers was collapsed into single-owner files. Responsive and mobile variants were folded back into their component owner files instead of being split across unrelated override files.
+  * **Audit Hardening**: `scripts/css-ownership-audit.mjs` now strips CSS comments and string literals before selector collection and ignores generic state modifiers like `active` and `visible`, preventing false positives from comments, import paths, and generic state tokens.
+  * **Zero Duplicate Baseline**: The active storefront CSS ownership audit now passes at `0` duplicate selectors, so future drift is blocked immediately instead of being tolerated through a large baseline.
+* **What you need to do**:
+  * When adding responsive or mobile rules, place them in the same component or utility owner file instead of creating a second selector owner elsewhere.
+  * Treat CSS ownership drift as a regression, not as acceptable cleanup debt.
+  * Run `npm.cmd run audit:css-ownership` alongside the standard storefront verification chain whenever shared CSS or layout primitives change.
+
+### E. Checkout & Interaction Consistency Closure (v1.5)
+* **Technical Flow**:
+  * **Checkout Semantic Cleanup**: `storefront/src/app/checkout/page.tsx` no longer relies on legacy compatibility text classes in runtime JSX. Progress steps, shipping/payment copy, policy links, order summary, and trust panels now use semantic utilities like `text-primary`, `text-muted`, and `text-accent`.
+  * **44px Control Enforcement**: Remaining undersized runtime controls were normalized to the shared control contract, including search overlay clear actions, filter sidebar toggles, auth password visibility toggles, wishlist remove actions, carousel dots, and the global scroll-to-top control.
+  * **Touch Discoverability**: Cart drawer removal affordances now remain visible on touch/smaller breakpoints instead of depending only on hover, preserving parity between desktop and mobile interaction models.
+  * **Dead Local Alias Reduction**: Product detail page local semantic alias variables that duplicated the storefront token contract were removed from `storefront/src/components/product/pdp.module.css`, keeping the page on the shared design token layer.
+* **What you need to do**:
+  * Use shared button or icon-button primitives for future dismiss, toggle, carousel, and remove actions instead of applying `h-8`, `w-8`, or other route-local shrink overrides.
+  * Keep checkout and trust surfaces on semantic text utilities; do not reintroduce `color-ink`, `color-muted`, or `color-accent` into runtime TSX.
+  * Re-run the full storefront verification chain after changing checkout, auth, search overlay, filters, wishlist, cart drawer, or carousel controls:
+    `npm.cmd run audit:design-system`
+    `npm.cmd run audit:design-system:metrics`
+    `npm.cmd run lint`
+    `npm.cmd run verify:design-system -- --pool=threads`
+    `npm.cmd run build`
+
+### F. Local Runtime Warning Closure (v1.6)
+* **Technical Flow**:
+  * **Exchange Rate Fallback Discipline**: `storefront/src/app/api/exchange-rates/route.ts` now prefers local fallback rates during production build generation and local mock-API test environments instead of repeatedly attempting an unnecessary live TLS fetch. Live provider fallback remains intact for real runtime failures, but dev logging is reduced to a single warning instead of repeated noisy stack traces.
+  * **Responsive OAuth Width Contract**: `storefront/src/app/login/page.tsx` now measures the Google sign-in container and passes a valid pixel width to the Google Identity button, preserving the feature while avoiding invalid `100%` width configuration.
+  * **Above-the-Fold Image Stability**: Homepage circle images now eagerly load the first visible set, and the hero image stack uses explicit positioned containers for mobile and desktop assets so above-the-fold loading and fill sizing stay stable under local smoke tests.
+* **What you need to do**:
+  * Do not hardcode percentage strings into third-party auth button width props when the provider expects pixel values; measure the container and pass a bounded number instead.
+  * Keep local mock and smoke-test environments off unnecessary live external fetches when a built-in fallback already exists.
+  * When adjusting homepage hero or category media, preserve explicit above-the-fold loading intent and positioned fill containers to avoid LCP or zero-height image regressions.
+
+### G. Storefront Visual Recovery Guardrails (v1.7)
+* **Technical Flow**:
+  * **Monochrome Runtime Contract**: The storefront runtime maps semantic surfaces, text, and actions to the V4 monochrome editorial palette: page/paper `#FFFFFF`, soft/subtle `#F7F7F7 / #E5E5E5`, primary `#000000`, secondary `#333333`, muted `#666666`, and accent `#000000` with hover `#1A1A1A`.
+  * **Root Font Resolution**: Vendored Cardo and Amiri variables are attached to the root `<html>` element through `next/font/local`. This allows `:root` design tokens to resolve before `font-body` and `font-display` utilities are consumed on any route, even during offline or isolated builds.
+  * **Horizontal Rail Integrity**: `homepageScrollRailClassName` owns `display: flex` together with horizontal scrolling. Best Sellers, New Arrivals, category cards, and shoppable video cards therefore cannot silently collapse into vertical single-card columns.
+  * **Editorial Rhythm Recovery**: Homepage gutters use `20px / 32px / 48px` and section spacing uses `48px / 80px`, preserving readable mobile insets and controlled desktop whitespace under the shared primitive architecture.
+  * **Runtime Regression Gates**: The design-system audit now locks the warm palette, root font placement, inverse-text owner, and flex rail contract. Desktop/mobile browser tests assert computed Cardo/Amiri fonts, inverse hero contrast, and same-row product geometry.
+  * **Category Index Continuity**: `/categories` permanently redirects to `/collections`, matching the existing category-detail redirect contract and preventing global navigation prefetches from generating repeated 404 responses.
+* **Edge Cases and Dependencies**:
+  * Do not move the Next font variable classes back to `<body>`; root token declarations cannot reliably resolve variables introduced only on a descendant.
+  * Do not remove `flex` from the shared homepage rail or add it independently to consumers. Layout ownership must remain atomic in the primitive.
+  * `text-inverse` has an explicit CSS owner because critical hero and overlay contrast must not depend solely on generated Tailwind output.
+  * Category detail slugs remain supported through `/categories/[slug]`; both category index and detail routes preserve their public URLs while resolving to the active collection discovery architecture.
+* **Operational Commands**:
+  * Run `npm.cmd run verify:design-system -- --pool=threads`, `npm.cmd run build`, and `npm.cmd run test:e2e` after changing homepage rails, root fonts, semantic colors, or homepage spacing.
+
+### I. V4 Local Evidence Runner (v1.8)
+* **Technical Flow**:
+  * `storefront/scripts/playwright-storefront-server.mjs` now rebuilds and starts the production storefront under deterministic local E2E env values, including the escaped `__design-system` lab route and mock API URLs.
+  * `storefront/scripts/run-playwright-local.mjs` orchestrates the mock API server, storefront server, and Playwright process directly instead of depending on Playwright's Windows web-server shutdown behavior.
+  * The design-system lab is isolated from live storefront chrome in `MainLayout`, so header/footer overlays, cookie dialogs, newsletter popups, and chat widgets do not contaminate component evidence.
+  * LogRocket is lazy-loaded and skipped during E2E-only runs, preserving the feature in runtime while removing false console/network failures from local certification smoke tests.
+* **What you need to do**:
+  * Use `npm.cmd run test:e2e:local -- e2e/architecture-v4.spec.ts` for local V4 smoke evidence when Windows Playwright web-server shutdown is unreliable.
+  * Keep `__design-system` isolated from consumer chrome and runtime overlays; do not reattach the normal storefront shell to the component lab.
+  * Preserve the local E2E env contract (`NEXT_PUBLIC_API_URL`, `INTERNAL_API_URL`, `NEXT_PUBLIC_E2E`, `DESIGN_SYSTEM_LAB`) when extending certification scripts.
+
+### J. V4 Batched Route Evidence & E2E Isolation (v1.9)
+* **Technical Flow**:
+  * `storefront/scripts/architecture-route-matrix.mjs` now supports viewport and route batching, retries through redirect-driven execution-context swaps, records request/HTTP failures, and ignores benign same-origin aborted prefetches that occur during redirects or RSC transitions.
+  * `storefront/scripts/run-architecture-route-matrix-batched-local.mjs` starts the mock API and production storefront once, then executes the full `61 routes × 4 viewports` evidence matrix in batches without rebuilding between each route slice.
+  * Local certification media fixtures in `storefront/scripts/e2e-mock-api.mjs` now use inline SVG data URIs and a local `pattern.svg`, preventing false CDN/network failures while preserving homepage, collection, and wholesale visual structure.
+  * Login and product detail verification isolate third-party/runtime-only services during `NEXT_PUBLIC_E2E=true`: Google/Facebook auth SDKs stay disabled on the login screen, and the inventory Socket.IO client is skipped so route evidence is not polluted by external handshake errors.
+  * Homepage page-heading evidence now uses a single hidden `Heading role="page"` owner while hero slide titles stay visual-only, preserving the one-H1 contract across all certified routes.
+* **What you need to do**:
+  * Use `npm.cmd run test:architecture:matrix:batched:local` when you need full V4 route evidence across `375 / 768 / 1024 / 1440`.
+  * Keep verification-only gates behind `NEXT_PUBLIC_E2E=true`; do not remove live production features, but do prevent third-party SDKs or sockets from contaminating isolated certification runs.
+  * When adding new mock homepage, collection, or product fixtures, prefer inline/local assets over remote CDN URLs so route evidence stays deterministic.
+
+### H. Two-Phase Storefront Certification Program (V4/V5)
+* **Technical Flow**:
+  * Architecture V4 is isolated on `codex/storefront-architecture-v4` and replaces historical completion claims with evidence-driven certification.
+  * V4 introduces generated three-layer tokens, explicit cascade layers, a public design-system API, typed route/exception contracts, a development-only component lab, AST enforcement, and route/state screenshot evidence.
+  * Visual V5 remains locked until explicit user approval of an exact V4 SHA. Its separate branch freezes architecture hashes and permits only certified visual composition and approved media work.
+  * Both phases merge to `main` once after user approvals; GitHub Actions remains the sole deployment path.
+* **Requirements and Settings**:
+  * Set `DESIGN_SYSTEM_LAB=true` only when intentionally opening the component lab; production must return 404 for that route.
+  * Do not edit generated design-system files. Change `storefront/design-system/tokens.json` and run the generator/check.
+  * Do not add unreviewed exceptions or raise baselines. Features, CMS behavior, SEO, URLs, APIs, and business logic must be preserved.
+* **Edge Cases and Operations**:
+  * A failed or rejected screenshot keeps the active phase incomplete even when lint/build pass.
+  * If V5 requires a protected API/token/schema change, stop with `BLOCKED_FOR_ARCHITECTURE_REVIEW`; do not silently reopen V4.
+  * Production deployment remains prohibited until both certificates and user approvals exist.
+  * Component-lab routing uses the App Router escaped folder `src/app/%5F%5Fdesign-system`, which serves `/__design-system`; a literal underscore-prefixed folder is private to Next.js and will not create a route.
+  * The lab is `force-dynamic` and requires `DESIGN_SYSTEM_LAB=true` or `NEXT_PUBLIC_DESIGN_SYSTEM_LAB=true`. Without either flag it returns 404, including in production.
+
+### K. V4 Public Design-System Barrel Hardening (v1.10)
+* **Technical Flow**:
+  * `storefront/src/design-system/index.ts` now re-exports homepage layout primitives in addition to core controls, so the shared barrel is the intended runtime API for both route files and most feature components.
+  * Homepage sections, listing surfaces, cart flows, product detail support surfaces, and several shared content/header components were migrated away from direct `@/components/ui/*` primitive imports to `@/design-system`.
+  * This keeps the primitive ownership boundary explicit: UI implementation files stay internal, while consuming code increasingly depends on one stable design-system entrypoint.
+  * Composite storefront widgets that are intentionally shared across feature surfaces — `WishlistButton`, `ShareButtons`, `StarRating`, `CookieConsent`, `ScrollProgress`, `NewsletterModal`, and `ChatWidget` — are now explicitly exported through the public barrel so feature/layout consumers no longer reach into `@/components/ui/*` directly.
+* **Edge Cases and Dependencies**:
+  * Components that intentionally depend on internal composite widgets such as `WishlistButton`, `ShareButtons`, `StarRating`, `CookieConsent`, `NewsletterModal`, and similar feature-level UI modules are not automatically converted into public design-system exports; they need separate architecture decisions before public exposure.
+  * Files inside `src/components/ui/**` must not import the public barrel, otherwise circular ownership is introduced between implementation and API layers.
+  * After this hardening wave, remaining direct `@/components/ui/*` references are limited to `src/components/ui/**` implementation files plus a unit-test mock path. Feature and layout consumers were migrated to the public barrel.
+* **Operational Commands**:
+  * After any further barrel migration wave, run `npm.cmd run lint`, `npx.cmd tsc --noEmit --pretty false`, and `npm.cmd run verify:design-system -- --pool=threads` to confirm the public API boundary still compiles and certifies cleanly.
+
+### L. Homepage Wireframe V3 Completion (v1.11)
+* **Technical Flow**:
+  * The homepage restores the CMS-backed New Arrivals rail after Curated Edits while preserving the existing collection-discovery slider as a separate shopping feature.
+  * Hero micro social proof uses the first available testimonial returned by `GET /testimonials/store`; it renders nothing when no testimonial is published and never substitutes invented customer copy.
+  * Best Seller cards use `avg_rating` and `review_count` from product data. Missing review data leaves the rating row absent instead of generating synthetic values.
+  * `MobileStickyActions` mounts only on the homepage, becomes visible after the visitor passes the hero, and reads the live cart count from cart context.
+  * Footer craft motion is an SVG/CSS presentation owned by the shared footer. The former canvas animation and duplicate standalone pre-footer section are removed.
+* **Requirements and Settings**:
+  * Homepage CMS sources remain `GET /homepage`, `GET /testimonials/store`, and `GET /homepage-merchandising`; empty CMS sections must render nothing.
+  * The public section contract is ordered from categories and hero through discovery, social proof, craft, Watch & Buy, collections, newsletter/social, and the shared footer.
+  * Product review aggregates must come from backend data. Do not derive ratings or review counts from product IDs or other placeholders.
+* **Edge Cases and Dependencies**:
+  * A missing testimonial removes hero social proof without shifting the CTA or blocking hero rendering.
+  * A missing New Arrivals payload removes only that rail; Best Sellers and collection discovery continue independently.
+  * Footer stitch motion is disabled by `prefers-reduced-motion: reduce` and does not allocate a canvas or animation frame loop.
+* **Operational Commands**:
+  * Run the design-system audits, lint, verification suite, production build, and desktop/mobile Playwright storefront smoke tests after changing this composition.
+  * Run `npm.cmd run audit:architecture-freeze` before V5 certification or release; it fails with `BLOCKED_FOR_ARCHITECTURE_REVIEW` when a protected V4 contract differs from certified SHA `7ca181685d8c06d3ebcde703fbbe43526475f35a`.
+
+### M. Homepage Editorial Commerce Layout (v1.12)
+* **Technical Flow**:
+  * The homepage route now opens with the full-bleed CMS hero before the compact circular-category discovery strip, creating one clear campaign focal point without changing typography, palette, tokens, or the hero component contract.
+  * Commerce and editorial modules alternate in the following order: New Arrivals, editorial category mosaic, Best Sellers, primary collection campaign, Watch & Buy, secondary collection discovery, craft story, social gallery, trust strip, and newsletter.
+  * Existing aggregate homepage fields are used directly: `featured_categories`, `collection_slider`, `collections`, `social`, and `newsletter` now render through their established shared components instead of being fetched but omitted.
+  * Secondary collection preview products are filtered against the active Best Sellers IDs at render time, preventing repeated product tiles while preserving each collection campaign, link, and underlying CMS payload.
+  * The trust strip moves near the footer conversion area so it supports purchase reassurance without interrupting the transition from the hero into product discovery.
+* **User Requirements and Configuration**:
+  * Homepage content continues to come from `GET /homepage`; the first optional hero testimonial continues to come from `GET /testimonials/store`.
+  * CMS editors should provide at least three active featured categories for the asymmetric editorial category mosaic. With fewer than three entries, that section renders nothing.
+  * Collection campaign, secondary collections, social gallery, newsletter, and all other CMS-backed sections preserve the empty-section contract and render nothing when their payload is empty.
+  * No new credentials, environment variables, routes, design tokens, fonts, or palette settings are required.
+* **Edge Cases and Dependencies**:
+  * Missing sections collapse independently and do not leave public CMS instructions or placeholder gaps.
+  * The primary collection campaign uses `collection_slider`; the secondary discovery block uses `collections`, so merchandising teams can curate the two positions independently.
+  * If every preview product in a secondary collection is also a Best Seller, the collection campaign remains available while its duplicate product-preview row is empty.
+  * Product, collection, reel, newsletter, and social interactions retain their existing URLs, API calls, accessibility behavior, and business logic.
+* **Operational Commands**:
+  * Run `npm.cmd run audit:design-system`, `npm.cmd run audit:design-system:metrics`, `npm.cmd run lint`, `npm.cmd run verify:design-system -- --pool=threads`, and `npm.cmd run build`.
+  * Run desktop and mobile Playwright homepage smoke tests after changing this composition.

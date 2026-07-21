@@ -1,0 +1,422 @@
+@import 'tailwindcss';
+@import '../styles/tokens.css';
+
+/* ODHVICA PREMIUM DESIGN SYSTEM
+   Reference: odhvica-premium.html */
+
+:root {
+  --font-display: var(--ds-font-display);
+
+  --text-display-lg: var(--ds-text-display-lg);
+  --text-display-md: var(--ds-text-display-md);
+  --text-body-lg: var(--ds-text-body-lg);
+  --text-body-xs: var(--ds-text-body-xs);
+
+
+
+  --leading-tight: var(--ds-leading-tight);
+  --leading-relaxed: var(--ds-leading-relaxed);
+
+  --type-heading-weight: var(--ds-type-heading-weight);
+  --type-label-weight: var(--ds-type-label-weight);
+  --type-label-transform: var(--ds-type-label-transform);
+  --type-heading-tracking: var(--ds-type-heading-tracking);
+  --type-label-tracking: var(--ds-type-label-tracking);
+
+  --color-text-primary: var(--ds-text-primary);
+  --color-text-secondary: var(--ds-text-secondary);
+  --color-text-muted: var(--ds-text-muted);
+  --color-text-disabled: var(--ds-text-disabled);
+  --color-text-inverse: var(--ds-text-inverse);
+  --color-text-accent: var(--ds-accent-primary);
+  --color-text-error: var(--ds-danger);
+  --color-text-success: var(--ds-success);
+  --color-text-price: var(--ds-text-price);
+  --color-text-price-old: var(--ds-text-price-old);
+  --color-text-sale: var(--ds-danger);
+
+  --prose-width: var(--ds-prose-width);
+  --heading-width: var(--ds-heading-width);
+  --caption-width: var(--ds-caption-width);
+  --content-width: var(--ds-content-width);
+  --narrow-width: var(--ds-narrow-width);
+
+  /* Spacing scale: 4px base unit, 8px primary rhythm */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+  --space-lg: clamp(2.5rem, 5vw, 4rem);
+  --space-xl: clamp(3.5rem, 7vw, 6rem);
+  --space-2xl: clamp(5rem, 9vw, 8rem);
+
+  /* Desktop page rail inspired by ShopMulmul's wide fashion storefront grid. */
+  --kv-desktop-container-max: 1470px;
+  --kv-desktop-container-gutter: 24px;
+  --kv-desktop-container-width: min(
+    calc(100% - (var(--kv-desktop-container-gutter) * 2)),
+    var(--kv-desktop-container-max)
+  );
+
+  /* Odhvica Header Design Tokens (kv-*) */
+  --kv-ink:          var(--ds-text-primary);
+  --kv-ink-2:        var(--ds-text-secondary);
+  --kv-ink-3:        var(--ds-text-muted);
+  --kv-ink-4:        var(--ds-text-disabled);
+  --kv-parchment:    var(--ds-surface-parchment);
+  --kv-parchment-2:  var(--ds-surface-parchment-2);
+  --kv-warm:         var(--ds-surface-warm);
+  --kv-border:       var(--ds-border-strong);
+  --kv-border-dark:  var(--ds-border-dark);
+  --kv-radius-sm:    var(--ds-radius-sm);
+  --kv-radius-md:    var(--ds-radius-md);
+  --kv-radius-lg:    var(--ds-radius-lg);
+  --kv-radius-pill:  var(--ds-radius-pill);
+  --font-ui:         var(--ds-font-ui);
+
+  /* Tailwind compat aliases */
+  --terracotta: var(--ds-accent-primary);
+  --terracotta-dark: var(--ds-accent-hover);
+  --terracotta-light: var(--ds-accent-soft);
+  --sage: var(--ds-success);
+  --cream: var(--ds-surface-page);
+  --paper: var(--ds-surface-paper);
+  --ink: var(--ds-text-primary);
+  --muted: var(--ds-text-muted);
+  --line: var(--ds-border-subtle);
+  --soft: var(--ds-surface-soft);
+  --danger: var(--ds-danger);
+  --success: var(--ds-success);
+  --gold: var(--ds-accent-gold);
+  --rating-star: var(--ds-accent-gold);
+  --success-bg: var(--ds-success-bg);
+  --success-text: var(--ds-success-text);
+  --success-dark: var(--ds-success-dark);
+  --online: var(--ds-online);
+  --danger-dot: var(--ds-danger-dot);
+  --shadow: var(--ds-shadow);
+  --radius-xs: var(--ds-radius-xs);
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+
+  /* RGB channels for rgba() usage */
+  --ink-rgb: var(--ds-ink-rgb);
+  --cream-rgb: var(--ds-cream-rgb);
+  --terracotta-rgb: var(--ds-accent-rgb);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--ds-font-body);
+  --font-display: var(--ds-font-display);
+  --font-body: var(--ds-font-body);
+  --font-ui: var(--ds-font-ui);
+
+  --color-brand-terracotta: var(--ds-accent-primary);
+  --color-brand-accent: var(--ds-accent-primary);
+  --color-brand-hover: var(--ds-accent-hover);
+  --color-brand-soft: var(--ds-surface-soft);
+  --color-brand-cream: var(--ds-surface-page);
+  --color-brand-paper: var(--ds-surface-paper);
+  --color-brand-ink: var(--ds-text-primary);
+  --color-brand-muted: var(--ds-text-muted);
+  --color-brand-line: var(--ds-border-subtle);
+  --color-brand-gold: var(--ds-accent-gold);
+
+  --color-text-primary: var(--ds-text-primary);
+  --color-text-secondary: var(--ds-text-secondary);
+  --color-text-muted: var(--ds-text-muted);
+  --color-text-inverse: var(--ds-text-inverse);
+  --color-text-accent: var(--ds-accent-primary);
+  --color-text-error: var(--ds-danger);
+  --color-text-success: var(--ds-success-text);
+
+  /* Clean Semantic Colors for utility usage (text-primary, bg-surface, etc.) */
+  --color-primary: var(--ds-text-primary);
+  --color-secondary: var(--ds-text-secondary);
+  --color-muted: var(--ds-text-muted);
+  --color-inverse: var(--ds-text-inverse);
+  --color-accent: var(--ds-accent-primary);
+  --color-surface: var(--ds-surface-page);
+  --color-surface-soft: var(--ds-surface-soft);
+  --color-surface-warm: var(--ds-surface-warm);
+  --color-parchment: var(--ds-surface-parchment);
+  --color-border: var(--ds-border-strong);
+  --color-border-subtle: var(--ds-border-subtle);
+
+  --text-display-xl: var(--ds-text-display-xl);
+  --text-display-lg: var(--ds-text-display-lg);
+  --text-display-md: var(--ds-text-display-md);
+  --text-display-sm: var(--ds-text-display-sm);
+  --text-body-xl: var(--ds-text-body-xl);
+  --text-body-lg: var(--ds-text-body-lg);
+  --text-body-md: var(--ds-text-body-md);
+  --text-body-sm: var(--ds-text-body-sm);
+  --text-body-xs: var(--ds-text-body-xs);
+
+  /* Override default Tailwind text sizes to use Design System */
+  --text-xs: var(--ds-text-body-xs);
+  --text-sm: var(--ds-text-body-sm);
+  --text-base: var(--ds-text-body-md);
+  --text-lg: var(--ds-text-body-lg);
+  --text-xl: var(--ds-text-body-xl);
+  --text-2xl: var(--ds-text-display-sm);
+  --text-3xl: var(--ds-text-display-md);
+  --text-4xl: var(--ds-text-display-lg);
+  --text-5xl: var(--ds-text-display-xl);
+
+  /* Override default Tailwind font weights to use Design System */
+  --font-weight-light: var(--ds-weight-light);
+  --font-weight-normal: var(--ds-weight-regular);
+  --font-weight-medium: var(--ds-weight-medium);
+  --font-weight-semibold: var(--ds-weight-semibold);
+  --font-weight-bold: var(--ds-weight-bold);
+
+  --container-prose: var(--ds-prose-width);
+  --container-heading: var(--ds-heading-width);
+  --container-caption: var(--ds-caption-width);
+  --container-content: var(--ds-content-width);
+  --container-narrow: var(--ds-narrow-width);
+  --container-home-content: var(--ds-home-content-width);
+  --width-page: var(--ds-page-width);
+
+  /* Restored default palette mappings from old tailwind.config.ts */
+  --color-gray-50: var(--ds-surface-page);
+  --color-gray-100: var(--ds-surface-soft);
+  --color-gray-200: var(--ds-border-subtle);
+  --color-gray-300: var(--ds-border-strong);
+  --color-gray-400: var(--ds-text-disabled);
+  --color-gray-500: var(--ds-text-muted);
+  --color-gray-600: var(--ds-text-secondary);
+  --color-gray-700: var(--ds-text-secondary);
+  --color-gray-800: var(--ds-text-primary);
+  --color-gray-900: var(--ds-text-primary);
+  --color-gray-950: var(--ds-text-primary);
+
+  --color-stone-50: var(--ds-surface-page);
+  --color-stone-100: var(--ds-surface-soft);
+  --color-stone-200: var(--ds-border-subtle);
+  --color-stone-300: var(--ds-border-strong);
+  --color-stone-400: var(--ds-text-disabled);
+  --color-stone-500: var(--ds-text-muted);
+  --color-stone-600: var(--ds-text-secondary);
+  --color-stone-700: var(--ds-text-secondary);
+  --color-stone-800: var(--ds-text-primary);
+  --color-stone-900: var(--ds-text-primary);
+  --color-stone-950: var(--ds-text-primary);
+
+  --color-neutral-50: var(--ds-surface-page);
+  --color-neutral-100: var(--ds-surface-soft);
+  --color-neutral-200: var(--ds-border-subtle);
+  --color-neutral-300: var(--ds-border-strong);
+  --color-neutral-400: var(--ds-text-disabled);
+  --color-neutral-500: var(--ds-text-muted);
+  --color-neutral-600: var(--ds-text-secondary);
+  --color-neutral-700: var(--ds-text-secondary);
+  --color-neutral-800: var(--ds-text-primary);
+  --color-neutral-900: var(--ds-text-primary);
+  --color-neutral-950: var(--ds-text-primary);
+
+  --color-zinc-50: var(--ds-surface-page);
+  --color-zinc-100: var(--ds-surface-soft);
+  --color-zinc-200: var(--ds-border-subtle);
+  --color-zinc-300: var(--ds-border-strong);
+  --color-zinc-400: var(--ds-text-disabled);
+  --color-zinc-500: var(--ds-text-muted);
+  --color-zinc-600: var(--ds-text-secondary);
+  --color-zinc-700: var(--ds-text-secondary);
+  --color-zinc-800: var(--ds-text-primary);
+  --color-zinc-900: var(--ds-text-primary);
+  --color-zinc-950: var(--ds-text-primary);
+
+  --color-slate-50: var(--ds-surface-page);
+  --color-slate-100: var(--ds-surface-soft);
+  --color-slate-200: var(--ds-border-subtle);
+  --color-slate-300: var(--ds-border-strong);
+  --color-slate-400: var(--ds-text-disabled);
+  --color-slate-500: var(--ds-text-muted);
+  --color-slate-600: var(--ds-text-secondary);
+  --color-slate-700: var(--ds-text-secondary);
+  --color-slate-800: var(--ds-text-primary);
+  --color-slate-900: var(--ds-text-primary);
+  --color-slate-950: var(--ds-text-primary);
+
+  --color-amber-50: var(--ds-warning-bg);
+  --color-amber-100: var(--ds-warning-bg);
+  --color-amber-200: var(--ds-warning-bg);
+  --color-amber-300: var(--ds-accent-gold);
+  --color-amber-400: var(--ds-accent-gold);
+  --color-amber-500: var(--ds-accent-gold);
+  --color-amber-600: var(--ds-warning);
+  --color-amber-700: var(--ds-warning-text);
+  --color-amber-800: var(--ds-warning-text);
+  --color-amber-900: var(--ds-warning-text);
+  --color-amber-950: var(--ds-warning-text);
+
+  --color-yellow-50: var(--ds-warning-bg);
+  --color-yellow-100: var(--ds-warning-bg);
+  --color-yellow-200: var(--ds-warning-bg);
+  --color-yellow-300: var(--ds-accent-gold);
+  --color-yellow-400: var(--ds-accent-gold);
+  --color-yellow-500: var(--ds-accent-gold);
+  --color-yellow-600: var(--ds-warning);
+  --color-yellow-700: var(--ds-warning-text);
+  --color-yellow-800: var(--ds-warning-text);
+  --color-yellow-900: var(--ds-warning-text);
+  --color-yellow-950: var(--ds-warning-text);
+
+  --color-green-50: var(--ds-success-bg);
+  --color-green-100: var(--ds-success-bg);
+  --color-green-200: var(--ds-success-bg);
+  --color-green-300: var(--ds-success);
+  --color-green-400: var(--ds-success);
+  --color-green-500: var(--ds-success);
+  --color-green-600: var(--ds-success);
+  --color-green-700: var(--ds-success-text);
+  --color-green-800: var(--ds-success-text);
+  --color-green-900: var(--ds-success-text);
+  --color-green-950: var(--ds-success-text);
+
+  --color-emerald-50: var(--ds-success-bg);
+  --color-emerald-100: var(--ds-success-bg);
+  --color-emerald-200: var(--ds-success-bg);
+  --color-emerald-300: var(--ds-success);
+  --color-emerald-400: var(--ds-success);
+  --color-emerald-500: var(--ds-success);
+  --color-emerald-600: var(--ds-success);
+  --color-emerald-700: var(--ds-success-text);
+  --color-emerald-800: var(--ds-success-text);
+  --color-emerald-900: var(--ds-success-text);
+  --color-emerald-950: var(--ds-success-text);
+
+  --color-red-50: var(--ds-danger-bg);
+  --color-red-100: var(--ds-danger-bg);
+  --color-red-200: var(--ds-danger-bg);
+  --color-red-300: var(--ds-danger);
+  --color-red-400: var(--ds-danger);
+  --color-red-500: var(--ds-danger);
+  --color-red-600: var(--ds-danger);
+  --color-red-700: var(--ds-danger);
+  --color-red-800: var(--ds-danger);
+  --color-red-900: var(--ds-danger);
+  --color-red-950: var(--ds-danger);
+
+  --color-rose-50: var(--ds-danger-bg);
+  --color-rose-100: var(--ds-danger-bg);
+  --color-rose-200: var(--ds-danger-bg);
+  --color-rose-300: var(--ds-danger);
+  --color-rose-400: var(--ds-danger);
+  --color-rose-500: var(--ds-danger);
+  --color-rose-600: var(--ds-danger);
+  --color-rose-700: var(--ds-danger);
+  --color-rose-800: var(--ds-danger);
+  --color-rose-900: var(--ds-danger);
+  --color-rose-950: var(--ds-danger);
+
+  --color-blue-50: var(--ds-info-bg);
+  --color-blue-100: var(--ds-info-bg);
+  --color-blue-200: var(--ds-info-bg);
+  --color-blue-300: var(--ds-info);
+  --color-blue-400: var(--ds-info);
+  --color-blue-500: var(--ds-info);
+  --color-blue-600: var(--ds-info);
+  --color-blue-700: var(--ds-info-text);
+  --color-blue-800: var(--ds-info-text);
+  --color-blue-900: var(--ds-info-text);
+  --color-blue-950: var(--ds-info-text);
+
+  --color-indigo-50: var(--ds-info-bg);
+  --color-indigo-100: var(--ds-info-bg);
+  --color-indigo-200: var(--ds-info-bg);
+  --color-indigo-300: var(--ds-info);
+  --color-indigo-400: var(--ds-info);
+  --color-indigo-500: var(--ds-info);
+  --color-indigo-600: var(--ds-info);
+  --color-indigo-700: var(--ds-info-text);
+  --color-indigo-800: var(--ds-info-text);
+  --color-indigo-900: var(--ds-info-text);
+  --color-indigo-950: var(--ds-info-text);
+
+  --color-purple-50: var(--ds-info-bg);
+  --color-purple-100: var(--ds-info-bg);
+  --color-purple-200: var(--ds-info-bg);
+  --color-purple-300: var(--ds-info);
+  --color-purple-400: var(--ds-info);
+  --color-purple-500: var(--ds-info);
+  --color-purple-600: var(--ds-info);
+  --color-purple-700: var(--ds-info-text);
+  --color-purple-800: var(--ds-info-text);
+  --color-purple-900: var(--ds-info-text);
+  --color-purple-950: var(--ds-info-text);
+
+  --color-pink-50: var(--ds-danger-bg);
+  --color-pink-100: var(--ds-danger-bg);
+  --color-pink-200: var(--ds-danger-bg);
+  --color-pink-300: var(--ds-accent-soft);
+  --color-pink-400: var(--ds-accent-primary);
+  --color-pink-500: var(--ds-accent-primary);
+  --color-pink-600: var(--ds-accent-hover);
+  --color-pink-700: var(--ds-accent-hover);
+  --color-pink-800: var(--ds-accent-hover);
+  --color-pink-900: var(--ds-accent-hover);
+  --color-pink-950: var(--ds-accent-hover);
+
+  /* Restored typography aliases */
+  --font-heading: var(--ds-font-display);
+  --font-label: var(--ds-font-label);
+  --font-serif: var(--ds-font-display);
+  --font-sans: var(--ds-font-body);
+
+  /* Restored line-height and letter-spacing for font sizes */
+  --text-display-xl--line-height: var(--ds-leading-tight);
+  --text-display-xl--letter-spacing: var(--ds-type-heading-tracking);
+  --text-display-lg--line-height: var(--ds-leading-tight);
+  --text-display-lg--letter-spacing: var(--ds-type-heading-tracking);
+  --text-display-md--line-height: var(--ds-leading-tight);
+  --text-display-md--letter-spacing: var(--ds-type-heading-tracking);
+  --text-display-sm--line-height: var(--ds-leading-snug);
+  --text-display-sm--letter-spacing: var(--ds-type-heading-tracking);
+  --text-body-xl--line-height: var(--ds-leading-relaxed);
+  --text-body-lg--line-height: var(--ds-leading-normal);
+  --text-body-md--line-height: var(--ds-leading-normal);
+  --text-body-sm--line-height: var(--ds-leading-normal);
+  --text-body-xs--line-height: var(--ds-leading-normal);
+  --text-body-xs--letter-spacing: var(--ds-type-body-tracking);
+
+  /* Map default tailwind text sizes to the same line heights */
+  --text-xs--line-height: var(--ds-leading-normal);
+  --text-xs--letter-spacing: var(--ds-type-body-tracking);
+  --text-sm--line-height: var(--ds-leading-normal);
+  --text-base--line-height: var(--ds-leading-normal);
+  --text-lg--line-height: var(--ds-leading-normal);
+  --text-xl--line-height: var(--ds-leading-relaxed);
+  --text-2xl--line-height: var(--ds-leading-snug);
+  --text-2xl--letter-spacing: var(--ds-type-heading-tracking);
+  --text-3xl--line-height: var(--ds-leading-tight);
+  --text-3xl--letter-spacing: var(--ds-type-heading-tracking);
+  --text-4xl--line-height: var(--ds-leading-tight);
+  --text-4xl--letter-spacing: var(--ds-type-heading-tracking);
+  --text-5xl--line-height: var(--ds-leading-tight);
+  --text-5xl--letter-spacing: var(--ds-type-heading-tracking);
+
+  /* Restored border radius */
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+}

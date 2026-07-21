@@ -1,0 +1,43 @@
+# CodeRabbit Configuration
+# https://docs.coderabbit.ai/getting-started/setup-configuration
+
+version: "1.0"
+
+# Enable AI-powered code reviews
+reviews:
+  enabled: true
+  
+  # High-level summary of changes
+  summary:
+    enabled: true
+    
+  # Auto review title
+  title_template: "AI Code Review"
+  
+  # Collapse walkthrough
+  collapse_walkthrough: true
+
+# Enable chat feature
+chat:
+  enabled: true
+
+# Enable code walkthroughs
+walkthrough:
+  enabled: true
+
+# Enable security scanning
+security:
+  enabled: true
+
+# Enable runtime analysis
+runtime:
+  enabled: true
+
+# Enable auto-fix suggestions
+auto_fix:
+  enabled: true
+  return_response: true
+
+# Enable quick file navigation
+quick_nav:
+  enabled: true

@@ -1,0 +1,14 @@
+﻿fix(design-system): consolidate Card components, clean up dead legacy CSS
+
+- UserCard.tsx: refactored to wrap ui/Card.tsx primitive
+- MegaFeatureCard.tsx: evaluated for Card consolidation, kept standalone (incompatible visual pattern — banner vs content card)
+- ProductCard.tsx: added surface ("default"|"minimal") and layout ("vertical"|"compact") variant props to replace brittle CSS context-overrides; wired into ProductCarousel, ProductGrid, and BestSellers
+- Footer.tsx: migrated newsletter.css and footer.css/footer-base.css styles to Tailwind; fixed sm:->md: breakpoint mismatch (768px)
+- Deleted/emptied confirmed-dead legacy CSS files (no longer had any .tsx consumers, already migrated to Tailwind previously without cleanup): ugc.css, collections.css, category-sections.css, premium-sections.css, pdp-premium.css, pdp-gallery.css, content-pages.css, home-sections.css, quick-view.css
+- product-card.css: removed dead context-override blocks (.products-grid, .homepage-best-seller-slider) now handled by ProductCard's surface/layout props
+- reels.css, pdp.css: removed confirmed-dead class blocks (watch-buy-*, cookie-consent-*, hero-*, pdp-review-meter, pdp-trust-desktop); live classes (~520 and ~640 lines respectively) intentionally left untouched pending dedicated migration
+- AGENTS.md: updated guidance to reflect verified findings (token system already clean; legacy CSS often dead rather than actively conflicting — verify real consumers via grep before migrating)
+- Removed unrelated/risky auto-generated scripts (run_all.ps1, audit_dup.cjs, audit_script.cjs, scripts/refactor.mjs) that were not part of this task and attempted unauthorized git operations
+
+All changes verified with passing 
+pm run build after each step. No new dependencies added. No tokens added (none were needed).

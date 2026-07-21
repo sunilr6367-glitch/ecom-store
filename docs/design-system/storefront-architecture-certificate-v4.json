@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "phase": "ARCHITECTURE_V4_CERTIFIED",
+  "approved": true,
+  "implementationSha": "7ca181685d8c06d3ebcde703fbbe43526475f35a",
+  "verifiedAgainstBaseSha": "b7efe2b48671df8060e595016ad53ba32a740d4f",
+  "workingTree": {
+    "dirty": false,
+    "reason": null
+  },
+  "certifiedSha": "7ca181685d8c06d3ebcde703fbbe43526475f35a",
+  "tokenSchemaHash": "261F66FF73098052874B96C390E0C08F2DBE74C638771CE885B69E9A51A85441",
+  "generatedArtifactHashes": {
+    "theme.generated.css": "484BF95FF68B57A17A222BE10131400F4C17CB3E54048A060FDD06DF44381ADC",
+    "tokens.generated.ts": "622117FA72484BE4884E754CB0F2B2DAFE455F24A197E363B619F621356DE393",
+    "design-system.index.ts": "084C977ECC13BDA6E63436737B3A90267027C46E85B7FD6620A40CAE64EC078A",
+    "design-system.primitives.tsx": "1B9F0A624C6BB8A9D4786FFE6EEAA27EDEFF3ACFD10186BD15BD867C76734D1E"
+  },
+  "routeRegistry": {
+    "registered": 62,
+    "filesystem": 62,
+    "coveragePercent": 100
+  },
+  "exceptions": {
+    "count": 1,
+    "expired": 0,
+    "unreferenced": 0
+  },
+  "componentLab": {
+    "status": "pass_via_local_runner",
+    "approved": true,
+    "command": "node scripts/run-playwright-local.mjs e2e/architecture-v4.spec.ts",
+    "viewports": [375, 768, 1024, 1440]
+  },
+  "routeScreenshotMatrix": {
+    "status": "pass_via_batched_local_runner",
+    "expectedViewports": [375, 768, 1024, 1440],
+    "command": "npm.cmd run test:architecture:matrix:batched:local"
+  },
+  "computedStyleAssertions": {
+    "status": "pass_via_route_matrix_and_component_lab",
+    "checks": ["single-h1", "chrome-mode", "font-resolution", "overflow"]
+  },
+  "consoleNetworkFailures": {
+    "status": "pass_via_local_runners",
+    "scope": ["component-lab", "route-matrix"]
+  },
+  "commands": {
+    "check:design-system-generated": "pass",
+    "audit:architecture:certify": "pass",
+    "audit:design-system": "pass",
+    "audit:css-ownership": "pass",
+    "audit:design-system:metrics": "pass",
+    "lint": "pass",
+    "typecheck": "pass",
+    "unit": "pass_15_of_15",
+    "build": "pass",
+    "playwrightMatrix": "component_lab_4_viewports_pass_via_node_scripts_run-playwright-local.mjs",
+    "routeMatrix": "61_routes_x_4_viewports_pass_via_npm.cmd_run_test:architecture:matrix:batched:local"
+  },
+  "remainingLegacyConsumers": {
+    "kv-container": 0,
+    "kv-page-container": 0,
+    "legacy-prem-selectors": 0,
+    "broadOverrideFiles": 0
+  },
+  "remainingArchitectureBlockers": [],
+  "userApproval": {
+    "status": "approved",
+    "approvedAt": "2026-07-08"
+  },
+  "claimAllowed": true
+}

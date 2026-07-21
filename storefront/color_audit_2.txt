@@ -1,0 +1,7 @@
+## STEP 2 — Hardcoded hex in CSS files
+
+## STEP 3 — Hardcoded hex in TSX files
+
+## STEP 4 — Raw Tailwind color classes in TSX
+=== page.tsx (1 hits) ===
+  color: 'bg-indigo-100',

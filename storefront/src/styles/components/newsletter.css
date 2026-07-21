@@ -1,0 +1,11 @@
+.footer-watermark {
+  margin-bottom: calc(var(--ds-space-sm) * -1);
+  overflow: hidden;
+  color: rgba(var(--ds-text-primary-rgb), 0.04);
+  font-family: var(--ds-font-display);
+  font-size: clamp(4rem, 4rem, 8.75rem);
+  font-weight: var(--ds-type-light-weight);
+  letter-spacing: var(--ds-type-heading-tracking);
+  line-height: var(--ds-leading-tight);
+  user-select: none;
+}

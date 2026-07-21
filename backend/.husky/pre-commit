@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🛡️  Running Pre-Commit Verification..."
+
+# 1. Static Code Analysis (Quality)
+echo "🔍 Checking Code Quality..."
+npx tsx scripts/audit-code-quality.ts
+if [ $? -ne 0 ]; then
+  echo "❌ Code Quality Audit Failed! Please fix issues before committing."
+  exit 1
+fi
+
+# 2. Security Checks
+echo "🔒 Checking Security Fixes..."
+npx tsx scripts/verify-fixes.ts
+if [ $? -ne 0 ]; then
+  echo "❌ Security Verification Failed! Run 'npx tsx scripts/verify-fixes.ts' to debug."
+  exit 1
+fi
+
+echo "✅ All Checks Passed! Committing..."

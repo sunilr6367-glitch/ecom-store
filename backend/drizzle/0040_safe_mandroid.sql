@@ -1,0 +1,1 @@
+ALTER TABLE "customers" ADD COLUMN "verification_attempts" integer DEFAULT 0;

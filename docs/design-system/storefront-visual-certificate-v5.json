@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "phase": "READY_FOR_FINAL_DEPLOYMENT",
+  "certifiedV4BaseSha": "7ca181685d8c06d3ebcde703fbbe43526475f35a",
+  "architectureFreeze": {
+    "status": "pass",
+    "command": "npm.cmd run audit:architecture-freeze",
+    "protectedPathCount": 12,
+    "hashes": {
+      "tokens.json": "261f66ff73098052874b96c390e0c08f2dbe74c638771ce885b69e9a51a85441",
+      "theme.generated.css": "484bf95ff68b57a17a222be10131400f4c17cb3e54048a060fdd06df44381adc",
+      "tokens.generated.ts": "622117fa72484be4884e754cb0f2b2dafe455f24a197e363b619f621356de393",
+      "design-system.index.ts": "084c977ecc13bda6e63436737b3a90267027c46e85b7fd6620a40cae64ec078a",
+      "design-system.primitives.tsx": "1b9f0a624c6bb8a9d4786ffe6eeaa27edeff3acfd10186bd15bd867c76734d1e",
+      "globals.css": "3c8fb523abc901d93febf2664594b18a786e3ed32e25ca446e0c9769ceeffce1",
+      "route-contract.ts": "db9e0150b51706c612f4f6c5cf1d82e6c4d37b651525f453b9529feb66d46e59",
+      "visual-exceptions.ts": "14cefbee0573699f33cbf3e3e20b13138052717de9895342d917663848994fc1",
+      "architecture-audit.mjs": "c9fe17b4a7b0706791d9d2a143bc46a7a588794fe427e47320724a94458d6e6f",
+      "design-system-audit.mjs": "1e6b4b604e4ad285e2bc2eec1858cf1e53d9e455d79d863b77c3fe117745c80b",
+      "css-ownership-audit.mjs": "d960c0b75c68f5649ffb6ccb62d08815bd01e947f9f9d5060f1b9359c8fa87d8",
+      "MainLayout.tsx": "4391c2accc87c2c585e12a64cb8fc9c715223c729cadaa8295075c11661fe729",
+      "architecture-certificate-v4.json": "1103fc706605b32f060dedbcdca2390b65f03900320ac3a43ef875b53b25632a"
+    }
+  },
+  "v5CommitSha": "ba735d773d6429de494ab2dfb9fc3164c426ed61",
+  "shopMulmulBenchmarkCaptureDate": "2026-07-12",
+  "benchmark": {
+    "source": "https://shopmulmul.com/",
+    "status": "captured_for_structure_and_merchandising_reference"
+  },
+  "assetManifest": {
+    "status": "not_applicable_no_new_asset_activation",
+    "source": "existing CMS homepage payload"
+  },
+  "cmsRollbackSnapshot": {
+    "status": "not_required_no_cms_mutation",
+    "mutations": 0
+  },
+  "componentLabScreenshots": [],
+  "routeScreenshotMatrix": {
+    "status": "approved_by_user_after_local_review",
+    "viewports": [375, 768, 1024, 1440],
+    "automatedSmoke": "44_of_44_pass",
+    "artifactRequirement": "waived_by_user"
+  },
+  "accessibilityPerformance": {
+    "status": "pass_local_production",
+    "mobile375": { "lcpMs": 672, "cls": 0.0000752384, "interactionMs": 32 },
+    "desktop1440": { "lcpMs": 644, "cls": 0.0010754737, "interactionMs": 32 },
+    "thresholds": { "lcpMs": 2500, "cls": 0.1, "interactionMs": 200 }
+  },
+  "consoleNetwork": {
+    "status": "pass",
+    "consoleErrors": 0,
+    "note": "Only benign same-origin RSC prefetch aborts were observed, matching the existing evidence-runner exclusion."
+  },
+  "commands": {
+    "audit:architecture-freeze": "pass",
+    "audit:design-system": "pass",
+    "audit:design-system:metrics": "pass_reviewed",
+    "verify:design-system": "pass_62_routes_15_unit_tests",
+    "build": "pass_59_static_pages",
+    "playwright": "pass_44_of_44"
+  },
+  "userApproval": {
+    "status": "approved",
+    "approvedAt": "2026-07-12T17:41:17+05:30",
+    "note": "User confirmed local visual verification and explicitly waived additional V5 screenshot artifacts."
+  },
+  "claimAllowed": true
+}

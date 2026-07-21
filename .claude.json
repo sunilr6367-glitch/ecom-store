@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "hostinger-bash": {
+      "command": "ssh",
+      "args": [
+        "-i", "C:\\Users\\User\\.ssh\\id_rsa",
+        "-o", "StrictHostKeyChecking=no",
+        "root@2.24.193.227",
+        "npx", "-y", "@modelcontextprotocol/server-bash"
+      ]
+    }
+  }
+}

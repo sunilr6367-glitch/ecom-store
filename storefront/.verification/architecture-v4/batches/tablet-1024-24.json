@@ -1,0 +1,422 @@
+{
+  "generatedAt": "2026-07-07T15:08:30.487Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "routes": 8,
+  "viewports": [
+    "tablet-1024"
+  ],
+  "totalChecks": 8,
+  "failedChecks": 0,
+  "failures": [],
+  "report": [
+    {
+      "pattern": "/contact",
+      "pageKind": "help",
+      "chromeMode": "store",
+      "testFixture": "/contact",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/contact",
+          "pageKind": "help",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/contact",
+          "finalUrl": "http://127.0.0.1:3000/contact",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/contact.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=h2vb-LAkAGynSY5z",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=h2vb-LAkAGynSY5z",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=h2vb-LAkAGynSY5z",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=mTa8tpfUvA8h8GpF",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=mTa8tpfUvA8h8GpF",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=mTa8tpfUvA8h8GpF"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/cookie-settings",
+      "pageKind": "help",
+      "chromeMode": "store",
+      "testFixture": "/cookie-settings",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/cookie-settings",
+          "pageKind": "help",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/cookie-settings",
+          "finalUrl": "http://127.0.0.1:3000/cookie-settings",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/cookie-settings.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=ZHhqABIkxdZsahZU",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=ZHhqABIkxdZsahZU",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=ZHhqABIkxdZsahZU",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=Khi2jjOpUgCHJO9b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=Khi2jjOpUgCHJO9b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=Khi2jjOpUgCHJO9b"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/edits",
+      "pageKind": "discovery",
+      "chromeMode": "store",
+      "testFixture": "/edits",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/edits",
+          "pageKind": "discovery",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/edits",
+          "finalUrl": "http://127.0.0.1:3000/edits",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/edits.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?sort=newest&_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/block-print-edit?_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/gifts-under-2000?_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=AlRR51hn-aPuWzcL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?sort=newest&_rsc=DmwxENdDqMTyxiC4",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/gifts-under-2000?_rsc=DmwxENdDqMTyxiC4",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/block-print-edit?_rsc=DmwxENdDqMTyxiC4",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?_rsc=DmwxENdDqMTyxiC4",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=DmwxENdDqMTyxiC4",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=DmwxENdDqMTyxiC4",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=DmwxENdDqMTyxiC4"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/faq",
+      "pageKind": "help",
+      "chromeMode": "store",
+      "testFixture": "/faq",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/faq",
+          "pageKind": "help",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/faq",
+          "finalUrl": "http://127.0.0.1:3000/faq",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/faq.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=QgfnF85fYcrwyI4V",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=QgfnF85fYcrwyI4V",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=QgfnF85fYcrwyI4V",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=wKPz8cjhDlzQ_BQw",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=wKPz8cjhDlzQ_BQw",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=wKPz8cjhDlzQ_BQw"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/forgot-password",
+      "pageKind": "auth",
+      "chromeMode": "store",
+      "testFixture": "/forgot-password",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/forgot-password",
+          "pageKind": "auth",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/forgot-password",
+          "finalUrl": "http://127.0.0.1:3000/forgot-password",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/forgot-password.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=8szJqCRmgzwYfm7k",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=8szJqCRmgzwYfm7k",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=8szJqCRmgzwYfm7k",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=Ar1uUxX_XzU5_dSI",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=Ar1uUxX_XzU5_dSI",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=Ar1uUxX_XzU5_dSI"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/gift-cards",
+      "pageKind": "commerce",
+      "chromeMode": "store",
+      "testFixture": "/gift-cards",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/gift-cards",
+          "pageKind": "commerce",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/gift-cards",
+          "finalUrl": "http://127.0.0.1:3000/gift-cards",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/gift-cards.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=gjZqQz939tJw7V8A",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=gjZqQz939tJw7V8A",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=gjZqQz939tJw7V8A",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=vthzv-tyBkQtOsjO",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=vthzv-tyBkQtOsjO"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/help",
+      "pageKind": "help",
+      "chromeMode": "store",
+      "testFixture": "/help",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/help",
+          "pageKind": "help",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/help",
+          "finalUrl": "http://127.0.0.1:3000/help",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/help.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=CV-sKXZaKE2C9VB_",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=CV-sKXZaKE2C9VB_",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=CV-sKXZaKE2C9VB_",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=ZdTarfbw62RIkTQ3",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=ZdTarfbw62RIkTQ3",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=ZdTarfbw62RIkTQ3"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/journal",
+      "pageKind": "editorial",
+      "chromeMode": "store",
+      "testFixture": "/journal",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/journal",
+          "pageKind": "editorial",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/journal",
+          "finalUrl": "http://127.0.0.1:3000/journal",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/journal.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/journal/craft-journal-fixture?_rsc=PPJxfRJ-k5tS7084",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=PPJxfRJ-k5tS7084",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=PPJxfRJ-k5tS7084",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=PPJxfRJ-k5tS7084",
+            "net::ERR_ABORTED http://127.0.0.1:3000/journal/craft-journal-fixture?_rsc=PHlL9_R32Alzzlxs",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=PHlL9_R32Alzzlxs",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=PHlL9_R32Alzzlxs",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=PHlL9_R32Alzzlxs"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

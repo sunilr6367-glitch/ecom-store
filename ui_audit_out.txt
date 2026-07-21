@@ -1,0 +1,327 @@
+﻿--- STEP 1 ---
+=== ArtisanStrip.tsx ===
+
+LineNumber Line                                                                                                        
+---------- ----                                                                                                        
+        48           <Link href="/about#artisans" className="inline-flex min-h-[48px] items-center justify-center ga...
+        86           <Link href="/about" className="text-[var(--ds-text-primary)] underline underline-offset-4 hover...
+=== BestSellers.tsx ===
+       135           <ButtonLink                                                                                       
+=== BrandStory.tsx ===
+        24           <ButtonLink href="/about" variant="outline" size="md">                                            
+=== CategoriesGrid.tsx ===
+        17           <Link key={category.id} href={category.link_url} className="relative aspect-[4/5] overflow-hidd...
+=== CategoryCarousel.tsx ===
+        18           <Link                                                                                             
+=== CircularCategoriesClient.tsx ===
+        68           <Link                                                                                             
+=== CollectionSlider.tsx ===
+        17           <Link                                                                                             
+=== CollectionsSection.tsx ===
+        20           <Link href="/collections">View all collections</Link>                                             
+        25               <Link                                                                                         
+        44                   <Link                                                                                     
+=== ConversionHelpSections.tsx ===
+        17         <ButtonLink                                                                                         
+        58             <Link key={title} href={href} className="grid gap-[10px] grid-cols-[auto_1fr] border border-[...
+        84           <ButtonLink href="/reels" variant="primary" size="md">                                            
+        87           <ButtonLink                                                                                       
+        96           <ButtonLink href="/size-guide" variant="outline" size="md">                                       
+       137           <Link href="/returns" className="kv-section-link">                                                
+=== CraftPromise.tsx ===
+        39             <ButtonLink href="/about/our-craft" variant="primary" size="md">                                
+        42             <ButtonLink href="/products" variant="outline" size="md">                                       
+=== HeroSection.tsx ===
+        78                 <ButtonLink href={slide.button_link} variant="secondary" size="lg">                         
+=== HomeMerchandisingSections.tsx ===
+        25         <Link href={action.href} className="kv-section-link">                                               
+        60     <Link                                                                                                   
+=== MobileStickyActions.tsx ===
+        31       <Link href="/products?sort=newest">                                                                   
+        43       <Link href="/cart">                                                                                   
+=== NewArrivals.tsx ===
+        27           <Link                                                                                             
+=== NewsletterSection.tsx ===
+        56           <Button type="submit" variant="secondary" size="md" disabled={status === 'loading'}>              
+=== ShopByNeed.tsx ===
+        40             <Link                                                                                           
+=== ShopTheLook.tsx ===
+        42           <Link href="/products" className="kv-section-link">                                               
+        53               <Link                                                                                         
+        98           <Link href="/products" className="w-fit inline-flex min-h-[48px] items-center justify-center ga...
+=== WatchBuyPreview.tsx ===
+        24           <Link href="/reels" className="text-body-sm type-medium tracking-[var(--ds-type-body-tracking)]...
+        40                 <Link href={`/reels?id=${reel.id}`} className="relative block aspect-[9/16] overflow-hidd...
+        61                     <Link href={productHref} className="text-body-xs font-ui font-semibold text-[var(--ds...
+--- STEP 2 ---
+       342                               variant="ghost"                                                               
+       228                             variant="outline"                                                               
+       222                           variant="ghost"                                                                   
+       388                           variant="ghost"                                                                   
+       215                           variant="ghost"                                                                   
+       276                           variant="outline"                                                                 
+       307                           variant="outline"                                                                 
+       126                         <Badge variant="accent">New reply</Badge>                                           
+       289                         variant="compact"                                                                   
+       367                         variant="ghost"                                                                     
+       617                         variant="outline"                                                                   
+       624                         variant="outline"                                                                   
+       431                         variant="outline"                                                                   
+       173                         variant="outline"                                                                   
+       631                         variant="outline"                                                                   
+       160                         variant="outline"                                                                   
+       288                         variant="primary"                                                                   
+        82                       variant="compact"                                                                     
+       319                       variant="ghost"                                                                       
+       603                       variant="ghost"                                                                       
+       300                       variant="outline"                                                                     
+       293                       variant="outline"                                                                     
+       624                       variant="secondary"                                                                   
+       220                       variant="secondary"                                                                   
+        60                     {price ? <PriceDisplay price={price} variant="inline" /> : <span />}                    
+       407                     <Badge variant="success" className="pdp-save-badge normal-case">                        
+       218                     <ButtonLink href="/" variant="secondary" size="md">                                     
+       613                     variant="ghost"                                                                         
+      1263                     variant="ghost"                                                                         
+       412                     variant="ghost"                                                                         
+       146                     variant="ghost"                                                                         
+       499                     variant="outline"                                                                       
+       687                     variant="outline"                                                                       
+       489                     variant="outline"                                                                       
+       554                     variant="outline"                                                                       
+       670                     variant="outline"                                                                       
+       513                     variant="outline"                                                                       
+       502                     variant="outline"                                                                       
+       403                     variant="pdp"                                                                           
+       534                     variant="secondary"                                                                     
+       543                     variant="secondary"                                                                     
+       257                   <Badge variant="accent" className="pdp-gallery-badge">                                    
+       471                   <Button type="button" variant="outline" onClick={clearFilters}>                           
+       160                   <ButtonLink href="/collections" variant="outline" size="md">                              
+       157                   <ButtonLink href="/products?sort=newest" variant="secondary" size="md">                   
+       146                   variant="categoryOverlay"                                                                 
+       166                   variant="categoryOverlay"                                                                 
+        99                   variant="ghost"                                                                           
+       165                   variant="ghost"                                                                           
+       173                   variant="ghost"                                                                           
+       220                   variant="ghost"                                                                           
+       156                   variant="ghost"                                                                           
+       147                   variant="ghost"                                                                           
+       257                   variant="inline"                                                                          
+       697                   variant="outline"                                                                         
+       417                   variant="outline"                                                                         
+      1146                   variant="outline"                                                                         
+       411                   variant="outline"                                                                         
+       335                   variant="outline"                                                                         
+       397                   variant="outline"                                                                         
+       404                   variant="outline"                                                                         
+       645                   variant="outline"                                                                         
+       705                   variant="outline"                                                                         
+        45                   variant="outline"                                                                         
+       713                   variant="outline"                                                                         
+       251                   variant="secondary"                                                                       
+        37                   variant="secondary"                                                                       
+       403                   variant="secondary"                                                                       
+       126                   variant="secondary"                                                                       
+      1039                   variant="secondary"                                                                       
+       232                   variant="secondary"                                                                       
+       317                   variant="secondary"                                                                       
+       560                 <Button type="button" variant="outline" onClick={() => setShowAll(true)}>                   
+       409                 <ButtonLink href="/collections" variant="outline" size="md">                                
+        52                 <ButtonLink href="/login?redirect=/account" variant="secondary" size="md">                  
+       475                 <ButtonLink href="/products" variant="secondary" size="md">                                 
+       406                 <ButtonLink href="/products" variant="secondary" size="md">                                 
+        55                 <ButtonLink href="/register" variant="outline" size="md">                                   
+        78                 <ButtonLink href={slide.button_link} variant="secondary" size="lg">                         
+       122                 <PriceDisplay price={formatPrice(item.price)} variant="inline" />                           
+       155                 variant="ghost"                                                                             
+        81                 variant="ghost"                                                                             
+       187                 variant="ghost"                                                                             
+       358                 variant="ghost"                                                                             
+       189                 variant="ghost"                                                                             
+       132                 variant="ghost"                                                                             
+       322                 variant="ghost"                                                                             
+       179                 variant="outline"                                                                           
+       200                 variant="outline"                                                                           
+       193                 variant="outline"                                                                           
+       207                 variant="outline"                                                                           
+        42                 variant="outline"                                                                           
+       798                 variant="outline"                                                                           
+       213                 variant="pdp"                                                                               
+       173                 variant="secondary"                                                                         
+       140                 variant="secondary"                                                                         
+       172                 variant="secondary"                                                                         
+       808                 variant="secondary"                                                                         
+        34                 variant="secondary"                                                                         
+       502                 variant="secondary"                                                                         
+       404               <Badge variant="accent" className="pdp-gallery-badge">                                        
+       137               <Badge variant="accent" className="rounded-full px-2 py-1">                                   
+       132               <Badge variant="danger" className="rounded-full px-2 py-1">                                   
+       180               <Button type="button" variant="outline" size="lg" onClick={() => router.push('/account')}>    
+       157               <ButtonLink href="/" variant="secondary" size="md">                                           
+        64               variant="ghost"                                                                               
+       126               variant="ghost"                                                                               
+        92               variant="ghost"                                                                               
+       102               variant="ghost"                                                                               
+       389               variant="ghost"                                                                               
+       131               variant="ghost"                                                                               
+       687               variant="inline"                                                                              
+        32               variant="outline"                                                                             
+       203               variant="outline"                                                                             
+        77               variant="secondary"                                                                           
+        95               variant="secondary"                                                                           
+       177               variant="secondary"                                                                           
+       325               variant="secondary"                                                                           
+       442               variant="secondary"                                                                           
+       178               variant="secondary"                                                                           
+        27             <Button onClick={reset} variant="secondary" size="lg">                                          
+        39             <ButtonLink href="/about/our-craft" variant="primary" size="md">                                
+       186             <ButtonLink href="/products" variant="outline" size="lg" fullWidth>                             
+        42             <ButtonLink href="/products" variant="outline" size="md">                                       
+       105             <ButtonLink href="/products" variant="secondary" size="md">                                     
+       101             <ButtonLink href={storefrontTrust.policyRoutes.track} variant="outline" size="md">              
+        56             variant="ghost"                                                                                 
+       109             variant="ghost"                                                                                 
+       463             variant="ghost"                                                                                 
+        79             variant="ghost"                                                                                 
+       119             variant="ghost"                                                                                 
+       806             variant="ghost"                                                                                 
+        28             variant="ghost"                                                                                 
+       473             variant="ghost"                                                                                 
+       834             variant="ghost"                                                                                 
+        71             variant="ghost"                                                                                 
+       867             variant="ghost"                                                                                 
+       854             variant="ghost"                                                                                 
+        94             variant="ghost"                                                                                 
+       108             variant="ghost"                                                                                 
+       118             variant="ghost"                                                                                 
+        66             variant="ghost"                                                                                 
+        96             variant="outline"                                                                               
+        91             variant="outline"                                                                               
+        89             variant="outline"                                                                               
+        90             variant="outline"                                                                               
+        20             variant="outline"                                                                               
+       137             variant="primary"                                                                               
+       205             variant="product-card"                                                                          
+        82             variant="secondary"                                                                             
+       119             variant="secondary"                                                                             
+       231             variant="secondary"                                                                             
+       152             variant="secondary"                                                                             
+       235             variant="secondary"                                                                             
+       100             variant="secondary"                                                                             
+       100             variant="secondary"                                                                             
+       704             variant="secondary"                                                                             
+       176             variant="secondary"                                                                             
+       344             variant="secondary"                                                                             
+       192             variant="secondary"                                                                             
+       206             variant="secondary"                                                                             
+        88             variant="secondary"                                                                             
+        56           <Button type="submit" variant="secondary" size="md" disabled={status === 'loading'}>              
+        15           <ButtonLink href="/" variant="secondary" size="lg" leadingIcon={<Home size={16} />}>              
+        24           <ButtonLink href="/about" variant="outline" size="md">                                            
+        84           <ButtonLink href="/reels" variant="primary" size="md">                                            
+        96           <ButtonLink href="/size-guide" variant="outline" size="md">                                       
+        80           <ButtonLink href="/wholesale" variant="secondary" size="md">                                      
+        80           <ButtonLink href={storefrontTrust.policyRoutes.terms} variant="outline" size="md">                
+       292           variant="compact"                                                                                 
+        84           variant="ghost"                                                                                   
+        62           variant="ghost"                                                                                   
+       109           variant="ghost"                                                                                   
+        82           variant="outline"                                                                                 
+        85           variant="outline"                                                                                 
+       506           variant="outline"                                                                                 
+       519           variant="outline"                                                                                 
+        21           variant="primary"                                                                                 
+       497           variant="secondary"                                                                               
+       106           variant="secondary"                                                                               
+        74           variant="secondary"                                                                               
+       528           variant="secondary"                                                                               
+        51         variant="ghost"                                                                                     
+       145         variant="ghost"                                                                                     
+        44         variant="ghost"                                                                                     
+        87         variant="ghost"                                                                                     
+       574         variant="ghost"                                                                                     
+       743         variant="ghost"                                                                                     
+       754         variant="ghost"                                                                                     
+        81         variant="ghost"                                                                                     
+       113         variant="ghost"                                                                                     
+       123         variant="ghost"                                                                                     
+       101         variant="outline"                                                                                   
+       104         variant="secondary"                                                                                 
+       111       variant="ghost"                                                                                       
+       613       variant="ghost"                                                                                       
+       645       variant="ghost"                                                                                       
+       211       variant="secondary"                                                                                   
+--- STEP 3 ---
+         4 import { ButtonLink } from '@/components/ui/Button';                                                        
+        52   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>, product: Product) => {               
+       135           <ButtonLink                                                                                       
+       136             href="/collections/best-sellers"                                                                
+       140             View All Best Sellers                                                                           
+       141           </ButtonLink>                                                                                     
+--- STEP 4 ---
+        48           <Link href="/about#artisans" className="inline-flex min-h-[48px] items-center justify-center ga...
+        86           <Link href="/about" className="text-[var(--ds-text-primary)] underline underline-offset-4 hover...
+        17           <Link key={category.id} href={category.link_url} className="relative aspect-[4/5] overflow-hidd...
+        24             <article className="grid gap-6" key={collection.id}>                                            
+        58             <Link key={title} href={href} className="grid gap-[10px] grid-cols-[auto_1fr] border border-[...
+       137           <Link href="/returns" className="kv-section-link">                                                
+       143             <article key={title} className="grid content-start gap-[10px] border border-[var(--ds-border-...
+        60             <article className="relative flex-[0_0_100%] min-w-0 min-h-[inherit]" key={slide.id}>           
+        25         <Link href={action.href} className="kv-section-link">                                               
+        42           <Link href="/products" className="kv-section-link">                                               
+        98           <Link href="/products" className="w-fit inline-flex min-h-[48px] items-center justify-center ga...
+       138           <article key={stat.label} className="stat-entry-prem">                                            
+        31             <article key={testimonial.id} className="rounded-[var(--ds-radius-lg)] bg-[var(--ds-surface-s...
+        24           <Link href="/reels" className="text-body-sm type-medium tracking-[var(--ds-type-body-tracking)]...
+        40                 <Link href={`/reels?id=${reel.id}`} className="relative block aspect-[9/16] overflow-hidd...
+        61                     <Link href={productHref} className="text-body-xs font-ui font-semibold text-[var(--ds...
+--- STEP 5 ---
+=== BestSellers.tsx ===
+       136             href="/collections/best-sellers"                                                                
+       140             View All Best Sellers                                                                           
+=== CollectionsSection.tsx ===
+        20           <Link href="/collections">View all collections</Link>                                             
+        26                 href={`/collections/${collection.handle}`}                                                  
+        46                     href={`/products/${product.handle || product.id}`}                                      
+=== HomeMerchandisingSections.tsx ===
+        25         <Link href={action.href} className="kv-section-link">                                               
+        61       href={slotHref(slot)}                                                                                 
+       121               action={{ label: 'View All', href: '/products' }}                                             
+       139               action={{ label: 'View All', href: '/products' }}                                             
+       159               action={{ label: 'View All', href: '/collections' }}                                          
+=== NewArrivals.tsx ===
+        28             href={isCurated ? '/products' : '/products?sort=newest'}                                        
+        31             View All                                                                                        
+=== ShopTheLook.tsx ===
+        42           <Link href="/products" className="kv-section-link">                                               
+        43             View All                                                                                        
+        55                 href={href}                                                                                 
+        98           <Link href="/products" className="w-fit inline-flex min-h-[48px] items-center justify-center ga...
+=== WatchBuyPreview.tsx ===
+        24           <Link href="/reels" className="text-body-sm type-medium tracking-[var(--ds-type-body-tracking)]...
+        25             View all                                                                                        
+        40                 <Link href={`/reels?id=${reel.id}`} className="relative block aspect-[9/16] overflow-hidd...
+        61                     <Link href={productHref} className="text-body-xs font-ui font-semibold text-[var(--ds...
+--- STEP 6 ---
+       204                     View All                                                                                
+       168                 View All                                                                                    
+       340       { label: 'Shop all products', href: '/products' },                                                    
+       487                 { label: 'View all collections', href: '/collections' },                                    
+       488                 { label: 'Shop all products', href: '/products' },                                          
+       123             Shop All                                                                                        
+       407                   Shop All Products                                                                         
+       442                     Shop All                                                                                
+       125                 viewAllLabel="Shop all products"                                                            
+       140             View All Best Sellers                                                                           
+        20           <Link href="/collections">View all collections</Link>                                             
+       121               action={{ label: 'View All', href: '/products' }}                                             
+       139               action={{ label: 'View All', href: '/products' }}                                             
+       159               action={{ label: 'View All', href: '/collections' }}                                          
+        31             View All                                                                                        
+        43             View All                                                                                        
+        25             View all                                                                                        
+        40             View All →                                                                                      
+       393                           View All Results                                                                  
+
+

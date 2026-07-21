@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" fill="none">
+  <rect width="240" height="240" fill="#111111"/>
+  <g stroke="rgba(255,255,255,0.12)" stroke-width="1">
+    <path d="M0 40H240"/>
+    <path d="M0 120H240"/>
+    <path d="M0 200H240"/>
+    <path d="M40 0V240"/>
+    <path d="M120 0V240"/>
+    <path d="M200 0V240"/>
+  </g>
+</svg>

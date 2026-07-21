@@ -1,0 +1,25 @@
+@layer components {
+.scrollbarNone {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbarNone::-webkit-scrollbar {
+  display: none;
+}
+
+.mmLink {
+  font-family: var(--ds-type-heading-font);
+  font-size: var(--ds-text-body-md);
+  font-weight: var(--type-heading-weight);
+  color: var(--kv-ink-2);
+  padding: 6px 0;
+  transition: color 150ms, padding-left 150ms;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mmLink:hover {
+  color: var(--ds-accent-primary);
+  padding-left: 4px;
+}
+}

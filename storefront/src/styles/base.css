@@ -1,0 +1,127 @@
+/* ─── BASE ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ds-surface-page);
+  color: var(--color-text-primary);
+  font-family: var(--ds-type-body-font);
+  font-size: var(--ds-text-body-md);
+  font-weight: var(--ds-type-body-weight);
+  line-height: var(--ds-leading-normal);
+  letter-spacing: var(--ds-type-body-tracking);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === TYPOGRAPHY BASELINE === */
+h1, h2, h3 {
+  font-family: var(--ds-type-heading-font);
+  font-weight: var(--ds-type-heading-weight);
+  line-height: var(--ds-leading-tight);
+  letter-spacing: var(--ds-type-heading-tracking);
+  text-transform: var(--ds-type-heading-transform);
+  color: var(--color-text-primary);
+}
+
+h4, h5, h6 {
+  font-family: var(--ds-type-heading-font);
+  font-weight: var(--ds-type-heading-weight);
+  line-height: var(--ds-leading-snug);
+  color: inherit;
+}
+
+p {
+  line-height: var(--ds-leading-relaxed);
+}
+
+/* Label / UI text utility */
+.kv-label {
+  font-family: var(--ds-type-label-font);
+  font-size: var(--ds-text-body-xs);
+  font-weight: var(--ds-type-label-weight);
+  letter-spacing: var(--ds-type-label-tracking);
+  text-transform: var(--ds-type-label-transform);
+}
+
+.nav-logo {
+  font-family: var(--ds-type-heading-font);
+  font-size: var(--ds-text-display-sm);
+  font-weight: var(--ds-type-heading-weight);
+  letter-spacing: var(--ds-type-heading-tracking);
+  color: var(--color-text-primary);
+}
+
+.nav-link {
+  font-family: var(--ds-type-ui-font);
+  font-size: var(--ds-text-body-lg);
+  font-weight: var(--ds-type-ui-weight);
+  letter-spacing: var(--ds-tracking-normal);
+  line-height: var(--ds-leading-normal);
+  color: var(--color-text-primary);
+}
+
+.nav-link:hover,
+.nav-link-active,
+.nav-link-highlight {
+  color: var(--color-text-accent);
+}
+
+.nav-dropdown-item {
+  font-family: var(--ds-type-body-font);
+  font-size: var(--ds-text-body-sm);
+  font-weight: var(--ds-type-body-weight);
+  color: var(--color-text-secondary);
+}
+
+.nav-dropdown-item:hover,
+.nav-dropdown-item-active {
+  color: var(--color-text-primary);
+}
+
+.hover-text-accent:hover {
+  color: var(--color-text-accent);
+}
+
+.hover-text-primary:hover {
+  color: var(--color-text-primary);
+}
+
+.nav-icon-label,
+.mega-menu-heading {
+  font-family: var(--ds-type-label-font);
+  font-size: var(--ds-text-body-xs);
+  font-weight: var(--ds-type-label-weight);
+  letter-spacing: var(--ds-type-label-tracking);
+  text-transform: var(--ds-type-label-transform);
+  color: var(--color-text-muted);
+}
+
+.mega-menu-featured-title {
+  font-family: var(--ds-type-heading-font);
+  font-size: var(--ds-text-display-sm);
+  font-weight: var(--ds-type-heading-weight);
+  letter-spacing: var(--ds-type-heading-tracking);
+  line-height: var(--ds-leading-snug);
+  color: var(--color-text-inverse);
+}
+
+.mega-menu-featured-label {
+  font-family: var(--ds-type-label-font);
+  font-size: var(--ds-text-body-xs);
+  font-weight: var(--ds-type-label-weight);
+  letter-spacing: var(--ds-type-label-tracking);
+  text-transform: var(--ds-type-label-transform);
+  color: var(--color-text-inverse);
+  opacity: 0.6;
+}
+a {
+  color: inherit;
+}

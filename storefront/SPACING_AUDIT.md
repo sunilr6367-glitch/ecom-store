@@ -1,0 +1,294 @@
+# Spacing Compliance Audit
+
+## Summary
+- Total CSS files with violations: 8
+- Total TSX components with violations: 59
+- Pages completely outside design system: 4
+
+## CSS Files (ranked by violations)
+- **pdp.css** — 15 violations
+  - `padding-bottom: 96px;`
+  - `top: 3px;`
+  - `right: 14px;`
+- **reels.css** — 9 violations
+  - `padding-bottom: 96px;`
+  - `padding: 3px;`
+  - `padding-top: 5px;`
+- **content-pages.css** — 4 violations
+  - `margin-bottom: 28px;`
+  - `padding-left: 4px;`
+  - `text-underline-offset: 4px;`
+- **product-card.css** — 4 violations
+  - `margin-top: 3px;`
+  - `gap: 4px;`
+  - `text-underline-offset: 4px;`
+- **utilities.css** — 3 violations
+  - `text-underline-offset: 4px;`
+  - `padding: 9px 16px;`
+  - `padding: 9px 14px;`
+- **home-sections.css** — 2 violations
+  - `padding-bottom: 4px;`
+  - `text-underline-offset: 5px;`
+- **pdp-gallery.css** — 2 violations
+  - `gap: 4px;`
+  - `gap: 48px;`
+- **responsive.css** — 1 violations
+  - `padding-inline: 28px;`
+
+## TSX Components (ranked by violations)  
+- **page.tsx** — 84 violations
+  - `<form onSubmit={handleSubmit} className="space-y-6">`
+  - `<div className="bg-[var(--cream)] p-6 border border-[var(--line)]">`
+  - `<h4 className="text-body-sm type-bold  tracking-token-wider color-muted mb-4">`
+- **page.tsx** — 48 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<div className="text-center mb-16">`
+  - `<div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[var(--soft)] mb-6">`
+- **Skeleton.tsx** — 44 violations
+  - `<div className="space-y-2">`
+  - `<Skeleton className="h-5 w-1/3 mt-2" />`
+  - `<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">`
+- **SizeGuide.tsx** — 40 violations
+  - `<h3 className="size-guide-heading mb-4">`
+  - `<th className="size-guide-table-heading py-3">Size</th>`
+  - `<th className="size-guide-table-heading py-3">Chest</th>`
+- **page.tsx** — 30 violations
+  - `<div className="kv-page-container relative z-10 mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<h1 className="text-display-xl md:text-display-xl font-display mb-6 leading-token-tight">`
+  - `<div className="flex flex-wrap gap-4">`
+- **FilterSidebar.tsx** — 23 violations
+  - `<div className="space-y-7">`
+  - `<div className="flex items-center justify-between gap-4 border-b border-[var(--line)] pb-4">`
+  - `className="filter-clear-button min-h-8 px-0 underline underline-offset-4"`
+- **page.tsx** — 23 violations
+  - `<div className="mx-auto max-w-4xl px-6 md:px-12 lg:px-20">`
+  - `<div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">`
+  - `<h1 className="account-page-title mb-2">Addresses</h1>`
+- **WholesaleFooter.tsx** — 22 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">`
+  - `<div className="space-y-4">`
+- **page.tsx** — 20 violations
+  - `<div className="max-w-2xl mx-auto px-4">`
+  - `<Card className="p-8 text-center shadow-lg">`
+  - `<div className="flex gap-4 justify-center">`
+- **Footer.tsx** — 19 violations
+  - `className="footer-watermark-prem overflow-hidden px-6 pt-8 sm:px-8 md:px-12 md:pt-10 select-none"`
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 pb-10 pt-10 sm:px-8 md:px-12 md:pb-12 md:pt-12 lg:px-20 lg:pt-24">`
+  - `<div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-12">`
+- **page.tsx** — 18 violations
+  - `<div className="mx-auto max-w-4xl px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<div className="mb-6">`
+  - `<h1 className="account-detail-title mb-8">`
+- **page.tsx** — 18 violations
+  - `<form onSubmit={handleSearch} className="mt-8 space-y-5">`
+  - `<div className="grid gap-4 md:grid-cols-2">`
+  - `<div className="mt-6 space-y-4">`
+- **page.tsx** — 17 violations
+  - `<div className="px-4 h-14 flex items-center justify-center">`
+  - `<div className="mt-4">`
+  - `<div className="hidden pb-16 pt-16 md:block lg:pb-24 lg:pt-24">`
+- **page.tsx** — 17 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="mb-12">`
+  - `<h1 className="search-title mb-4">{hasQuery ? 'Search Results' : 'Search Odhvica'}</h1>`
+- **Reviews.tsx** — 16 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">`
+  - `<h2 className="review-heading mb-2">`
+- **page.tsx** — 16 violations
+  - `<div className="p-4">`
+  - `<p className="collection-card-copy mt-1 line-clamp-2">`
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 py-10 md:px-12 md:py-14 lg:px-20">`
+- **CartDrawer.tsx** — 15 violations
+  - `<span className="flex items-center gap-3">`
+  - `<div className="px-6 py-3 bg-[var(--cream)] border-b border-[var(--soft)]">`
+  - `<div className="flex items-center justify-between text-body-xs color-muted mb-2">`
+- **SearchOverlay.tsx** — 12 violations
+  - `className="h-auto border-0 px-0 py-0 text-display-sm type-medium focus:border-transparent"`
+  - `className="overflow-y-auto flex-1 p-8"`
+  - `<div className="max-w-4xl mx-auto space-y-10">`
+- **page.tsx** — 12 violations
+  - `<div className="mx-auto max-w-4xl px-6 md:px-12 lg:px-20">`
+  - `<div className="flex items-center gap-4 mb-8">`
+  - `<h1 className="account-page-title mb-8">My Orders</h1>`
+- **page.tsx** — 12 violations
+  - `<div className="content-shell max-w-4xl py-12 md:py-16 lg:py-20">`
+  - `<StatusBanner tone="info" className="mt-6">`
+  - `<div className="mt-4 flex flex-wrap gap-3">`
+- **page.tsx** — 10 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<div className="grid items-start gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">`
+  - `<div className="space-y-6">`
+- **page.tsx** — 10 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<div className="mb-8 flex items-center justify-between gap-4">`
+  - `<h1 className="account-page-title mt-2">Messages</h1>`
+- **ReelsExperience.tsx** — 9 violations
+  - `<h2 className="mt-2 kv-title text-display-md">Reels are being curated</h2>`
+  - `<div className="mt-5 flex flex-wrap justify-center gap-3">`
+  - `<div className="mt-10 text-center">`
+- **ListingPageClient.tsx** — 9 violations
+  - `<div className="kv-page-container py-8 md:py-12 lg:py-16">`
+  - `<div className="flex flex-wrap items-center justify-between gap-3">`
+  - `<div className="flex items-center gap-3">`
+- **ContactClient.tsx** — 9 violations
+  - `<div className="content-shell grid gap-10 py-12 md:py-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:py-24">`
+  - `<div className="space-y-6">`
+  - `<div className="flex items-start gap-3">`
+- **ProductGallery.tsx** — 9 violations
+  - `<div className="space-y-4 lg:sticky lg:top-24">`
+  - `<div className="mt-4 space-y-4">`
+  - `<div className="flex justify-center gap-2">`
+- **page.tsx** — 9 violations
+  - `<div className="mx-auto max-w-2xl px-6 md:px-12 lg:px-20">`
+  - `<Card className="p-8 shadow-sm">`
+  - `<h1 className="account-detail-title mb-6">`
+- **WholesaleHeader.tsx** — 8 violations
+  - `<div className="kv-page-container mx-auto flex max-w-[1440px] items-center justify-between px-6 text-body-xs type-bold md:px-12 lg:px-20">`
+  - `<div className="flex items-center gap-6">`
+  - `<span className="flex items-center gap-2">`
+- **ProductDeliveryPlanner.tsx** — 8 violations
+  - `<div className="soft-card mt-4">`
+  - `<p className="pdp-trust-sublabel mt-2">`
+  - `className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4"`
+- **page.tsx** — 8 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<div className="mt-10 flex flex-wrap justify-center gap-3">`
+  - `className="kv-text-chip px-4 py-2 text-body-xs type-medium"`
+- **page.tsx** — 8 violations
+  - `<div className="space-y-2">`
+  - `<div className="space-y-2">`
+  - `<div className="max-w-md w-full space-y-8">`
+- **CatalogClient.tsx** — 7 violations
+  - `<div className="kv-container pb-12 pt-6 md:pb-16 md:pt-8 lg:pb-24">`
+  - `<div className="flex flex-wrap items-center justify-end gap-3">`
+  - `className="h-auto cursor-pointer border-0 bg-transparent px-0 py-0 focus:border-transparent"`
+- **GiftCardsClient.tsx** — 7 violations
+  - `<div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">`
+  - `<section className="space-y-6">`
+  - `<div className="space-y-4">`
+- **page.tsx** — 7 violations
+  - `<Card className="w-full max-w-md p-8 shadow-lg">`
+  - `<Card className="w-full max-w-md p-8 shadow-lg">`
+  - `<Card className="w-full max-w-md p-8 shadow-lg">`
+- **RecentlyViewedRow.tsx** — 6 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="flex items-end justify-between mb-8">`
+  - `<span className="recently-eyebrow mb-1 block">`
+- **HomeMerchandisingSections.tsx** — 6 violations
+  - `<div className="kv-section-head mb-8 md:mb-12">`
+  - `<div className="absolute inset-x-0 bottom-6 z-[2] w-full px-6 text-center">`
+  - `<h3 className="mt-3 font-display text-display-md leading-token-tight">`
+- **ChatWidget.tsx** — 6 violations
+  - `'fixed bottom-40 right-4 z-50 w-[calc(100vw-1rem)] max-w-80 overflow-hidden shadow-2xl md:bottom-6 md:right-6 md:w-96',`
+  - `<div className="flex items-center gap-3">`
+  - `<div className="space-y-4">`
+- **page.tsx** — 6 violations
+  - `<div className="flex flex-col gap-3 sm:flex-row">`
+  - `<div className="relative inline-flex mb-8">`
+  - `<div className="mx-auto max-w-3xl px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+- **page.tsx** — 6 violations
+  - `<div className="max-w-md w-full space-y-8">`
+  - `<form onSubmit={handleSubmit} className="space-y-6">`
+  - `<div className="space-y-2">`
+- **page.tsx** — 6 violations
+  - `<th className="size-guide-table-heading py-3">Size</th>`
+  - `<th className="size-guide-table-heading py-3">US</th>`
+  - `<th className="size-guide-table-heading py-3">UK</th>`
+- **CookieConsent.tsx** — 5 violations
+  - `className="cookie-consent fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 animate-fade-in-up md:bottom-6 md:left-auto md:right-6 md:max-w-md"`
+  - `<Card className="cookie-consent-card flex flex-col gap-3 rounded-[var(--radius-sm)] p-3 shadow-xl md:gap-4 md:p-5 md:shadow-2xl">`
+  - `<div className="flex items-start justify-between gap-3">`
+- **SettingsList.tsx** — 5 violations
+  - `<div className="p-4">`
+  - `<div className="flex items-center gap-3">`
+  - `<div className="flex items-center gap-2">`
+- **WatchBuyPreview.tsx** — 5 violations
+  - `<section className="w-full py-6 md:py-10" data-home-section="7-watch-shop">`
+  - `<div className="homepage-section-head flex justify-between items-end mb-6">`
+  - `<div className="overflow-x-auto no-scrollbar flex gap-4 scroll-smooth">`
+- **ListingHero.tsx** — 5 violations
+  - `? 'kv-page-container grid gap-6 pb-8 pt-6 md:grid-cols-[0.92fr_1fr] md:items-center md:gap-10 md:pb-12 md:pt-10 lg:gap-16'`
+  - `<div className="kv-page-container py-10 md:py-14">`
+  - `<div className="kv-page-container relative z-10 flex min-h-[240px] items-end pb-8 pt-20 md:min-h-[340px] md:pb-12">`
+- **MiniCart.tsx** — 5 violations
+  - `<div className="flex flex-col items-center justify-center h-full px-6 text-center">`
+  - `<li key={item.variantId} className="flex gap-4 p-4">`
+  - `<div className="flex items-center justify-between mt-2">`
+- **page.tsx** — 5 violations
+  - `<div className="mx-auto max-w-3xl px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<h1 className="text-display-md type-bold mb-6">Cookie & Privacy Settings</h1>`
+  - `<p className="mb-8">`
+- **page.tsx** — 5 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">`
+  - `<h2 className="mt-12 text-display-sm font-display">{title}</h2>`
+- **page.tsx** — 5 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+  - `<div className="mb-12 space-y-4 text-center md:mb-16">`
+  - `className="group block space-y-4"`
+- **page.tsx** — 5 violations
+  - `<div className="max-w-md w-full space-y-8">`
+  - `<form onSubmit={handleSubmit} className="space-y-6">`
+  - `className="mt-3 px-0 underline"`
+- **page.tsx** — 5 violations
+  - `<Card className="w-full max-w-md p-8 shadow-lg">`
+  - `<div className="text-center mb-8">`
+  - `<form onSubmit={handleSubmit} className="space-y-6">`
+- **CartRecovery.tsx** — 4 violations
+  - `bodyClassName="p-8"`
+  - `<div className="mb-6 flex items-start gap-3">`
+  - `<div className="flex items-center gap-3">`
+- **ConversionHelpSections.tsx** — 4 violations
+  - `<div className="grid gap-3 md:grid-cols-3">`
+  - `<p className="kv-sub mt-3">`
+  - `<div className="flex flex-wrap gap-2.5">`
+- **ProductCard.tsx** — 4 violations
+  - `<Badge className="rounded-full px-2 py-1">New</Badge>`
+  - `<Badge variant="danger" className="rounded-full px-2 py-1">`
+  - `<Badge variant="accent" className="rounded-full px-2 py-1">`
+- **BackInStock.tsx** — 4 violations
+  - `<p className="back-in-stock-success-copy mt-1">`
+  - `<div className="space-y-3">`
+  - `<form onSubmit={handleSubmit} className="space-y-2">`
+- **page.tsx** — 4 violations
+  - `<div className="mx-auto max-w-3xl space-y-6">`
+  - `<div className="space-y-3">`
+  - `<Card className="p-5 md:p-6">`
+- **page.tsx** — 4 violations
+  - `<main className="kv-container py-12 md:py-16 lg:py-20">`
+  - `<p className="collection-detail-copy mt-4 max-w-3xl">`
+  - `<div className="mt-10 grid gap-4 md:grid-cols-3">`
+- **page.tsx** — 4 violations
+  - `<div className="kv-page-frame mx-auto max-w-[1440px] space-y-6 text-center">`
+  - `<div className="mx-auto grid max-w-xl grid-cols-4 gap-3">`
+  - `<div id="saleGrid" className="kv-page-container mx-auto max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24">`
+- **page.tsx** — 4 violations
+  - `<div className="grid gap-4 md:grid-cols-2">`
+  - `<div className="flex items-start gap-3">`
+  - `<div className="flex items-start gap-3">`
+- **page.tsx** — 4 violations
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="kv-page-container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">`
+  - `<div className="flex items-center justify-between mb-12">`
+
+## Pages with zero tokens
+- `\src\app\cookie-settings\page.tsx`
+- `\src\app\payment-help\page.tsx`
+- `\src\app\products\[handle]\page.tsx`
+- `\src\app\shipping\page.tsx`
+
+## Fix priority
+Group by effort vs impact:
+- Quick wins (1-5 violations, easy token swap)
+  - responsive.css, utilities.css, content-pages.css, product-card.css, home-sections.css, pdp-gallery.css
+  - CookieConsent.tsx, SettingsList.tsx, WatchBuyPreview.tsx, ListingHero.tsx, MiniCart.tsx, CartRecovery.tsx, ConversionHelpSections.tsx, ProductCard.tsx, BackInStock.tsx
+  - Several page.tsx instances
+- Medium (6-15 violations)
+  - pdp.css, reels.css
+  - SearchOverlay.tsx, ReelsExperience.tsx, ListingPageClient.tsx, ContactClient.tsx, ProductGallery.tsx, WholesaleHeader.tsx, ProductDeliveryPlanner.tsx, CatalogClient.tsx, GiftCardsClient.tsx, RecentlyViewedRow.tsx, HomeMerchandisingSections.tsx, ChatWidget.tsx
+  - Several page.tsx instances
+- Heavy lift (15+ violations)
+  - Skeleton.tsx, SizeGuide.tsx, FilterSidebar.tsx, WholesaleFooter.tsx, Footer.tsx, Reviews.tsx
+  - Several highly-complex page.tsx instances

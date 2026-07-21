@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Odhvica Storefront Design Tokens V4",
+  "type": "object",
+  "required": ["version", "contract", "primitive", "semantic", "component", "tailwind"],
+  "properties": {
+    "version": { "const": 4 },
+    "contract": { "type": "object" },
+    "primitive": { "$ref": "#/$defs/layer" },
+    "semantic": { "$ref": "#/$defs/layer" },
+    "component": { "$ref": "#/$defs/layer" },
+    "tailwind": { "type": "object", "additionalProperties": { "type": "string" } }
+  },
+  "$defs": {
+    "layer": {
+      "type": "object",
+      "propertyNames": { "pattern": "^--ds-[a-z0-9-]+$" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["$value"],
+        "properties": { "$value": { "type": "string", "minLength": 1 } },
+        "additionalProperties": false
+      }
+    }
+  }
+}

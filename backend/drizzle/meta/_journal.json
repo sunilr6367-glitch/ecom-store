@@ -1,0 +1,293 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1770223847007,
+      "tag": "0000_condemned_ravenous",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1770226844082,
+      "tag": "0001_numerous_inertia",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1770263919777,
+      "tag": "0002_simple_devos",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1770279774152,
+      "tag": "0003_damp_blue_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1770317153992,
+      "tag": "0004_watery_wendell_rand",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1770345318952,
+      "tag": "0005_kind_harry_osborn",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1770356864299,
+      "tag": "0006_smiling_shadow_king",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1770381222134,
+      "tag": "0007_even_shiva",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1770383259101,
+      "tag": "0008_cooing_jasper_sitwell",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1770384706849,
+      "tag": "0009_goofy_zzzax",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1770385820124,
+      "tag": "0010_hot_vector",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1770387791450,
+      "tag": "0011_gigantic_anita_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1770443840349,
+      "tag": "0012_hesitant_senator_kelly",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1770449153204,
+      "tag": "0013_ancient_vivisector",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1770635548087,
+      "tag": "0014_daffy_zarda",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "5",
+      "when": 1770808193675,
+      "tag": "0015_wandering_swarm",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "5",
+      "when": 1771206450567,
+      "tag": "0016_kind_mariko_yashida",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1772182991941,
+      "tag": "0017_talented_giant_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1772338556262,
+      "tag": "0018_shallow_mongu",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1772345766466,
+      "tag": "0019_cute_risque",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1772346095096,
+      "tag": "0020_noisy_songbird",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1772347055706,
+      "tag": "0021_quick_anthem",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "5",
+      "when": 1772688173060,
+      "tag": "0022_lame_komodo",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "5",
+      "when": 1774470000000,
+      "tag": "0023_add_header_fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1776082500000,
+      "tag": "0024_add_hero_banners",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1776087000000,
+      "tag": "0025_add_trending_reels",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "5",
+      "when": 1776090600000,
+      "tag": "0026_add_homepage_categories",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "5",
+      "when": 1776202200000,
+      "tag": "0027_add_mobile_category_content",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1777804861000,
+      "tag": "0028_add_price_amount_to_trending_reels",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "5",
+      "when": 1777804862000,
+      "tag": "0029_homepage_merchandising_slots",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "5",
+      "when": 1777804863000,
+      "tag": "0030_collections_v2_upgrade",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "5",
+      "when": 1777804864000,
+      "tag": "0031_collection_products_junction",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "5",
+      "when": 1777804865000,
+      "tag": "0032_collection_auto_draft_trigger",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "5",
+      "when": 1777804866000,
+      "tag": "0033_products_price_type",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "5",
+      "when": 1777804867000,
+      "tag": "0034_categories_seo",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "5",
+      "when": 1777804868000,
+      "tag": "0035_admin_audit_log",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "5",
+      "when": 1777804869000,
+      "tag": "0036_redirects",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "5",
+      "when": 1778198400000,
+      "tag": "0037_ai_ecommerce_seo_architecture",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "5",
+      "when": 1779091200000,
+      "tag": "0038_reel_collections",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "5",
+      "when": 1782864000000,
+      "tag": "0039_checkout_regions",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "7",
+      "when": 1783150791388,
+      "tag": "0040_safe_mandroid",
+      "breakpoints": true
+    }
+  ]
+}

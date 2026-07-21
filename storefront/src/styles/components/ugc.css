@@ -1,0 +1,22 @@
+/* ═══════════════════════════════════════════════════
+   PROTOTYPE PARITY — UGC / TESTIMONIALS
+   ═══════════════════════════════════════════════════ */
+
+.ugc-card {
+  background: var(--ds-surface-paper);
+  border: 1px solid var(--ds-border-subtle);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-sm);
+}
+.ugc-art {
+  aspect-ratio: 1;
+  border-radius: var(--ds-radius-md);
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--ds-space-sm);
+  color: var(--ds-text-inverse);
+  font-size: var(--ds-text-display-lg);
+  background: linear-gradient(135deg, var(--ds-accent-gold), var(--ds-accent-hover));
+}
+
+

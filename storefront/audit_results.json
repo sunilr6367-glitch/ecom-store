@@ -1,0 +1,531 @@
+[
+  {
+    "route": "/about/block-printing",
+    "url": "http://localhost:3000/about/block-printing",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about/block-printing\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about/block-printing\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/about/kantha",
+    "url": "http://localhost:3000/about/kantha",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about/kantha\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about/kantha\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/about/our-craft",
+    "url": "http://localhost:3000/about/our-craft",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about/our-craft\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/about",
+    "url": "http://localhost:3000/about",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/about\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account/addresses",
+    "url": "http://localhost:3000/account/addresses",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/addresses\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/addresses\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account/messages",
+    "url": "http://localhost:3000/account/messages",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/messages\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/messages\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account/notifications",
+    "url": "http://localhost:3000/account/notifications",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/notifications\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/notifications\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account/orders",
+    "url": "http://localhost:3000/account/orders",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/orders\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/orders\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account",
+    "url": "http://localhost:3000/account",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account/profile",
+    "url": "http://localhost:3000/account/profile",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/profile\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/profile\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/account/wholesale",
+    "url": "http://localhost:3000/account/wholesale",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/wholesale\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/account/wholesale\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/artisans",
+    "url": "http://localhost:3000/artisans",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/artisans\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/artisans\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/bestsellers",
+    "url": "http://localhost:3000/bestsellers",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/bestsellers\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/cart",
+    "url": "http://localhost:3000/cart",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/cart\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/cart\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/checkout",
+    "url": "http://localhost:3000/checkout",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/checkout\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/checkout\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/checkout/success",
+    "url": "http://localhost:3000/checkout/success",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/checkout/success\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/checkout/success\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/collections",
+    "url": "http://localhost:3000/collections",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/collections\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/contact",
+    "url": "http://localhost:3000/contact",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/contact\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/cookie-settings",
+    "url": "http://localhost:3000/cookie-settings",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/cookie-settings\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/edits",
+    "url": "http://localhost:3000/edits",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/edits\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/edits\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/faq",
+    "url": "http://localhost:3000/faq",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/faq\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/faq\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/forgot-password",
+    "url": "http://localhost:3000/forgot-password",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    }
+  },
+  {
+    "route": "/gift-cards",
+    "url": "http://localhost:3000/gift-cards",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/gift-cards\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/help",
+    "url": "http://localhost:3000/help",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/help\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    }
+  },
+  {
+    "route": "/journal",
+    "url": "http://localhost:3000/journal",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/journal\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/login",
+    "url": "http://localhost:3000/login",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "",
+    "url": "http://localhost:3000",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "s/privacy-policy/page",
+    "url": "http://localhost:3000s/privacy-policy/page",
+    "mobile": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/privacy-policy/page\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/privacy-policy/page\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "s/refund-policy/page",
+    "url": "http://localhost:3000s/refund-policy/page",
+    "mobile": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/refund-policy/page\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/refund-policy/page\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "s/shipping-policy/page",
+    "url": "http://localhost:3000s/shipping-policy/page",
+    "mobile": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/shipping-policy/page\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/shipping-policy/page\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "s/shipping-returns/page",
+    "url": "http://localhost:3000s/shipping-returns/page",
+    "mobile": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/shipping-returns/page\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/shipping-returns/page\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "s/terms-of-service/page",
+    "url": "http://localhost:3000s/terms-of-service/page",
+    "mobile": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/terms-of-service/page\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000s/terms-of-service/page\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/payment-help",
+    "url": "http://localhost:3000/payment-help",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/payment-help\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/payment-help\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/products",
+    "url": "http://localhost:3000/products",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/products\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/products\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/reels",
+    "url": "http://localhost:3000/reels",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/reels\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/reels\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/register",
+    "url": "http://localhost:3000/register",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/register\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/register\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/reset-password",
+    "url": "http://localhost:3000/reset-password",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/reset-password\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/returns",
+    "url": "http://localhost:3000/returns",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/returns\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/returns\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/sale",
+    "url": "http://localhost:3000/sale",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/sale\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/sale\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/search",
+    "url": "http://localhost:3000/search",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/search\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/search\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/shipping",
+    "url": "http://localhost:3000/shipping",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/shipping\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/shipping\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/size-guide",
+    "url": "http://localhost:3000/size-guide",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/size-guide\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/size-guide\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/stores",
+    "url": "http://localhost:3000/stores",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/stores\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/stores\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/track",
+    "url": "http://localhost:3000/track",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/track\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/track\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/trending-now",
+    "url": "http://localhost:3000/trending-now",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/trending-now\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/trending-now\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/verify-email",
+    "url": "http://localhost:3000/verify-email",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/verify-email\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/verify-email\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/wholesale/checkout",
+    "url": "http://localhost:3000/wholesale/checkout",
+    "mobile": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/wholesale/checkout\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/wholesale/checkout\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  {
+    "route": "/wholesale/login",
+    "url": "http://localhost:3000/wholesale/login",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    }
+  },
+  {
+    "route": "/wholesale",
+    "url": "http://localhost:3000/wholesale",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    }
+  },
+  {
+    "route": "/wholesale/set-password",
+    "url": "http://localhost:3000/wholesale/set-password",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    }
+  },
+  {
+    "route": "/wishlist",
+    "url": "http://localhost:3000/wishlist",
+    "mobile": {
+      "hasHorizontalScroll": false,
+      "errors": []
+    },
+    "desktop": {
+      "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/wishlist\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  }
+]

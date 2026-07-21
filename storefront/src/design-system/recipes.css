@@ -1,0 +1,15 @@
+.ds-editorial-media-campaign {
+  height: var(--ds-editorial-campaign-height);
+  background: linear-gradient(to bottom right, var(--ds-text-primary), var(--ds-text-secondary));
+}
+
+.ds-editorial-media-collection { height: var(--ds-editorial-collection-height); }
+.ds-editorial-media-journal { height: var(--ds-editorial-journal-height); }
+.ds-media-overlay-strong { background: linear-gradient(to bottom, rgba(var(--ds-black-rgb), 0.3), rgba(var(--ds-black-rgb), 0.5)); }
+.ds-media-overlay-soft { background: linear-gradient(to bottom, rgba(var(--ds-surface-paper-rgb), 0.2), rgba(var(--ds-black-rgb), 0.3)); }
+.ds-media-overlay-card { background: linear-gradient(to bottom, rgba(var(--ds-black-rgb), 0.08), rgba(var(--ds-black-rgb), 0.45)); }
+.ds-media-overlay-pattern { background-image: url('/pattern.svg'); }
+
+@media (min-width: 640px) {
+  .ds-editorial-media-collection { height: var(--ds-editorial-collection-height-wide); }
+}

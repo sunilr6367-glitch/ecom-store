@@ -1,0 +1,207 @@
+{
+  "generatedAt": "2026-07-04T19:48:25.842Z",
+  "duplicates": {
+    "active": [
+      "src/styles/components/pdp-gallery.css",
+      "src/styles/components/reels.css",
+      "src/styles/responsive.css",
+      "src/styles/utilities.css"
+    ],
+    "animate-marquee": [
+      "src/styles/animations.css",
+      "src/styles/utilities.css"
+    ],
+    "announcement-bar": [
+      "src/styles/base.css",
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "announcement-dismiss": [
+      "src/styles/base.css",
+      "src/styles/utilities.css"
+    ],
+    "cat-card-prem": [
+      "src/styles/components/category-sections.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "category-grid-prem": [
+      "src/styles/components/category-sections.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "collection-card": [
+      "src/styles/components/collections.css",
+      "src/styles/responsive.css"
+    ],
+    "collections-carousel": [
+      "src/styles/components/collections.css",
+      "src/styles/components/content-pages.css"
+    ],
+    "collections-grid": [
+      "src/styles/components/collections.css",
+      "src/styles/responsive.css"
+    ],
+    "content-rich": [
+      "src/styles/components/content-pages.css",
+      "src/styles/typography.css"
+    ],
+    "css": [
+      "src/app/globals.css",
+      "src/styles/storefront.css",
+      "src/styles/typography.css"
+    ],
+    "cursor-dot": [
+      "src/styles/effects.css",
+      "src/styles/utilities.css"
+    ],
+    "cursor-ring": [
+      "src/styles/effects.css",
+      "src/styles/utilities.css"
+    ],
+    "editorial-text": [
+      "src/styles/components/content-pages.css",
+      "src/styles/typography.css"
+    ],
+    "font-body": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "font-display": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "font-label": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "font-sans": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "font-ui": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "footer-grid": [
+      "src/styles/components/footer-base.css",
+      "src/styles/responsive.css"
+    ],
+    "hero-copy": [
+      "src/styles/components/reels.css",
+      "src/styles/typography.css"
+    ],
+    "hero-eyebrow": [
+      "src/styles/components/reels.css",
+      "src/styles/typography.css"
+    ],
+    "html": [
+      "src/app/globals.css",
+      "src/styles/utilities.css"
+    ],
+    "kv-label": [
+      "src/styles/base.css",
+      "src/styles/typography.css"
+    ],
+    "kv-section": [
+      "src/styles/responsive.css",
+      "src/styles/utilities.css"
+    ],
+    "kv-section-head": [
+      "src/styles/components/reels.css",
+      "src/styles/responsive.css",
+      "src/styles/utilities.css"
+    ],
+    "kv-section-link": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "kv-tag": [
+      "src/styles/components/collections.css",
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "kv-title": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "mega-menu-featured-label": [
+      "src/styles/base.css",
+      "src/styles/typography.css"
+    ],
+    "mega-menu-heading": [
+      "src/styles/base.css",
+      "src/styles/typography.css"
+    ],
+    "nav-icon-label": [
+      "src/styles/base.css",
+      "src/styles/typography.css"
+    ],
+    "nav-link": [
+      "src/styles/base.css",
+      "src/styles/typography.css"
+    ],
+    "nav-link-premium": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "newsletter-prem": [
+      "src/styles/components/newsletter.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "noise-overlay": [
+      "src/styles/effects.css",
+      "src/styles/utilities.css"
+    ],
+    "page-transition": [
+      "src/styles/animations.css",
+      "src/styles/utilities.css"
+    ],
+    "pdp-gallery-prem": [
+      "src/styles/components/pdp-premium.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "pdp-grid-prem": [
+      "src/styles/components/pdp-premium.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "pdp-info-prem": [
+      "src/styles/components/pdp-premium.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "product-card-quick-view": [
+      "src/styles/responsive.css",
+      "src/styles/typography.css"
+    ],
+    "product-spotlight": [
+      "src/styles/mobile-overrides.css",
+      "src/styles/utilities.css"
+    ],
+    "section-prem": [
+      "src/styles/components/premium-sections.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "section-title": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "stat-item-prem": [
+      "src/styles/components/premium-sections.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "stats-bar-prem": [
+      "src/styles/components/premium-sections.css",
+      "src/styles/mobile-overrides.css"
+    ],
+    "tag": [
+      "src/styles/typography.css",
+      "src/styles/utilities.css"
+    ],
+    "visible": [
+      "src/styles/components/premium-sections.css",
+      "src/styles/effects.css"
+    ],
+    "watch-buy-carousel": [
+      "src/styles/components/content-pages.css",
+      "src/styles/components/reels.css"
+    ]
+  }
+}

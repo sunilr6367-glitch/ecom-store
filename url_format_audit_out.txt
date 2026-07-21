@@ -1,0 +1,576 @@
+﻿--- STEP 1 ---
+/**
+ * API Response Adapters
+ * 
+ * Converts API response types (ApiProductResponse, etc) to frontend types
+ * This layer ensures type safety and handles any data transformations
+ * 
+ * Usage:
+ *   const apiProduct = ... // from API
+ *   const frontendProduct = adaptProduct(apiProduct);
+ */
+
+import type { Product, ProductImage, ProductMediaMetadata, ProductVariant } from '@/types';
+import type {
+  ApiProductResponse,
+  ApiVariantResponse,
+  ApiPriceResponse,
+  ApiCollectionResponse,
+} from '@/types/api-contracts';
+import { optimizeCloudinaryUrl } from './media';
+
+type AdaptProductOptions = {
+  includeRelated?: boolean;
+};
+
+function normalizeMediaUrl<T extends string | null | undefined>(url: T): T {
+  return (typeof url === 'string' ? optimizeCloudinaryUrl(url) : url) as T;
+}
+
+function normalizeImageMetadata(metadata: unknown): ProductMediaMetadata | null | undefined {
+  if (metadata == null) return metadata as null | undefined;
+  if (typeof metadata !== 'object') return undefined;
+  const normalized = { ...(metadata as Record<string, unknown>) };
+  if (typeof normalized.thumbnail_url === 'string') {
+    normalized.thumbnail_url = normalizeMediaUrl(normalized.thumbnail_url);
+  }
+  if (
+    typeof normalized.mime_type === 'string' &&
+    /^image\/hei[cf]$/i.test(normalized.mime_type)
+  ) {
+    normalized.mime_type = 'image/jpeg';
+  }
+  return normalized as ProductMediaMetadata;
+}
+
+/**
+ * Adapt single API product response to frontend Product type
+ * Handles any differences between API and frontend types
+ */
+export function adaptProduct(apiProduct: ApiProductResponse, options: AdaptProductOptions = {}): Product {
+  const includeRelated = options.includeRelated ?? true;
+
+  return {
+    id: apiProduct.id,
+    title: apiProduct.title,
+    description: apiProduct.description ?? '',
+    handle: apiProduct.handle,
+    thumbnail: normalizeMediaUrl(apiProduct.thumbnail),
+    subtitle: apiProduct.subtitle,
+    status: apiProduct.status,
+    variants: apiProduct.variants ? adaptProductVariants(apiProduct.variants) : undefined,
+    options: apiProduct.options,
+    images: apiProduct.images?.map((image) => ({
+      ...image,
+      url: normalizeMediaUrl(image.url),
+      alt: image.alt ?? image.alt_text,
+      metadata: normalizeImageMetadata(image.metadata),
+    })) as ProductImage[] | undefined,
+    material: apiProduct.material,
+    origin_country: apiProduct.origin_country,
+    // size_guide can be a string or object in the API, keep as-is for frontend
+    size_guide: apiProduct.size_guide as string | undefined,
+    care_instructions: apiProduct.care_instructions,
+    seo_title: apiProduct.seo_title,
+    seo_description: apiProduct.seo_description,
+    seo: apiProduct.seo as Product['seo'],
+    discovery: apiProduct.discovery as Product['discovery'],
+    attributes: apiProduct.attributes as Product['attributes'],
+    merchant: apiProduct.merchant as Product['merchant'],
+    media_seo: apiProduct.media_seo as Product['media_seo'],
+    artisan: apiProduct.artisan as Product['artisan'],
+    semantic_related_products:
+      includeRelated && apiProduct.semantic_related_products
+        ? adaptProducts(apiProduct.semantic_related_products as ApiProductResponse[], { includeRelated: false })
+        : undefined,
+    avg_rating: apiProduct.avg_rating,
+    review_count: apiProduct.review_count,
+    created_at: apiProduct.created_at,
+    collection: apiProduct.collection,
+    categories: apiProduct.categories
+      ? apiProduct.categories.map(c => ({
+          id: c.id || c.category?.id || '',
+          name: c.name || c.category?.name || 'Category',
+          handle:
+            c.handle ||
+            c.slug ||
+            c.category?.handle ||
+            c.category?.slug ||
+            '',
+          description: undefined,
+        }))
+      : undefined,
+  };
+}
+
+/**
+ * Adapt array of API products to frontend Product array
+ */
+export function adaptProducts(apiProducts: ApiProductResponse[], options: AdaptProductOptions = {}): Product[] {
+  if (!Array.isArray(apiProducts)) {
+    console.warn('[adaptProducts] Received non-array:', apiProducts);
+    return [];
+  }
+  return apiProducts.map((product) => adaptProduct(product, options));
+}
+
+/**
+ * Adapt single API variant to frontend ProductVariant type
+ */
+export function adaptProductVariant(apiVariant: ApiVariantResponse): ProductVariant {
+  return {
+    id: apiVariant.id,
+    title: apiVariant.title,
+    sku: apiVariant.sku,
+    inventory_quantity: apiVariant.inventory_quantity,
+    prices: apiVariant.prices ? adaptPrices(apiVariant.prices) : undefined,
+    compare_at_price: apiVariant.compare_at_price,
+    merchant: apiVariant.merchant as ProductVariant['merchant'],
+  };
+}
+
+/**
+ * Adapt array of API variants to frontend ProductVariant array
+ */
+export function adaptProductVariants(apiVariants: ApiVariantResponse[]): ProductVariant[] {
+  if (!Array.isArray(apiVariants)) {
+    return [];
+  }
+  return apiVariants.map(adaptProductVariant);
+}
+
+/**
+ * Adapt API prices to MoneyAmount type
+ */
+export function adaptPrices(apiPrices: ApiPriceResponse[]) {
+  if (!Array.isArray(apiPrices)) {
+    return undefined;
+  }
+  return apiPrices;
+}
+
+/**
+ * Adapt API collection to frontend Collection type
+ */
+export function adaptCollection(apiCollection: ApiCollectionResponse) {
+  return {
+    id: apiCollection.id,
+    title: apiCollection.title,
+    handle: apiCollection.handle,
+    description: apiCollection.description,
+    image: apiCollection.image,
+    products: apiCollection.products ? adaptProducts(apiCollection.products) : undefined,
+  };
+}
+
+/**
+ * Adapt array of API collections
+ */
+export function adaptCollections(apiCollections: ApiCollectionResponse[]) {
+  if (!Array.isArray(apiCollections)) {
+    return [];
+  }
+  return apiCollections.map(adaptCollection);
+}
+
+// ==========================================
+// LEGACY NORMALIZATION FUNCTIONS
+// Keep for existing callers, but prefer new adapt* functions.
+// ==========================================
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  limit?: number;
+  offset?: number;
+}
+
+export interface SingleResponse<T> {
+  data: T;
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === 'object'
+    ? (value as Record<string, unknown>)
+    : null;
+}
+
+// Normalize product from various API response formats
+export function normalizeProduct(json: unknown): Product | null {
+  const root = asRecord(json);
+  if (!root) return null;
+
+  let productObj: Record<string, unknown> | null = null;
+  const data = asRecord(root.data);
+
+  // Handle wrapped format: { data: { product: {...} } }
+  if (data && asRecord(data.product)) {
+    productObj = asRecord(data.product);
+  } // Handle wrapped format: { data: {...} }
+  else if (data) {
+    productObj = data;
+  } // Handle direct product object
+  else if (typeof root.id === 'string' && typeof root.title === 'string') {
+    productObj = root;
+  }
+
+  // Validate required fields
+  if (
+    productObj &&
+    productObj.id &&
+    productObj.title &&
+    typeof productObj.id === 'string' &&
+    typeof productObj.title === 'string'
+  ) {
+    return productObj as unknown as Product;
+  }
+
+  return null;
+}
+
+// Normalize products list from various API response formats
+export function normalizeProductsList(json: unknown): {
+  products: Product[];
+  total: number;
+  limit?: number;
+  offset?: number;
+} {
+  // Guard against null/undefined
+  if (json == null) {
+    return { products: [], total: 0 };
+  }
+
+  const root = asRecord(json);
+
+  // Handle wrapped format: { data: [...], pagination: {...} }
+  if (root && Array.isArray(root.data)) {
+    const pagination = asRecord(root.pagination);
+    return {
+      products: root.data as Product[],
+      total:
+        typeof pagination?.total === 'number'
+          ? pagination.total
+          : root.data.length,
+      limit:
+        typeof pagination?.limit === 'number' ? pagination.limit : undefined,
+      offset:
+        typeof pagination?.offset === 'number' ? pagination.offset : undefined,
+    };
+  }
+
+  // Handle direct array format: [...]
+  if (Array.isArray(json)) {
+    return {
+      products: json,
+      total: json.length,
+    };
+  }
+
+  // Handle wrapped format: { products: [...] }
+  if (root && Array.isArray(root.products)) {
+    return {
+      products: root.products as Product[],
+      total:
+        typeof root.total === 'number' ? root.total : root.products.length,
+    };
+  }
+
+  return { products: [], total: 0 };
+}
+
+// Normalize single item from various API response formats
+export function normalizeSingleItem<T>(json: unknown, key?: string): T | null {
+  const root = asRecord(json);
+  if (!root) return null;
+
+  // Handle wrapped format: { data: {...} }
+  if (
+    Object.prototype.hasOwnProperty.call(root, 'data') &&
+    root.data !== undefined
+  ) {
+    return root.data as T;
+  }
+
+  // Handle keyed format: { products: {...} }
+  if (key && Object.prototype.hasOwnProperty.call(root, key)) {
+    return root[key] as T;
+  }
+
+  // Return null if neither property exists (avoid returning raw json)
+  return null;
+}
+
+// Normalize array from various API response formats
+export function normalizeArray<T>(json: unknown): T[] {
+  if (!json) return [];
+
+  const root = asRecord(json);
+
+  // Handle wrapped format: { data: [...] }
+  if (root && Array.isArray(root.data)) {
+    return root.data as T[];
+  }
+
+  // Handle direct array format
+  if (Array.isArray(json)) {
+    return json;
+  }
+
+  return [];
+}
+
+// Extract featured products from API response
+export function normalizeFeaturedProducts(json: unknown): Product[] {
+  const root = asRecord(json);
+  const data = root ? asRecord(root.data) : null;
+
+  // Handle format: { data: { data: [...] } }
+  if (data && Array.isArray(data.data)) {
+    return data.data as Product[];
+  }
+
+  // Handle format: { data: [...] }
+  if (root && Array.isArray(root.data)) {
+    return root.data as Product[];
+  }
+
+  // Handle format: { products: [...] }
+  if (root && Array.isArray(root.products)) {
+    return root.products as Product[];
+  }
+
+  // Handle direct array
+  if (Array.isArray(json)) {
+    return json;
+  }
+
+  return [];
+}
+
+// Search result normalization
+export function normalizeSearchResults(
+  json: unknown
+): { products: Product[]; total: number } {
+  const root = asRecord(json);
+
+  // Handle format: { data: [...] }
+  if (root && Array.isArray(root.data)) {
+    return {
+      products: root.data as Product[],
+      total: typeof root.total === 'number' ? root.total : root.data.length,
+    };
+  }
+
+  // Handle direct array
+  if (Array.isArray(json)) {
+    return {
+      products: json,
+      total: json.length,
+    };
+  }
+
+  return { products: [], total: 0 };
+}
+--- STEP 2 ---
+--- STEP 3 ---
+
+Filename                           LineNumber Line                                                                     
+--------                           ---------- ----                                                                     
+api-adapters.ts                            33   if (typeof normalized.thumbnail_url === 'string') {                    
+api-adapters.ts                            34     normalized.thumbnail_url = normalizeMediaUrl(normalized.thumbnail_...
+api-adapters.ts                            57     thumbnail: normalizeMediaUrl(apiProduct.thumbnail),                  
+api-adapters.ts                            62     images: apiProduct.images?.map((image) => ({                         
+api.ts                                    218   thumbnail?: string;                                                    
+seo.ts                                     22   header_image_url?: string | null;                                      
+seo.ts                                    682     image: product.thumbnail || product.images?.[0]?.url || DEFAULT_OG...
+seo.ts                                    689     ogImage: product.seo?.og_image_url,                                  
+seo.ts                                    749     product.images                                                       
+seo.ts                                    752     (product.thumbnail ? [normalizeCloudinaryDeliveryUrl(product.thumb...
+seo.ts                                    903   image_url?: string | null;                                             
+seo.ts                                    914     image: normalizeCloudinaryDeliveryUrl(artisan.image_url),            
+storefront-product-quality.ts              13   if (product.thumbnail?.trim()) return true;                            
+storefront-product-quality.ts              15     product.images?.some((image: ProductImage) => image.url?.trim())     
+storefront-product-quality.ts              21     product.thumbnail?.trim() ||                                         
+storefront-product-quality.ts              22     product.images?.find((image: ProductImage) => image.url?.trim())?....
+storefront-product-quality.test.ts         17   thumbnail: 'https://example.com/jacket.jpg',                           
+storefront-product-quality.test.ts         38       { ...readyProduct, id: 'prod_3', thumbnail: null, images: [] },    
+storefront-product-quality.test.ts         51   it('falls back to gallery media when thumbnail is missing', () => {    
+storefront-product-quality.test.ts         55         thumbnail: null,                                                 
+storefront-product-quality.test.ts         66         thumbnail: null,                                                 
+storefront-product-quality.test.ts         80         thumbnail: null,                                                 
+--- STEP 4 ---
+--- STEP 5 ---
+{
+    "success":  true,
+    "message":  "Products retrieved successfully",
+    "data":  [
+                 {
+                     "id":  "f00116d1-b86c-4d80-bf79-2913da9cfa59",
+                     "title":  "Handmade Cotton Block Print Kaftan Dress â Boho Indian Summer Gown, Loose-Fit Beach Cover-Up",
+                     "handle":  "handmade-cotton-block-print-kaftan-dress-boho-indian-summer-gown-loose-fit-beach-cover-up",
+                     "description":  "Float through summer in this handmade cotton block print kaftan dress â a loose, flowing boho gown crafted in India with vibrant hand block-printed patterns. The kaftan silhouette is supremely comfortable and flattering on all body types, making it the ideal beach cover-up, summer dress, or holiday look. Each piece is uniquely printed by hand. Lightweight and breathable for warm weather.",
+                     "collection_id":  "48ff8b49-184a-4595-8091-2d22075f9b82",
+                     "size_guide":  null,
+                     "care_instructions":  null,
+                     "price_type":  "fixed",
+                     "seo_title":  "Cotton Block Print Kaftan Dress â Boho Summer Gown Handmade | KanthaPrints",
+                     "seo_description":  "Handmade cotton block print kaftan dress from India. Loose boho summer gown, lightweight, beach cover-up. Unique hand block-printed patterns, all body types. Ships worldwide.",
+                     "status":  "published",
+                     "thumbnail":  "/uploads/real_products/p30.png",
+                     "created_at":  "2026-06-25T15:39:14.867Z",
+                     "updated_at":  "2026-06-25T15:39:14.867Z",
+                     "variant_count":  "1",
+                     "total_inventory":  "10",
+                     "images":  [
+                                    "@{id=d048dede-0930-44a3-89d4-5316d67a4ec0; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; url=/uploads/real_products/p30.png; alt_text=Handmade Cotton Block Print Kaftan Dress â Boho Indian Summer Gown, Loose-Fit Beach Cover-Up product image; position=0; is_thumbnail=True; metadata=; created_at=2026-06-25T15:39:14.867Z; updated_at=2026-06-25T15:39:14.867Z; deleted_at=; media_seo=}"
+                                ],
+                     "variants":  [
+                                      "@{id=66bcc678-f152-418a-b455-6dc826e1d3c7; title=Default Variant; sku=handmade-cotton-block-print-kaftan-dress-boho-indian-summer-gown-loose-fit-beach-cover-up-default; inventory_quantity=10; prices=System.Object[]; merchant=}"
+                                  ],
+                     "seo":  {
+                                 "product_id":  "f00116d1-b86c-4d80-bf79-2913da9cfa59",
+                                 "seo_title":  "Cotton Block Print Kaftan Dress â Boho Summer Gown Handmade | KanthaPr",
+                                 "meta_description":  "Handmade cotton block print kaftan dress from India. Loose boho summer gown, lightweight, beach cover-up. Unique hand block-printed patterns, all body types. Ships worldw",
+                                 "canonical_url":  "/products/handmade-cotton-block-print-kaftan-dress-boho-indian-summer-gown-loose-fit-beach-cover-up",
+                                 "robots_index":  true,
+                                 "robots_follow":  true,
+                                 "og_title":  "Cotton Block Print Kaftan Dress â Boho Summer Gown Handmade | KanthaPr",
+                                 "og_description":  "Handmade cotton block print kaftan dress from India. Loose boho summer gown, lightweight, beach cover-up. Unique hand block-printed patterns, all body types. Ships worldw",
+                                 "og_image_url":  "/uploads/real_products/p30.png",
+                                 "twitter_card":  "summary_large_image",
+                                 "schema_overrides":  "",
+                                 "localized_metadata":  "",
+                                 "hreflang_group_id":  null,
+                                 "seo_score":  0,
+                                 "created_at":  "2026-06-25T15:39:14.867Z",
+                                 "updated_at":  "2026-06-25T15:39:14.867Z",
+                                 "deleted_at":  null
+                             },
+                     "discovery":  {
+                                       "product_id":  "f00116d1-b86c-4d80-bf79-2913da9cfa59",
+                                       "primary_keyword":  "Handmade Cotton Block Print Kaftan Dress â Boho Indian Summer Gown, Loose-Fit Beach Cover-Up",
+                                       "secondary_keywords":  "",
+                                       "long_tail_keywords":  "Handmade Cotton Block Print Kaftan Dress â Boho Indian Summer Gown, Loose-Fit Beach Cover-Up",
+                                       "search_intents":  "buy",
+                                       "semantic_entities":  "Odhvica handcrafted slow fashion block print cotton boho",
+                                       "negative_keywords":  "",
+                                       "product_document":  "Handmade Cotton Block Print Kaftan Dress â Boho Indian Summer Gown, Loose-Fit Beach Cover-Up Float through summer in this handmade cotton block print kaftan dress â a loose, flowing boho gown crafted in India with vibrant hand block-printed patterns. The kaftan silhouette is supremely comfortable and flattering on all body types, making it the ideal beach cover-up, summer dress, or holiday look. Each piece is uniquely printed by hand. Lightweight and breathable for warm weather.",
+                                       "document_hash":  "41c9399fa651abbc54cbd2d17e5f04cef95412b02570c516ac8979cde5c68fe0",
+                                       "metadata":  "@{source=auto_create_baseline}",
+                                       "created_at":  "2026-06-25T15:39:14.867Z",
+                                       "updated_at":  "2026-06-25T15:39:14.867Z",
+                                       "deleted_at":  null
+                                   },
+                     "attributes":  [
+                                        "@{id=0e5e4a48-4325-4b6e-ab8d-875e0ae337b9; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=969097bc-91bf-44e1-9337-d5e6dbdce71c; value_id=bb51ad48-1257-40d5-a11d-57eaff586ac3; raw_value=Cotton; source=auto_create_baseline; confidence=82; attribute_code=fabric; attribute_label=Fabric; value_label=Cotton; value_slug=cotton; synonyms=System.Object[]}",
+                                        "@{id=18c2a262-c790-44ac-85f1-2f0aff75e6e7; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=74216453-124c-40d6-bc40-0f83b252b3b6; value_id=32e7a883-0626-412a-90c3-f11809303ecb; raw_value=Block Print; source=auto_create_baseline; confidence=82; attribute_code=technique; attribute_label=Technique; value_label=Block Print; value_slug=block-print; synonyms=System.Object[]}",
+                                        "@{id=91e35b54-54b1-4aa0-8899-6840a3e095dd; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=74216453-124c-40d6-bc40-0f83b252b3b6; value_id=9b42faa0-bd65-4baa-9a7b-2b702b599a9e; raw_value=Handmade; source=auto_create_baseline; confidence=82; attribute_code=technique; attribute_label=Technique; value_label=Handmade; value_slug=handmade; synonyms=System.Object[]}",
+                                        "@{id=7e80970c-3f34-48ea-a3cd-5dbd3e63f320; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=0bf9bd77-0ebb-4233-84c8-8bdff1337b97; value_id=1d2e58a8-1264-4469-bb1d-9826d7591eb2; raw_value=Boho; source=auto_create_baseline; confidence=82; attribute_code=style; attribute_label=Style; value_label=Boho; value_slug=boho; synonyms=System.Object[]}",
+                                        "@{id=6b73b36e-b935-4e21-a56a-ccdc39eee490; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=0bf9bd77-0ebb-4233-84c8-8bdff1337b97; value_id=fec31c20-0875-498c-a88c-56e6ca0847e1; raw_value=Ethnic; source=auto_create_baseline; confidence=82; attribute_code=style; attribute_label=Style; value_label=Ethnic; value_slug=ethnic; synonyms=System.Object[]}",
+                                        "@{id=ae62edef-9fde-4098-af6b-93958e83f126; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=2f07c6d7-7496-4cca-b819-5b5544bf8f6e; value_id=c91e2889-4aef-4e68-9818-c1b4c566ca97; raw_value=Block Print; source=auto_create_baseline; confidence=82; attribute_code=pattern; attribute_label=Pattern; value_label=Block Print; value_slug=block-print; synonyms=System.Object[]}",
+                                        "@{id=8f0ad4b7-ec3c-46d8-b7c1-86afdd8656e2; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=683ee04b-fc4f-4874-affc-feca1eb12727; value_id=229b0de1-0042-4d5e-ab25-b72824ff28a1; raw_value=India; source=auto_create_baseline; confidence=82; attribute_code=region; attribute_label=Artisan Region; value_label=India; value_slug=india; synonyms=System.Object[]}",
+                                        "@{id=87a8a8e1-9829-47ac-b8b5-72fcb447b00a; product_id=f00116d1-b86c-4d80-bf79-2913da9cfa59; attribute_id=7510bce5-db25-4c9d-aaee-c2e421794902; value_id=3f7f9197-c550-4468-b34d-1aedbaf63752; raw_value=Block Printer; source=auto_create_baseline; confidence=82; attribute_code=artisan_type; attribute_label=Artisan Type; value_label=Block Printer; value_slug=block-printer; synonyms=System.Object[]}"
+                                    ],
+                     "media_seo":  [
+                                       "@{image_id=d048dede-0930-44a3-89d4-5316d67a4ec0; alt_text=Handmade Cotton Block Print Kaftan Dress â Boho Indian Summer Gown, Loose-Fit Beach Cover-Up product image; image_role=primary; view_type=front; color=; seo_filename=handmade-cotton-block-print-kaftan-dress-boho-indian-summer-gown-loose-fit-beach-cover-up; cloudinary_public_id=; media_type=image; metadata=; created_at=2026-06-25T15:39:14.867Z; updated_at=2026-06-25T15:39:14.867Z; deleted_at=}"
+                                   ],
+                     "artisan":  null,
+                     "semantic_related_products":  [
+                                                       "@{id=5a1d2f2f-fe02-4769-9370-2bdfffe1fd3e; title=Indigo Fish Block Print Kantha Short Kimono Jacket â Handmade Unique Boho Cotton Gift for Women; subtitle=; description=Stand out with this indigo fish block print kantha short kimono â a handmade cotton jacket crafted in Jaipur featuring a striking block-printed fish motif over a kantha-quilted base. The combination of block print artistry and kantha quilting makes each piece distinctly unique. A memorable boho gift for women who appreciate rare, one-of-a-kind Indian textile art. Free size.; handle=indigo-fish-block-print-kantha-short-kimono-jacket-handmade-unique-boho-cotton-gift-for-women; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p5.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Indigo Fish Block Print Kantha Kimono Jacket â Unique Gift | KanthaPrints; seo_description=Unique indigo fish block print kantha short kimono jacket, handmade in Jaipur. Striking artisan design, boho cotton coat. One-of-a-kind gift for women. Free size. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.537Z; updated_at=2026-06-25T15:39:14.537Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}",
+                                                       "@{id=ad4a6d56-289d-4a12-b3bd-2b216762111a; title=Handmade Block Print Cotton Maxi Dress â Indian Boho Summer Gown from Jaipur Artisans; subtitle=; description=Embrace summer in this handmade block print cotton maxi dress â a long boho gown crafted by artisans in Jaipur using traditional hand block printing. Lightweight cotton makes it breathable and perfect for warm days, while the block-printed patterns give it the kind of effortless Indian style that turns every walk into a runway. Each dress is uniquely printed by hand.; handle=handmade-block-print-cotton-maxi-dress-indian-boho-summer-gown-from-jaipur-artisans; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p27.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Handmade Block Print Cotton Maxi Dress â Indian Boho Summer | KanthaPrints; seo_description=Handmade block print cotton maxi dress from Jaipur. Indian boho summer gown, lightweight, artisan block printed. Unique breathable dress for warm weather. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.831Z; updated_at=2026-06-25T15:39:14.831Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}",
+                                                       "@{id=8e2497fb-b037-47db-8acb-aec37574c06c; title=Handmade Boho Floral Block Print Cotton Quilted Tote Bag â Artisan Indian Everyday Shopper; subtitle=; description=Your everyday bag just got a boho upgrade. This handmade block print cotton quilted tote features vibrant floral patterns crafted by Jaipur artisans using traditional block printing. The quilted cotton construction gives it shape and durability, making it the perfect sustainable shopper for farmers markets, beach trips, or daily errands. Each piece is unique.; handle=handmade-boho-floral-block-print-cotton-quilted-tote-bag-artisan-indian-everyday-shopper; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p24.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Boho Floral Block Print Quilted Cotton Tote Bag â Artisan | KanthaPrints; seo_description=Handmade boho floral block print quilted cotton tote bag from Jaipur. Artisan Indian shopper, sustainable everyday bag. Unique patterns. Great eco-friendly gift. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.797Z; updated_at=2026-06-25T15:39:14.797Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}",
+                                                       "@{id=8c3231dc-1e5c-46c8-865f-04a0a0c27277; title=Handmade Block Print Cotton Toiletry Bag â Artisan Indian Travel Gift from Jaipur; subtitle=; description=Organise your travels in style with this handmade block print cotton toiletry bag from Jaipur. Crafted by Indian artisans using traditional block printing techniques, it\u0027s the kind of travel accessory that draws compliments at every airport. Compact, sturdy, and beautifully made â a thoughtful, sustainable Indian gift for travellers who appreciate artisan craft.; handle=handmade-block-print-cotton-toiletry-bag-artisan-indian-travel-gift-from-jaipur; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p25.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Handmade Block Print Cotton Toiletry Bag â Indian Travel Gift | KanthaPrints; seo_description=Handmade block print cotton toiletry bag from Jaipur. Artisan Indian travel accessory, compact and stylish. Unique sustainable gift for travellers. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.809Z; updated_at=2026-06-25T15:39:14.809Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}"
+                                                   ]
+                 },
+                 {
+                     "id":  "855476c8-b3d7-41ff-aa93-78b63c21252c",
+                     "title":  "Handmade Suzani Embroidered Long Boho Dress â Indian Artisan Evening Gown from Jaipur",
+                     "handle":  "handmade-suzani-embroidered-long-boho-dress-indian-artisan-evening-gown-from-jaipur",
+                     "description":  "An evening gown with the soul of Indian artisan craft â this handmade suzani embroidered long dress features the bold, intricately worked floral patterns of traditional suzani embroidery on a sweeping dress silhouette. Crafted by Jaipur artisans, every stitch is placed by hand, making each gown a unique piece of wearable art. Dressed up or dressed down, this is the kind of gown that starts conversations.",
+                     "collection_id":  "48ff8b49-184a-4595-8091-2d22075f9b82",
+                     "size_guide":  null,
+                     "care_instructions":  null,
+                     "price_type":  "fixed",
+                     "seo_title":  "Suzani Embroidered Long Boho Indian Evening Gown â Artisan | KanthaPrints",
+                     "seo_description":  "Handmade suzani embroidered long boho evening gown from Jaipur. Intricate Indian artisan embroidery, unique floor-length dress. Wearable art for special occasions. Ships worldwide.",
+                     "status":  "published",
+                     "thumbnail":  "/uploads/real_products/p29.png",
+                     "created_at":  "2026-06-25T15:39:14.856Z",
+                     "updated_at":  "2026-06-25T15:39:14.856Z",
+                     "variant_count":  "1",
+                     "total_inventory":  "10",
+                     "images":  [
+                                    "@{id=98d8ec2f-57cb-4f83-8a6e-8cefdc236bd2; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; url=/uploads/real_products/p29.png; alt_text=Handmade Suzani Embroidered Long Boho Dress â Indian Artisan Evening Gown from Jaipur product image; position=0; is_thumbnail=True; metadata=; created_at=2026-06-25T15:39:14.856Z; updated_at=2026-06-25T15:39:14.856Z; deleted_at=; media_seo=}"
+                                ],
+                     "variants":  [
+                                      "@{id=4391e41a-1e43-4144-a641-c90c0d2207d1; title=Default Variant; sku=handmade-suzani-embroidered-long-boho-dress-indian-artisan-evening-gown-from-jaipur-default; inventory_quantity=10; prices=System.Object[]; merchant=}"
+                                  ],
+                     "seo":  {
+                                 "product_id":  "855476c8-b3d7-41ff-aa93-78b63c21252c",
+                                 "seo_title":  "Suzani Embroidered Long Boho Indian Evening Gown â Artisan | KanthaPri",
+                                 "meta_description":  "Handmade suzani embroidered long boho evening gown from Jaipur. Intricate Indian artisan embroidery, unique floor-length dress. Wearable art for special occasions. Ships ",
+                                 "canonical_url":  "/products/handmade-suzani-embroidered-long-boho-dress-indian-artisan-evening-gown-from-jaipur",
+                                 "robots_index":  true,
+                                 "robots_follow":  true,
+                                 "og_title":  "Suzani Embroidered Long Boho Indian Evening Gown â Artisan | KanthaPri",
+                                 "og_description":  "Handmade suzani embroidered long boho evening gown from Jaipur. Intricate Indian artisan embroidery, unique floor-length dress. Wearable art for special occasions. Ships ",
+                                 "og_image_url":  "/uploads/real_products/p29.png",
+                                 "twitter_card":  "summary_large_image",
+                                 "schema_overrides":  "",
+                                 "localized_metadata":  "",
+                                 "hreflang_group_id":  null,
+                                 "seo_score":  0,
+                                 "created_at":  "2026-06-25T15:39:14.856Z",
+                                 "updated_at":  "2026-06-25T15:39:14.856Z",
+                                 "deleted_at":  null
+                             },
+                     "discovery":  {
+                                       "product_id":  "855476c8-b3d7-41ff-aa93-78b63c21252c",
+                                       "primary_keyword":  "Handmade Suzani Embroidered Long Boho Dress â Indian Artisan Evening Gown from Jaipur",
+                                       "secondary_keywords":  "",
+                                       "long_tail_keywords":  "Handmade Suzani Embroidered Long Boho Dress â Indian Artisan Evening Gown from Jaipur",
+                                       "search_intents":  "buy",
+                                       "semantic_entities":  "Odhvica handcrafted slow fashion Jaipur boho",
+                                       "negative_keywords":  "",
+                                       "product_document":  "Handmade Suzani Embroidered Long Boho Dress â Indian Artisan Evening Gown from Jaipur An evening gown with the soul of Indian artisan craft â this handmade suzani embroidered long dress features the bold, intricately worked floral patterns of traditional suzani embroidery on a sweeping dress silhouette. Crafted by Jaipur artisans, every stitch is placed by hand, making each gown a unique piece of wearable art. Dressed up or dressed down, this is the kind of gown that starts conversations.",
+                                       "document_hash":  "bf8ab283de79a5d9564dab64c000e4d15e6e7ff9b11241eb5f96a32a45398253",
+                                       "metadata":  "@{source=auto_create_baseline}",
+                                       "created_at":  "2026-06-25T15:39:14.856Z",
+                                       "updated_at":  "2026-06-25T15:39:14.856Z",
+                                       "deleted_at":  null
+                                   },
+                     "attributes":  [
+                                        "@{id=18b818be-582e-4726-8ed7-94f4e7822525; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=74216453-124c-40d6-bc40-0f83b252b3b6; value_id=8635f899-37bb-42fd-9125-307aefcf4e3b; raw_value=Embroidery; source=auto_create_baseline; confidence=82; attribute_code=technique; attribute_label=Technique; value_label=Embroidery; value_slug=embroidery; synonyms=System.Object[]}",
+                                        "@{id=1dffaa0a-12f4-4dcd-82b6-b55fa8f9390a; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=74216453-124c-40d6-bc40-0f83b252b3b6; value_id=9b42faa0-bd65-4baa-9a7b-2b702b599a9e; raw_value=Handmade; source=auto_create_baseline; confidence=82; attribute_code=technique; attribute_label=Technique; value_label=Handmade; value_slug=handmade; synonyms=System.Object[]}",
+                                        "@{id=c9dc6756-f12d-4b07-bd98-4e4f7755d29d; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=0bf9bd77-0ebb-4233-84c8-8bdff1337b97; value_id=1d2e58a8-1264-4469-bb1d-9826d7591eb2; raw_value=Boho; source=auto_create_baseline; confidence=82; attribute_code=style; attribute_label=Style; value_label=Boho; value_slug=boho; synonyms=System.Object[]}",
+                                        "@{id=9fb29b06-c8f1-4f23-b915-a7a982d0bdbc; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=0bf9bd77-0ebb-4233-84c8-8bdff1337b97; value_id=fec31c20-0875-498c-a88c-56e6ca0847e1; raw_value=Ethnic; source=auto_create_baseline; confidence=82; attribute_code=style; attribute_label=Style; value_label=Ethnic; value_slug=ethnic; synonyms=System.Object[]}",
+                                        "@{id=04472445-69c1-451c-91d6-c59c8e8a8cfd; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=2f07c6d7-7496-4cca-b819-5b5544bf8f6e; value_id=994e2f57-2bef-4215-b86b-cc9fbe681749; raw_value=Floral; source=auto_create_baseline; confidence=82; attribute_code=pattern; attribute_label=Pattern; value_label=Floral; value_slug=floral; synonyms=System.Object[]}",
+                                        "@{id=05a154cc-1458-433e-bb8b-cf91edf21f0c; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=ff340dca-1d30-4a82-8448-f7348a6b84ff; value_id=b61b67a8-ac0d-4db2-8190-fe4fcf9dddf1; raw_value=Red; source=auto_create_baseline; confidence=82; attribute_code=color; attribute_label=Color; value_label=Red; value_slug=red; synonyms=System.Object[]}",
+                                        "@{id=c510d256-eae6-4c19-97e6-bcb08d81b3f7; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=683ee04b-fc4f-4874-affc-feca1eb12727; value_id=9d24e73f-b57e-4bb4-afd2-1083e801ff54; raw_value=Jaipur; source=auto_create_baseline; confidence=82; attribute_code=region; attribute_label=Artisan Region; value_label=Jaipur; value_slug=jaipur; synonyms=System.Object[]}",
+                                        "@{id=07c17b27-d9d7-4f1d-8e08-0153176a04eb; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=683ee04b-fc4f-4874-affc-feca1eb12727; value_id=229b0de1-0042-4d5e-ab25-b72824ff28a1; raw_value=India; source=auto_create_baseline; confidence=82; attribute_code=region; attribute_label=Artisan Region; value_label=India; value_slug=india; synonyms=System.Object[]}",
+                                        "@{id=689a0ef7-35a3-4077-97a8-de06636b0bb6; product_id=855476c8-b3d7-41ff-aa93-78b63c21252c; attribute_id=7510bce5-db25-4c9d-aaee-c2e421794902; value_id=038288bf-f1c2-4792-be49-a17652b779ff; raw_value=Jaipur Artisan; source=auto_create_baseline; confidence=82; attribute_code=artisan_type; attribute_label=Artisan Type; value_label=Jaipur Artisan; value_slug=jaipur-artisan; synonyms=System.Object[]}"
+                                    ],
+                     "media_seo":  [
+                                       "@{image_id=98d8ec2f-57cb-4f83-8a6e-8cefdc236bd2; alt_text=Handmade Suzani Embroidered Long Boho Dress â Indian Artisan Evening Gown from Jaipur product image; image_role=primary; view_type=front; color=; seo_filename=handmade-suzani-embroidered-long-boho-dress-indian-artisan-evening-gown-from-jaipur; cloudinary_public_id=; media_type=image; metadata=; created_at=2026-06-25T15:39:14.856Z; updated_at=2026-06-25T15:39:14.856Z; deleted_at=}"
+                                   ],
+                     "artisan":  null,
+                     "semantic_related_products":  [
+                                                       "@{id=62178403-3d9a-4a84-93db-78f1080a36ea; title=Boho Suzani Embroidered Long Kimono Jacket â Rust Indian Cotton Coat, Unique Handmade Gift for Him; subtitle=; description=A boho long kimono jacket unlike any other â this rust-toned suzani embroidered cotton coat is handcrafted in Jaipur with intricate traditional suzani embroidery across its entire length. The long kimono silhouette makes it as dramatic as it is wearable, and the rust colour grounds it with earthy warmth. An exceptional and thoughtful gift for him â or anyone who appreciates bold Indian artisan fashion.; handle=boho-suzani-embroidered-long-kimono-jacket-rust-indian-cotton-coat-unique-handmade-gift-for-him; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p12.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Boho Suzani Embroidered Long Kimono Jacket â Rust Gift Him | KanthaPrints; seo_description=Handmade rust suzani embroidered long kimono jacket from Jaipur. Bold Indian embroidery on cotton. Unique boho gift for him. Long silhouette, artisan-crafted. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.641Z; updated_at=2026-06-25T15:39:14.641Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}",
+                                                       "@{id=ddd7e65a-5b98-4734-9e8a-fad2e1607ab1; title=Women\u0027s Handmade Suzani Embroidered Short Blue Velvet Jacket â Indian Artisan Statement Coat; subtitle=; description=Make a bold statement in this handmade suzani embroidered short blue jacket â crafted on velvet by skilled embroidery artisans in Jaipur. The intricate suzani embroidery, a centuries-old Central Asian art form practised by Indian craftspeople, creates a stunning floral and geometric surface that\u0027s as much art as clothing. Every jacket is unique. A true statement piece for women who wear their culture proudly.; handle=women-s-handmade-suzani-embroidered-short-blue-velvet-jacket-indian-artisan-statement-coat; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p11.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Handmade Suzani Embroidered Short Blue Velvet Jacket | KanthaPrints; seo_description=Handmade suzani embroidered short blue velvet jacket from Jaipur. Intricate artisan embroidery, unique statement coat for women. Bold Indian fashion. One-of-a-kind. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.628Z; updated_at=2026-06-25T15:39:14.628Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}",
+                                                       "@{id=de20f3ae-cf5f-4b9d-b260-9ab18e26cc03; title=Handmade Phulkari Embroidery Cotton Dress â Traditional Indian Artisan Gown from Jaipur; subtitle=; description=Wear a piece of Punjab\u0027s most beloved textile tradition â this handmade cotton dress features intricate Phulkari embroidery, the vibrant \u0027flower work\u0027 needle art that has adorned Indian garments for centuries. Crafted in Jaipur by artisans who have inherited this tradition, the colourful embroidery on cotton creates a gown of extraordinary cultural richness. A treasured keepsake and a deeply meaningful gift.; handle=handmade-phulkari-embroidery-cotton-dress-traditional-indian-artisan-gown-from-jaipur; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p28.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Phulkari Embroidery Handmade Cotton Indian Dress â Artisan | KanthaPrints; seo_description=Handmade Phulkari embroidery cotton dress from Jaipur. Traditional Indian \u0027flower work\u0027 needle art on cotton. Unique artisan gown with cultural heritage. Perfect gift. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.844Z; updated_at=2026-06-25T15:39:14.844Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}",
+                                                       "@{id=2c3df3d7-7091-4f81-a29c-35b6f33178e7; title=Handmade Velvet Long Kimono with Phulkari Embroidery â Traditional Indian Artisan Floor-Length Robe; subtitle=; description=A celebration of Indian textile heritage â this handmade velvet long kimono features traditional Phulkari embroidery, the vibrant needle-work technique originating in Punjab that translates as \u0027flower work\u0027. The combination of rich velvet and intricate colourful embroidery creates a robe of extraordinary beauty. A deeply meaningful artisan piece and a treasured gift for those who love India\u0027s craft traditions.; handle=handmade-velvet-long-kimono-with-phulkari-embroidery-traditional-indian-artisan-floor-length-robe; is_giftcard=False; is_wholesale_only=False; status=published; thumbnail=/uploads/real_products/p19.png; weight=; length=; height=; width=; origin_country=; hs_code=; mid_code=; material=; collection_id=48ff8b49-184a-4595-8091-2d22075f9b82; type_id=; discountable=True; size_guide=; care_instructions=; price_type=fixed; seo_title=Phulkari Embroidery Velvet Long Kimono Robe â Artisan | KanthaPrints; seo_description=Handmade velvet long kimono with traditional Phulkari embroidery. Rich velvet, colourful Indian folk art stitching. Unique heritage artisan robe. Perfect gift. Ships worldwide.; metadata=; created_at=2026-06-25T15:39:14.736Z; updated_at=2026-06-25T15:39:14.736Z; deleted_at=; variants=System.Object[]; collection=; images=System.Object[]; categories=System.Object[]; tags=System.Object[]; seo=; discovery=; attributes=System.Object[]; media_seo=System.Object[]; artisan=; semantic_related_products=System.Object[]}"
+                                                   ]
+                 }
+             ],
+    "pagination":  {
+                       "offset":  0,
+                       "limit":  2,
+                       "total":  30,
+                       "total_pages":  15,
+                       "has_next":  true,
+                       "has_prev":  false
+                   },
+    "timestamp":  "2026-06-25T15:49:20.048Z"
+}
+
+

@@ -1,0 +1,95 @@
+/* Footer contrast overrides for the global monochrome theme layer. */
+.odhvica-footer {
+  background: var(--ds-footer-bg);
+  color: var(--ds-footer-text);
+}
+
+.odhvica-footer .kf-logo,
+.odhvica-footer .kf-heading {
+  color: var(--ds-footer-heading);
+}
+
+.odhvica-footer .kf-link,
+.odhvica-footer .kf-social {
+  color: var(--ds-footer-link);
+}
+
+.odhvica-footer .kf-muted,
+.odhvica-footer .kf-legal,
+.odhvica-footer .kf-legal-link {
+  color: var(--ds-footer-muted);
+}
+
+.odhvica-footer .kf-dim {
+  color: var(--ds-footer-dim);
+}
+
+.odhvica-footer .kf-highlight {
+  color: var(--ds-footer-highlight);
+}
+
+.odhvica-footer .kf-highlight:hover {
+  color: var(--ds-footer-highlight-hover);
+}
+
+.odhvica-footer a:hover,
+.odhvica-footer .kf-social:hover {
+  color: var(--ds-footer-hover);
+}
+
+.odhvica-footer .kf-social-instagram:hover,
+.odhvica-footer .kf-social-tiktok:hover,
+.odhvica-footer .kf-social-twitter:hover {
+  color: var(--ds-footer-highlight);
+}
+
+.odhvica-footer .kf-social-whatsapp:hover {
+  color: var(--ds-success);
+}
+
+.odhvica-footer .kf-social-youtube:hover {
+  color: var(--ds-danger);
+}
+
+.odhvica-footer .kf-social-facebook:hover {
+  color: var(--ds-info);
+}
+
+.odhvica-footer input {
+  color: var(--ds-footer-text);
+}
+
+.odhvica-footer input::placeholder {
+  color: var(--ds-footer-dim);
+}
+
+.odhvica-footer .kf-border {
+  border-color: var(--ds-footer-border);
+}
+
+.odhvica-mobile-footer {
+  background: var(--ds-surface-parchment);
+}
+
+.odhvica-mobile-footer .kf-mobile-heading {
+  color: var(--ds-text-secondary);
+}
+
+.odhvica-mobile-footer .kf-mobile-link {
+  color: var(--ds-text-primary);
+}
+
+.odhvica-mobile-footer .kf-mobile-link:hover {
+  color: var(--ds-text-muted);
+}
+
+.odhvica-mobile-footer .kf-mobile-border {
+  border-color: var(--ds-border-subtle);
+}
+
+.odhvica-mobile-footer .kf-mobile-social,
+.odhvica-mobile-footer .kf-mobile-copy {
+  color: var(--ds-text-muted);
+}
+
+

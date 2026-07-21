@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import 'tailwindcss';
+
+/* ─── Prototype color tokens (Material You / Google Stitch palette) ─── */
+:root {
+  /* Surface scale */
+  --surface:                    #f7f9fb;
+  --surface-bright:             #f7f9fb;
+  --surface-dim:                #d8dadc;
+  --surface-container-lowest:   #ffffff;
+  --surface-container-low:      #f2f4f6;
+  --surface-container:          #eceef0;
+  --surface-container-high:     #e6e8ea;
+  --surface-container-highest:  #e0e3e5;
+
+  /* On-surface */
+  --on-surface:                 #191c1e;
+  --on-surface-variant:         #45474c;
+  --inverse-surface:            #2d3133;
+  --inverse-on-surface:         #eff1f3;
+
+  /* Primary (deep navy) */
+  --primary:                    #01071c;
+  --on-primary:                 #ffffff;
+  --primary-container:          #171f35;
+  --on-primary-container:       #7f87a2;
+  --primary-fixed:              #dae2ff;
+  --primary-fixed-dim:          #bec6e3;
+  --on-primary-fixed:           #131b30;
+  --on-primary-fixed-variant:   #3e465e;
+  --inverse-primary:            #bec6e3;
+  --surface-tint:               #565e77;
+
+  /* Secondary (amber/gold) */
+  --secondary:                  #775a19;
+  --on-secondary:               #ffffff;
+  --secondary-container:        #fed488;
+  --on-secondary-container:     #785a1a;
+  --secondary-fixed:            #ffdea5;
+  --secondary-fixed-dim:        #e9c176;
+  --on-secondary-fixed:         #261900;
+  --on-secondary-fixed-variant: #5d4201;
+
+  /* Tertiary (blue accent) */
+  --tertiary:                   #000620;
+  --on-tertiary:                #ffffff;
+  --tertiary-container:         #001b54;
+  --on-tertiary-container:      #5080ff;
+  --tertiary-fixed:             #dbe1ff;
+  --tertiary-fixed-dim:         #b4c5ff;
+  --on-tertiary-fixed:          #00174b;
+  --on-tertiary-fixed-variant:  #003ea8;
+
+  /* Error */
+  --error:                      #ba1a1a;
+  --on-error:                   #ffffff;
+  --error-container:            #ffdad6;
+  --on-error-container:         #93000a;
+
+  /* Outline */
+  --outline:                    #76777c;
+  --outline-variant:            #c6c6cc;
+
+  /* Background */
+  --background:                 #f7f9fb;
+  --on-background:              #191c1e;
+
+  /* Legacy kv-* aliases kept for pages not yet migrated */
+  --kv-text:         var(--on-surface);
+  --kv-muted:        var(--on-surface-variant);
+  --kv-border:       var(--outline-variant);
+  --kv-bg:           var(--surface);
+  --kv-card:         var(--surface-container-lowest);
+  --kv-soft:         var(--surface-container-low);
+  --kv-accent:       #5080ff;
+  --kv-accent-deep:  #003ea8;
+  --kv-accent-soft:  #dbe1ff;
+  --kv-success:      #2d7a4f;
+  --kv-warning:      #d4860b;
+  --kv-danger:       var(--error);
+  --kv-sidebar-bg:   var(--primary);
+
+  /* Typography */
+  --font-sans:    'Inter', 'Segoe UI', sans-serif;
+  --font-display: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* ─── Tailwind theme bridge ─── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--on-surface);
+  --font-sans: var(--font-sans);
+  --font-mono: 'SFMono-Regular', Consolas, monospace;
+
+  /* Expose prototype tokens as Tailwind utilities */
+  --color-surface:                   var(--surface);
+  --color-surface-bright:            var(--surface-bright);
+  --color-surface-dim:               var(--surface-dim);
+  --color-surface-container-lowest:  var(--surface-container-lowest);
+  --color-surface-container-low:     var(--surface-container-low);
+  --color-surface-container:         var(--surface-container);
+  --color-surface-container-high:    var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface:                var(--on-surface);
+  --color-on-surface-variant:        var(--on-surface-variant);
+  --color-primary:                   var(--primary);
+  --color-on-primary:                var(--on-primary);
+  --color-primary-container:         var(--primary-container);
+  --color-on-primary-container:      var(--on-primary-container);
+  --color-primary-fixed:             var(--primary-fixed);
+  --color-primary-fixed-dim:         var(--primary-fixed-dim);
+  --color-on-primary-fixed:          var(--on-primary-fixed);
+  --color-on-primary-fixed-variant:  var(--on-primary-fixed-variant);
+  --color-secondary:                 var(--secondary);
+  --color-secondary-container:       var(--secondary-container);
+  --color-on-secondary-container:    var(--on-secondary-container);
+  --color-tertiary-container:        var(--tertiary-container);
+  --color-on-tertiary-container:     var(--on-tertiary-container);
+  --color-tertiary-fixed:            var(--tertiary-fixed);
+  --color-error:                     var(--error);
+  --color-error-container:           var(--error-container);
+  --color-on-error-container:        var(--on-error-container);
+  --color-outline:                   var(--outline);
+  --color-outline-variant:           var(--outline-variant);
+}
+
+/* ─── Base ─── */
+html { background: var(--surface); }
+
+body {
+  min-height: 100vh;
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-sans);
+}
+
+/* Material Symbols icon font */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ─── Transitions ─── */
+a, button, input, select, textarea {
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+/* ─── Selection ─── */
+::selection { background: rgba(80, 128, 255, 0.18); }
+
+/* ─── Admin shell scoped overrides ─── */
+[data-admin-shell] h1,
+[data-admin-shell] h2,
+[data-admin-shell] h3,
+[data-admin-shell] h4 {
+  letter-spacing: -0.01em;
+}
+
+[data-admin-shell] input:not([type='checkbox']):not([type='radio']),
+[data-admin-shell] select,
+[data-admin-shell] textarea {
+  border-color: var(--outline-variant);
+  background: var(--surface-container-lowest);
+  color: var(--on-surface);
+  border-radius: 0.75rem;
+}
+
+[data-admin-shell] input:focus,
+[data-admin-shell] select:focus,
+[data-admin-shell] textarea:focus {
+  outline: none;
+  border-color: var(--on-tertiary-container);
+  box-shadow: 0 0 0 4px rgba(80, 128, 255, 0.12);
+}
+
+[data-admin-shell] table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* ─── Scrollbar ─── */
+[data-admin-shell] ::-webkit-scrollbar { width: 6px; height: 6px; }
+[data-admin-shell] ::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 999px;
+}
+[data-admin-shell] ::-webkit-scrollbar-track { background: transparent; }
+
+/* ─── Page fade transition ─── */
+.page-fade { animation: pageFade 0.18s ease; }
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── No scrollbar utility ─── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

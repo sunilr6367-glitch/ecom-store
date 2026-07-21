@@ -1,0 +1,299 @@
+/**
+ * End-to-End Tests - Phase 4 Q24: E2E Tests
+ * 
+ * Provides test utilities and setup for end-to-end testing.
+ * Run with: npm test
+ */
+
+import { test as base, expect, APIRequestContext } from '@playwright/test';
+import { EventBus, Events } from '../src/events/event-bus.js';
+import { globalCache } from '../src/utils/cache.js';
+import { getFeatureFlagManager } from '../src/utils/feature-flags.js';
+
+/**
+ * Test fixtures for E2E tests
+ */
+interface TestFixtures {
+    api: APIRequestContext;
+    eventBus: EventBus;
+    cleanup: () => Promise<void>;
+}
+
+/**
+ * Create test fixtures
+ */
+export const test = base.extend<TestFixtures>({
+    // API fixture
+    api: async ({ request }, use) => {
+        await use(request);
+    },
+
+    // Event bus fixture
+    eventBus: async ({ }, use) => {
+        const bus = new EventBus();
+        await use(bus);
+        bus.reset();
+    },
+
+    // Cleanup fixture
+    cleanup: async ({ }, use) => {
+        const cleanup = async () => {
+            // Clear cache
+            globalCache.clear();
+            // Reset feature flags
+            getFeatureFlagManager().clearCache();
+        };
+        await use(cleanup);
+    },
+});
+
+/**
+ * Test utilities
+ */
+export class E2ETestUtils {
+    /**
+     * Wait for a specific condition
+     */
+    static async waitFor(
+        condition: () => Promise<boolean> | boolean,
+        options: { timeout?: number; interval?: number } = {}
+    ): Promise<void> {
+        const timeout = options.timeout || 5000;
+        const interval = options.interval || 100;
+
+        const start = Date.now();
+        while (Date.now() - start < timeout) {
+            if (await condition()) {
+                return;
+            }
+            await new Promise(resolve => setTimeout(resolve, interval));
+        }
+        throw new Error('Condition not met within timeout');
+    }
+
+    /**
+     * Retry a function until it succeeds
+     */
+    static async retry<T>(
+        fn: () => Promise<T>,
+        options: { maxAttempts?: number; delay?: number } = {}
+    ): Promise<T> {
+        const maxAttempts = options.maxAttempts || 3;
+        const delay = options.delay || 1000;
+
+        let lastError: Error | undefined;
+        for (let i = 0; i < maxAttempts; i++) {
+            try {
+                return await fn();
+            } catch (error) {
+                lastError = error as Error;
+                if (i < maxAttempts - 1) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+        throw lastError;
+    }
+
+    /**
+     * Generate test data
+     */
+    static generateTestData(type: 'user' | 'product' | 'order'): Record<string, unknown> {
+        const timestamp = Date.now();
+        const random = Math.random().toString(36).substring(7);
+
+        switch (type) {
+            case 'user':
+                return {
+                    email: `test-${timestamp}-${random}@example.com`,
+                    first_name: 'Test',
+                    last_name: 'User',
+                    password: 'TestPassword123!',
+                };
+            case 'product':
+                return {
+                    title: `Test Product ${timestamp}`,
+                    description: 'A test product for E2E testing',
+                    price: 99.99,
+                    sku: `TEST-SKU-${random}`.toUpperCase(),
+                };
+            case 'order':
+                return {
+                    status: 'pending',
+                    total: 199.99,
+                    currency: 'USD',
+                };
+            default:
+                return { id: timestamp };
+        }
+    }
+
+    /**
+     * Delay helper
+     */
+    static delay(ms: number): Promise<void> {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+}
+
+/**
+ * API test helpers
+ */
+export class APITestHelpers {
+    constructor(private api: APIRequestContext) { }
+
+    /**
+     * Make a GET request
+     */
+    async get(url: string, options?: { params?: Record<string, string> }) {
+        return this.api.get(url, { params: options?.params });
+    }
+
+    /**
+     * Make a POST request
+     */
+    async post(url: string, data?: Record<string, unknown>) {
+        return this.api.post(url, { data });
+    }
+
+    /**
+     * Make a PUT request
+     */
+    async put(url: string, data?: Record<string, unknown>) {
+        return this.api.put(url, { data });
+    }
+
+    /**
+     * Make a DELETE request
+     */
+    async delete(url: string) {
+        return this.api.delete(url);
+    }
+
+    /**
+     * Expect response to be OK
+     */
+    expectOK(response: { status(): number; body(): Promise<unknown> }) {
+        expect(response.status()).toBe(200);
+    }
+
+    /**
+     * Expect response to have error status
+     */
+    expectError(response: { status(): number }, code: number) {
+        expect(response.status()).toBe(code);
+    }
+}
+
+/**
+ * Authentication helpers for tests
+ */
+export class AuthTestHelpers {
+    private token: string | null = null;
+
+    /**
+     * Login and store token
+     */
+    async login(api: APIRequestContext, credentials: { email: string; password: string }) {
+        const response = await api.post('/api/auth/login', { data: credentials });
+        if (response.ok()) {
+            const body = await response.json();
+            this.token = body.token;
+        }
+        return response;
+    }
+
+    /**
+     * Get auth headers
+     */
+    getAuthHeaders(): Record<string, string> {
+        return this.token ? { Authorization: `Bearer ${this.token}` } : {};
+    }
+}
+
+/**
+ * Database test helpers
+ */
+export class DBTestHelpers {
+    /**
+     * Clean up test data
+     */
+    async cleanup(tables: string[]) {
+        // This would use your database client to clean up test data
+        // Example:
+        // for (const table of tables) {
+        //   await db.delete(tables[table]).where(...)
+        // }
+    }
+
+    /**
+     * Seed test data
+     */
+    async seed(table: string, data: Record<string, unknown>[]) {
+        // This would use your database client to insert test data
+        // Example:
+        // await db.insert(tables[table]).values(data)
+    }
+}
+
+/**
+ * Export expect for convenience
+ */
+export { expect };
+
+/**
+ * Example E2E test template
+ */
+export const exampleTests = `
+import { test, expect } from './e2e.test';
+
+test.describe('Authentication', () => {
+  test('should allow user registration', async ({ api, cleanup }) => {
+    // Cleanup after test
+    test.afterAll(async () => {
+      await cleanup();
+    });
+
+    const userData = {
+      email: 'e2e-test@example.com',
+      password: 'SecurePassword123!',
+      first_name: 'E2E',
+      last_name: 'Test',
+    };
+
+    const response = await api.post('/api/auth/register', { data: userData });
+    expect(response.ok()).toBeTruthy();
+  });
+
+  test('should reject invalid login', async ({ api }) => {
+    const response = await api.post('/api/auth/login', {
+      data: {
+        email: 'invalid@example.com',
+        password: 'wrongpassword',
+      },
+    });
+    expect(response.status()).toBe(401);
+  });
+});
+
+test.describe('Products', () => {
+  test('should list products', async ({ api }) => {
+    const response = await api.get('/api/products');
+    expect(response.ok()).toBeTruthy();
+    const body = await response.json();
+    expect(body.products).toBeDefined();
+  });
+});
+`;
+
+/**
+ * Test configuration
+ */
+export const testConfig = {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    timeout: 30000,
+    retries: 0,
+    workers: 1,
+};
+
+export default test;

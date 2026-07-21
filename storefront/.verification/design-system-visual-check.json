@@ -1,0 +1,68 @@
+[
+  {
+    "name": "home-desktop",
+    "url": "/",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "accent": "#c4613a",
+    "fontBody": "\"Montserrat\",\"Avenir Next\",Arial,sans-serif",
+    "bodyBg": "rgb(249, 247, 244)",
+    "headerVisible": true,
+    "productCards": 3,
+    "hasOdhvica": true,
+    "errors": [
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    ],
+    "screenshotPath": "E:\\Odhvica projects\\storefront\\.verification\\home-desktop.png"
+  },
+  {
+    "name": "collections-desktop",
+    "url": "/collections",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "accent": "#c4613a",
+    "fontBody": "\"Montserrat\",\"Avenir Next\",Arial,sans-serif",
+    "bodyBg": "rgb(249, 247, 244)",
+    "headerVisible": true,
+    "productCards": 0,
+    "hasOdhvica": true,
+    "errors": [
+      "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    ],
+    "screenshotPath": "E:\\Odhvica projects\\storefront\\.verification\\collections-desktop.png"
+  },
+  {
+    "name": "home-mobile",
+    "url": "/",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "accent": "#c4613a",
+    "fontBody": "\"Montserrat\",\"Avenir Next\",Arial,sans-serif",
+    "bodyBg": "rgb(249, 247, 244)",
+    "headerVisible": true,
+    "productCards": 3,
+    "hasOdhvica": true,
+    "errors": [
+      "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    ],
+    "screenshotPath": "E:\\Odhvica projects\\storefront\\.verification\\home-mobile.png"
+  }
+]

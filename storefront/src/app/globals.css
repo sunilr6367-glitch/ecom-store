@@ -1,0 +1,129 @@
+@layer theme, base, components, utilities;
+@import 'tailwindcss';
+@import '../styles/tokens.css' layer(theme);
+@import '../styles/theme.generated.css' layer(theme);
+
+/* Odhvica storefront design-system compatibility bridges. */
+
+:root {
+  --font-display: var(--ds-font-display);
+
+  --text-display-lg: var(--ds-text-display-lg);
+  --text-display-md: var(--ds-text-display-md);
+  --text-body-lg: var(--ds-text-body-lg);
+  --text-body-xs: var(--ds-text-body-xs);
+
+
+
+  --leading-tight: var(--ds-leading-tight);
+  --leading-relaxed: var(--ds-leading-relaxed);
+
+  --type-heading-weight: var(--ds-type-heading-weight);
+  --type-label-weight: var(--ds-type-label-weight);
+  --type-label-transform: var(--ds-type-label-transform);
+  --type-heading-tracking: var(--ds-type-heading-tracking);
+  --type-label-tracking: var(--ds-type-label-tracking);
+
+  --color-primary: var(--ds-text-primary);
+  --color-secondary: var(--ds-text-secondary);
+  --color-muted: var(--ds-text-muted);
+  --color-disabled: var(--ds-text-disabled);
+  --color-inverse: var(--ds-text-inverse);
+  --color-accent: var(--ds-accent-primary);
+  --color-text-error: var(--ds-danger);
+  --color-text-success: var(--ds-success);
+  --color-text-price: var(--ds-text-price);
+  --color-surface: var(--ds-surface-page);
+  --color-surface-soft: var(--ds-surface-soft);
+  --color-surface-warm: var(--ds-surface-warm);
+  --color-surface-hover: var(--ds-surface-parchment);
+  --color-surface-hover-2: var(--ds-surface-parchment-2);
+  --color-surface-paper: var(--ds-surface-paper);
+  --color-text-price-old: var(--ds-text-price-old);
+  --color-text-sale: var(--ds-danger);
+
+  --prose-width: var(--ds-prose-width);
+  --heading-width: var(--ds-heading-width);
+  --caption-width: var(--ds-caption-width);
+  --content-width: var(--ds-content-width);
+  --narrow-width: var(--ds-narrow-width);
+
+  /* Spacing scale: 4px base unit, 8px primary rhythm */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+  --space-lg: clamp(2.5rem, 5vw, 4rem);
+  --space-xl: clamp(3.5rem, 7vw, 6rem);
+  --space-2xl: clamp(5rem, 9vw, 8rem);
+
+  /* Desktop page rail inspired by ShopMulmul's wide fashion storefront grid. */
+  --kv-desktop-container-max: 1470px;
+  --kv-desktop-container-gutter: 24px;
+  --kv-desktop-container-width: min(
+    calc(100% - (var(--kv-desktop-container-gutter) * 2)),
+    var(--kv-desktop-container-max)
+  );
+
+  /* Odhvica Header Design Tokens (kv-*) */
+  --kv-ink:          var(--ds-text-primary);
+  --kv-ink-2:        var(--ds-text-secondary);
+  --kv-ink-3:        var(--ds-text-muted);
+  --kv-ink-4:        var(--ds-text-disabled);
+  --kv-parchment:    var(--ds-surface-parchment);
+  --kv-parchment-2:  var(--ds-surface-parchment-2);
+  --kv-warm:         var(--ds-surface-warm);
+  --kv-border:       var(--ds-border-strong);
+  --kv-border-dark:  var(--ds-border-dark);
+  --kv-radius-sm:    var(--ds-radius-sm);
+  --kv-radius-md:    var(--ds-radius-md);
+  --kv-radius-lg:    var(--ds-radius-lg);
+  --kv-radius-pill:  var(--ds-radius-pill);
+  --font-ui:         var(--ds-font-ui);
+
+  /* Compatibility-only aliases for legacy CSS bridges. Runtime TSX must not consume
+     --ink, --cream, --line, --soft, or --muted directly. */
+  --terracotta: var(--ds-accent-primary);
+  --terracotta-dark: var(--ds-accent-hover);
+  --terracotta-light: var(--ds-accent-soft);
+  --sage: var(--ds-success);
+  --cream: var(--ds-surface-page);
+  --paper: var(--ds-surface-paper);
+  --ink: var(--ds-text-primary);
+  --muted: var(--ds-text-muted);
+  --line: var(--ds-border-subtle);
+  --soft: var(--ds-surface-soft);
+  --danger: var(--ds-danger);
+  --success: var(--ds-success);
+  --gold: var(--ds-accent-gold);
+  --rating-star: var(--ds-accent-gold);
+  --success-bg: var(--ds-success-bg);
+  --success-text: var(--ds-success-text);
+  --success-dark: var(--ds-success-dark);
+  --online: var(--ds-online);
+  --danger-dot: var(--ds-danger-dot);
+  --shadow: var(--ds-shadow);
+  --radius-xs: var(--ds-radius-xs);
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+
+  --background: var(--ds-surface-parchment);
+  --foreground: var(--ds-text-primary);
+
+  /* RGB channels for rgba() usage */
+  --ink-rgb: var(--ds-ink-rgb);
+  --cream-rgb: var(--ds-cream-rgb);
+  --terracotta-rgb: var(--ds-accent-rgb);
+}

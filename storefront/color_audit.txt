@@ -1,0 +1,74 @@
+## STEP 1 — Current color tokens
+  --ds-text-display-xl: clamp(1.875rem, 3vw, 2.75rem); /* 30px â†’ 44px */
+  --ds-text-display-lg: clamp(1.5rem, 2vw, 1.875rem); /* 24px â†’ 30px */
+  --ds-text-display-md: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px â†’ 24px */
+  --ds-text-display-sm: clamp(1.125rem, 1.2vw, 1.25rem); /* 18px â†’ 20px */
+  --ds-text-body-xl: clamp(1rem, 1vw, 1.125rem); /* 16px â†’ 18px */
+  --ds-text-body-lg: 1rem; /* 16px */
+  --ds-text-body-md: 0.9375rem; /* 15px */
+  --ds-text-body-sm: 0.875rem; /* 14px */
+  --ds-text-body-xs: 0.75rem; /* 12px */
+  --ds-text-count-xs: 0.625rem; /* 10px */
+  --ds-type-product-title-size: var(--ds-text-body-md);
+  --ds-surface-page: var(--ds-surface-paper);
+  --ds-surface-paper: #FFFFFF;
+  --ds-surface-soft: #F7F7F7;
+  --ds-surface-parchment: var(--ds-surface-soft);
+  --ds-surface-parchment-2: var(--ds-border-subtle);
+  --ds-surface-warm: #F5F5F5;
+  --ds-text-primary: #1A1A1A;
+  --ds-text-secondary: #666666;
+  --ds-text-muted: #7f756e;
+  --ds-text-disabled: var(--ds-accent-gold);
+  --ds-text-inverse: var(--ds-surface-paper);
+  --ds-text-price: var(--ds-text-primary);
+  --ds-text-price-old: #888888;
+  --ds-border-subtle: #E5E5E5;
+  --ds-border-strong: #7f756e;
+  --ds-border-dark: #111111;
+  --ds-footer-bg: var(--ds-surface-paper);
+  --ds-footer-text: var(--ds-text-primary);
+  --ds-footer-heading: var(--ds-text-primary);
+  --ds-footer-link: #4D4742;
+  --ds-footer-dim: var(--ds-accent-gold);
+  --ds-footer-border: var(--ds-border-subtle);
+  --ds-footer-highlight: var(--ds-accent-gold);
+  --ds-accent-primary: var(--ds-accent-gold);
+  --ds-accent-hover: #9E8148;
+  --ds-accent-soft: #F5EEDC;
+  --ds-accent-rgb: 184, 155, 94;
+  --ds-accent-gold: #B89B5E;
+  --ds-accent-gold-rgb: 184, 155, 94;
+  --ds-white-rgb: 255, 255, 255;
+  --ds-danger-bg: #fcebeb;
+  --ds-success-bg: #f0fdf4;
+  --ds-success-text: #166534;
+  --ds-success-rgb: 62, 138, 95;
+  --ds-warning-bg: #faeeda;
+  --ds-warning-text: #633806;
+  --ds-warning-rgb: 186, 117, 23;
+  --ds-info-bg: #e6f1fb;
+  --ds-info-text: #124779;
+  --ds-whatsapp-bg: #e1f5ee;
+  --ds-danger-border: color-mix(in srgb, var(--ds-danger) 40%, transparent);
+  --ds-info-border: color-mix(in srgb, var(--ds-info) 40%, transparent);
+  --ds-success-border: color-mix(in srgb, var(--ds-success) 40%, transparent);
+  --ds-warning-border: color-mix(in srgb, var(--ds-warning) 40%, transparent);
+  --ds-swatch-cream: #fdfbf7;
+  --ds-swatch-pink: #f4a6b7;
+  --ds-ink-rgb: 26, 23, 20;
+  --ds-text-primary-rgb: 26, 23, 20;
+  --ds-text-secondary-rgb: 61, 58, 54;
+  --ds-cream-rgb: 255, 255, 255;
+  --ds-surface-page-rgb: 255, 255, 255;
+  --ds-surface-paper-rgb: 255, 255, 255;
+  --ds-surface-soft-rgb: 247, 247, 247;
+  --ds-surface-parchment-rgb: 247, 247, 247;
+  --ds-black-rgb: 0, 0, 0;
+  --ds-shadow: 0 10px 34px rgba(var(--ds-ink-rgb), 0.12);
+
+## STEP 2 — Hardcoded hex colors in ALL CSS files
+
+## STEP 3 — Hardcoded colors in TSX files
+
+## STEP 4 — Tailwind color classes (non-token) in TSX

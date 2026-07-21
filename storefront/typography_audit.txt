@@ -1,0 +1,502 @@
+## STEP 1 — Current font tokens
+  --ds-font-display: 'Amiri', 'Cardo', serif;
+  --ds-font-body: 'Cardo', serif;
+  --ds-font-ui: var(--ds-font-body);
+  --ds-font-label: var(--ds-font-ui);
+  --ds-text-display-xl: clamp(1.875rem, 3vw, 2.75rem); /* 30px â†’ 44px */
+  --ds-text-display-lg: clamp(1.5rem, 2vw, 1.875rem); /* 24px â†’ 30px */
+  --ds-text-display-md: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px â†’ 24px */
+  --ds-text-display-sm: clamp(1.125rem, 1.2vw, 1.25rem); /* 18px â†’ 20px */
+  --ds-text-body-xl: clamp(1rem, 1vw, 1.125rem); /* 16px â†’ 18px */
+  --ds-text-body-lg: 1rem; /* 16px */
+  --ds-text-body-md: 0.9375rem; /* 15px */
+  --ds-text-body-sm: 0.875rem; /* 14px */
+  --ds-text-body-xs: 0.75rem; /* 12px */
+  --ds-leading-tight: 1.2;
+  --ds-leading-snug: 1.375;
+  --ds-leading-normal: 1.5;
+  --ds-leading-relaxed: 1.625;
+  --ds-tracking-tight: 0em;
+  --ds-tracking-normal: 0em;
+  --ds-tracking-wide: 0.015em;
+  --ds-tracking-wider: 0.025em;
+  --ds-type-body-font: var(--ds-font-body);
+  --ds-type-heading-font: var(--ds-font-display);
+  --ds-type-ui-font: var(--ds-font-ui);
+  --ds-type-label-font: var(--ds-font-label);
+  --ds-type-body-weight: var(--ds-weight-regular);
+  --ds-type-light-weight: var(--ds-weight-light);
+  --ds-type-heading-weight: var(--ds-weight-regular);
+  --ds-type-subheading-weight: var(--ds-weight-regular);
+  --ds-type-ui-weight: var(--ds-weight-medium);
+  --ds-type-label-weight: var(--ds-weight-medium);
+  --ds-type-strong-weight: var(--ds-weight-semibold);
+  --ds-type-heading-transform: none;
+  --ds-type-label-transform: none;
+  --ds-type-button-transform: none;
+  --ds-type-heading-tracking: var(--ds-tracking-normal);
+  --ds-type-body-tracking: var(--ds-tracking-normal);
+  --ds-type-label-tracking: var(--ds-tracking-wide);
+  --ds-type-button-tracking: var(--ds-tracking-wide);
+  --ds-type-product-title-font: var(--ds-font-body);
+  --ds-type-product-title-size: var(--ds-text-body-md);
+  --ds-type-product-title-weight: var(--ds-weight-medium);
+  --ds-type-product-meta-tracking: 0.05em;
+  --ds-type-product-meta-transform: uppercase;
+
+## STEP 2 — Font loading check
+import type { Metadata } from 'next';
+
+import './globals.css';
+import '../styles/storefront.css';
+import { Analytics } from '@/components/Analytics';
+import { MainLayout } from '@/components/layout/MainLayout';
+import { RootErrorBoundary } from '@/components/RootErrorBoundary';
+import { AuthProvider } from '@/context/auth-context';
+import { CartProvider } from '@/context/cart-context';
+import { CurrencyProvider } from '@/context/currency-context';
+import { NotificationProvider } from '@/context/notification-context';
+import { RecentlyViewedProvider } from '@/context/recently-viewed-context';
+import { ShopProvider } from '@/context/shop-context';
+import { WholesaleCartProvider } from '@/context/wholesale-cart-context';
+import { WholesaleProvider } from '@/context/wholesale-context';
+import { WishlistProvider } from '@/context/wishlist-context';
+import { LogRocketProvider } from '@/components/LogRocketProvider';
+import {
+  buildOrganizationJsonLd,
+  buildWebsiteJsonLd,
+  DEFAULT_OG_IMAGE,
+  serializeJsonLd,
+  SITE_NAME,
+  SITE_URL,
+} from '@/lib/seo';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: `Indian Ethnic Wear | ${SITE_NAME}`,
+  description:
+    'Shop handcrafted kurtis, shawls, sarees, wraps and artisanal ethnic wear for women at Kvastram.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `Indian Ethnic Wear | ${SITE_NAME}`,
+    description:
+      'Shop handcrafted kurtis, shawls, sarees, wraps and artisanal ethnic wear for women at Kvastram.',
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        alt: `${SITE_NAME} handcrafted Indian ethnic wear`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Indian Ethnic Wear | ${SITE_NAME}`,
+    description:
+      'Shop handcrafted kurtis, shawls, sarees, wraps and artisanal ethnic wear for women at Kvastram.',
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const csrfToken = await import('@/lib/csrf').then((module) =>
+    module.CsrfManager.getServerToken()
+  );
+  const globalSchema = [buildOrganizationJsonLd(), buildWebsiteJsonLd()];
+
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}
+        />
+        <link rel="preconnect" href={SITE_URL} />
+        {csrfToken && <meta name="csrf-token" content={csrfToken} />}
+        <link
+          rel="preconnect"
+          href="https://res.cloudinary.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+
+      </head>
+      <body className="font-body antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(globalSchema) }}
+        />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--ds-text-primary)] focus:px-4 focus:py-2 focus:text-body-sm focus:text-[var(--ds-text-inverse)]"
+        >
+          Skip to main content
+        </a>
+
+        <RootErrorBoundary>
+          <NotificationProvider>
+            <ShopProvider>
+              <CurrencyProvider>
+                <AuthProvider>
+                  <LogRocketProvider>
+                    <CartProvider>
+                      <WholesaleCartProvider>
+                        <WishlistProvider>
+                          <RecentlyViewedProvider>
+                            <WholesaleProvider>
+                              <MainLayout>{children}</MainLayout>
+                            </WholesaleProvider>
+                          </RecentlyViewedProvider>
+                        </WishlistProvider>
+                      </WholesaleCartProvider>
+                    </CartProvider>
+                  </LogRocketProvider>
+                </AuthProvider>
+              </CurrencyProvider>
+            </ShopProvider>
+          </NotificationProvider>
+        </RootErrorBoundary>
+        <Analytics />
+      </body>
+    </html>
+  );
+}
+
+## STEP 3 — Heading usage across pages
+=== page.tsx (7 headings) ===
+  <h1 className="mx-auto mt-4 max-w-3xl font-display text-display-xl type-medium leading-token-tight tracking-token-tight text-[var(--ds-text-primary)]">
+  <h2 className="mt-4 font-display text-display-xl type-medium leading-token-tight tracking-token-tight text-[var(--ds-text-primary)]">
+  <h2 className="mt-4 font-display text-display-xl type-medium leading-token-tight tracking-token-tight text-[var(--ds-text-primary)]">
+  <h3 className="mt-3 text-body-lg type-semibold text-[var(--ds-text-primary)]">{item.title}</h3>
+  <h2 className="mt-4 font-display text-display-xl type-medium leading-token-tight tracking-token-tight text-[var(--ds-text-primary)]">
+=== page.tsx (3 headings) ===
+  <h1 className="account-page-title mb-2">Addresses</h1>
+  <h2 className="account-section-title mb-2">
+  <h3 className="account-section-title mb-2">No saved addresses</h3>
+=== page.tsx (1 headings) ===
+  <h1 className="account-page-title mt-2">{inquiry?.product_title || 'Studio Chat'}</h1>
+=== page.tsx (2 headings) ===
+  <h1 className="account-page-title mt-2">Messages</h1>
+  <h2 className="account-name">{message.product_title}</h2>
+=== page.tsx (1 headings) ===
+  <h1 className="font-display text-heading-lg text-[var(--ds-text-primary)]">
+=== page.tsx (1 headings) ===
+  <h1 className="account-detail-title mb-1">
+=== page.tsx (1 headings) ===
+  <h1 className="account-page-title mb-8">My Orders</h1>
+=== page.tsx (1 headings) ===
+  <h1 className="account-detail-title mb-6">
+=== page.tsx (2 headings) ===
+  <h1 className="account-detail-title mb-8">
+  <h2 className="account-kicker flex items-center gap-2">
+=== page.tsx (3 headings) ===
+  <h1 className="account-mobile-title">Profile</h1>
+  <h1 className="account-page-title mb-8">
+  <h2 className="account-section-title">
+=== page.tsx (2 headings) ===
+  <h1 className="collection-detail-title">{artisan.name}</h1>
+  <h2 className="collection-section-title">Pieces by this artisan</h2>
+=== page.tsx (1 headings) ===
+  <h1 className="collection-detail-title">Artisans</h1>
+=== page.tsx (2 headings) ===
+  <h1 className="font-display text-display-xl type-regular leading-token-tight tracking-token-tight text-[var(--ds-text-inverse)]">
+  <h2 className="mt-3 font-display text-display-sm type-medium leading-token-tight text-[var(--ds-text-primary)]">
+=== page.tsx (2 headings) ===
+  <h1 className="text-display-xl font-display color-ink mb-3">
+  <h1 className="text-display-lg font-display color-ink">Shopping Cart</h1>
+=== page.tsx (3 headings) ===
+  <h1 className="text-display-xl md:text-display-xl font-display text-[var(--ds-text-primary)] mb-4">
+  <h2 className="text-display-sm font-display text-[var(--ds-text-primary)] mb-8 text-center">
+  <h3 className="font-display text-[var(--ds-text-primary)] mb-2">{title}</h3>
+=== page.tsx (10 headings) ===
+  <h4 className="text-body-sm type-bold  tracking-token-wider color-muted mb-4">
+  <h1 className="text-display-lg font-display mb-4 color-ink">
+  <h1 className="text-display-xl font-display mb-3 color-ink">Thank You!</h1>
+  <h2 className="text-display-lg font-display color-ink mb-2">
+  <h3 className="text-body-xl font-display color-ink mb-6 border-b border-[var(--soft)] pb-2">
+=== page.tsx (1 headings) ===
+  <h2 className="collection-section-title mb-6">Related collections</h2>
+=== page.tsx (5 headings) ===
+  <h2 className="collection-card-title">
+  <h1 className="mt-4 font-display text-display-lg type-regular leading-token-tight text-[var(--ds-text-primary)] md:text-display-xl">
+  <h1 className="collection-hero-title mt-4">
+  <h1 className="mt-4 font-display text-display-lg type-regular leading-token-tight text-[var(--ds-text-primary)] md:text-display-xl">
+  <h2 className="collection-feature-title">
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-md type-bold mb-6">Cookie & Privacy Settings</h1>
+=== page.tsx (2 headings) ===
+  <h1 className="mt-4 font-display text-display-xl text-[var(--ds-text-primary)]">
+  <h2 className="mt-12 text-display-sm font-display">{title}</h2>
+=== page.tsx (3 headings) ===
+  <h3>Shipping Policy</h3>
+  <h3>Returns Help</h3>
+  <h3>Payment Help</h3>
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-lg font-display text-[var(--ds-text-primary)]">
+=== GiftCardsClient.tsx (1 headings) ===
+  <h1 className="font-display text-heading-xl text-[var(--ds-text-primary)]">
+=== page.tsx (1 headings) ===
+  <h3>{title}</h3>
+=== page.tsx (1 headings) ===
+  <h1 className="font-display text-display-xl type-semibold  tracking-token-wide md:text-display-xl">
+=== page.tsx (2 headings) ===
+  <h1 className="text-display-xl font-display text-[var(--ds-text-primary)] italic">
+  <h2 className="text-display-md font-display text-[var(--ds-text-primary)] group-hover:text-[var(--ds-text-secondary)] transition-colors">
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-lg font-display text-[var(--ds-text-primary)]">Welcome Back</h1>
+=== page.tsx (2 headings) ===
+  <h2 className="text-display-sm font-display font-[var(--ds-type-heading-weight)] text-[var(--ds-text-primary)]">{title}</h2>
+  <h1 className="mt-3 text-display-md font-display font-[var(--ds-type-heading-weight)] text-[var(--ds-text-primary)]">
+=== page.tsx (2 headings) ===
+  <h2 className="text-display-sm font-display font-[var(--ds-type-heading-weight)] text-[var(--ds-text-primary)]">{title}</h2>
+  <h1 className="mt-3 text-display-md font-display font-[var(--ds-type-heading-weight)] text-[var(--ds-text-primary)]">
+=== page.tsx (1 headings) ===
+  <h2 className="related-products-title">
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-lg font-display text-[var(--ds-text-primary)]">Join Kvastram</h1>
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-lg font-display text-[var(--ds-text-primary)]">Reset Password</h1>
+=== page.tsx (4 headings) ===
+  <h2 className="text-display-sm font-display text-[var(--ds-text-primary)]">
+  <h2 className="text-display-sm font-display text-[var(--ds-text-primary)]">
+  <h3 className="text-body-lg type-semibold text-[var(--ds-text-primary)]">
+  <h3 className="text-body-lg type-semibold text-[var(--ds-text-primary)]">
+=== page.tsx (2 headings) ===
+  <h1 className="font-display text-display-xl type-medium leading-token-tight tracking-token-normal text-[var(--ds-text-primary)]">
+  <h2 className="mb-5 font-display text-display-sm type-semibold text-[var(--ds-text-primary)]">
+=== page.tsx (5 headings) ===
+  <h1 className="search-title mb-4">{hasQuery ? 'Search Results' : 'Search Kvastram'}</h1>
+  <h4 className="search-filter-title mb-4">Price Range</h4>
+  <h2 className="mt-3 text-body-xl font-display text-[var(--ds-text-primary)]">
+  <h2 className="mt-3 text-body-xl font-display text-[var(--ds-text-primary)]">
+  <h2 className="mt-2 text-body-xl font-display text-[var(--ds-text-primary)]">
+=== page.tsx (4 headings) ===
+  <h3>Shipping methods and rates</h3>
+  <h3>Processing</h3>
+  <h3>Duties, taxes, and region rules</h3>
+  <h3>Returns and support</h3>
+=== page.tsx (4 headings) ===
+  <h1 className="mt-3 font-display text-display-xl type-medium leading-token-tight tracking-token-tight text-[var(--ds-text-primary)]">
+  <h3 className="mb-4 font-display text-display-sm text-[var(--ds-text-primary)]">
+  <h3 className="mb-4 font-display text-display-sm text-[var(--ds-text-primary)]">
+  <h3 className="mb-4 font-display text-display-sm text-[var(--ds-text-primary)]">
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-md font-display text-[var(--ds-text-primary)]">
+=== page.tsx (9 headings) ===
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)] mb-4">
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)] mb-4">
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)]">
+  <h3 className="type-bold">Cart Validation Errors</h3>
+  <h2 className="text-body-xl type-bold text-[var(--ds-text-primary)] mb-4 flex items-center">
+=== page.tsx (1 headings) ===
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)]">Wholesale Login</h1>
+=== page.tsx (3 headings) ===
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)] mb-4">
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)] mb-2">
+  <h1 className="text-display-md type-bold text-[var(--ds-text-primary)]">
+=== page.tsx (15 headings) ===
+  <h1 className="text-display-xl md:text-display-xl font-display mb-6 leading-token-tight">
+  <h2 className="text-display-lg font-display text-[var(--ds-text-primary)] mb-4">
+  <h3 className="text-body-xl type-bold text-[var(--ds-text-primary)] mb-3">
+  <h3 className="text-body-xl type-bold text-[var(--ds-text-primary)] mb-3">
+  <h3 className="text-body-xl type-bold text-[var(--ds-text-primary)] mb-3">
+=== page.tsx (2 headings) ===
+  <h1 className="text-display-lg font-display text-[var(--ds-text-primary)] mb-2">
+  <h3 className="font-display text-[var(--ds-text-primary)] group-hover:text-[var(--ds-text-secondary)] transition-colors line-clamp-2">
+=== SettingsList.tsx (1 headings) ===
+  <h2 className="text-body-xs type-bold  tracking-token-wider text-[var(--ds-text-muted)] mb-3">
+=== MiniCart.tsx (1 headings) ===
+  <h3 className="text-body-sm type-medium text-[var(--ds-text-primary)] truncate">
+=== ContentPageSystem.tsx (10 headings) ===
+  <h1>{title}</h1>
+  {title ? <h2>{title}</h2> : null}
+  <h3>{title}</h3>
+  {title ? <h3>{title}</h3> : null}
+  <h2>{title}</h2>
+=== MegaFeatureCard.tsx (1 headings) ===
+  <h3 className="relative z-10 mb-3 font-display text-display-sm italic type-regular leading-token-tight text-[var(--ds-text-inverse)]">
+=== HeroCarousel.tsx (1 headings) ===
+  <h1 className="text-display-xl md:text-display-xl lg:text-display-xl font-display text-[var(--ds-text-inverse)] mb-6 leading-token-tight whitespace-pre-line">
+=== PageHero.tsx (1 headings) ===
+  <h1 className="font-display text-display-xl type-regular tracking-token-tight text-[var(--ds-text-inverse)] leading-token-tight">
+=== ArtisanStrip.tsx (1 headings) ===
+  <h2 className="kv-title">Meet our <em className="italic">artisans</em></h2>
+=== BestSellers.tsx (1 headings) ===
+  <h2 className="text-display-sm font-display font-medium text-[var(--ds-text-primary)]">Best Sellers</h2>
+=== BrandStory.tsx (1 headings) ===
+  <h2 className="m-0 font-display text-display-md font-[var(--ds-type-heading-weight)]">{story.title}</h2>
+=== CircularCategoriesClient.tsx (1 headings) ===
+  <h2 id="homepage-circles-title" className="sr-only">
+=== CollectionSlider.tsx (1 headings) ===
+  <h3 className="text-[var(--ds-text-inverse)] text-[18px] md:text-[22px] font-display font-medium tracking-wide">
+=== CollectionsSection.tsx (1 headings) ===
+  <h2>Stories in cloth</h2>
+=== ConversionHelpSections.tsx (4 headings) ===
+  <h3 className="m-0 text-[var(--ds-text-primary)] font-label text-body-sm font-[var(--type-label-weight)] tracking-[var(--type-label-tracking)]">{title}</h3>
+  <h2 className="kv-title">Unsure about fit or size?</h2>
+  <h2 className="kv-title">Shipping and support, answered quickly</h2>
+  <h3 className="m-0 text-[var(--ds-text-primary)] font-label text-body-sm font-[var(--type-label-weight)] tracking-[var(--type-label-tracking)]">{title}</h3>
+=== CraftPromise.tsx (1 headings) ===
+  <h2 className="kv-title">Handmade, edited, and ready to wear.</h2>
+=== HeroSection.tsx (1 headings) ===
+  <h1 className="max-w-[15ch] m-0 text-[var(--ds-text-inverse)] font-display text-display-xl font-normal">{slide.title}</h1>
+=== HomeMerchandisingSections.tsx (2 headings) ===
+  <h3 className="inline-block max-w-full m-0 px-2 pb-2 border-b-2 border-[rgba(var(--ds-surface-paper-rgb),0.85)] text-[var(--ds-text-inverse)] font-display text-display-sm font-[var(--ds-type-body-weight)] [overflow-wrap:anywhere]">{slot.title}</h3>
+  <h3 className="mt-3 font-display text-display-md leading-token-tight">
+=== InstagramSection.tsx (1 headings) ===
+  <h2>From our circle</h2>
+=== NewArrivals.tsx (1 headings) ===
+  <h2 className="kv-title">New pieces, quietly limited</h2>
+=== NewsletterSection.tsx (1 headings) ===
+  <h2 className="m-0 font-display text-display-lg font-[var(--ds-type-heading-weight)] leading-[var(--ds-leading-tight)] text-[var(--ds-text-inverse)]">{settings.title}</h2>
+=== ShopByNeed.tsx (2 headings) ===
+  <h2 className="kv-title">Shop by moment, mood, or use</h2>
+  <h3>{collection.title}</h3>
+=== ShopTheLook.tsx (1 headings) ===
+  <h3 className="line-clamp-2 font-display text-display-sm leading-[var(--ds-leading-tight)] text-[var(--ds-text-inverse)]">
+=== WatchBuyPreview.tsx (2 headings) ===
+  <h2 className="text-display-sm font-display font-medium text-[var(--ds-text-primary)]">See the craft in motion</h2>
+  <h3 className="text-body-sm type-medium text-[var(--ds-text-primary)] line-clamp-1 group-hover:text-[var(--ds-accent-primary)] transition-colors" title={reel.product.title}>
+=== Footer.tsx (4 headings) ===
+  <h4 className="kf-heading font-body mb-6 text-body-xs type-semibold tracking-token-wide uppercase">
+  <h4 className="kf-heading font-body mb-6 text-body-xs type-semibold tracking-token-wide uppercase">
+  <h4 className="kf-heading font-body mb-6 text-body-xs type-semibold tracking-token-wide uppercase">
+  <h4 className="kf-heading font-body mb-6 text-body-xs type-semibold tracking-token-wide uppercase">
+=== WholesaleFooter.tsx (3 headings) ===
+  <h4 className="text-body-sm type-bold  tracking-token-wider mb-6 text-[var(--ds-accent-gold)]">
+  <h4 className="text-body-sm type-bold  tracking-token-wider mb-6 text-[var(--ds-accent-gold)]">
+  <h4 className="text-body-sm type-bold  tracking-token-wider mb-6 text-[var(--ds-accent-gold)]">
+=== ListingHero.tsx (1 headings) ===
+  <h1 className="mt-3 font-display text-display-lg type-regular leading-token-tight md:text-display-xl">
+=== ProductView.tsx (1 headings) ===
+  <h1 className="pdp-title">{displayTitle}</h1>
+=== RecentlyViewed.tsx (1 headings) ===
+  <h2 className="recently-section-heading mb-6 lg:mb-8">
+=== RecentlyViewedRow.tsx (1 headings) ===
+  <h2 className="recently-section-heading">
+=== Reviews.tsx (4 headings) ===
+  <h2 className="review-heading mb-2">
+  <h3 className="review-form-heading mb-4">Share Your Experience</h3>
+  <h3 className="review-success-title mb-2">Thank you!</h3>
+  <h3 className="review-title inline-block border-b border-transparent pb-1 transition-colors group-hover:border-[var(--ds-border-subtle)]">
+=== SizeGuide.tsx (6 headings) ===
+  <h3 className="size-guide-heading mb-4">
+  <h3 className="size-guide-heading mb-4">
+  <h3 className="size-guide-heading mb-4">
+  <h3 className="size-guide-heading mb-4">
+  <h3 className="size-guide-info-title mb-4">How to Measure</h3>
+=== CatalogClient.tsx (1 headings) ===
+  <h1 className="catalog-page-heading">Products</h1>
+=== CategoryBannerCarousel.tsx (1 headings) ===
+  <h2 className="category-banner-title">
+=== FilterSidebar.tsx (1 headings) ===
+  <h3 className="filter-sidebar-title">Filters</h3>
+=== ProductCard.tsx (2 headings) ===
+  <h3 className="product-name" title={displayTitle}>
+  <h3
+=== ReelsExperience.tsx (3 headings) ===
+  <h1 id="reels-hero-title">{activeHeroCollection.title}</h1>
+  <h1 id="reels-hero-title">Kvastram reels edit</h1>
+  <h2 className="mt-2 kv-title text-display-md">Reels are being curated</h2>
+=== SearchOverlay.tsx (5 headings) ===
+  <h3 className="text-body-xs type-bold text-[var(--ds-text-muted)]  tracking-token-wider">
+  <h3 className="text-body-xs type-bold text-[var(--ds-text-muted)]  tracking-token-wider mb-4 flex items-center gap-2">
+  <h3 className="text-body-xs type-bold text-[var(--ds-text-muted)]  tracking-token-wider mb-3">
+  <h3 className="text-body-xs type-bold text-[var(--ds-text-muted)]  tracking-token-wider mb-3">
+  <h3 className="text-body-xs type-bold text-[var(--ds-text-muted)]  tracking-token-wider mb-6">
+=== ChatWidget.tsx (1 headings) ===
+  <h3 className="type-medium text-body-sm">Customer Support</h3>
+=== Drawer.tsx (1 headings) ===
+  <h2 className="font-display text-display-sm type-semibold leading-token-tight">
+=== EmptyState.tsx (1 headings) ===
+  <h2 className="font-display text-display-sm type-semibold leading-token-tight text-[var(--ds-text-primary)]">
+=== Modal.tsx (1 headings) ===
+  <h2 className="font-display text-display-sm type-semibold leading-token-tight">
+=== Section.tsx (1 headings) ===
+  <h2 className="max-w-heading font-display text-display-md type-semibold leading-token-tight text-[var(--ds-text-primary)]">
+=== BannerCarousel.tsx (2 headings) ===
+  <h1 className="text-display-xl md:text-display-xl font-display tracking-token-tight leading-token-tight drop-shadow-lg">
+  <h1 className="text-display-xl md:text-display-xl font-display tracking-token-tight leading-token-tight drop-shadow-lg">
+=== ErrorBoundary.tsx (1 headings) ===
+  <h2 className="text-display-md font-display text-[var(--ds-text-primary)] mb-4">
+=== ProductGrid.tsx (1 headings) ===
+  <h3 className="spotlight-title mt-2">{spotlightProduct.title}</h3>
+=== TestimonialsCarousel.tsx (1 headings) ===
+  <h2 className="text-display-md md:text-display-xl lg:text-display-xl font-display italic leading-token-tight mb-12 max-w-4xl mx-auto">
+
+## STEP 4 — font-display / font-body class usage
+=== page.tsx (8 hits) ===
+=== page.tsx (1 hits) ===
+=== page.tsx (5 hits) ===
+=== page.tsx (4 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (12 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (2 hits) ===
+=== page.tsx (1 hits) ===
+=== GiftCardsClient.tsx (1 hits) ===
+=== page.tsx (2 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (1 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (1 hits) ===
+=== page.tsx (1 hits) ===
+=== page.tsx (2 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (3 hits) ===
+=== page.tsx (4 hits) ===
+=== page.tsx (1 hits) ===
+=== page.tsx (5 hits) ===
+=== page.tsx (2 hits) ===
+=== layout.tsx (1 hits) ===
+=== MegaFeatureCard.tsx (2 hits) ===
+=== DesktopNav.tsx (1 hits) ===
+=== Logo.tsx (2 hits) ===
+=== HeroCarousel.tsx (1 hits) ===
+=== PageHero.tsx (3 hits) ===
+=== ArtisanStrip.tsx (1 hits) ===
+=== BestSellers.tsx (1 hits) ===
+=== BrandStory.tsx (1 hits) ===
+=== CategoriesGrid.tsx (1 hits) ===
+=== CategoryCarousel.tsx (1 hits) ===
+=== CollectionSlider.tsx (1 hits) ===
+=== CollectionsSection.tsx (1 hits) ===
+=== CraftPromise.tsx (1 hits) ===
+=== HeroSection.tsx (1 hits) ===
+=== HomeMerchandisingSections.tsx (2 hits) ===
+=== HomeTrustBar.tsx (1 hits) ===
+=== NewsletterSection.tsx (1 hits) ===
+=== ShopTheLook.tsx (2 hits) ===
+=== StatsSection.tsx (1 hits) ===
+=== Testimonials.tsx (3 hits) ===
+=== WatchBuyPreview.tsx (2 hits) ===
+=== CartDrawer.tsx (1 hits) ===
+=== Footer.tsx (16 hits) ===
+=== MobileMenu.tsx (3 hits) ===
+=== ListingHero.tsx (1 hits) ===
+=== Button.tsx (3 hits) ===
+=== Drawer.tsx (1 hits) ===
+=== EmptyState.tsx (3 hits) ===
+=== Modal.tsx (1 hits) ===
+=== PriceDisplay.tsx (8 hits) ===
+=== RatingDisplay.tsx (2 hits) ===
+=== Section.tsx (3 hits) ===
+=== StatusBanner.tsx (1 hits) ===
+=== TrustBadge.tsx (1 hits) ===
+=== BannerCarousel.tsx (2 hits) ===
+=== ErrorBoundary.tsx (1 hits) ===
+=== TestimonialsCarousel.tsx (3 hits) ===
+
+## STEP 5 — Raw Tailwind font classes (not using tokens)
+=== page.tsx (1 hits) ===
+  Order ID: <span className="font-mono">{orderId}</span>

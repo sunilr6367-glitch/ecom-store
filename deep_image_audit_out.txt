@@ -1,0 +1,175 @@
+﻿--- STEP 1 ---
+NODE_ENV=production
+
+NEXT_PUBLIC_API_URL=https://api.odhvica.com
+
+# REVALIDATE_SECRET must be set via runtime environment variable (Docker/VPS)
+# Do NOT commit the actual secret value here. Generate with: openssl rand -hex 32
+# REVALIDATE_SECRET=
+
+# Razorpay (India / INR) â€” fill when payment goes live
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_live_YOUR_KEY_ID_HERE
+
+# PayPal (International) â€” fill when payment goes live
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=YOUR_PAYPAL_CLIENT_ID_HERE
+--- STEP 2 ---
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.odhvica.com',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
+    ],
+    formats: ['image/avif', 'image/webp'],
+  },
+  compress: true,
+  poweredByHeader: false,
+  trailingSlash: false,
+  output: process.platform === 'win32' ? undefined : 'standalone',
+  turbopack: {
+    root: process.cwd(),
+  },
+  logging: {
+    fetches: {
+      fullUrl: process.env.NODE_ENV === 'development',
+    },
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
+  async rewrites() {
+    // INTERNAL_API_URL: server-to-server (Docker: http://backend:4000)
+    // NEXT_PUBLIC_API_URL: fallback (public URL for non-Docker / dev)
+    const apiUrl =
+      process.env.INTERNAL_API_URL ||
+      process.env.NEXT_PUBLIC_API_URL ||
+      'http://localhost:4000';
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${apiUrl}/:path*`,
+      },
+      {
+        source: '/uploads/:path*',
+        destination: `${apiUrl}/uploads/:path*`,
+      },
+      {
+        source: '/merchant/:path*',
+        destination: `${apiUrl}/merchant/:path*`,
+      },
+    ];
+  },
+};
+
+
+export default nextConfig;
+--- STEP 3 ---
+--- STEP 4 ---
+=== E:\Kvastram projects\storefront\src\components\ui\OptimizedImage.tsx ===
+'use client';
+
+import Image, { type ImageProps } from 'next/image';
+import { cloudinaryImageLoader, isCloudinaryUrl, optimizeCloudinaryUrl } from '@/lib/media';
+
+interface OptimizedImageProps extends Omit<ImageProps, 'onError' | 'onLoad'> {
+  fallbackSrc?: string;
+}
+
+export default function OptimizedImage({
+  alt,
+  quality = 75,
+  loading,
+  sizes,
+  ...props
+}: OptimizedImageProps) {
+  const originalSrc = typeof props.src === 'string' ? props.src : null;
+  // Auto-convert HEIC/HEIF and optimize format for browser via Cloudinary
+  if (typeof props.src === 'string') {
+    props = {
+      ...props,
+      src: isCloudinaryUrl(props.src) ? props.src : optimizeCloudinaryUrl(props.src),
+    };
+  }
+  // Default loading behavior: lazy unless explicitly priority
+  const resolvedLoading: NonNullable<ImageProps['loading']> =
+    loading ?? (props.priority ? 'eager' : 'lazy');
+
+  // Default sizes for responsive images when not provided
+  const resolvedSizes = sizes ?? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+
+  // If neither width/height nor fill provided, provide sensible defaults
+  const shouldProvideDefaults = !props.fill && props.width === undefined && props.height === undefined;
+  const defaultWidth = 400;
+  const defaultHeight = 400;
+
+  const finalProps: Omit<ImageProps, 'alt'> = {
+    quality,
+    loading: resolvedLoading,
+    sizes: resolvedSizes,
+    ...(originalSrc && isCloudinaryUrl(originalSrc)
+      ? { loader: cloudinaryImageLoader }
+      : {}),
+    ...(shouldProvideDefaults ? { width: defaultWidth, height: defaultHeight } : {}),
+    ...props,
+  };
+
+  return <Image {...finalProps} alt={alt} />;
+}
+--- STEP 5 ---
+--- STEP 6 ---
+
+Line                                                   
+----                                                   
+NEXT_PUBLIC_API_URL=https://api.odhvica.com            
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_live_YOUR_KEY_ID_HERE  
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=YOUR_PAYPAL_CLIENT_ID_HERE
+
+

@@ -1,0 +1,107 @@
+## STEP 7 — Verify
+
+> storefront@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env.production
+- Experiments (use with caution):
+  ┬╖ optimizePackageImports
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 71s
+  Running TypeScript ...
+  Finished TypeScript in 48s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/57) ...
+  Generating static pages using 3 workers (14/57) 
+  Generating static pages using 3 workers (28/57) 
+  Generating static pages using 3 workers (42/57) 
+Γ£ô Generating static pages using 3 workers (57/57) in 5.0s
+  Finalizing page optimization ...
+
+Route (app)                  Revalidate  Expire
+Γöî ╞Æ /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ Γùï /about/block-printing
+Γö£ Γùï /about/kantha
+Γö£ Γùï /about/our-craft
+Γö£ Γùï /account
+Γö£ Γùï /account/addresses
+Γö£ Γùï /account/messages
+Γö£ ╞Æ /account/messages/[id]
+Γö£ Γùï /account/notifications
+Γö£ Γùï /account/orders
+Γö£ ╞Æ /account/orders/[id]
+Γö£ Γùï /account/profile
+Γö£ Γùï /account/wholesale
+Γö£ Γùï /api/exchange-rates              6h      1y
+Γö£ ╞Æ /api/revalidate
+Γö£ Γùï /artisans                        1h      1y
+Γö£ ╞Æ /artisans/[slug]
+Γö£ ╞Æ /bestsellers
+Γö£ Γùï /cart
+Γö£ ╞Æ /categories/[slug]
+Γö£ Γùï /checkout
+Γö£ Γùï /checkout/success
+Γö£ ╞Æ /collections
+Γö£ ╞Æ /collections/[handle]
+Γö£ Γùï /contact
+Γö£ Γùï /cookie-settings
+Γö£ Γùï /edits
+Γö£ Γùï /faq
+Γö£ Γùï /forgot-password
+Γö£ Γùï /gift-cards
+Γö£ ╞Æ /health
+Γö£ Γùï /help
+Γö£ Γùï /journal                         1m      1y
+Γö£ ╞Æ /journal/[slug]
+Γö£ Γùï /login
+Γö£ ╞Æ /pages/[slug]
+Γö£ Γùï /pages/privacy-policy
+Γö£ Γùï /pages/refund-policy
+Γö£ Γùï /pages/shipping-policy
+Γö£ Γùï /pages/shipping-returns
+Γö£ Γùï /pages/terms-of-service
+Γö£ Γùï /payment-help
+Γö£ ╞Æ /products
+Γö£ ╞Æ /products/[handle]
+Γö£ Γùï /reels
+Γö£ Γùï /register
+Γö£ Γùï /reset-password
+Γö£ Γùï /returns
+Γö£ Γùï /robots.txt
+Γö£ Γùï /sale
+Γö£ Γùï /search
+Γö£ Γùï /shipping
+Γö£ ╞Æ /sitemap.xml
+Γö£ Γùï /size-guide
+Γö£ Γùï /stores
+Γö£ Γùï /track
+Γö£ ╞Æ /trending-now
+Γö£ Γùï /verify-email
+Γö£ Γùï /wholesale
+Γö£ Γùï /wholesale/checkout
+Γö£ Γùï /wholesale/login
+Γö£ Γùï /wholesale/set-password
+Γöö Γùï /wishlist
+
+
+╞Æ Proxy (Middleware)
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
+
+
+> storefront@0.1.0 audit:design-system
+> node scripts/design-system-audit.mjs
+
+Design system audit passed: tokens, legacy accent names, and override usage are consistent.
+
+
+> storefront@0.1.0 audit:css-ownership
+> node scripts/css-ownership-audit.mjs
+
+CSS ownership audit passed: 91 existing duplicate selectors are ratcheted.

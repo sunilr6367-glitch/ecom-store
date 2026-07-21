@@ -1,0 +1,384 @@
+{
+  "generatedAt": "2026-07-07T15:03:10.689Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "routes": 8,
+  "viewports": [
+    "mobile-375"
+  ],
+  "totalChecks": 8,
+  "failedChecks": 0,
+  "failures": [],
+  "report": [
+    {
+      "pattern": "/account/messages/[id]",
+      "pageKind": "account",
+      "chromeMode": "store",
+      "testFixture": "/account/messages/demo-thread",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/account/messages/demo-thread",
+          "pageKind": "account",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/account/messages/demo-thread",
+          "finalUrl": "http://127.0.0.1:3000/login?redirect=/account/messages/demo-thread",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/account-messages-demo-thread.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=EIjblQljTIiY_XUA",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=sW2A7HEmFQnSVIMx"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/account/notifications",
+      "pageKind": "account",
+      "chromeMode": "store",
+      "testFixture": "/account/notifications",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/account/notifications",
+          "pageKind": "account",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/account/notifications",
+          "finalUrl": "http://127.0.0.1:3000/login",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/account-notifications.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=XhW_tLk7OL8KyyWc",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=sW2A7HEmFQnSVIMx"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/account/orders",
+      "pageKind": "account",
+      "chromeMode": "store",
+      "testFixture": "/account/orders",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/account/orders",
+          "pageKind": "account",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/account/orders",
+          "finalUrl": "http://127.0.0.1:3000/login",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/account-orders.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=6nIJ__ZNWnGpbtiY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=TKM6TFgacfkVi2Rj"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/account/orders/[id]",
+      "pageKind": "account",
+      "chromeMode": "store",
+      "testFixture": "/account/orders/demo-order",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/account/orders/demo-order",
+          "pageKind": "account",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/account/orders/demo-order",
+          "finalUrl": "http://127.0.0.1:3000/login",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/account-orders-demo-order.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/account/profile",
+      "pageKind": "account",
+      "chromeMode": "store",
+      "testFixture": "/account/profile",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/account/profile",
+          "pageKind": "account",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/account/profile",
+          "finalUrl": "http://127.0.0.1:3000/login",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/account-profile.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=WZgVaFpn6ZZnikbZ"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/account/wholesale",
+      "pageKind": "account",
+      "chromeMode": "store",
+      "testFixture": "/account/wholesale",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/account/wholesale",
+          "pageKind": "account",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/account/wholesale",
+          "finalUrl": "http://127.0.0.1:3000/login",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/account-wholesale.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=NXokVJ-zRAJeC4XV"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/artisans",
+      "pageKind": "editorial",
+      "chromeMode": "store",
+      "testFixture": "/artisans",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/artisans",
+          "pageKind": "editorial",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/artisans",
+          "finalUrl": "http://127.0.0.1:3000/artisans",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/artisans.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/artisans/jaipur-atelier?_rsc=IrshTk_xoYjUd1_K",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=IrshTk_xoYjUd1_K",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=mOwtan-HPmSqN8oZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/artisans/jaipur-atelier?_rsc=mOwtan-HPmSqN8oZ"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/artisans/[slug]",
+      "pageKind": "editorial",
+      "chromeMode": "store",
+      "testFixture": "/artisans/jaipur-atelier",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "mobile-375",
+          "fixture": "/artisans/jaipur-atelier",
+          "pageKind": "editorial",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/artisans/jaipur-atelier",
+          "finalUrl": "http://127.0.0.1:3000/artisans/jaipur-atelier",
+          "ok": true,
+          "screenshot": "screenshots/mobile-375/artisans-jaipur-atelier.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=MvV6LytDTOmEMSPF",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=MvV6LytDTOmEMSPF",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=MvV6LytDTOmEMSPF",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=MvV6LytDTOmEMSPF",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=CK_P_R3AZrYgIofL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=CK_P_R3AZrYgIofL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=CK_P_R3AZrYgIofL",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=CK_P_R3AZrYgIofL"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

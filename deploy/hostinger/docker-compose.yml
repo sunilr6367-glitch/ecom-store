@@ -1,0 +1,140 @@
+name: odhvica
+
+# ---------------------------------------------------------------------------
+# Variable substitution: create deploy/hostinger/.env from .env.example
+# and fill in your actual domain / credentials before running.
+# ---------------------------------------------------------------------------
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    env_file:
+      - ../../.env.hostinger
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+      args:
+        APP_GIT_SHA: ${APP_GIT_SHA:-unknown}
+    restart: unless-stopped
+    env_file:
+      - ../../backend/.env.production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:4000:4000"
+    volumes:
+      - backend_uploads:/app/uploads
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "node -e \"fetch('http://localhost:4000/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))\"",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  storefront:
+    build:
+      context: ../../storefront
+      dockerfile: Dockerfile
+      args:
+        # Baked into client bundle at build time (WebSocket, direct API refs).
+        # Should be your public API URL, e.g. https://api.odhvica.com
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.odhvica.com}
+        NEXT_PUBLIC_RAZORPAY_KEY_ID: ${NEXT_PUBLIC_RAZORPAY_KEY_ID}
+        APP_GIT_SHA: ${APP_GIT_SHA:-unknown}
+    restart: unless-stopped
+    env_file:
+      - ../../storefront/.env.production
+    environment:
+      # Server-side only: Next.js rewrites proxy to this internal Docker URL.
+      - INTERNAL_API_URL=http://backend:4000
+      - HOSTNAME=0.0.0.0
+      - NODE_ENV=production
+      - APP_GIT_SHA=${APP_GIT_SHA:-unknown}
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3000:3000"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "node -e \"fetch('http://127.0.0.1:3000/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))\"",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  admin:
+    build:
+      context: ../../admin
+      dockerfile: Dockerfile
+      args:
+        # Baked into client bundle at build time.
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.odhvica.com}
+        APP_GIT_SHA: ${APP_GIT_SHA:-unknown}
+    restart: unless-stopped
+    env_file:
+      - ../../admin/.env.production
+    environment:
+      # Server-side only: Next.js rewrites proxy to this internal Docker URL.
+      - BACKEND_URL=http://backend:4000
+      - HOSTNAME=0.0.0.0
+      - NODE_ENV=production
+      - APP_GIT_SHA=${APP_GIT_SHA:-unknown}
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3001:3000"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "node -e \"fetch('http://127.0.0.1:3000/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))\"",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  mcp:
+    profiles: ["mcp"]
+    build:
+      context: ../../odhvica-mcp-server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      # Keep MCP runtime secrets outside the git checkout to prevent deploy drift.
+      - /root/odhvica-secrets/mcp.env
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3002:3002"
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:3002/health',{headers:{Authorization:'Bearer '+(process.env.MCP_SECRET_TOKEN||'')}}).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  postgres_data:
+  backend_uploads:

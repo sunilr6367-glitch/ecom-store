@@ -1,0 +1,429 @@
+{
+  "generatedAt": "2026-07-07T15:06:45.659Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "routes": 8,
+  "viewports": [
+    "tablet-768"
+  ],
+  "totalChecks": 8,
+  "failedChecks": 0,
+  "failures": [],
+  "report": [
+    {
+      "pattern": "/payment-help",
+      "pageKind": "help",
+      "chromeMode": "store",
+      "testFixture": "/payment-help",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/payment-help",
+          "pageKind": "help",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/payment-help",
+          "finalUrl": "http://127.0.0.1:3000/payment-help",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/payment-help.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=tZV9104ORS--ku-C",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=tZV9104ORS--ku-C",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=tZV9104ORS--ku-C",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=h-h9K31IX_1t8oV6",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=h-h9K31IX_1t8oV6",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=h-h9K31IX_1t8oV6"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/products",
+      "pageKind": "discovery",
+      "chromeMode": "store",
+      "testFixture": "/products",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/products",
+          "pageKind": "discovery",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/products",
+          "finalUrl": "http://127.0.0.1:3000/products",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/products.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/summer-stole?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?max_price=200000&_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=RfWpbQVJ6hAD6NNn",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/summer-stole?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/travel-set?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?max_price=200000&_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=l9EjB63pqfrb5tUJ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=l9EjB63pqfrb5tUJ"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/products/[handle]",
+      "pageKind": "product",
+      "chromeMode": "store",
+      "testFixture": "/products/kantha-jacket",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/products/kantha-jacket",
+          "pageKind": "product",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/products/kantha-jacket",
+          "finalUrl": "http://127.0.0.1:3000/products/kantha-jacket",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/products-kantha-jacket.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/kantha-jackets?_rsc=CkxQNRvOVikm2R2B",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=CkxQNRvOVikm2R2B",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=iuTyVJOuPtF97px9",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/kantha-jackets?_rsc=iuTyVJOuPtF97px9",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=iuTyVJOuPtF97px9"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/reels",
+      "pageKind": "reels",
+      "chromeMode": "store",
+      "testFixture": "/reels",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [
+        "immersive-reels-surface"
+      ],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/reels",
+          "pageKind": "reels",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/reels",
+          "finalUrl": "http://127.0.0.1:3000/reels",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/reels.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=I_GCDU_QajCeMyF9",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=I_GCDU_QajCeMyF9",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=ay3fFwtYKKx9d4KC",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=ay3fFwtYKKx9d4KC"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/register",
+      "pageKind": "auth",
+      "chromeMode": "store",
+      "testFixture": "/register",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/register",
+          "pageKind": "auth",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/register",
+          "finalUrl": "http://127.0.0.1:3000/register",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/register.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=YHJgCYC7z7ItAmEk",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=YHJgCYC7z7ItAmEk",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=YHJgCYC7z7ItAmEk",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=nqYP1k-cQeRiHB3h",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=nqYP1k-cQeRiHB3h",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=nqYP1k-cQeRiHB3h"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/reset-password",
+      "pageKind": "auth",
+      "chromeMode": "store",
+      "testFixture": "/reset-password",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/reset-password",
+          "pageKind": "auth",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/reset-password",
+          "finalUrl": "http://127.0.0.1:3000/forgot-password",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/reset-password.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=5dk0BnaBCbAA9qLH",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=8szJqCRmgzwYfm7k",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=8szJqCRmgzwYfm7k",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=Ar1uUxX_XzU5_dSI",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=Ar1uUxX_XzU5_dSI",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=Ar1uUxX_XzU5_dSI"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/returns",
+      "pageKind": "help",
+      "chromeMode": "store",
+      "testFixture": "/returns",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/returns",
+          "pageKind": "help",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/returns",
+          "finalUrl": "http://127.0.0.1:3000/returns",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/returns.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=V1ILaCDeYCaIf_t-",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=V1ILaCDeYCaIf_t-",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=V1ILaCDeYCaIf_t-",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=pPZIKf9LuDKQ8ctf",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=pPZIKf9LuDKQ8ctf",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=pPZIKf9LuDKQ8ctf"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/sale",
+      "pageKind": "discovery",
+      "chromeMode": "store",
+      "testFixture": "/sale",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/sale",
+          "pageKind": "discovery",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/sale",
+          "finalUrl": "http://127.0.0.1:3000/sale",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/sale.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=gv0ydSZ0RmqSy2Fr",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=gv0ydSZ0RmqSy2Fr",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=gv0ydSZ0RmqSy2Fr",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?sort=newest&_rsc=gv0ydSZ0RmqSy2Fr",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=gv0ydSZ0RmqSy2Fr",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=eXkpAmbuJBDvGlNY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=eXkpAmbuJBDvGlNY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=eXkpAmbuJBDvGlNY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=eXkpAmbuJBDvGlNY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?sort=newest&_rsc=eXkpAmbuJBDvGlNY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=eXkpAmbuJBDvGlNY",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=eXkpAmbuJBDvGlNY"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

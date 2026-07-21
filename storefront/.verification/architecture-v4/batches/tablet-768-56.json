@@ -1,0 +1,246 @@
+{
+  "generatedAt": "2026-07-07T15:07:16.238Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "routes": 5,
+  "viewports": [
+    "tablet-768"
+  ],
+  "totalChecks": 5,
+  "failedChecks": 0,
+  "failures": [],
+  "report": [
+    {
+      "pattern": "/wishlist",
+      "pageKind": "commerce",
+      "chromeMode": "store",
+      "testFixture": "/wishlist",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/wishlist",
+          "pageKind": "commerce",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/wishlist",
+          "finalUrl": "http://127.0.0.1:3000/wishlist",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/wishlist.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 0,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=OD24FRYwS8xgvpCk",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=OD24FRYwS8xgvpCk",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=OD24FRYwS8xgvpCk",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=bWbWISZN0zKzSQI1",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=bWbWISZN0zKzSQI1",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=bWbWISZN0zKzSQI1"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/wholesale",
+      "pageKind": "wholesale",
+      "chromeMode": "wholesale",
+      "testFixture": "/wholesale",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/wholesale",
+          "pageKind": "wholesale",
+          "chromeMode": "wholesale",
+          "url": "http://127.0.0.1:3000/wholesale",
+          "finalUrl": "http://127.0.0.1:3000/wholesale",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/wholesale.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": false,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=jQ0rxzqTD13_bZ_m",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=NGisvUcx-OrGXyzW"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/wholesale/checkout",
+      "pageKind": "wholesale",
+      "chromeMode": "wholesale",
+      "testFixture": "/wholesale/checkout",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/wholesale/checkout",
+          "pageKind": "wholesale",
+          "chromeMode": "wholesale",
+          "url": "http://127.0.0.1:3000/wholesale/checkout",
+          "finalUrl": "http://127.0.0.1:3000/wholesale/checkout",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/wholesale-checkout.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": false,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=_bxhPRrIjWH6YjJb",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=KvIBoTcGGjo9FGRC"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/wholesale/login",
+      "pageKind": "wholesale",
+      "chromeMode": "wholesale",
+      "testFixture": "/wholesale/login",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/wholesale/login",
+          "pageKind": "wholesale",
+          "chromeMode": "wholesale",
+          "url": "http://127.0.0.1:3000/wholesale/login",
+          "finalUrl": "http://127.0.0.1:3000/wholesale/login",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/wholesale-login.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": false,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=x4tHz2PkPEJ5SoaV",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=qKlaRu7t2ZiLyMGp"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/wholesale/set-password",
+      "pageKind": "wholesale",
+      "chromeMode": "wholesale",
+      "testFixture": "/wholesale/set-password",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-768",
+          "fixture": "/wholesale/set-password",
+          "pageKind": "wholesale",
+          "chromeMode": "wholesale",
+          "url": "http://127.0.0.1:3000/wholesale/set-password",
+          "finalUrl": "http://127.0.0.1:3000/wholesale/set-password",
+          "ok": true,
+          "screenshot": "screenshots/tablet-768/wholesale-set-password.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": false,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=EPU3TTO7vggvKZl5"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

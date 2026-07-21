@@ -1,0 +1,46 @@
+## STEP 1 — Check if text-heading-* tokens exist
+
+tailwind.config.ts:
+        heading: ['var(--ds-font-display)', 'serif'],
+        'display-xl': ['var(--ds-text-display-xl)', { lineHeight: 'var(--ds-leading-tight)', letterSpacing: 'var(--ds-type-heading-tracking)' }],
+        'display-lg': ['var(--ds-text-display-lg)', { lineHeight: 'var(--ds-leading-tight)', letterSpacing: 'var(--ds-type-heading-tracking)' }],
+        'display-md': ['var(--ds-text-display-md)', { lineHeight: 'var(--ds-leading-tight)', letterSpacing: 'var(--ds-type-heading-tracking)' }],
+        'display-sm': ['var(--ds-text-display-sm)', { lineHeight: 'var(--ds-leading-snug)', letterSpacing: 'var(--ds-type-heading-tracking)' }],
+        heading: 'var(--heading-width)',
+
+## STEP 2 — Find all bare heading tags (no className)
+=== page.tsx ===
+  Line 86: <h3>Shipping Policy</h3>
+  Line 92: <h3>Returns Help</h3>
+  Line 98: <h3>Payment Help</h3>
+=== page.tsx ===
+  Line 75: <h3>{title}</h3>
+=== page.tsx ===
+  Line 64: <h3>Shipping methods and rates</h3>
+  Line 71: <h3>Processing</h3>
+  Line 78: <h3>Duties, taxes, and region rules</h3>
+  Line 85: <h3>Returns and support</h3>
+=== ContentPageSystem.tsx ===
+  Line 195: <h1>{title}</h1>
+  Line 256: {title ? <h2>{title}</h2> : null}
+  Line 275: <h3>{title}</h3>
+  Line 305: {title ? <h3>{title}</h3> : null}
+  Line 316: <h2>{title}</h2>
+  Line 390: <h2>{title}</h2>
+  Line 409: <h2>{title}</h2>
+  Line 432: h4: ({ children }) => <h4>{children}</h4>,
+=== CollectionsSection.tsx ===
+  Line 18: <h2>Stories in cloth</h2>
+=== InstagramSection.tsx ===
+  Line 14: <h2>From our circle</h2>
+=== ShopByNeed.tsx ===
+  Line 56: <h3>{collection.title}</h3>
+
+## STEP 6 — text-heading-* usage
+
+Filename            LineNumber Line                                                                                   
+--------            ---------- ----                                                                                   
+page.tsx                   125           <h1 className="font-display text-heading-lg text-[var(--ds-text-primary)]">  
+GiftCardsClient.tsx         90             <h1 className="font-display text-heading-xl text-[var(--ds-text-primary)]">
+
+

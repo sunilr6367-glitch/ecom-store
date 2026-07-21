@@ -1,0 +1,27 @@
+{
+  "name": "odhvica-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "audit:repository": "node scripts/check-repository-state.mjs",
+    "setup:repository": "git config core.hooksPath .githooks",
+    "verify:system": "npx tsx scripts/verify-system.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cd backend && npm install --legacy-peer-deps",
+    "build": "cd backend && npm run build",
+    "start": "cd backend && npm run start"
+  },
+  "keywords": [],
+  "author": "sunil kumar saini",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@reticlehq/core": "^2.0.0",
+    "chalk": "^4.1.2",
+    "tsx": "^4.21.0"
+  },
+  "dependencies": {
+    "chokidar": "^5.0.0"
+  }
+}

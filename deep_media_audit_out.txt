@@ -1,0 +1,114 @@
+﻿--- STEP 1 ---
+=== E:\Kvastram projects\storefront\src\lib\media.ts ===
+const CLOUDINARY_HOSTNAME = 'res.cloudinary.com';
+
+export function isCloudinaryUrl(value: unknown): value is string {
+  if (typeof value !== 'string' || value.trim() === '') {
+    return false;
+  }
+
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && url.hostname === CLOUDINARY_HOSTNAME;
+  } catch {
+    return false;
+  }
+}
+
+export function cloudinaryUrlOrNull(value: unknown): string | null {
+  return isCloudinaryUrl(value) ? value : null;
+}
+
+function forceSeoSafeImageExtension(src: string): string {
+  return src.replace(/\.(heic|heif)(?=$|[?#])/i, '.jpg');
+}
+
+/**
+ * Inject f_auto,q_auto into a Cloudinary URL so the CDN converts HEIC/HEIF
+ * and any other format to the best format the browser supports.
+ * Non-Cloudinary URLs are returned unchanged.
+ */
+export function optimizeCloudinaryUrl(src: string): string {
+  if (!isCloudinaryUrl(src)) return src;
+  const seoSafeSrc = forceSeoSafeImageExtension(src);
+  if (seoSafeSrc.includes('f_auto') || seoSafeSrc.includes('q_auto')) return seoSafeSrc;
+  return seoSafeSrc.replace('/upload/', '/upload/f_auto,q_auto/');
+}
+
+export function cloudinaryImageLoader({
+  src,
+  width,
+}: {
+  src: string;
+  width: number;
+  quality?: number;
+}) {
+  if (!isCloudinaryUrl(src)) return src;
+  const seoSafeSrc = forceSeoSafeImageExtension(src);
+  const transformations = `f_auto,q_auto,w_${width},c_limit`;
+  return seoSafeSrc.replace('/upload/', `/upload/${transformations}/`);
+}
+=== E:\Kvastram projects\storefront\src\lib\__tests__\media.test.ts ===
+import { describe, expect, it } from 'vitest';
+import { cloudinaryImageLoader } from '@/lib/media';
+
+describe('cloudinaryImageLoader', () => {
+  it('adds responsive width, automatic format, and automatic quality', () => {
+    expect(
+      cloudinaryImageLoader({
+        src: 'https://res.cloudinary.com/demo/image/upload/sample.jpg',
+        width: 960,
+        quality: 80,
+      })
+    ).toBe(
+      'https://res.cloudinary.com/demo/image/upload/f_auto,q_auto,w_960,c_limit/sample.jpg'
+    );
+  });
+
+  it('does not rewrite non-Cloudinary sources', () => {
+    expect(
+      cloudinaryImageLoader({ src: '/images/local.jpg', width: 640 })
+    ).toBe('/images/local.jpg');
+  });
+});
+--- STEP 2 ---
+
+Filename        LineNumber Line                                                                                       
+--------        ---------- ----                                                                                       
+media.test.ts            2 import { cloudinaryImageLoader } from '@/lib/media';                                       
+media.test.ts            4 describe('cloudinaryImageLoader', () => {                                                  
+media.test.ts            7       cloudinaryImageLoader({                                                              
+media.test.ts            8         src: 'https://res.cloudinary.com/demo/image/upload/sample.jpg',                    
+media.test.ts           13       'https://res.cloudinary.com/demo/image/upload/f_auto,q_auto,w_960,c_limit/sample.jpg'
+media.test.ts           17   it('does not rewrite non-Cloudinary sources', () => {                                    
+media.test.ts           19       cloudinaryImageLoader({ src: '/images/local.jpg', width: 640 })                      
+api-adapters.ts         19 import { optimizeCloudinaryUrl } from './media';                                           
+api-adapters.ts         26   return (typeof url === 'string' ? optimizeCloudinaryUrl(url) : url) as T;                
+media.ts                 1 const CLOUDINARY_HOSTNAME = 'res.cloudinary.com';                                          
+media.ts                 3 export function isCloudinaryUrl(value: unknown): value is string {                         
+media.ts                10     return url.protocol === 'https:' && url.hostname === CLOUDINARY_HOSTNAME;              
+media.ts                16 export function cloudinaryUrlOrNull(value: unknown): string | null {                       
+media.ts                17   return isCloudinaryUrl(value) ? value : null;                                            
+media.ts                25  * Inject f_auto,q_auto into a Cloudinary URL so the CDN converts HEIC/HEIF                
+media.ts                27  * Non-Cloudinary URLs are returned unchanged.                                             
+media.ts                29 export function optimizeCloudinaryUrl(src: string): string {                               
+media.ts                30   if (!isCloudinaryUrl(src)) return src;                                                   
+media.ts                36 export function cloudinaryImageLoader({                                                    
+media.ts                44   if (!isCloudinaryUrl(src)) return src;                                                   
+seo.ts                 166 export function normalizeCloudinaryDeliveryUrl(pathOrUrl?: string | null): string | null { 
+seo.ts                 169   if (!url.includes('/res.cloudinary.com/')) return url;                                   
+seo.ts                 499     normalizeCloudinaryDeliveryUrl(ogImage || image || DEFAULT_OG_IMAGE) ||                
+seo.ts                 750       ?.map((image) => normalizeCloudinaryDeliveryUrl(image.url))                          
+seo.ts                 752     (product.thumbnail ? [normalizeCloudinaryDeliveryUrl(product.thumbnail)] : []);        
+seo.ts                 914     image: normalizeCloudinaryDeliveryUrl(artisan.image_url),                              
+seo.ts                 988     image: normalizeCloudinaryDeliveryUrl(image),                                          
+seo.ts                1042     image: image ? [normalizeCloudinaryDeliveryUrl(image)] : [],                           
+--- STEP 3 ---
+File not found locally
+--- STEP 4 ---
+                                         printf 'CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}\n' >> d...
+                                         printf 'CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}\n' >> deploy/...
+                                         printf 'CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}\n' >> d...
+                                         printf 'NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAM...
+
+

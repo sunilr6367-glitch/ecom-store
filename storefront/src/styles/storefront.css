@@ -1,0 +1,15 @@
+@import './base.css' layer(base);
+@import './components/category-sections.css' layer(components);
+@import './components/newsletter.css' layer(components);
+@import './animations.css' layer(utilities);
+@import './utilities.css' layer(utilities);
+@import './components/collections.css' layer(components);
+@import './components/reels.css' layer(components);
+@import './components/content-pages.css' layer(components);
+@import './components/pdp-gallery.css' layer(components);
+@import './components/footer-base.css' layer(components);
+@import './components/ugc.css' layer(components);
+@import './components/mobile-sticky-actions.css' layer(components);
+@import './components/footer.css' layer(components);
+@import './typography.css' layer(utilities);
+@import '../design-system/recipes.css' layer(components);

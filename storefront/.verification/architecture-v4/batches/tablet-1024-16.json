@@ -1,0 +1,436 @@
+{
+  "generatedAt": "2026-07-07T15:08:12.243Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "routes": 8,
+  "viewports": [
+    "tablet-1024"
+  ],
+  "totalChecks": 8,
+  "failedChecks": 0,
+  "failures": [],
+  "report": [
+    {
+      "pattern": "/bestsellers",
+      "pageKind": "discovery",
+      "chromeMode": "store",
+      "testFixture": "/bestsellers",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/bestsellers",
+          "pageKind": "discovery",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/bestsellers",
+          "finalUrl": "http://127.0.0.1:3000/bestsellers",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/bestsellers.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Travel%20Set%20%2F%20Indigo%20%2F%20M&_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Reversible%20Artisan%20Coat%20%2F%20Indigo%20%2F%20M&_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Quilted%20Cotton%20Tote%20%2F%20Indigo%20%2F%20M&_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Summer%20Stole%20%2F%20Indigo%20%2F%20M&_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Hand%20Block%20Printed%20Dress%20%2F%20Indigo%20%2F%20M&_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Indigo%20Kantha%20Jacket%20%2F%20Indigo%20%2F%20M&_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=2xDg3qpXU3Getrve",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Reversible%20Artisan%20Coat%20%2F%20Indigo%20%2F%20M&_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Travel%20Set%20%2F%20Indigo%20%2F%20M&_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Summer%20Stole%20%2F%20Indigo%20%2F%20M&_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Hand%20Block%20Printed%20Dress%20%2F%20Indigo%20%2F%20M&_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Indigo%20Kantha%20Jacket%20%2F%20Indigo%20%2F%20M&_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?size=Quilted%20Cotton%20Tote%20%2F%20Indigo%20%2F%20M&_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/bestsellers?_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=hClflR6yDx5XqDSM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=hClflR6yDx5XqDSM"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/cart",
+      "pageKind": "commerce",
+      "chromeMode": "store",
+      "testFixture": "/cart",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/cart",
+          "pageKind": "commerce",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/cart",
+          "finalUrl": "http://127.0.0.1:3000/cart",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/cart.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=z0wyxdPQsgvRMaIZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=z0wyxdPQsgvRMaIZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=z0wyxdPQsgvRMaIZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=z0wyxdPQsgvRMaIZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=z0wyxdPQsgvRMaIZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=z0wyxdPQsgvRMaIZ",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=XtGPxDbe_Mfh2O43",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=XtGPxDbe_Mfh2O43",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=XtGPxDbe_Mfh2O43",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=XtGPxDbe_Mfh2O43",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=XtGPxDbe_Mfh2O43",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=XtGPxDbe_Mfh2O43"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/categories",
+      "pageKind": "redirect",
+      "chromeMode": "store",
+      "testFixture": "/categories",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/categories",
+          "pageKind": "redirect",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/categories",
+          "finalUrl": "http://127.0.0.1:3000/collections",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/categories.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/jaipur-stories?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/travel-edit?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/travel-edit?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/jaipur-stories?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=BvNx5oLkIVJOyl4b"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/categories/[slug]",
+      "pageKind": "redirect",
+      "chromeMode": "store",
+      "testFixture": "/categories/kantha-jackets",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/categories/kantha-jackets",
+          "pageKind": "redirect",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/categories/kantha-jackets",
+          "finalUrl": "http://127.0.0.1:3000/collections/kantha-jackets",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/categories-kantha-jackets.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=ZCJgNOlV2HnUfb4S",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=ZCJgNOlV2HnUfb4S",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=pGR2SBIWq3BirecW",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=pGR2SBIWq3BirecW",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=pGR2SBIWq3BirecW",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=pGR2SBIWq3BirecW",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=pGR2SBIWq3BirecW",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=pGR2SBIWq3BirecW",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=pGR2SBIWq3BirecW"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/checkout",
+      "pageKind": "commerce",
+      "chromeMode": "checkout",
+      "testFixture": "/checkout",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/checkout",
+          "pageKind": "commerce",
+          "chromeMode": "checkout",
+          "url": "http://127.0.0.1:3000/checkout",
+          "finalUrl": "http://127.0.0.1:3000/checkout",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/checkout.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": false,
+            "hasFooter": false,
+            "hasBottomNav": false,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=a9Lu7oUMcKkSuDdI",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=7t6lXWKhwMZi91v-"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/checkout/success",
+      "pageKind": "commerce",
+      "chromeMode": "checkout",
+      "testFixture": "/checkout/success",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/checkout/success",
+          "pageKind": "commerce",
+          "chromeMode": "checkout",
+          "url": "http://127.0.0.1:3000/checkout/success",
+          "finalUrl": "http://127.0.0.1:3000/checkout/success",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/checkout-success.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": false,
+            "hasFooter": false,
+            "hasBottomNav": false,
+            "h1Count": 0,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/collections",
+      "pageKind": "collection",
+      "chromeMode": "store",
+      "testFixture": "/collections",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/collections",
+          "pageKind": "collection",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/collections",
+          "finalUrl": "http://127.0.0.1:3000/collections",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/collections.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/jaipur-stories?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/travel-edit?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=S7AnLAHzIksbVbW5",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/jaipur-stories?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections/travel-edit?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=BvNx5oLkIVJOyl4b",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=BvNx5oLkIVJOyl4b"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "pattern": "/collections/[handle]",
+      "pageKind": "collection",
+      "chromeMode": "store",
+      "testFixture": "/collections/travel-edit",
+      "requiredVisualStates": [
+        "populated",
+        "empty",
+        "loading",
+        "error",
+        "missing-media",
+        "long-copy"
+      ],
+      "approvedExceptions": [],
+      "results": [
+        {
+          "viewport": "tablet-1024",
+          "fixture": "/collections/travel-edit",
+          "pageKind": "collection",
+          "chromeMode": "store",
+          "url": "http://127.0.0.1:3000/collections/travel-edit",
+          "finalUrl": "http://127.0.0.1:3000/collections/travel-edit",
+          "ok": true,
+          "screenshot": "screenshots/tablet-1024/collections-travel-edit.png",
+          "overflow": 0,
+          "dom": {
+            "hasMain": true,
+            "hasHeader": true,
+            "hasFooter": true,
+            "hasBottomNav": true,
+            "h1Count": 1,
+            "bodyFont": "fontCardo, \"fontCardo Fallback\", serif",
+            "firstHeadingFont": "fontAmiri, \"fontAmiri Fallback\", fontCardo, \"fontCardo Fallback\", serif"
+          },
+          "consoleErrors": [],
+          "networkFailures": [],
+          "httpErrors": [],
+          "requestFailures": [
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=4XQaiPHN9y9jvCqM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=4XQaiPHN9y9jvCqM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=4XQaiPHN9y9jvCqM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=4XQaiPHN9y9jvCqM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=4XQaiPHN9y9jvCqM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=4XQaiPHN9y9jvCqM",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/artisan-coat?_rsc=10PFIN20iyg2_4Zd",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/block-print-dress?_rsc=10PFIN20iyg2_4Zd",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/quilted-cotton-tote?_rsc=10PFIN20iyg2_4Zd",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products/kantha-jacket?_rsc=10PFIN20iyg2_4Zd",
+            "net::ERR_ABORTED http://127.0.0.1:3000/collections?_rsc=10PFIN20iyg2_4Zd",
+            "net::ERR_ABORTED http://127.0.0.1:3000/?_rsc=10PFIN20iyg2_4Zd",
+            "net::ERR_ABORTED http://127.0.0.1:3000/products?_rsc=10PFIN20iyg2_4Zd"
+          ],
+          "error": null,
+          "status": 200
+        }
+      ]
+    }
+  ]
+}
