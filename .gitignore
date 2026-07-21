@@ -60,6 +60,10 @@ LPT9
 coverage/
 test-results/
 **/test-results/
+.verification/
+**/.verification/
+playwright-report/
+**/playwright-report/
 
 # Process logs
 *.err
@@ -71,6 +75,10 @@ start-*.out
 *_audit_report_*.md
 *_db_state_report_*.md
 *_design_system_*.md
+audit_output/
+**/audit_output/
+*_output.txt
+*_out.txt
 odhvica-storefront-complete-audit-report.md
 quick_view_audit_report_*.md
 reels_instagram_execution_plan.md
@@ -82,8 +90,10 @@ docs/*-artifacts/
 # Misc
 *.pem
 *.log
+*.tsbuildinfo
 odhvica-platform/
 tmp/
+**/tmp/
 =
 
 # Redesign doc archive (removed from repo)
