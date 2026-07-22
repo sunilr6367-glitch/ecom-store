@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 async function resetAdmin() {
   console.log('🔄 Resetting Admin Password...');
 
-  const email = 'admin@odhvica.com';
+  const email = 'admin@example.com';
   const newPassword = 'admin123';
 
   try {

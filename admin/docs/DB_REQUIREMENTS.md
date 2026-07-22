@@ -1,4 +1,4 @@
-# Database Requirements — Odhvica Admin Panel Upgrade
+# Database Requirements — Store Admin Panel Upgrade
 
 ---
 

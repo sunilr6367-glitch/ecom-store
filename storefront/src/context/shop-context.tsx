@@ -13,6 +13,7 @@ import { api } from '@/lib/api';
 import { storage } from '@/lib/storage';
 import { detectUserCurrency } from '@/lib/currency';
 import { getSelectableRegions, StoreRegion } from '@/lib/regions';
+import { brandConfig } from '@/config/brand';
 
 export type Region = StoreRegion;
 
@@ -50,8 +51,8 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 const defaultSettings: StoreSettings = {
   free_shipping_threshold: 250, // $250 default
-  currency_code: 'USD',
-  store_name: 'Odhvica',
+  currency_code: brandConfig.defaultCurrency,
+  store_name: brandConfig.name,
   tax_rates: [
     { country_code: 'US', rate: 0.08, name: 'Sales Tax' },
     { country_code: 'GB', rate: 0.2, name: 'VAT' },
@@ -106,7 +107,7 @@ export function ShopProvider({ children }: Readonly<{ children: ReactNode }>) {
         }
 
         // Check localStorage safely
-        const stored = storage.get<Region | null>('odhvica_region', null);
+        const stored = storage.get<Region | null>('store_region', null);
         if (stored) {
           const found = regionList.find((r: Region) => r.id === stored.id);
           setCurrentRegion(found || regionList[0] || null);
@@ -129,7 +130,7 @@ export function ShopProvider({ children }: Readonly<{ children: ReactNode }>) {
 
   const setRegion = useCallback((region: Region) => {
     setCurrentRegion(region);
-    storage.set('odhvica_region', region);
+    storage.set('store_region', region);
   }, []);
 
   // Calculate tax using dynamic settings from backend

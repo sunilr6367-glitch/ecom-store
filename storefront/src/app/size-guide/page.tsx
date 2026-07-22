@@ -7,9 +7,9 @@ import {
 import { buildBasicPageMetadata, buildSizeChartJsonLd, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Size Guide | Odhvica',
+  title: 'Size Guide | Store',
   description:
-    'Odhvica size guide for handcrafted clothing, jackets, and accessories with US, UK, EU, and India measurement references.',
+    'Store size guide for handcrafted clothing, jackets, and accessories with US, UK, EU, and India measurement references.',
   path: '/size-guide',
 });
 
@@ -31,7 +31,7 @@ export default function SizeGuidePage() {
       <PageHero
         eyebrow="Fit Reference"
         title="Size Guide"
-        intro="Use these measurements as a starting point for Odhvica clothing and jacket sizing. Handmade pieces can vary slightly by fabric, cut, and quilting."
+        intro="Use these measurements as a starting point for Store clothing and jacket sizing. Handmade pieces can vary slightly by fabric, cut, and quilting."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Size Guide' },

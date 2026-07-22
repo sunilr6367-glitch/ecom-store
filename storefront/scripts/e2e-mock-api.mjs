@@ -29,7 +29,7 @@ function withVariant(url, variant) {
   return `${url}${separator}mock=${encodeURIComponent(variant)}`;
 }
 
-const image = svgDataUri('odhvica-fixture');
+const image = svgDataUri('store-fixture');
 
 function json(response, payload, statusCode = 200) {
   response.statusCode = statusCode;
@@ -45,7 +45,7 @@ function product(id, title, imageVariant = id, overrides = {}) {
     handle,
     description:
       overrides.description ||
-      `${title} is part of the Odhvica local certification fixture catalog.`,
+      `${title} is part of the Store local certification fixture catalog.`,
     status: 'published',
     subtitle: overrides.subtitle || 'Handmade textile edit',
     thumbnail: withVariant(image, `${imageVariant}-thumbnail`),
@@ -152,9 +152,9 @@ const collections = [
     product_count: 4,
     status: 'active',
     type: 'manual',
-    metadata: { description: 'A versatile capsule rooted in Odhvica craft.' },
+    metadata: { description: 'A versatile capsule rooted in Store craft.' },
     seo_title: 'Travel Edit',
-    seo_desc: 'Travel-ready artisanal layers from Odhvica.',
+    seo_desc: 'Travel-ready artisanal layers from Store.',
   },
   {
     id: 'collection-jaipur-stories',
@@ -168,7 +168,7 @@ const collections = [
     type: 'manual',
     metadata: { description: 'Editorial storytelling through crafted apparel.' },
     seo_title: 'Jaipur Stories',
-    seo_desc: 'Explore Jaipur Stories by Odhvica.',
+    seo_desc: 'Explore Jaipur Stories by Store.',
   },
 ];
 
@@ -227,8 +227,8 @@ const post = {
   content:
     'This fixture article keeps editorial layout, hierarchy, and typography stable during V4 certification.',
   seo_title: 'Craft Journal Fixture',
-  seo_description: 'Fixture article for Odhvica Journal route coverage.',
-  seo_keywords: 'craft, odhvica, journal',
+  seo_description: 'Fixture article for Store Journal route coverage.',
+  seo_keywords: 'craft, store, journal',
   published_at: '2026-06-21T00:00:00.000Z',
   updated_at: '2026-06-21T00:00:00.000Z',
 };
@@ -319,19 +319,19 @@ const homepage = {
   brand_story: {
     title: 'Preserving craft, one thread at a time',
     content:
-      'Odhvica connects Jaipur-rooted workmanship with considered modern wardrobes.',
+      'Store connects Jaipur-rooted workmanship with considered modern wardrobes.',
     image_url: withVariant(image, 'brand-story'),
   },
   social: Array.from({ length: 8 }, (_, index) => ({
     id: `social-${index + 1}`,
     image_url: withVariant(image, `social-${index + 1}`),
-    alt_text: `Odhvica community look ${index + 1}`,
+    alt_text: `Store community look ${index + 1}`,
     caption: 'Handmade textiles in everyday life.',
-    destination_url: 'https://instagram.com/odhvica',
+    destination_url: 'https://www.instagram.com/',
     sort_order: index,
   })),
   newsletter: {
-    title: 'Join The Odhvica Circle',
+    title: 'Join The Store Circle',
     subtitle: 'Craft stories, considered launches, and notes from Jaipur.',
   },
 };
@@ -485,7 +485,7 @@ const server = createServer((request, response) => {
     json(response, {
       free_shipping_threshold: 200000,
       currency_code: 'inr',
-      store_name: 'Odhvica',
+      store_name: 'Store',
       tax_rates: [{ country_code: 'IN', rate: 0.18, name: 'GST' }],
       default_tax_rate: 0.18,
     });
@@ -696,7 +696,7 @@ const server = createServer((request, response) => {
     json(response, {
       customer: {
         id: 'customer-fixture',
-        email: 'fixture@odhvica.com',
+        email: 'fixture@example.com',
         first_name: 'Fixture',
         last_name: 'Customer',
         created_at: '2026-06-21T00:00:00.000Z',
@@ -711,7 +711,7 @@ const server = createServer((request, response) => {
         {
           id: 'demo-order',
           display_id: 1001,
-          email: 'fixture@odhvica.com',
+          email: 'fixture@example.com',
           total: 599900,
           subtotal: 559900,
           tax_total: 40000,
@@ -742,7 +742,7 @@ const server = createServer((request, response) => {
       order: {
         id: 'demo-order',
         display_id: 1001,
-        email: 'fixture@odhvica.com',
+        email: 'fixture@example.com',
         total: 599900,
         subtotal: 559900,
         tax_total: 40000,

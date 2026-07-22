@@ -4,11 +4,11 @@ import type { ReactNode } from 'react';
 import { buildNoindexPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildNoindexPageMetadata({
-  title: 'My Account | Odhvica',
+  title: 'My Account | Store',
   description:
-    'Manage orders, saved addresses, messages, and account details for your Odhvica purchases.',
+    'Manage orders, saved addresses, messages, and account details for your Store purchases.',
   path: '/account',
-  keywords: ['Odhvica account', 'order history', 'saved addresses'],
+  keywords: ['Store account', 'order history', 'saved addresses'],
 });
 
 export default function AccountLayout({

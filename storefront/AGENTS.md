@@ -1,8 +1,8 @@
-# Odhvica Storefront — Codex Agent Rules
+# Store Storefront — Codex Agent Rules
 # Auto-loaded by ChatGPT Codex. Read fully before any task.
 
 ## IDENTITY
-You are working on Odhvica — an Indian handcraft e-commerce 
+You are working on the reusable Store storefront — an Indian handcraft e-commerce
 storefront built with Next.js + Tailwind CSS v4 + custom 
 CSS design tokens.
 

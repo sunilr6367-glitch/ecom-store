@@ -18,10 +18,10 @@ function safeString(str: string | undefined | null, fallback = ''): string {
 
 function applyBrand(value: string | undefined): string | undefined {
   return value
-    ?.replaceAll('ODHVICA', brandConfig.name.toUpperCase())
-    .replaceAll('Odhvica', brandConfig.name)
-    .replaceAll('support@odhvica.com', brandConfig.supportEmail)
-    .replaceAll('wholesale@odhvica.com', brandConfig.wholesaleEmail);
+    ?.replaceAll('STORE', brandConfig.name.toUpperCase())
+    .replaceAll('Store', brandConfig.name)
+    .replaceAll('support@example.com', brandConfig.supportEmail)
+    .replaceAll('wholesale@example.com', brandConfig.wholesaleEmail);
 }
 
 // Helper to safely format currency (handles cents vs major units)
@@ -215,7 +215,7 @@ class EmailService {
                     We will notify you once your items have been shipped.
                 </p>
 
-                <p>Best regards,<br>Odhvica Team</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
 
@@ -231,7 +231,7 @@ class EmailService {
                 <h1>Order Update</h1>
                 <p>Your order <strong>#${order.order_number}</strong> has been updated.</p>
                 <p>New Status: <strong>${escapeHtml(statusDisplay)}</strong></p>
-                <p>Best regards,<br>Odhvica Team</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
 
@@ -240,13 +240,13 @@ class EmailService {
 
   async sendInquiryReceived(data: { email: string; contact_name: string }) {
     const subject = 'Wholesale Inquiry Received';
-    const text = `Hi ${data.contact_name},\n\nThank you for your wholesale inquiry. We have received your request and will review it shortly.\n\nBest regards,\nOdhvica Team`;
+    const text = `Hi ${data.contact_name},\n\nThank you for your wholesale inquiry. We have received your request and will review it shortly.\n\nBest regards,\nStore Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333;">
                 <h1>Thank you for your inquiry!</h1>
                 <p>Hi ${safeString(data.contact_name)},</p>
                 <p>We have received your wholesale inquiry and will review it shortly.</p>
-                <p>Best regards,<br>Odhvica Team</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
     return this.sendEmail({ to: data.email, subject, text, html });
@@ -282,14 +282,14 @@ class EmailService {
     discount_tier: string;
   }) {
     const subject = 'Wholesale Inquiry Approved!';
-    const text = `Hi ${data.contact_name},\n\nGreat news! Your wholesale inquiry for ${data.company_name} has been approved.\n\nYou have been assigned discount tier: ${data.discount_tier}\n\nBest regards,\nOdhvica Team`;
+    const text = `Hi ${data.contact_name},\n\nGreat news! Your wholesale inquiry for ${data.company_name} has been approved.\n\nYou have been assigned discount tier: ${data.discount_tier}\n\nBest regards,\nStore Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333;">
                 <h1>Congratulations!</h1>
                 <p>Hi ${safeString(data.contact_name)},</p>
                 <p>Your wholesale inquiry for <strong>${safeString(data.company_name)}</strong> has been approved!</p>
                 <p>Your discount tier: <strong>${safeString(data.discount_tier)}</strong></p>
-                <p>Best regards,<br>Odhvica Team</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
     return this.sendEmail({ to: data.email, subject, text, html });
@@ -308,10 +308,10 @@ class EmailService {
       ? data.discount_tier.charAt(0).toUpperCase() + data.discount_tier.slice(1)
       : 'Standard';
     const subject = `Welcome to ${brandConfig.name} Wholesale - Set Up Your Account`;
-    const text = `Hi ${data.contact_name},\n\nWelcome to Odhvica Wholesale! Your application for ${data.company_name} has been approved.\n\nYour discount tier: ${tierDisplay}\n\nPlease set up your password by clicking the link below:\n\n${setupUrl}\n\nThis link will expire in 7 days.\n\nBest regards,\nOdhvica Team`;
+    const text = `Hi ${data.contact_name},\n\nWelcome to Store Wholesale! Your application for ${data.company_name} has been approved.\n\nYour discount tier: ${tierDisplay}\n\nPlease set up your password by clicking the link below:\n\n${setupUrl}\n\nThis link will expire in 7 days.\n\nBest regards,\nStore Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
-                <h1>Welcome to Odhvica Wholesale!</h1>
+                <h1>Welcome to Store Wholesale!</h1>
                 <p>Hi ${safeString(data.contact_name)},</p>
                 <p>Congratulations! Your wholesale application for <strong>${safeString(data.company_name)}</strong> has been approved.</p>
                 <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
@@ -326,7 +326,7 @@ class EmailService {
                 <p>Or copy this link to your browser:<br>
                 <small>${setupUrl}</small></p>
                 <p style="color: #666; font-size: 12px; margin-top: 30px;">This link will expire in 7 days. If you didn't expect this email, please ignore it.</p>
-                <p>Best regards,<br>Odhvica Team</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
 
@@ -348,14 +348,14 @@ class EmailService {
   }) {
     const subject = 'Wholesale Inquiry Update';
     const adminNotesLine = data.admin_notes ? `Notes: ${data.admin_notes}\n\n` : '';
-    const text = `Hi ${data.contact_name},\n\nThank you for your interest in Odhvica wholesale program. After careful review, we are unable to approve your inquiry for ${data.company_name} at this time.\n\n${adminNotesLine}Best regards,\nOdhvica Team`;
+    const text = `Hi ${data.contact_name},\n\nThank you for your interest in Store wholesale program. After careful review, we are unable to approve your inquiry for ${data.company_name} at this time.\n\n${adminNotesLine}Best regards,\nStore Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333;">
                 <h1>Inquiry Update</h1>
                 <p>Hi ${safeString(data.contact_name)},</p>
                 <p>Thank you for your interest in our wholesale program. After careful review, we are unable to approve your inquiry for <strong>${safeString(data.company_name)}</strong> at this time.</p>
                 ${data.admin_notes ? `<p><strong>Notes:</strong> ${safeString(data.admin_notes)}</p>` : ''}
-                <p>Best regards,<br>Odhvica Team</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
     return this.sendEmail({ to: data.email, subject, text, html });
@@ -368,17 +368,17 @@ class EmailService {
     token: string;
   }) {
     const subject = `Your ${brandConfig.name} Verification Code`;
-    const text = `Hi ${data.first_name},\n\nWelcome to Odhvica! Your verification code is: ${data.token}\n\nThis code will expire in 10 minutes.\n\nBest regards,\nOdhvica Team`;
+    const text = `Hi ${data.first_name},\n\nWelcome to Store! Your verification code is: ${data.token}\n\nThis code will expire in 10 minutes.\n\nBest regards,\nStore Team`;
     const html = `
             <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; text-align: center;">
-                <h1>Welcome to Odhvica!</h1>
+                <h1>Welcome to Store!</h1>
                 <p>Hi ${safeString(data.first_name)},</p>
                 <p>Thank you for creating an account with us. Please use the following 4-digit code to verify your email address:</p>
                 <div style="background-color: #f4f4f4; border-radius: 8px; padding: 20px; margin: 30px auto; width: fit-content;">
                     <span style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #1c1917;">${data.token}</span>
                 </div>
-                <p style="color: #666; font-size: 14px;">This code will expire in 10 minutes. If you didn't create an account with Odhvica, please ignore this email.</p>
-                <p>Best regards,<br>Odhvica Team</p>
+                <p style="color: #666; font-size: 14px;">This code will expire in 10 minutes. If you didn't create an account with Store, please ignore this email.</p>
+                <p>Best regards,<br>Store Team</p>
             </div>
         `;
 
@@ -401,7 +401,7 @@ class EmailService {
   }) {
     const resetUrl = `${this.getStorefrontUrl()}/reset-password?token=${encodeURIComponent(data.token)}`;
     const subject = `Reset Your Password - ${brandConfig.name}`;
-    const text = `Hi ${data.first_name},\n\nYou requested to reset your password.\n\nClick the link below to create a new password:\n${resetUrl}\n\nThis link will expire in 1 hour.\n\nIf you didn't request this, please ignore this email.\n\nBest regards,\nOdhvica Team`;
+    const text = `Hi ${data.first_name},\n\nYou requested to reset your password.\n\nClick the link below to create a new password:\n${resetUrl}\n\nThis link will expire in 1 hour.\n\nIf you didn't request this, please ignore this email.\n\nBest regards,\nStore Team`;
 
     const html = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
@@ -416,7 +416,7 @@ class EmailService {
         <p>Or copy this link:<br><small>${resetUrl}</small></p>
         <p style="color: #666; font-size: 12px; margin-top: 30px;">This link expires in 1 hour.</p>
         <p>If you didn't request this, please ignore this email.</p>
-        <p>Best regards,<br>Odhvica Team</p>
+        <p>Best regards,<br>Store Team</p>
       </div>
     `;
 
@@ -448,12 +448,12 @@ class EmailService {
       ? `<p><strong>Carrier:</strong> ${safeString(data.shipping_carrier)}</p>`
       : '';
 
-    const text = `Your order #${data.order_number} has been shipped!\n\nTracking Number: ${data.tracking_number}${data.shipping_carrier ? `\nCarrier: ${data.shipping_carrier}` : ''}${data.tracking_link ? `\nTrack your order: ${data.tracking_link}` : ''}\n\nBest regards,\nOdhvica Team`;
+    const text = `Your order #${data.order_number} has been shipped!\n\nTracking Number: ${data.tracking_number}${data.shipping_carrier ? `\nCarrier: ${data.shipping_carrier}` : ''}${data.tracking_link ? `\nTrack your order: ${data.tracking_link}` : ''}\n\nBest regards,\nStore Team`;
 
     const html = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
         <div style="background: #1a1614; padding: 24px; text-align: center;">
-          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">ODHVICA</h2>
+          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">STORE</h2>
         </div>
         <div style="padding: 32px 24px;">
           <h1 style="font-size: 24px; color: #1a1614;">Your order is on its way!</h1>
@@ -469,7 +469,7 @@ class EmailService {
             </a>
           </p>` : ''}
           <p style="margin-top: 24px;">You can also view your order status anytime at <a href="${storeUrl}/account" style="color: #007bff;">${storeUrl}/account</a></p>
-          <p>Best regards,<br>Odhvica Team</p>
+          <p>Best regards,<br>Store Team</p>
         </div>
       </div>
     `;
@@ -489,7 +489,7 @@ class EmailService {
     const trackingText = data.tracking_number
       ? `\n\nTracking: ${data.tracking_number}${data.shipping_carrier ? `\nCarrier: ${data.shipping_carrier}` : ''}${data.tracking_link ? `\nTrack here: ${data.tracking_link}` : ''}`
       : '';
-    const text = `${data.message}${trackingText}\n\nBest regards,\nOdhvica Team`;
+    const text = `${data.message}${trackingText}\n\nBest regards,\nStore Team`;
     const trackingHtml = data.tracking_number
       ? `
         <div style="background: #f9f7f5; border-left: 4px solid #1a1614; padding: 16px; margin: 24px 0;">
@@ -502,13 +502,13 @@ class EmailService {
     const html = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; line-height: 1.6;">
         <div style="background: #1a1614; padding: 24px; text-align: center;">
-          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">ODHVICA</h2>
+          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">STORE</h2>
         </div>
         <div style="padding: 32px 24px;">
           <p style="color:#777; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;">Order #${safeString(String(data.order_number))}</p>
           <div>${safeString(data.message).replace(/\n/g, '<br>')}</div>
           ${trackingHtml}
-          <p style="margin-top: 24px;">Best regards,<br>Odhvica Team</p>
+          <p style="margin-top: 24px;">Best regards,<br>Store Team</p>
         </div>
       </div>
     `;
@@ -538,7 +538,7 @@ class EmailService {
     const html = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
         <div style="background: #1a1614; padding: 24px; text-align: center;">
-          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">ODHVICA</h2>
+          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">STORE</h2>
         </div>
         <div style="padding: 32px 24px;">
           <h1 style="font-size: 24px; color: #1a1614;">It's back! 🎉</h1>
@@ -584,14 +584,14 @@ class EmailService {
     const safeProduct = safeString(data.product_title);
     const safeMessage = safeString(data.message);
     const safeUrl = safeString(data.conversation_url);
-    const text = `Hi ${data.customer_name || 'there'},\n\nOdhvica Studio replied to your message about ${data.product_title}:\n\n${data.message}\n\nOpen your conversation here:\n${data.conversation_url}\n\nBest regards,\nOdhvica Studio`;
+    const text = `Hi ${data.customer_name || 'there'},\n\nStore Studio replied to your message about ${data.product_title}:\n\n${data.message}\n\nOpen your conversation here:\n${data.conversation_url}\n\nBest regards,\nStore Studio`;
     const html = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; line-height: 1.6;">
         <div style="background: #1a1614; padding: 24px; text-align: center;">
-          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">ODHVICA</h2>
+          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">STORE</h2>
         </div>
         <div style="padding: 32px 24px;">
-          <h1 style="font-size: 24px; color: #1a1614;">Odhvica Studio replied</h1>
+          <h1 style="font-size: 24px; color: #1a1614;">Store Studio replied</h1>
           <p>Hi ${safeName},</p>
           <p>We replied to your message about <strong>${safeProduct}</strong>.</p>
           <div style="background: #f9f7f5; border-left: 4px solid #1a1614; padding: 16px; margin: 24px 0;">
@@ -630,7 +630,7 @@ class EmailService {
     const html = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
         <div style="background: #1a1614; padding: 24px; text-align: center;">
-          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">ODHVICA</h2>
+          <h2 style="color: #f5c842; margin: 0; font-size: 22px; letter-spacing: 2px;">STORE</h2>
         </div>
         <div style="padding: 40px 32px;">
           <h1 style="font-size: 28px; color: #1a1614; margin-bottom: 16px;">${safeString(data.headline)}</h1>
@@ -646,8 +646,8 @@ class EmailService {
         </div>
         <div style="background: #f5f5f5; padding: 16px; text-align: center;">
           <p style="color: #999; font-size: 11px; margin: 0;">
-            You are receiving this because you subscribed to Odhvica updates.<br>
-            &copy; ${new Date().getFullYear()} Odhvica. All rights reserved.
+            You are receiving this because you subscribed to Store updates.<br>
+            &copy; ${new Date().getFullYear()} Store. All rights reserved.
           </p>
         </div>
       </div>

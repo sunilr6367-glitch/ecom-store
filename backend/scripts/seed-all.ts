@@ -80,8 +80,8 @@ const TAGS = [
 
 // ── 3. Settings ────────────────────────────────────────────────────────────
 const SETTINGS = [
-  { key: 'store_name',                  value: 'Odhvica',                          category: 'general'  },
-  { key: 'store_email',                 value: 'support@odhvica.com',              category: 'general'  },
+  { key: 'store_name',                  value: 'Store',                          category: 'general'  },
+  { key: 'store_email',                 value: 'support@example.com',              category: 'general'  },
   { key: 'store_phone',                 value: '+91 98765 43210',                   category: 'general'  },
   { key: 'store_address',               value: 'Jaipur, Rajasthan, India',          category: 'general'  },
   { key: 'store_currency',              value: 'INR',                               category: 'general'  },
@@ -98,11 +98,11 @@ const SETTINGS = [
   { key: 'announcement_bar_enabled',    value: true,                                category: 'content'  },
   { key: 'hero_title',                  value: 'Handcrafted Indian Fashion',        category: 'content'  },
   { key: 'hero_subtitle',               value: 'Discover the art of traditional Indian textiles', category: 'content' },
-  { key: 'newsletter_title',            value: 'Join the Odhvica Family',          category: 'content'  },
+  { key: 'newsletter_title',            value: 'Join the Store Family',          category: 'content'  },
   { key: 'newsletter_subtitle',         value: 'Subscribe for exclusive deals and new arrivals', category: 'content' },
-  { key: 'seo_title',                   value: 'Odhvica — Handcrafted Indian Fashion', category: 'seo'  },
-  { key: 'seo_description',             value: 'Shop authentic handcrafted Indian clothing, sarees, dupattas and accessories at Odhvica.', category: 'seo' },
-  { key: 'social_instagram',            value: 'https://instagram.com/odhvica',    category: 'social'   },
+  { key: 'seo_title',                   value: 'Store — Handcrafted Indian Fashion', category: 'seo'  },
+  { key: 'seo_description',             value: 'Shop authentic handcrafted Indian clothing, sarees, dupattas and accessories at Store.', category: 'seo' },
+  { key: 'social_instagram',            value: 'https://www.instagram.com/',    category: 'social'   },
   { key: 'social_facebook',             value: '',                                  category: 'social'   },
   { key: 'social_twitter',              value: '',                                  category: 'social'   },
   { key: 'social_youtube',              value: '',                                  category: 'social'   },
@@ -154,7 +154,7 @@ const PAGES = [
 
 // ── Runner ─────────────────────────────────────────────────────────────────
 async function seedAll() {
-  console.log('\n🚀 Odhvica — Full Database Seed');
+  console.log('\n🚀 Store — Full Database Seed');
   console.log('='.repeat(50));
 
   // 1. Regions

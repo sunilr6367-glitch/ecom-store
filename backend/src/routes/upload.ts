@@ -80,7 +80,7 @@ uploadRouter.post('/', async (c) => {
 
     // Determine resource type from mime type
     const isVideo = effectiveMimeType.startsWith('video/');
-    const folder = isVideo ? 'odhvica/products/videos' : 'odhvica/products/images';
+    const folder = isVideo ? 'store/products/videos' : 'store/products/images';
 
     // Upload to Cloudinary
     const result = isVideo
@@ -154,7 +154,7 @@ uploadRouter.post('/order-label', async (c) => {
     }
 
     const result = await uploadRawFileToCloudinary(file, {
-      folder: 'odhvica/orders/labels',
+      folder: 'store/orders/labels',
     });
 
     const buffer = await file.arrayBuffer();
@@ -199,7 +199,7 @@ uploadRouter.post('/from-url', async (c) => {
       );
     }
 
-    const result = await uploadFromUrl(url, { folder: 'odhvica/products/images' });
+    const result = await uploadFromUrl(url, { folder: 'store/products/images' });
 
     return c.json({
       url: result.secureUrl,

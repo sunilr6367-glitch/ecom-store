@@ -16,11 +16,11 @@ import {
 } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Frequently Asked Questions | Odhvica',
+  title: 'Frequently Asked Questions | Store',
   description:
-    'Answers to common Odhvica questions about payments, shipping, returns, order tracking, and customer support.',
+    'Answers to common Store questions about payments, shipping, returns, order tracking, and customer support.',
   path: '/faq',
-  keywords: ['Odhvica FAQ', 'Odhvica shipping', 'Odhvica returns'],
+  keywords: ['Store FAQ', 'Store shipping', 'Store returns'],
 });
 
 export default function FAQPage() {
@@ -52,7 +52,7 @@ export default function FAQPage() {
       <PageHero
         eyebrow="Customer Care"
         title="Frequently Asked Questions"
-        intro="Clear answers for payments, delivery timelines, returns, order tracking, and reaching the Odhvica support team."
+        intro="Clear answers for payments, delivery timelines, returns, order tracking, and reaching the Store support team."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'FAQ' },

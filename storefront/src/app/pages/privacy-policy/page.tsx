@@ -4,11 +4,11 @@ import { StaticPolicyPage } from '@/components/policies/StaticPolicyPage';
 import { buildBasicPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Privacy Policy | Odhvica - How We Use Your Data',
+  title: 'Privacy Policy | Store - How We Use Your Data',
   description:
-    "Odhvica's Privacy Policy explains what data we collect, how we use it, who we share it with, and your rights.",
+    "Store's Privacy Policy explains what data we collect, how we use it, who we share it with, and your rights.",
   path: '/pages/privacy-policy',
-  keywords: ['Odhvica privacy policy', 'Odhvica data policy', 'Odhvica privacy'],
+  keywords: ['Store privacy policy', 'Store data policy', 'Store privacy'],
 });
 
 const content = `## Privacy Policy
@@ -21,15 +21,15 @@ Your privacy matters to us. This policy explains what personal data we collect, 
 
 ### 1. Who We Are
 
-Odhvica operates from Jaipur, Rajasthan, India.  
-Email: support@odhvica.com  
+Store operates from Jaipur, Rajasthan, India.
+Email: support@example.com
 Address: 44C, Vijaypura, Sumel, Jaipur, Rajasthan 302031, India
 
 ---
 
 ### 2. What Data We Collect
 
-When you browse or buy from odhvica.com, we may collect:
+When you browse or buy from store.com, we may collect:
 
 - **Contact information:** name, email address, phone number
 - **Delivery information:** shipping address, pincode, country
@@ -96,7 +96,7 @@ Depending on where you live, you may have the right to:
 - Withdraw marketing consent at any time
 - Request additional information about how your data is used
 
-To exercise any of these rights, email support@odhvica.com with **Privacy Request** in the subject line.
+To exercise any of these rights, email support@example.com with **Privacy Request** in the subject line.
 
 ---
 
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
     <StaticPolicyPage
       title="Privacy Policy"
       path="/pages/privacy-policy"
-      description="Read how Odhvica collects, uses, shares, and protects customer data."
+      description="Read how Store collects, uses, shares, and protects customer data."
       content={content}
     />
   );

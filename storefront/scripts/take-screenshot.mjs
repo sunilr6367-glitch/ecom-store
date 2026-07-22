@@ -8,9 +8,9 @@ import { chromium } from '@playwright/test';
   });
   const page = await context.newPage();
   
-  console.log('Navigating to live site (https://odhvica.com)...');
+  console.log('Navigating to live site (http://localhost:3100)...');
   try {
-    await page.goto('https://odhvica.com', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.goto('http://localhost:3100', { waitUntil: 'domcontentloaded', timeout: 60000 });
   } catch (e) {
     console.log('Navigation took too long, proceeding anyway...', e.message);
   }

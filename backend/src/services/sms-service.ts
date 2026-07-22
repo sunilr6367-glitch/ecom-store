@@ -102,7 +102,7 @@ export class SMSService {
     try {
       const client = twilio(accountSid, authToken);
       let formattedPhone = to.replace(/\D/g, '');
-      // If it doesn't have a country code, prepend it (e.g. US +1 or India +91 depending on store focus, assuming India +91 for Odhvica if length is 10)
+      // If it doesn't have a country code, prepend it (e.g. US +1 or India +91 depending on store focus, assuming India +91 for Store if length is 10)
       if (formattedPhone.length === 10) {
         formattedPhone = `+91${formattedPhone}`;
       } else if (!formattedPhone.startsWith('+')) {

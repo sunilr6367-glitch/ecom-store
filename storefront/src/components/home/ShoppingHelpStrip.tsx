@@ -2,7 +2,7 @@ import { ButtonLink, HomepageContainer } from '@/design-system';
 import { Ruler, HelpCircle, MessageCircle } from 'lucide-react';
 
 function whatsappHref(message: string) {
-  return `https://wa.me/message/odhvica?text=${encodeURIComponent(message)}&utm_source=homepage&utm_medium=cta`;
+  return `https://wa.me/?text=${encodeURIComponent(message)}&utm_source=homepage&utm_medium=cta`;
 }
 
 export function ShoppingHelpStrip() {
@@ -50,7 +50,7 @@ export function ShoppingHelpStrip() {
                 Size Guide <span className="opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0">→</span>
               </ButtonLink>
               <ButtonLink
-                href={whatsappHref('Hi, I need sizing help for a Odhvica product')}
+                href={whatsappHref('Hi, I need sizing help for a Store product')}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="primary"

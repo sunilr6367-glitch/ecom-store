@@ -1,4 +1,4 @@
-# Odhvica Pre-order, Post-order & Admin Panel Audit
+# Store Pre-order, Post-order & Admin Panel Audit
 
 **Audit date:** 17 July 2026  
 **Audited commit:** `891e25ac4c2d299c70ab821d287bc41c6dc3e325` (`origin/main` and local `HEAD`)  
@@ -7,7 +7,7 @@
 
 ## 1. Executive verdict
 
-Odhvica has a **good custom post-order foundation**, but it is **not yet at full Shopify-standard order-management parity**. The normal paid-order path—checkout, payment verification, inventory reservation, order processing, packages, tracking, labels, delivery, return request, provider refund, and restocking—is materially implemented.
+Store has a **good custom post-order foundation**, but it is **not yet at full Shopify-standard order-management parity**. The normal paid-order path—checkout, payment verification, inventory reservation, order processing, packages, tracking, labels, delivery, return request, provider refund, and restocking—is materially implemented.
 
 The **pre-order workflow is not a real pre-order system today**. A database field named `allow_backorder` exists, but it is not exposed in the product admin and the checkout still rejects quantities above current stock. There is no pre-order availability window, expected ship date, allocation, customer consent, pre-order-specific payment policy, messaging, queue, reporting, or delay workflow.
 
@@ -137,7 +137,7 @@ Customers can:
 
 **Evidence:** `product_variants.allow_backorder` exists, but product admin forms only expose inventory quantity. Storefront treats zero stock as unavailable/back-in-stock. Checkout rejects `requested quantity > inventory_quantity` and its transaction update requires inventory to remain non-negative.
 
-**Business impact:** Odhvica cannot truthfully sell “pre-order” items, promise dates, forecast committed demand, or distinguish ready stock from future stock. Enabling the existing backorder flag alone would not solve this.
+**Business impact:** Store cannot truthfully sell “pre-order” items, promise dates, forecast committed demand, or distinguish ready stock from future stock. Enabling the existing backorder flag alone would not solve this.
 
 **Required implementation:**
 

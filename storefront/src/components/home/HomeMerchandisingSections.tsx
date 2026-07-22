@@ -76,7 +76,7 @@ function MerchSlotCard({
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(var(--ds-black-rgb),0.06),rgba(var(--ds-black-rgb),0.54))]" />
           <div className="relative z-10 flex h-full flex-col justify-end">
             <div className="text-body-xs  tracking-token-wider text-inverse/75">
-              {slot.eyebrow || 'Odhvica Edit'}
+              {slot.eyebrow || 'Store Edit'}
             </div>
             <h3 className="mt-[var(--ds-space-xs)] font-display text-display-md leading-token-tight">
               {slot.title}

@@ -22,7 +22,7 @@ const trustItems = [
 
 export function HomeTrustBar() {
   return (
-    <section className="bg-surface-paper border-b border-border-subtle" aria-label="Odhvica shopping promises" data-home-section="3-trust-bar">
+    <section className="bg-surface-paper border-b border-border-subtle" aria-label="Store shopping promises" data-home-section="3-trust-bar">
       <HomepageContainer>
         <div className="grid grid-cols-2 gap-y-4 gap-x-2 py-4 md:grid-cols-4 md:gap-4 divide-x-0 md:divide-x divide-border-subtle md:py-6">
           {trustItems.map((item) => {

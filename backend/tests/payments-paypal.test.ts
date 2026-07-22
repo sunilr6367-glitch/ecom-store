@@ -110,7 +110,7 @@ describe('PayPal payment routes', () => {
     expect(response.status).toBe(200);
     const [, request] = mocks.fetch.mock.calls[1];
     expect(request.headers['PayPal-Request-Id']).toBe(
-      `odhvica-create-${order.id}`
+      `store-create-${order.id}`
     );
     const requestBody = JSON.parse(request.body);
     expect(requestBody.purchase_units[0].amount).toEqual({

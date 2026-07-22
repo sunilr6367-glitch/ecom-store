@@ -56,7 +56,7 @@ export async function uploadImageToCloudinary(
   const cloudName = getRequiredEnv('CLOUDINARY_CLOUD_NAME');
   const apiKey = getRequiredEnv('CLOUDINARY_API_KEY');
   const apiSecret = getRequiredEnv('CLOUDINARY_API_SECRET');
-  const folder = options.folder || 'odhvica/hero-banners';
+  const folder = options.folder || 'store/hero-banners';
   const resourceType = options.resourceType || 'image';
   const timestamp = Math.floor(Date.now() / 1000);
 
@@ -146,7 +146,7 @@ export async function uploadFromUrl(
   const cloudName = getRequiredEnv('CLOUDINARY_CLOUD_NAME');
   const apiKey = getRequiredEnv('CLOUDINARY_API_KEY');
   const apiSecret = getRequiredEnv('CLOUDINARY_API_SECRET');
-  const folder = options.folder || 'odhvica/products/images';
+  const folder = options.folder || 'store/products/images';
   const resourceType = options.resourceType || 'image';
   const timestamp = Math.floor(Date.now() / 1000);
 

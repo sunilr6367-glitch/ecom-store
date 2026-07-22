@@ -1,6 +1,6 @@
-# QA Audit Prompt — Odhvica Admin Panel Post-Execution Verification
+# QA Audit Prompt — Store Admin Panel Post-Execution Verification
 
-You are a senior QA engineer and full-stack developer. The Odhvica admin panel
+You are a senior QA engineer and full-stack developer. The Store admin panel
 upgrade has been marked "execution complete" by the developer. Your job is to
 independently verify, test, and audit everything — trust nothing, verify everything.
 

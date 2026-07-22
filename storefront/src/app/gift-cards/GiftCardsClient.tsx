@@ -85,7 +85,7 @@ export function GiftCardsClient() {
               Gift Cards
             </p>
             <Heading role="page" as="h1">
-              Send a Odhvica gift request
+              Send a Store gift request
             </Heading>
             <p className="max-w-xl text-body-md leading-token-relaxed text-secondary">
               Choose an amount, add recipient details, and our buyer care team will help you complete the gift.
@@ -99,7 +99,7 @@ export function GiftCardsClient() {
               The buyer care team confirms availability, payment, and delivery.
             </div>
             <div className="border border-border-subtle bg-surface-paper p-4">
-              The recipient can redeem against eligible Odhvica pieces.
+              The recipient can redeem against eligible Store pieces.
             </div>
           </div>
         </section>

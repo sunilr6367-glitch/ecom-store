@@ -67,7 +67,7 @@ export default function HeroCarousel({ banners }: HeroCarouselProps) {
               <div className="w-full md:w-1/2 h-1/2 md:h-full bg-footer-bg flex items-center justify-center p-8 md:p-16 lg:p-24 z-10">
                 <div className="max-w-xl w-full animate-fade-in-up">
                   <span className="text-accent-gold text-body-xs md:text-body-sm font-bold tracking-token-wider  mb-4 md:mb-6 block">
-                    Odhvica Collection
+                    Store Collection
                   </span>
 
                   <h1 className="text-display-xl md:text-display-xl lg:text-display-xl font-display text-inverse mb-6 leading-token-tight whitespace-pre-line">

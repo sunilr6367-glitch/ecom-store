@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'api.odhvica.com',
+        hostname: 'api.example.com',
         pathname: '/uploads/**',
       },
       {

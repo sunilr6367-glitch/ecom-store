@@ -27,7 +27,7 @@ app.post('/generate', verifyAuth, async (c) => {
     const otpauth = speakeasy.otpauthURL({ 
       secret, 
       label: user.email, 
-      issuer: 'Odhvica Admin', 
+      issuer: 'Store Admin',
       encoding: 'base32' 
     });
 

@@ -30,7 +30,7 @@ export function NewsletterSection({
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Unable to subscribe');
       setStatus('success');
-      setMessage(data.message || 'Welcome to the Odhvica Circle.');
+      setMessage(data.message || 'Welcome to the Store Circle.');
       setEmail('');
     } catch (error) {
       setStatus('error');

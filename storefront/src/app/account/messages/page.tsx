@@ -82,7 +82,7 @@ export default function AccountMessagesPage() {
               Account
             </Link>
             <Heading role="page" className="account-page-title mt-2">Messages</Heading>
-            <p className="account-muted mt-2">Your product conversations with Odhvica Studio.</p>
+            <p className="account-muted mt-2">Your product conversations with Store Studio.</p>
             <StatusBanner
               tone={live.isConnected ? 'success' : 'info'}
               className="mt-4 max-w-sm px-3 py-2 text-body-xs"

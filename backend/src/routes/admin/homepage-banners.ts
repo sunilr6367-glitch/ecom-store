@@ -107,7 +107,7 @@ app.post('/', async (c) => {
     }
 
     const upload = await uploadImageToCloudinary(imageFile, {
-      folder: 'odhvica/homepage-banners',
+      folder: 'store/homepage-banners',
     });
 
     const [banner] = await db
@@ -162,7 +162,7 @@ app.put('/:id', async (c) => {
       }
 
       const upload = await uploadImageToCloudinary(imageFile, {
-        folder: 'odhvica/homepage-banners',
+        folder: 'store/homepage-banners',
       });
       imageUrl = upload.secureUrl;
     }

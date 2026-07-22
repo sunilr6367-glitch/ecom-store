@@ -156,7 +156,7 @@ export function ProductCard({
       />
 
       <div className="p-[var(--ds-space-xs)]">
-        <p className="text-muted font-label text-body-xs font-[var(--ds-type-label-weight)] tracking-[var(--ds-type-product-meta-tracking)] uppercase italic font-light">{categoryLabel || product.collection?.title || product.subtitle || 'Odhvica'}</p>
+        <p className="text-muted font-label text-body-xs font-[var(--ds-type-label-weight)] tracking-[var(--ds-type-product-meta-tracking)] uppercase italic font-light">{categoryLabel || product.collection?.title || product.subtitle || 'Store'}</p>
         <Link href={href}>
           <h3 className="mt-[3px] mx-0 mb-[var(--ds-space-xs)] font-[var(--ds-type-product-title-font)] text-type-product-title-size font-[var(--ds-type-product-title-weight)] leading-snug tracking-normal text-primary max-w-[var(--ds-caption-width)] min-h-[2.5em] overflow-hidden line-clamp-2" title={displayTitle}>
             {displayTitle}

@@ -10,7 +10,7 @@ export function ComponentLab() {
   return (
     <>
       <PageContainer>
-        <PageHeader eyebrow="Development only" title="Odhvica component lab" description="Certified variants, interaction states, wrapping, and resilience fixtures." />
+        <PageHeader eyebrow="Development only" title="Store component lab" description="Certified variants, interaction states, wrapping, and resilience fixtures." />
         <Stack className="pb-[var(--ds-space-3xl)]">
           <Section><Heading role="section">Typography and controls</Heading><Text className="mt-[var(--ds-space-xs)]">Long content fixture verifies Cardo wrapping without inventing route-local measures or display sizes.</Text><Cluster className="mt-[var(--ds-space-md)]"><Button>Primary</Button><Button variant="secondary">Secondary</Button><Button variant="outline">Outline</Button><Button disabled>Disabled</Button><IconButton aria-label="Wishlist"><Heart aria-hidden size={18} /></IconButton></Cluster></Section>
           <Section><Heading role="section">Forms and feedback</Heading><Stack className="mt-[var(--ds-space-md)] max-w-[var(--ds-narrow-width)]"><Input label="Email" placeholder="name@example.com" /><Input label="Invalid field" error="A recoverable validation message." /><Textarea aria-label="Editorial note" placeholder="Long CMS copy fixture" /><StatusBanner tone="success">Success state remains readable and semantic.</StatusBanner><StatusBanner tone="danger">Recoverable error state remains actionable.</StatusBanner></Stack></Section>

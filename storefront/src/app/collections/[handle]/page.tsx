@@ -115,7 +115,7 @@ async function resolveLanding(handle: string): Promise<LandingData | null> {
       title,
       description:
         category.description ||
-        `Shop ${title} at Odhvica, handmade in Jaipur with artisan craft and thoughtful finishing.`,
+        `Shop ${title} at Store, handmade in Jaipur with artisan craft and thoughtful finishing.`,
       image: category.header_image_url || category.image,
       is_active: category.is_active !== false,
       seo_title: category.seo_title,
@@ -254,7 +254,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     noindex,
     robotsFollow: !robotsPolicy.endsWith('nofollow'),
     canonicalUrl: landing.canonical_url || undefined,
-    ogLocale: getOgLocaleForLocale(requestHeaders.get('x-odhvica-locale')),
+    ogLocale: getOgLocaleForLocale(requestHeaders.get('x-store-locale')),
   });
 }
 

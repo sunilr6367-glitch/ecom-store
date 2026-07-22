@@ -4,10 +4,10 @@ import type { ReactNode } from 'react';
 import { buildNoindexPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildNoindexPageMetadata({
-  title: 'Forgot Password | Odhvica',
-  description: 'Request a password reset link for your Odhvica account.',
+  title: 'Forgot Password | Store',
+  description: 'Request a password reset link for your Store account.',
   path: '/forgot-password',
-  keywords: ['Odhvica forgot password'],
+  keywords: ['Store forgot password'],
 });
 
 export default function ForgotPasswordLayout({

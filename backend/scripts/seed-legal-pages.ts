@@ -8,6 +8,23 @@ import { db } from "../src/db";
 import { pages } from "../src/db/schema";
 import { eq } from "drizzle-orm";
 
+const storeName = process.env.STORE_NAME?.trim();
+const supportEmail = process.env.SUPPORT_EMAIL?.trim();
+
+if (!storeName || !supportEmail) {
+    throw new Error("STORE_NAME and SUPPORT_EMAIL are required before seeding legal pages.");
+}
+
+if (process.env.ALLOW_TEMPLATE_LEGAL_SEED !== "true") {
+    throw new Error(
+        "Legal text requires client approval. Set ALLOW_TEMPLATE_LEGAL_SEED=true only after the client has reviewed it.",
+    );
+}
+
+const applyClientIdentity = (value: string) => value
+    .replaceAll("Store", storeName)
+    .replaceAll("support@example.com", supportEmail);
+
 const legalPages = [
     {
         title: "Privacy Policy",
@@ -17,7 +34,7 @@ const legalPages = [
 <p>Last updated: ${new Date().toISOString().split('T')[0]}</p>
 
 <h2>1. Introduction</h2>
-<p>Welcome to Odhvica. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data and tell you about your privacy rights.</p>
+<p>Welcome to Store. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data and tell you about your privacy rights.</p>
 
 <h2>2. Data We Collect</h2>
 <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together follows:</p>
@@ -54,11 +71,11 @@ const legalPages = [
 </ul>
 
 <h2>6. Contact Us</h2>
-<p>If you have any questions about this privacy policy or our privacy practices, please contact us at support@odhvica.com</p>
+<p>If you have any questions about this privacy policy or our privacy practices, please contact us at support@example.com</p>
 `,
         is_visible: true,
-        seo_title: "Privacy Policy - Odhvica",
-        seo_description: "Learn how Odhvica protects your privacy and handles your personal data.",
+        seo_title: "Privacy Policy - Store",
+        seo_description: "Learn how Store protects your privacy and handles your personal data.",
     },
     {
         title: "Terms of Service",
@@ -68,7 +85,7 @@ const legalPages = [
 <p>Last updated: ${new Date().toISOString().split('T')[0]}</p>
 
 <h2>1. Acceptance of Terms</h2>
-<p>By accessing and using Odhvica's website and services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+<p>By accessing and using Store's website and services, you accept and agree to be bound by the terms and provision of this agreement.</p>
 
 <h2>2. Use of Services</h2>
 <p>You agree to use our services only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the website.</p>
@@ -85,10 +102,10 @@ const legalPages = [
 </ul>
 
 <h2>5. Intellectual Property</h2>
-<p>All content included on this website, such as text, graphics, logos, button icons, images, audio clips, and software, is the property of Odhvica or its content suppliers.</p>
+<p>All content included on this website, such as text, graphics, logos, button icons, images, audio clips, and software, is the property of Store or its content suppliers.</p>
 
 <h2>6. Limitation of Liability</h2>
-<p>Odhvica shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of or inability to use the service.</p>
+<p>Store shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of or inability to use the service.</p>
 
 <h2>7. Changes to Terms</h2>
 <p>We reserve the right to modify or replace these Terms at any time. Your continued use of the service after any changes constitutes acceptance of the new Terms.</p>
@@ -97,11 +114,11 @@ const legalPages = [
 <p>These Terms shall be governed by and construed in accordance with the laws of India.</p>
 
 <h2>9. Contact Information</h2>
-<p>If you have any questions about these Terms, please contact us at support@odhvica.com</p>
+<p>If you have any questions about these Terms, please contact us at support@example.com</p>
 `,
         is_visible: true,
-        seo_title: "Terms of Service - Odhvica",
-        seo_description: "Terms and conditions governing the use of Odhvica's website and services.",
+        seo_title: "Terms of Service - Store",
+        seo_description: "Terms and conditions governing the use of Store's website and services.",
     },
     {
         title: "Refund and Cancellation Policy",
@@ -144,7 +161,7 @@ const legalPages = [
 </ol>
 
 <h2>5. Exchanges</h2>
-<p>We only replace items if they are defective or damaged. If you need to exchange for the same item, contact us at support@odhvica.com</p>
+<p>We only replace items if they are defective or damaged. If you need to exchange for the same item, contact us at support@example.com</p>
 
 <h2>6. Late or Missing Refunds</h2>
 <p>If you haven't received your refund within the stated timeframe:</p>
@@ -162,10 +179,10 @@ const legalPages = [
 </ul>
 
 <h2>8. Contact Us</h2>
-<p>For any questions about our Refund and Cancellation Policy, please contact us at support@odhvica.com</p>
+<p>For any questions about our Refund and Cancellation Policy, please contact us at support@example.com</p>
 `,
         is_visible: true,
-        seo_title: "Refund and Cancellation Policy - Odhvica",
+        seo_title: "Refund and Cancellation Policy - Store",
         seo_description: "Learn about our refund, cancellation, and return policies.",
     },
     {
@@ -222,10 +239,10 @@ const legalPages = [
 </ul>
 
 <h2>9. Contact Us</h2>
-<p>For shipping inquiries, please contact us at support@odhvica.com</p>
+<p>For shipping inquiries, please contact us at support@example.com</p>
 `,
         is_visible: true,
-        seo_title: "Shipping Policy - Odhvica",
+        seo_title: "Shipping Policy - Store",
         seo_description: "Learn about our shipping rates, delivery times, and policies.",
     },
 ];
@@ -235,6 +252,12 @@ async function seedLegalPages() {
 
     for (const page of legalPages) {
         try {
+            const clientPage = {
+                ...page,
+                content: applyClientIdentity(page.content),
+                seo_title: applyClientIdentity(page.seo_title),
+                seo_description: applyClientIdentity(page.seo_description),
+            };
             // Check if page already exists
             const [existing] = await db
                 .select()
@@ -247,18 +270,18 @@ async function seedLegalPages() {
                 await db
                     .update(pages)
                     .set({
-                        title: page.title,
-                        content: page.content,
-                        is_visible: page.is_visible,
-                        seo_title: page.seo_title,
-                        seo_description: page.seo_description,
+                        title: clientPage.title,
+                        content: clientPage.content,
+                        is_visible: clientPage.is_visible,
+                        seo_title: clientPage.seo_title,
+                        seo_description: clientPage.seo_description,
                         updated_at: new Date(),
                     })
                     .where(eq(pages.id, existing.id));
                 console.log(`✅ Updated: ${page.title} (${page.slug})`);
             } else {
                 // Insert new page
-                await db.insert(pages).values(page);
+                await db.insert(pages).values(clientPage);
                 console.log(`✅ Created: ${page.title} (${page.slug})`);
             }
         } catch (error) {

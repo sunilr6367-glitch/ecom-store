@@ -192,7 +192,7 @@ app.post('/', async (c) => {
 
     const heroImageUrl = imageFile
       ? (await uploadImageToCloudinary(imageFile, {
-          folder: 'odhvica/reel-collections',
+          folder: 'store/reel-collections',
         })).secureUrl
       : fields.hero_image_url ?? null;
 
@@ -257,7 +257,7 @@ app.put('/:id', async (c) => {
     let heroImageUrl = existingCollection.hero_image_url;
     if (imageFile) {
       const upload = await uploadImageToCloudinary(imageFile, {
-        folder: 'odhvica/reel-collections',
+        folder: 'store/reel-collections',
       });
       heroImageUrl = upload.secureUrl;
     } else if (fields.hero_image_url !== undefined) {

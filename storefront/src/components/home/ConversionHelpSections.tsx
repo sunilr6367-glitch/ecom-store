@@ -3,7 +3,7 @@ import { HelpCircle, MessageCircle, PackageCheck, Ruler, Shirt, Sparkles } from 
 import { ButtonLink, homepageSectionActionClassName } from '@/design-system';
 
 function whatsappHref(message: string) {
-  return `https://wa.me/message/odhvica?text=${encodeURIComponent(message)}&utm_source=homepage&utm_medium=cta`;
+  return `https://wa.me/?text=${encodeURIComponent(message)}&utm_source=homepage&utm_medium=cta`;
 }
 
 export function WhatsAppHelpStrip() {
@@ -15,7 +15,7 @@ export function WhatsAppHelpStrip() {
           <p className="mt-[var(--ds-space-2xs)] text-muted text-body-sm">Ask before you buy. It is especially useful for jackets, kimonos, bags, and gifts.</p>
         </div>
         <ButtonLink
-          href={whatsappHref('Hi, I need help choosing a Odhvica piece')}
+          href={whatsappHref('Hi, I need help choosing a Store piece')}
           target="_blank"
           rel="noopener noreferrer"
           variant="primary"
@@ -32,7 +32,7 @@ const craftCards = [
   {
     icon: Sparkles,
     title: 'What is Kantha?',
-    copy: 'Understand the layered stitch language behind Odhvica quilted pieces.',
+    copy: 'Understand the layered stitch language behind Store quilted pieces.',
     href: '/about/kantha',
   },
   {
@@ -85,7 +85,7 @@ export function FitScaleHelp() {
             Watch fit reels
           </ButtonLink>
           <ButtonLink
-            href={whatsappHref('Hi, I need sizing help for a Odhvica product')}
+            href={whatsappHref('Hi, I need sizing help for a Store product')}
             target="_blank"
             rel="noopener noreferrer"
             variant="outline"
@@ -106,7 +106,7 @@ const faqItems = [
   {
     icon: PackageCheck,
     title: 'Where do products ship from?',
-    copy: 'Odhvica ships from Jaipur, Rajasthan, India.',
+    copy: 'Store ships from Jaipur, Rajasthan, India.',
   },
   {
     icon: HelpCircle,
@@ -116,7 +116,7 @@ const faqItems = [
   {
     icon: Ruler,
     title: 'Can I exchange?',
-    copy: 'Eligible exchange and return support is handled through the Odhvica returns flow.',
+    copy: 'Eligible exchange and return support is handled through the Store returns flow.',
   },
   {
     icon: MessageCircle,

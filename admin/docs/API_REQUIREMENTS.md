@@ -1,4 +1,4 @@
-# API Requirements — Odhvica Admin Panel Upgrade
+# API Requirements — Store Admin Panel Upgrade
 
 ---
 

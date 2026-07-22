@@ -215,7 +215,7 @@ paypalRouter.post(
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
-          'PayPal-Request-Id': `odhvica-create-${order.id}`,
+          'PayPal-Request-Id': `store-create-${order.id}`,
           Prefer: 'return=representation',
         },
         signal: AbortSignal.timeout(10000),
@@ -328,7 +328,7 @@ paypalRouter.post(
           headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
-            'PayPal-Request-Id': `odhvica-capture-${paypal_order_id}`,
+            'PayPal-Request-Id': `store-capture-${paypal_order_id}`,
             Prefer: 'return=representation',
           },
           body: '{}',

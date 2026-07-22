@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import '../globals.css';
 
 export const metadata: Metadata = {
-  title: 'Odhvica Wholesale | B2B Partnership',
+  title: 'Store Wholesale | B2B Partnership',
   description:
-    'Partner with Odhvica for wholesale and bulk orders. Exclusive pricing for retailers and distributors worldwide.',
+    'Partner with Store for wholesale and bulk orders. Exclusive pricing for retailers and distributors worldwide.',
 };
 
 export default function WholesaleLayout({

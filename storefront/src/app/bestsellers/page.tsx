@@ -27,12 +27,12 @@ export const revalidate = 60;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Bestsellers | Odhvica',
+  title: 'Bestsellers | Store',
   description:
-    'Shop the most loved Odhvica pieces, curated from bestselling products and admin-managed merchandising tags.',
+    'Shop the most loved Store pieces, curated from bestselling products and admin-managed merchandising tags.',
   path: '/bestsellers',
   image: '/images/home/collection-bridal.jpg',
-  keywords: ['bestsellers', 'most loved', 'odhvica bestsellers'],
+  keywords: ['bestsellers', 'most loved', 'store bestsellers'],
 });
 
 function formatStat(value?: string | number | null) {
@@ -182,7 +182,7 @@ export default async function BestsellersPage({
         {heroImage ? (
           <OptimizedImage
             src={heroImage}
-            alt="Odhvica bestseller"
+            alt="Store bestseller"
             fill
             priority
             sizes="100vw"

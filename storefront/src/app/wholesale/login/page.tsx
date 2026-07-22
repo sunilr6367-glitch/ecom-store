@@ -110,7 +110,7 @@ export default function WholesaleLoginPage() {
 
         <div className="mt-6 text-center">
           <p className="text-body-sm text-secondary">
-            New to Odhvica Wholesale?{' '}
+            New to Store Wholesale?{' '}
             <Link
               href="/wholesale"
               className="text-info hover:underline font-medium"

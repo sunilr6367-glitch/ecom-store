@@ -214,7 +214,7 @@ app.post('/', async (c) => {
     let customImageUrl: string | null = null;
     if (imageFile) {
       const upload = await uploadImageToCloudinary(imageFile, {
-        folder: 'odhvica/featured-products',
+        folder: 'store/featured-products',
       });
       customImageUrl = upload.secureUrl;
     }
@@ -275,7 +275,7 @@ app.put('/:id', async (c) => {
     let customImageUrl = existingItem.custom_image_url;
     if (imageFile) {
       const upload = await uploadImageToCloudinary(imageFile, {
-        folder: 'odhvica/featured-products',
+        folder: 'store/featured-products',
       });
       customImageUrl = upload.secureUrl;
     }

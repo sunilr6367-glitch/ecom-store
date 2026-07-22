@@ -109,7 +109,7 @@ app.post('/', async (c) => {
     }
 
     const upload = await uploadImageToCloudinary(imageFile, {
-      folder: 'odhvica/category-circles',
+      folder: 'store/category-circles',
     });
 
     const [circle] = await db
@@ -164,7 +164,7 @@ app.put('/:id', async (c) => {
       }
 
       const upload = await uploadImageToCloudinary(imageFile, {
-        folder: 'odhvica/category-circles',
+        folder: 'store/category-circles',
       });
       imageUrl = upload.secureUrl;
     }

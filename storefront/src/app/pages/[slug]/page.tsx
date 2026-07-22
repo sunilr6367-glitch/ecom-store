@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const title = page.seo_title || page.title;
     const description =
       page.seo_description ||
-      `Explore ${page.title} at Odhvica for customer support, policy details, and brand information.`;
+      `Explore ${page.title} at Store for customer support, policy details, and brand information.`;
 
     return buildBasicPageMetadata({
-      title: `${title} | Odhvica`,
+      title: `${title} | Store`,
       description,
       path: `/pages/${slug}`,
-      keywords: [page.title, 'Odhvica'],
+      keywords: [page.title, 'Store'],
     });
   } catch {
     return {
@@ -62,7 +62,7 @@ export default async function DynamicPage({ params }: Props) {
       path: `/pages/${slug}`,
       description:
         page.seo_description ||
-        `Explore ${page.title} at Odhvica for policies, support information, and brand guidance.`,
+        `Explore ${page.title} at Store for policies, support information, and brand guidance.`,
     }),
     buildBreadcrumbJsonLd([
       { name: 'Home', path: '/' },
@@ -82,11 +82,11 @@ export default async function DynamicPage({ params }: Props) {
       />
 
       <PageHero
-        eyebrow="Odhvica Pages"
+        eyebrow="Store Pages"
         title={page.title}
         intro={
           page.seo_description ||
-          `Explore ${page.title} at Odhvica for policies, support information, and brand guidance.`
+          `Explore ${page.title} at Store for policies, support information, and brand guidance.`
         }
         breadcrumbs={[
           { label: 'Home', href: '/' },

@@ -1,4 +1,4 @@
-# Odhvica Header Design System
+# Store Header Design System
 
 Status: Superseded
 

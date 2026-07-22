@@ -12,7 +12,7 @@ import { Card } from '@/design-system';
 import { StatusBanner } from '@/design-system';
 import { AccountSkeleton } from '@/design-system';
 
-const STORAGE_KEY = 'odhvica-notification-preferences';
+const STORAGE_KEY = 'store-notification-preferences';
 
 type Preferences = {
   orderUpdates: boolean;
@@ -128,7 +128,7 @@ export default function AccountNotificationsPage() {
             Notification Preferences
           </Heading>
           <p className="text-body-sm leading-token-relaxed text-secondary">
-            Choose how Odhvica should keep you posted about orders, launches, and product availability.
+            Choose how Store should keep you posted about orders, launches, and product availability.
           </p>
         </div>
 

@@ -422,7 +422,7 @@ function buildShiprocketOrderPayload(input: CarrierPurchaseInput) {
     order_date: new Date().toISOString().slice(0, 10),
     pickup_location: pickupLocation,
     channel_id: channelId || undefined,
-    comment: `Odhvica order ${orderNumber}`,
+    comment: `Store order ${orderNumber}`,
     billing_customer_name: buyerFirstName,
     billing_last_name: buyerLastName || undefined,
     billing_address: address.address_1,

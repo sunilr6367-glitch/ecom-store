@@ -1,4 +1,4 @@
--- Odhvica DB Seed — run once on fresh Docker Postgres
+-- Store DB Seed — run once on fresh Docker Postgres
 -- Safe: all inserts use ON CONFLICT DO NOTHING
 
 -- ── REGIONS (49 global) ──────────────────────────────────────────────────
@@ -69,8 +69,8 @@ ON CONFLICT (slug) DO NOTHING;
 
 -- ── SETTINGS ─────────────────────────────────────────────────────────────
 INSERT INTO settings (id,key,value,category,created_at,updated_at) VALUES
-(gen_random_uuid(),'store_name','"Odhvica"','general',now(),now()),
-(gen_random_uuid(),'store_email','"support@odhvica.com"','general',now(),now()),
+(gen_random_uuid(),'store_name','"Store"','general',now(),now()),
+(gen_random_uuid(),'store_email','"support@example.com"','general',now(),now()),
 (gen_random_uuid(),'store_phone','"+91 98765 43210"','general',now(),now()),
 (gen_random_uuid(),'store_address','"Jaipur, Rajasthan, India"','general',now(),now()),
 (gen_random_uuid(),'store_currency','"INR"','general',now(),now()),
@@ -86,10 +86,10 @@ INSERT INTO settings (id,key,value,category,created_at,updated_at) VALUES
 (gen_random_uuid(),'announcement_bar_text','"Free shipping on orders above Rs.999"','content',now(),now()),
 (gen_random_uuid(),'announcement_bar_enabled','true','content',now(),now()),
 (gen_random_uuid(),'hero_title','"Handcrafted Indian Fashion"','content',now(),now()),
-(gen_random_uuid(),'newsletter_title','"Join the Odhvica Family"','content',now(),now()),
-(gen_random_uuid(),'seo_title','"Odhvica - Handcrafted Indian Fashion"','seo',now(),now()),
+(gen_random_uuid(),'newsletter_title','"Join the Store Family"','content',now(),now()),
+(gen_random_uuid(),'seo_title','"Store - Handcrafted Indian Fashion"','seo',now(),now()),
 (gen_random_uuid(),'order_prefix','"KV"','orders',now(),now()),
-(gen_random_uuid(),'social_instagram','"https://instagram.com/odhvica"','social',now(),now()),
+(gen_random_uuid(),'social_instagram','"https://www.instagram.com/"','social',now(),now()),
 (gen_random_uuid(),'email_order_confirmation','true','email',now(),now()),
 (gen_random_uuid(),'email_low_stock_threshold','5','email',now(),now())
 ON CONFLICT (key) DO NOTHING;

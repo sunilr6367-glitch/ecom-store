@@ -378,7 +378,7 @@ export function buildProductImageAlt(
         ? 'detail view'
         : `view ${index + 1}`;
 
-  return [color, material, category, 'for Women', 'Odhvica', view]
+  return [color, material, category, 'for Women', 'Store', view]
     .filter(Boolean)
     .join(' ')
     .replace(/\s+/g, ' ')
@@ -552,9 +552,9 @@ export function createMetadata({
 
 export function buildHomepageMetadata(): Metadata {
   return createMetadata({
-    title: 'Handmade Kantha Quilts, Bags & Clothing from India | Odhvica',
+    title: 'Handmade Kantha Quilts, Bags & Clothing from India | Store',
     description:
-      'Odhvica — handmade kantha quilts, block-print clothing and artisan bags made by skilled women in Jaipur, India. Ships to USA, UK, EU, Australia and 50+ countries.',
+      'Store — handmade kantha quilts, block-print clothing and artisan bags made by skilled women in Jaipur, India. Ships to USA, UK, EU, Australia and 50+ countries.',
     path: '/',
     image: DEFAULT_OG_IMAGE,
     keywords: [
@@ -568,7 +568,7 @@ export function buildHomepageMetadata(): Metadata {
 
 export function buildCatalogMetadata(): Metadata {
   return createMetadata({
-    title: 'Shop Handmade Kantha Quilts, Bags & Clothing | Odhvica',
+    title: 'Shop Handmade Kantha Quilts, Bags & Clothing | Store',
     description:
       'Browse handmade kantha quilts, block-print clothing, artisan bags and scarves — each piece hand-stitched by skilled women in Jaipur, India. Ships worldwide.',
     path: '/products',
@@ -704,13 +704,13 @@ export function buildOrganizationJsonLd() {
     url: SITE_URL,
     logo: toAbsoluteUrl('/favicon.ico'),
     sameAs: [
-      'https://www.instagram.com/odhvica.store/',
+      'https://www.instagram.com/',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       availableLanguage: ['English', 'Hindi'],
-      email: 'support@odhvica.com',
+      email: 'support@example.com',
     },
   };
 }
@@ -889,7 +889,7 @@ export function buildSizeChartJsonLd() {
     name: `${SITE_NAME} Size Guide`,
     url: toAbsoluteUrl('/size-guide'),
     description:
-      'Odhvica size guide for handcrafted clothing, jackets, and accessories with US, UK, EU, and India-friendly measurement references.',
+      'Store size guide for handcrafted clothing, jackets, and accessories with US, UK, EU, and India-friendly measurement references.',
   };
 }
 
@@ -968,7 +968,7 @@ export function buildProductFaqJsonLd(product: Product) {
         name: `How is this ${category.toLowerCase()} crafted?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `This piece is connected to ${craft} and Odhvica's Jaipur artisan-made fashion positioning.`,
+          text: `This piece is connected to ${craft} and Store's Jaipur artisan-made fashion positioning.`,
         },
       },
       {

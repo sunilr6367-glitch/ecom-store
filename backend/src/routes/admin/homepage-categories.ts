@@ -112,7 +112,7 @@ app.post('/', async (c) => {
     }
 
     const upload = await uploadImageToCloudinary(imageFile, {
-      folder: 'odhvica/homepage-categories',
+      folder: 'store/homepage-categories',
     });
 
     const [category] = await db
@@ -167,7 +167,7 @@ app.put('/:id', async (c) => {
       }
 
       const upload = await uploadImageToCloudinary(imageFile, {
-        folder: 'odhvica/homepage-categories',
+        folder: 'store/homepage-categories',
       });
       imageUrl = upload.secureUrl;
     }

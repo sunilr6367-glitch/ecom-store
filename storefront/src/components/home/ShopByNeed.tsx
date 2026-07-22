@@ -12,7 +12,7 @@ function collectionSummary(title: string) {
   if (value.includes('bag') || value.includes('tote') || value.includes('pouch')) return 'Quilted carry pieces for travel, errands, and gifting.';
   if (value.includes('jacket') || value.includes('kimono')) return 'Layerable cotton pieces with handmade surface detail.';
   if (value.includes('quilt') || value.includes('throw')) return 'Soft textile layers for home, travel, and keepsake gifting.';
-  return 'A curated path into Odhvica small-batch handmade pieces.';
+  return 'A curated path into Store small-batch handmade pieces.';
 }
 
 export function ShopByNeed({ collections }: ShopByNeedProps) {

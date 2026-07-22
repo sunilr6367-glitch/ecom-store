@@ -31,6 +31,18 @@ export const brandConfig = {
     process.env.NEXT_PUBLIC_INSTAGRAM_URL,
     'https://www.instagram.com/',
   ),
+  whatsappUrl: publicValue(
+    process.env.NEXT_PUBLIC_WHATSAPP_URL,
+    'https://wa.me/',
+  ),
+  defaultCurrency: publicValue(
+    process.env.NEXT_PUBLIC_DEFAULT_CURRENCY,
+    'USD',
+  ),
+  paymentLogoPath: publicValue(
+    process.env.NEXT_PUBLIC_PAYMENT_LOGO_PATH,
+    '/logo.png',
+  ),
   location: publicValue(
     process.env.NEXT_PUBLIC_STORE_LOCATION,
     'Online store',

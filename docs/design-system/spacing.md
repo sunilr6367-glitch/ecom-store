@@ -1,4 +1,4 @@
-# Odhvica Spacing System
+# Store Spacing System
 
 Phase 1 of the design system overhaul standardizes spacing only. Do not change color, type, radius, imagery, or motion as part of spacing work.
 

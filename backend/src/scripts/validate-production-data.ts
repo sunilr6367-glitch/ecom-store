@@ -14,7 +14,7 @@ async function validateProductionData() {
   const errors: string[] = [];
   const warnings: string[] = [];
 
-  console.log('🔍 Running Odhvica production data validation...\n');
+  console.log('🔍 Running Store production data validation...\n');
 
   // G-01: No active products without category
   const orphanProducts = await db
@@ -158,7 +158,7 @@ async function validateProductionData() {
 
   // --- REPORT ---
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━��━━━━━━━━━━━');
-  console.log('ODHVICA PRODUCTION VALIDATION REPORT');
+  console.log('STORE PRODUCTION VALIDATION REPORT');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
   if (errors.length > 0) {

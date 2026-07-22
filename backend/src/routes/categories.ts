@@ -216,7 +216,7 @@ categoriesRouter.post(
   async (c) => {
     const data = c.req.valid('json');
     try {
-      const seoTitle = data.seo_title || `${data.name} — Handmade Indian Fashion | Odhvica`;
+      const seoTitle = data.seo_title || `${data.name} — Handmade Indian Fashion | Store`;
       const [newCategory] = await db
         .insert(categories)
         .values({

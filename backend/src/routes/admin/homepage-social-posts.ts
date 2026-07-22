@@ -87,7 +87,7 @@ app.post('/', async (c) => {
       return c.json({ error: 'Image must be JPG, PNG, or WEBP' }, 400);
     }
     const upload = await uploadImageToCloudinary(imageFile, {
-      folder: 'odhvica/homepage-social',
+      folder: 'store/homepage-social',
     });
     const [post] = await db
       .insert(homepage_social_posts)
@@ -125,7 +125,7 @@ app.put('/:id', async (c) => {
       }
       imageUrl = (
         await uploadImageToCloudinary(imageFile, {
-          folder: 'odhvica/homepage-social',
+          folder: 'store/homepage-social',
         })
       ).secureUrl;
     }

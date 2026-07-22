@@ -79,7 +79,7 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homepageSchema) }}
       />
-      <Heading role="page" className="sr-only">Odhvica storefront</Heading>
+      <Heading role="page" className="sr-only">Store storefront</Heading>
       
       {/* S1. Immersive campaign entry */}
       <HeroSection

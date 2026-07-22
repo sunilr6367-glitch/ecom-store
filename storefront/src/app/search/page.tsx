@@ -143,7 +143,7 @@ function SearchContent() {
           >
             <ArrowLeft size={14} /> Back to Home
           </Link>
-          <Heading role="page" className="search-title mb-4">{hasQuery ? 'Search Results' : 'Search Odhvica'}</Heading>
+          <Heading role="page" className="search-title mb-4">{hasQuery ? 'Search Results' : 'Search Store'}</Heading>
           <form onSubmit={submitSearch} className="mb-4 max-w-2xl">
             <div className="relative">
               <Search

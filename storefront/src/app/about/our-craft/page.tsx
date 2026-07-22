@@ -11,8 +11,8 @@ import {
 import { buildBasicPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Our Craft | Odhvica',
-  description: 'Learn about Odhvica handmade textile craft, Jaipur block printing, quilting, and artisan-made cotton accessories.',
+  title: 'Our Craft | Store',
+  description: 'Learn about Store handmade textile craft, Jaipur block printing, quilting, and artisan-made cotton accessories.',
   path: '/about/our-craft',
 });
 
@@ -22,7 +22,7 @@ export default function OurCraftPage() {
       <PageHero
         eyebrow="Craft Story"
         title="Our Craft"
-        intro="Odhvica pieces are shaped by handmade textile traditions: block printing, quilting, embroidery, careful finishing, and small-batch production."
+        intro="Store pieces are shaped by handmade textile traditions: block printing, quilting, embroidery, careful finishing, and small-batch production."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'About', href: '/about' },
@@ -45,12 +45,12 @@ export default function OurCraftPage() {
           eyebrow="Made slowly"
           title="The work begins before the first stitch"
           imageSrc="/images/home/atelier-story.jpg"
-          imageAlt="Hand embroidered Odhvica jacket showing textile detail"
+          imageAlt="Hand embroidered Store jacket showing textile detail"
           imageLabel="Hands arranging cotton, carved blocks, and quilt layers"
           body={
             <>
               <p>
-                Every Odhvica piece begins with material choice: the feel of
+                Every Store piece begins with material choice: the feel of
                 cotton, the strength of a seam, the softness a quilt will carry
                 after many uses. We design around touch first because handmade
                 clothing and home textiles should feel lived with, not staged.
@@ -74,7 +74,7 @@ export default function OurCraftPage() {
             process.
           </p>
           <p>
-            This is why Odhvica avoids the look of factory-perfect sameness.
+            This is why Store avoids the look of factory-perfect sameness.
             The pieces are polished enough for modern wardrobes, but their
             character stays close to the craft that made them.
           </p>

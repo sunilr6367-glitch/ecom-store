@@ -11,8 +11,8 @@ import {
 import { buildBasicPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Kantha Craft | Odhvica',
-  description: 'A short guide to Kantha-inspired quilting and stitched textile craft in Odhvica handmade pieces.',
+  title: 'Kantha Craft | Store',
+  description: 'A short guide to Kantha-inspired quilting and stitched textile craft in Store handmade pieces.',
   path: '/about/kantha',
 });
 
@@ -45,7 +45,7 @@ export default function KanthaPage() {
           eyebrow="Running stitch"
           title="A surface made by time"
           imageSrc="/images/home/category-sarees.jpg"
-          imageAlt="Kantha-inspired Odhvica jacket with visible embroidery"
+          imageAlt="Kantha-inspired Store jacket with visible embroidery"
           imageLabel="Close stitch texture across layered cloth"
           body={
             <>
@@ -56,7 +56,7 @@ export default function KanthaPage() {
                 intimate up close.
               </p>
               <p>
-                At Odhvica, Kantha informs the way we think about quilting,
+                At Store, Kantha informs the way we think about quilting,
                 repair, reuse, and tactility. The stitch is not decoration
                 pasted on at the end. It is structure, rhythm, and evidence of
                 handwork.
@@ -73,7 +73,7 @@ export default function KanthaPage() {
             being identical.
           </p>
           <p>
-            That human texture is central to Odhvica&apos;s idea of luxury: not
+            That human texture is central to Store&apos;s idea of luxury: not
             excess, but attention.
           </p>
         </CraftStorySection>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { CreditCard } from 'lucide-react';
 import { Button } from '@/design-system';
+import { brandConfig } from '@/config/brand';
 
 interface RazorpayButtonProps {
   orderId: string;        // Our DB order ID (UUID)
@@ -83,7 +84,7 @@ export default function RazorpayButton({
   orderId,
   checkoutToken,
   amount: _amount,
-  currency = 'INR',
+  currency = brandConfig.defaultCurrency,
   customerName,
   customerEmail,
   customerPhone,
@@ -131,9 +132,9 @@ export default function RazorpayButton({
         key: key_id || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: rzpAmount,
         currency,
-        name: 'Odhvica',
+        name: brandConfig.name,
         description: `Order #${orderId.slice(0, 8)}`,
-        image: '/logo.png',
+        image: brandConfig.paymentLogoPath,
         order_id: razorpay_order_id,
         prefill: {
           name: customerName || '',

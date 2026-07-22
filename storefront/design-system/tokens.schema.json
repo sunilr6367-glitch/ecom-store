@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Odhvica Storefront Design Tokens V4",
+  "title": "Store Storefront Design Tokens V4",
   "type": "object",
   "required": ["version", "contract", "primitive", "semantic", "component", "tailwind"],
   "properties": {

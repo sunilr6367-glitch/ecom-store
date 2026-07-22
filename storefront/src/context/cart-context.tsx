@@ -68,7 +68,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const stored = sanitizeCartItems(
-        storage.get<CartItem[]>('odhvica_cart', [])
+        storage.get<CartItem[]>('store_cart', [])
       );
       const timer = setTimeout(() => {
         if (stored && stored.length > 0) {
@@ -88,7 +88,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     if (isLoaded) {
-      storage.set('odhvica_cart', items);
+      storage.set('store_cart', items);
     }
   }, [items, isLoaded]);
 

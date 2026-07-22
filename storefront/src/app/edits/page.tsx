@@ -10,12 +10,12 @@ import { cn } from '@/lib/utils';
 import { cardClasses } from '@/design-system';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Curated Edits | Odhvica',
+  title: 'Curated Edits | Store',
   description:
-    'Browse curated Odhvica edits for gifting, bestsellers, new arrivals, block prints, sale picks, and collection-led discovery.',
+    'Browse curated Store edits for gifting, bestsellers, new arrivals, block prints, sale picks, and collection-led discovery.',
   path: '/edits',
   keywords: [
-    'Odhvica curated edits',
+    'Store curated edits',
     'gift guide',
     'bestsellers',
     'block print edit',

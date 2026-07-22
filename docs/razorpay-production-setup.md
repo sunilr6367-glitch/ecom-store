@@ -1,4 +1,4 @@
-# Odhvica Razorpay Production Setup Guide
+# Store Razorpay Production Setup Guide
 
 Last verified: 2026-06-30
 
@@ -11,32 +11,32 @@ This guide covers:
 - Deployment and verification on the Hostinger VPS.
 - The additional engineering work required before Razorpay can replace PayPal for international checkout.
 
-Important: Razorpay international payments being enabled on the merchant account does not automatically make Odhvica's international checkout work. The current application routes only INR orders to Razorpay and rejects non-INR Razorpay orders in the backend.
+Important: Razorpay international payments being enabled on the merchant account does not automatically make Store's international checkout work. The current application routes only INR orders to Razorpay and rejects non-INR Razorpay orders in the backend.
 
-## 2. Current Odhvica payment flow
+## 2. Current Store payment flow
 
-1. Storefront creates an Odhvica draft order with `POST /store/checkout/place-order`.
-2. Storefront calls `POST /store/payments/razorpay/create-order` using the Odhvica order ID and checkout token.
+1. Storefront creates an Store draft order with `POST /store/checkout/place-order`.
+2. Storefront calls `POST /store/payments/razorpay/create-order` using the Store order ID and checkout token.
 3. Backend creates the Razorpay order using server-side credentials.
 4. Razorpay Checkout returns `razorpay_order_id`, `razorpay_payment_id`, and `razorpay_signature`.
 5. Storefront sends those values to `POST /store/payments/razorpay/verify`.
-6. Backend verifies the signature, fetches the payment from Razorpay, checks amount/currency/order ownership, captures an authorized payment when needed, and marks the Odhvica order paid.
+6. Backend verifies the signature, fetches the payment from Razorpay, checks amount/currency/order ownership, captures an authorized payment when needed, and marks the Store order paid.
 7. Webhooks provide the asynchronous source of truth for captured, failed, and refunded payments.
 
 Production endpoints:
 
 ```text
-Storefront: https://odhvica.com
-API:        https://api.odhvica.com
-Webhook:    https://api.odhvica.com/store/payments/razorpay/webhook
-Health:     https://api.odhvica.com/health
+Storefront: https://store.com
+API:        https://api.example.com
+Webhook:    https://api.example.com/store/payments/razorpay/webhook
+Health:     https://api.example.com/health
 ```
 
 ## 3. Generate Live Mode keys
 
 In the Razorpay Dashboard:
 
-1. Confirm the account and `odhvica.com` website are activated/whitelisted.
+1. Confirm the account and `store.com` website are activated/whitelisted.
 2. Switch the Dashboard to **Live Mode**.
 3. Open **Account & Settings -> API Keys -> Generate Key**.
 4. Securely store both values immediately:
@@ -58,7 +58,7 @@ Official reference: [Razorpay API Keys](https://razorpay.com/docs/payments/dashb
 
 ## 4. Configure production environment files
 
-The production checkout is `/root/odhvica-ecommerce`. Its ignored environment files survive Git deploy resets and are the current source for payment credentials.
+The production checkout is `/root/store-ecommerce`. Its ignored environment files survive Git deploy resets and are the current source for payment credentials.
 
 Open these files interactively on the VPS so secrets are not stored in shell history.
 
@@ -67,7 +67,7 @@ Open these files interactively on the VPS so secrets are not stored in shell his
 Edit:
 
 ```text
-/root/odhvica-ecommerce/backend/.env.production
+/root/store-ecommerce/backend/.env.production
 ```
 
 Set:
@@ -83,7 +83,7 @@ RAZORPAY_WEBHOOK_SECRET=replace_with_a_separate_random_webhook_secret
 Edit:
 
 ```text
-/root/odhvica-ecommerce/storefront/.env.production
+/root/store-ecommerce/storefront/.env.production
 ```
 
 Set:
@@ -100,7 +100,7 @@ The Key ID must match `RAZORPAY_KEY_ID`. The backend also accepts the legacy `RA
 
 In Live Mode, open **Account & Settings -> Payment Capture** and enable automatic capture unless the business explicitly requires manual capture.
 
-Odhvica verifies every successful client callback server-side and also handles `payment.authorized`/`payment.captured` webhooks. Fulfilment must begin only after the local order has `payment_status='captured'`.
+Store verifies every successful client callback server-side and also handles `payment.authorized`/`payment.captured` webhooks. Fulfilment must begin only after the local order has `payment_status='captured'`.
 
 Official reference: [Razorpay Standard Checkout go-live checklist](https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/)
 
@@ -112,11 +112,11 @@ In Razorpay Live Mode:
 2. URL:
 
    ```text
-   https://api.odhvica.com/store/payments/razorpay/webhook
+   https://api.example.com/store/payments/razorpay/webhook
    ```
 
 3. Enter the same separate secret stored as `RAZORPAY_WEBHOOK_SECRET`.
-4. Add an alert email monitored by the Odhvica team.
+4. Add an alert email monitored by the Store team.
 5. Enable these events because the current backend handles them:
 
    ```text
@@ -140,7 +140,7 @@ Official references:
 
 ## 7. Deploy through GitHub Actions
 
-Do not run a manual `docker compose up` deployment. Production deploys only through `.github/workflows/deploy-hostinger.yml` and `/root/odhvica-ecommerce`.
+Do not run a manual `docker compose up` deployment. Production deploys only through `.github/workflows/deploy-hostinger.yml` and `/root/store-ecommerce`.
 
 After updating the ignored production env files:
 
@@ -151,7 +151,7 @@ After updating the ignored production env files:
 5. Confirm the deployed SHA:
 
    ```powershell
-   Invoke-RestMethod https://api.odhvica.com/health
+   Invoke-RestMethod https://api.example.com/health
    ```
 
 6. Confirm `data.gitSha` equals the intended `origin/main` commit.
@@ -161,7 +161,7 @@ After updating the ignored production env files:
 Run on the VPS after deployment:
 
 ```bash
-cd /root/odhvica-ecommerce/deploy/hostinger
+cd /root/store-ecommerce/deploy/hostinger
 
 docker compose exec -T backend node -e "for (const k of ['RAZORPAY_KEY_ID','RAZORPAY_KEY_SECRET','RAZORPAY_WEBHOOK_SECRET']) console.log(k, process.env[k] ? 'CONFIGURED' : 'MISSING')"
 
@@ -192,11 +192,11 @@ Use a low-value dedicated test product with stock greater than one.
 6. Complete one real low-value payment using an approved payment method.
 7. Confirm all three systems agree:
    - Razorpay Dashboard payment status is `captured`.
-   - Odhvica order `payment_status` is `captured`.
-   - Odhvica order status is `completed` and not `draft`/`failed`.
+   - Store order `payment_status` is `captured`.
+   - Store order status is `completed` and not `draft`/`failed`.
 8. Confirm exactly one inventory unit was deducted.
 9. Confirm the webhook returns HTTP 2xx and is marked delivered in Razorpay.
-10. Initiate a controlled refund and verify `refund.created` then `refund.processed` update the Odhvica order.
+10. Initiate a controlled refund and verify `refund.created` then `refund.processed` update the Store order.
 
 Never fulfil an order based only on the browser success screen. Require server-side signature verification and captured status.
 
@@ -219,7 +219,7 @@ Never fulfil an order based only on the browser success screen. Require server-s
 
 1. Confirm Razorpay has enabled international payments for the account, not only normal Live Mode payments.
 2. Confirm the approved card networks, countries, purpose code/export category, currencies, settlement cycle, and fees.
-3. Confirm each currency against Razorpay's supported-currency list. Do not assume every Odhvica region currency is supported.
+3. Confirm each currency against Razorpay's supported-currency list. Do not assume every Store region currency is supported.
 4. International payments for an India merchant settle in INR even when native supported currency is passed to Checkout.
 
 Official references:
@@ -248,7 +248,7 @@ International checkout through Razorpay must not be enabled until these are chan
 5. Test successful, failed, cancelled, webhook-delayed, refund, and duplicate-webhook paths in Test Mode.
 6. Obtain Razorpay confirmation that the pilot currency is active in Live Mode.
 7. Run one low-value real international transaction.
-8. Reconcile Razorpay native amount, Odhvica amount, fees, exchange rate, and INR settlement.
+8. Reconcile Razorpay native amount, Store amount, fees, exchange rate, and INR settlement.
 9. Expand currencies one at a time.
 
 ## 12. Mandatory application fixes before broad live traffic
@@ -275,7 +275,7 @@ Do not treat a successful Razorpay account activation as production checkout sig
 - [ ] `/health` reports the intended Git SHA.
 - [ ] INR payment initializes without 401/500.
 - [ ] Signature verification succeeds.
-- [ ] Razorpay and Odhvica both report `captured`.
+- [ ] Razorpay and Store both report `captured`.
 - [ ] Inventory changes exactly once.
 - [ ] Failed payments release inventory.
 - [ ] Refund webhook updates the local order.

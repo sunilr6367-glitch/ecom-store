@@ -10,7 +10,7 @@ test.describe('Storefront visual contract', () => {
     try {
       const viewportWidth = testInfo.project.use?.viewport?.width ?? 1440;
       const isMobileViewport = viewportWidth < 768;
-      await expect(page).toHaveTitle(/Odhvica|Kantha/i);
+      await expect(page).toHaveTitle(/Store|Kantha/i);
       await expect(page.locator('main')).toBeVisible();
       if (isMobileViewport) {
         await expect(page.getByRole('button', { name: 'Open navigation' })).toBeVisible();

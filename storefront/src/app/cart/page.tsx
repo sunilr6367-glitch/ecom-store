@@ -340,7 +340,7 @@ export default function CartPage() {
                         className="space-y-1 mb-3"
                       >
                         <p className="text-body-xs font-bold tracking-token-wider text-muted">
-                          {product.collection?.title || 'Odhvica'}
+                          {product.collection?.title || 'Store'}
                         </p>
                         <p className="font-display text-body-md leading-token-tight text-primary transition-colors group-hover:text-muted">
                           {product.title}
@@ -566,7 +566,7 @@ export default function CartPage() {
                           className="mb-3 space-y-1"
                         >
                           <p className="text-body-xs font-bold tracking-token-wider text-muted">
-                            {product.collection?.title || 'Odhvica'}
+                            {product.collection?.title || 'Store'}
                           </p>
                           <p className="font-display text-body-md leading-token-tight text-primary transition-colors group-hover:text-muted">
                             {product.title}

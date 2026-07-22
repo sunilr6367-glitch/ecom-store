@@ -199,7 +199,7 @@ app.post('/campaigns/:id/send', verifyAdmin, async (c) => {
     const { sent, failed } = await emailService.sendMarketingBlast({
       to: emails,
       campaign_name: campaign.name,
-      subject: body.subject || `${campaign.name} — Odhvica`,
+      subject: body.subject || `${campaign.name} — Store`,
       headline: body.headline || campaign.name,
       body_text: body.body_text || campaign.description || 'Discover our latest collection.',
       cta_text: body.cta_text || 'Shop Now',

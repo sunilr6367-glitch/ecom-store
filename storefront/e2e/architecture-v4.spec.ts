@@ -11,7 +11,7 @@ test.describe('Architecture V4 component lab', () => {
     });
 
     await page.goto('/__design-system');
-    await expect(page.getByRole('heading', { name: 'Odhvica component lab' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Store component lab' })).toBeVisible();
     await expect(page.locator('[data-page-shell]').first()).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(1);

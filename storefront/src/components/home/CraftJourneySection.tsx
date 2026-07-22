@@ -52,7 +52,7 @@ export function CraftJourneySection({ story }: { story: HomepageBrandStory | nul
               className="mb-8 gap-3"
             />
             <ButtonLink href="/about" variant="outline" size="md">
-              Discover Odhvica
+              Discover Store
             </ButtonLink>
           </div>
         </div>
@@ -60,14 +60,14 @@ export function CraftJourneySection({ story }: { story: HomepageBrandStory | nul
         {/* Right: Craft Promises */}
         <div className="p-8 md:p-10 lg:p-16 bg-[var(--ds-surface-paper)] flex flex-col justify-center">
           <div className="mb-10">
-            <div className="font-label text-label-sm tracking-widest uppercase text-muted mb-2">Why Odhvica</div>
+            <div className="font-label text-label-sm tracking-widest uppercase text-muted mb-2">Why Store</div>
             <h2 className="font-display text-display-md text-primary mb-3">Handmade, curated, and ready to wear.</h2>
             <p className="font-body text-body-md text-muted">
               We believe in slow-craft, direct relationships with artisans, and bringing the vibrant heritage of Indian textiles into modern, everyday wardrobes.
             </p>
           </div>
 
-          <div className="grid gap-[var(--ds-space-md)] sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2" aria-label="Odhvica commerce promises">
+          <div className="grid gap-[var(--ds-space-md)] sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2" aria-label="Store commerce promises">
             {promises.map(({ icon: Icon, title, copy }) => (
               <div key={title} className="grid grid-cols-[auto_1fr] gap-[var(--ds-space-xs)]">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-soft text-accent">

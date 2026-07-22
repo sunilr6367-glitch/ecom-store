@@ -29,7 +29,7 @@ const DEFAULT_STORE_INFO = {
   store_logo_url: '',
   store_address: '123 Fashion Avenue, New York, NY 10001',
   store_phone: '+1 (555) 123-4567',
-  store_email: 'support@odhvica.com',
+  store_email: 'support@example.com',
 };
 
 // Public: Get public settings for storefront (no auth required)

@@ -1,5 +1,5 @@
-const STATIC_CACHE = 'odhvica-static-v2';
-const DYNAMIC_CACHE = 'odhvica-dynamic-v2';
+const STATIC_CACHE = 'store-static-v2';
+const DYNAMIC_CACHE = 'store-dynamic-v2';
 
 const STATIC_ASSETS = [
   '/manifest.json',
@@ -107,7 +107,7 @@ self.addEventListener('push', (event) => {
     ],
   };
 
-  event.waitUntil(self.registration.showNotification(data.title || 'Odhvica Admin', options));
+  event.waitUntil(self.registration.showNotification(data.title || 'Store Admin', options));
 });
 
 self.addEventListener('notificationclick', (event) => {

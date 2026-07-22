@@ -1,4 +1,4 @@
-# Odhvica Backend - Setup Guide
+# Store Backend - Setup Guide
 
 ## ✅ What Has Been Fixed
 
@@ -40,7 +40,7 @@
 
 2. **Create New Project**
    - Click "New Project"
-   - Name: `odhvica-db`
+   - Name: `store-db`
    - Database Password: (save this securely)
    - Region: Choose closest to you (e.g., Mumbai for India)
    - Click "Create new project" (takes ~2 minutes)
@@ -70,7 +70,7 @@
 2. **Create Database**
    ```powershell
    psql -U postgres
-   CREATE DATABASE odhvica_dev;
+   CREATE DATABASE store_dev;
    \q
    ```
 
@@ -93,7 +93,7 @@ npm run dev
 
 You should see:
 ```
-🚀 Odhvica Backend Starting...
+🚀 Store Backend Starting...
 📍 Environment: development
 🌐 Port: 3000
 🔗 URL: http://localhost:3000
@@ -106,7 +106,7 @@ Open browser: http://localhost:3000
 Expected response:
 ```json
 {
-  "message": "Odhvica Global Backend is Active",
+  "message": "Store Global Backend is Active",
   "version": "1.0.0",
   "status": "healthy",
   "environment": "development",

@@ -7,7 +7,7 @@ export default {
     out: './drizzle',
     dialect: 'postgresql',
     dbCredentials: {
-        url: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/odhvica_dev',
+        url: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/store_dev',
     },
     verbose: true,
     strict: true,

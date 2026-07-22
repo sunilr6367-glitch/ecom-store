@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Target domain for the live audit
-const TARGET_DOMAIN = 'https://odhvica.com';
+const TARGET_DOMAIN = 'http://localhost:3100';
 const SITEMAP_URL = `${TARGET_DOMAIN}/sitemap.xml`;
 
 const SCREENSHOT_DIR = path.resolve('.verification/live-audit/screenshots');
@@ -225,10 +225,10 @@ async function main() {
 }
 
 function generateMarkdownReport(results) {
-  let md = `# Live Design and Layout Audit Report (odhvica.com)
+  let md = `# Live Design and Layout Audit Report (store.com)
 
 **Date**: ${new Date().toLocaleString()}  
-**Target URL**: [odhvica.com](https://odhvica.com)  
+**Target URL**: [store.com](http://localhost:3100)
 **Total Pages Audited**: ${results.length}  
 
 ---

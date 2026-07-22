@@ -14,6 +14,7 @@
     "lint": "npm --prefix backend run lint && npm --prefix storefront run lint && npm --prefix admin run lint",
     "test": "npm --prefix backend run test:run && npm --prefix storefront run test:unit -- --run",
     "build": "npm --prefix backend run build && npm --prefix storefront run build && npm --prefix admin run build",
+    "audit:white-label": "node scripts/audit-white-label.mjs",
     "start": "npm --prefix backend run start"
   },
   "keywords": [],

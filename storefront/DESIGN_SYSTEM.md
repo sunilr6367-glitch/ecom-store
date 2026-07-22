@@ -1,6 +1,6 @@
 # 1. OVERVIEW
 
-Welcome to the **Odhvica Storefront Design System**. This living document serves as the single source of truth for all developers and designers working on the project.
+Welcome to the **Store Storefront Design System**. This living document serves as the single source of truth for all developers and designers working on the project.
 
 ### The Single-Source-of-Truth Principle
 Every color, typography choice, spacing unit, and layout constraint must derive from a centralized design token. By strictly adhering to this principle, we guarantee visual consistency across the entire storefront. 
@@ -93,7 +93,7 @@ Ensures correct stacking context hierarchy.
 ## Transition tokens
 - **`--ds-transition-fast`**: `150ms ease`
 - **`--ds-transition-normal`**: `220ms ease`
-- **`--ds-transition`**: `cubic-bezier(0.25, 0.46, 0.45, 0.94)` — The signature Odhvica UI motion curve.
+- **`--ds-transition`**: `cubic-bezier(0.25, 0.46, 0.45, 0.94)` — The signature Store UI motion curve.
 
 ## State tokens (--ds-success-*, --ds-danger-*, --ds-warning-*, --ds-info-*)
 Semantic status colors used for alerts, forms, and validation.

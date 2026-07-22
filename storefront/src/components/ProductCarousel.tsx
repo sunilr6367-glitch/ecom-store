@@ -119,7 +119,7 @@ function ProductCarousel({
           index={index}
           added={addedId === product.id}
           currency={currentRegion?.currency_code?.toUpperCase() || 'USD'}
-          categoryLabel={product.subtitle || product.collection?.title || 'Odhvica'}
+          categoryLabel={product.subtitle || product.collection?.title || 'Store'}
           showQuickView={false}
           onAddToCart={handleAddToCart}
         />

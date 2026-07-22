@@ -73,7 +73,7 @@ export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.replace(new RegExp(`^/${firstSegment}`), '') || '/';
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-odhvica-locale', firstSegment);
+    requestHeaders.set('x-store-locale', firstSegment);
     return NextResponse.rewrite(url, {
       request: {
         headers: requestHeaders,

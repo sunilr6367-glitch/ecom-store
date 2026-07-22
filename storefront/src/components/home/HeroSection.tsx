@@ -90,7 +90,7 @@ export function HeroSection({
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(var(--ds-black-rgb),0.72)_0%,rgba(var(--ds-black-rgb),0.32)_46%,rgba(var(--ds-black-rgb),0.08)_72%),linear-gradient(180deg,rgba(var(--ds-black-rgb),0.02)_0%,rgba(var(--ds-black-rgb),0.08)_52%,rgba(var(--ds-black-rgb),0.32)_100%)]" />
               <HomepageContainer className="relative z-10 flex h-full min-h-[inherit] flex-col items-start justify-end gap-5 pb-[clamp(80px,12vw,140px)] text-inverse">
                 <p className="font-label text-body-xs uppercase tracking-[0.22em] text-[rgba(var(--ds-white-rgb),0.84)]">
-                  Odhvica editorial campaign
+                  Store editorial campaign
                 </p>
                 <p className="m-0 max-w-[11ch] font-display text-[clamp(3rem,6vw,5.6rem)] leading-[0.94] font-normal text-inverse text-balance">
                   {slide.title}

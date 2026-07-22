@@ -1,4 +1,4 @@
-# Execution Plan — Odhvica Admin Panel Upgrade
+# Execution Plan — Store Admin Panel Upgrade
 
 ---
 

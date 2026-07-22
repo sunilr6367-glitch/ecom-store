@@ -1,4 +1,4 @@
-# Odhvica Storefront Design System v1
+# Store Storefront Design System v1
 
 Status: Active
 Date: 2026-06-20
@@ -27,7 +27,7 @@ npm.cmd run audit:design-system
 
 ## Typography
 
-Odhvica storefront typography uses an editorial serif display face with a restrained grotesk body:
+Store storefront typography uses an editorial serif display face with a restrained grotesk body:
 
 - `--ds-font-display` uses `Amiri`, with `Cardo` and system serif fallbacks.
 - `--ds-font-body` and UI roles use `Cardo`, with system serif fallbacks.

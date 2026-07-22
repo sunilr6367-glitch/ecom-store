@@ -25,7 +25,7 @@ export function BrandStory({ story }: { story: HomepageBrandStory | null }) {
             className="mb-[var(--ds-space-lg)] gap-[var(--ds-space-xs)]"
           />
           <ButtonLink href="/about" variant="outline" size="md">
-            Discover Odhvica
+            Discover Store
           </ButtonLink>
         </div>
       </div>

@@ -34,7 +34,7 @@ export default function BannerCarousel({ banners }: { banners: Banner[] }) {
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div className="max-w-4xl px-6 space-y-8 text-inverse">
             <h1 className="text-display-xl md:text-display-xl font-display tracking-token-tight leading-token-tight drop-shadow-lg">
-              ODHVICA
+              STORE
             </h1>
             <p className="text-body-xl md:text-display-md font-light tracking-token-wide max-w-2xl mx-auto drop-shadow-md">
               Bridging Heritage & Avant-Garde

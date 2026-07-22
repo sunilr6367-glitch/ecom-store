@@ -153,10 +153,10 @@ app.post('/', async (c) => {
 
     const [videoUpload, thumbnailUpload] = await Promise.all([
       uploadVideoToCloudinary(videoFile, {
-        folder: 'odhvica/trending-reels/videos',
+        folder: 'store/trending-reels/videos',
       }),
       uploadImageToCloudinary(thumbnailFile, {
-        folder: 'odhvica/trending-reels/thumbnails',
+        folder: 'store/trending-reels/thumbnails',
       }),
     ]);
 
@@ -222,7 +222,7 @@ app.put('/:id', async (c) => {
       }
 
       const upload = await uploadVideoToCloudinary(videoFile, {
-        folder: 'odhvica/trending-reels/videos',
+        folder: 'store/trending-reels/videos',
       });
       videoUrl = upload.secureUrl;
     }
@@ -236,7 +236,7 @@ app.put('/:id', async (c) => {
       }
 
       const upload = await uploadImageToCloudinary(thumbnailFile, {
-        folder: 'odhvica/trending-reels/thumbnails',
+        folder: 'store/trending-reels/thumbnails',
       });
       thumbnailUrl = upload.secureUrl;
     }

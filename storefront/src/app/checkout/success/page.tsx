@@ -227,7 +227,7 @@ function SuccessContent() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-body-sm">
             <a
-              href={buildWhatsAppHref('Hi, I need help with my Odhvica order')}
+              href={buildWhatsAppHref('Hi, I need help with my Store order')}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-bold text-success hover:text-success transition-colors"

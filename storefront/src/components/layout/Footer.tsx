@@ -82,7 +82,7 @@ export function Footer() {
     <>
       {/* Absorbed Pre-footer strips removed per simplified homepage layout */}
 
-      <footer data-home-section="15-footer" className="odhvica-footer relative border-t border-footer-border overflow-hidden">
+      <footer data-home-section="15-footer" className="store-footer relative border-t border-footer-border overflow-hidden">
         {/* Background Option B Animation */}
         <ArtisanFooterAnimation />
 

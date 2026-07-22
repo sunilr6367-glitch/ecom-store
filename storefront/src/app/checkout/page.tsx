@@ -322,7 +322,7 @@ export default function CheckoutPage() {
             Need help with your order?
           </p>
           <a
-            href={buildWhatsAppHref('Hi, I need help with checkout on Odhvica')}
+            href={buildWhatsAppHref('Hi, I need help with checkout on Store')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-body-xs text-success font-bold hover:text-success transition-colors"
@@ -938,7 +938,7 @@ export default function CheckoutPage() {
                           Premium Gift Wrapping
                         </p>
                         <p className="text-body-xs font-light text-muted">
-                          Signature Odhvica box with ribbon &amp; message card
+                          Signature Store box with ribbon &amp; message card
                         </p>
                       </div>
                     </div>

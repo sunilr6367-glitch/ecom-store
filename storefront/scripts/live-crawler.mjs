@@ -10,7 +10,7 @@ const routes = Object.keys(manifest)
   .filter(r => !r.includes('[') && !r.includes('route') && r !== '/_global-error/page' && r !== '/_not-found/page')
   .map(r => r.replace('/page', ''));
 
-const BASE_URL = process.env.BASE_URL || 'https://odhvica.com';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3100';
 
 async function runAudit() {
   console.log(`Starting Live UI Audit on ${BASE_URL} for ${routes.length} static routes...`);

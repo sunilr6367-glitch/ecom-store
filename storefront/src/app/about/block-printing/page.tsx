@@ -11,8 +11,8 @@ import {
 import { buildBasicPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Block Printing | Odhvica',
-  description: 'Learn how Jaipur block print traditions influence Odhvica handmade cotton bags, pouches, jackets, and accessories.',
+  title: 'Block Printing | Store',
+  description: 'Learn how Jaipur block print traditions influence Store handmade cotton bags, pouches, jackets, and accessories.',
   path: '/about/block-printing',
 });
 
@@ -22,7 +22,7 @@ export default function BlockPrintingPage() {
       <PageHero
         eyebrow="Craft Story"
         title="Block Printing"
-        intro="Block printing uses carved wooden blocks, repeat placement, and layered color to create the textile patterns seen across many Odhvica pieces."
+        intro="Block printing uses carved wooden blocks, repeat placement, and layered color to create the textile patterns seen across many Store pieces."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'About', href: '/about' },
@@ -45,7 +45,7 @@ export default function BlockPrintingPage() {
           eyebrow="Jaipur print language"
           title="Carved blocks, measured pressure, layered color"
           imageSrc="/images/home/collection-summer.jpg"
-          imageAlt="Odhvica textile jacket with repeated surface motif"
+          imageAlt="Store textile jacket with repeated surface motif"
           imageLabel="Wooden printing blocks and cotton yardage"
           body={
             <>
@@ -56,7 +56,7 @@ export default function BlockPrintingPage() {
                 mechanical speed.
               </p>
               <p>
-                Odhvica uses this language for pieces that feel warm, tactile,
+                Store uses this language for pieces that feel warm, tactile,
                 and slightly irregular in the best way. The print carries the
                 memory of its making.
               </p>

@@ -28,7 +28,7 @@ export function ChatWidget() {
   >([
     {
       role: 'bot',
-      text: 'Hello! Welcome to Odhvica. How can we help you today?',
+      text: 'Hello! Welcome to Store. How can we help you today?',
     },
   ]);
   const [inputText, setInputText] = useState('');

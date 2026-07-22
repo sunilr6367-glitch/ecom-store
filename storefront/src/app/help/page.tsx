@@ -12,11 +12,11 @@ import { storefrontTrust } from '@/config/storefront-trust';
 import { buildNoindexPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildNoindexPageMetadata({
-  title: 'Help Center | Odhvica',
+  title: 'Help Center | Store',
   description:
-    'Use the Odhvica Help Center to track orders, resolve payment issues, understand returns, and reach support quickly.',
+    'Use the Store Help Center to track orders, resolve payment issues, understand returns, and reach support quickly.',
   path: '/help',
-  keywords: ['Odhvica help center', 'order support', 'payment help'],
+  keywords: ['Store help center', 'order support', 'payment help'],
 });
 
 const helpCards = [
@@ -59,7 +59,7 @@ export default function HelpPage() {
     <>
       <PageHero
         eyebrow="Support Hub"
-        title="Odhvica Help Center"
+        title="Store Help Center"
         intro="Start here for order tracking, payment recovery, return guidance, and direct support without bouncing between policy pages."
         breadcrumbs={[
           { label: 'Home', href: '/' },

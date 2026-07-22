@@ -146,7 +146,7 @@ export default function AccountMessageDetailPage() {
                   <div key={message.id} className={`flex ${isAdmin ? 'justify-start' : 'justify-end'}`}>
                     <div className={`max-w-4/5 rounded-lg px-4 py-3 ${isAdmin ? 'bg-surface-soft text-primary' : 'bg-primary text-inverse'}`}>
                       <p className={`account-message-meta mb-1 ${isAdmin ? 'text-muted' : 'text-disabled'}`}>
-                        {isAdmin ? message.sender_name || 'Odhvica Studio' : 'You'}
+                        {isAdmin ? message.sender_name || 'Store Studio' : 'You'}
                       </p>
                       <p className="account-message-body whitespace-pre-wrap">{message.message}</p>
                     </div>

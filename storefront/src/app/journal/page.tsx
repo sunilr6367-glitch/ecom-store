@@ -57,7 +57,7 @@ export default async function JournalPage() {
                 />
               ) : (
                 <div className="w-full h-full bg-surface-soft flex items-center justify-center text-disabled italic font-display">
-                  Odhvica Journal
+                  Store Journal
                 </div>
               )}
             </div>

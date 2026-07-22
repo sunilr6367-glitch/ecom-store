@@ -4,11 +4,11 @@ import { StaticPolicyPage } from '@/components/policies/StaticPolicyPage';
 import { buildBasicPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildBasicPageMetadata({
-  title: 'Shipping & Returns Policy | Odhvica - Handmade India',
+  title: 'Shipping & Returns Policy | Store - Handmade India',
   description:
-    'Odhvica ships across India and internationally. Read our shipping timelines, return eligibility, refund process, and exchange rules before you buy.',
+    'Store ships across India and internationally. Read our shipping timelines, return eligibility, refund process, and exchange rules before you buy.',
   path: '/pages/shipping-returns',
-  keywords: ['Odhvica shipping policy', 'Odhvica returns', 'Odhvica refund policy'],
+  keywords: ['Store shipping policy', 'Store returns', 'Store refund policy'],
 });
 
 const content = `## Shipping & Returns
@@ -62,13 +62,13 @@ International shipments are handled by **FedEx, DHL, and Aramex** depending on d
 
 ### Tracking Your Order
 
-Once your order is dispatched, you will receive a shipping confirmation email with a tracking link. You can also track your order at odhvica.com/track using your order number and email address.
+Once your order is dispatched, you will receive a shipping confirmation email with a tracking link. You can also track your order at store.com/track using your order number and email address.
 
 ---
 
 ### Customs, Duties, and Import Taxes
 
-International buyers are responsible for any customs duties, import taxes, or brokerage fees charged by their country's customs authority. These charges are not collected by Odhvica and are not included in your order total or shipping fee.
+International buyers are responsible for any customs duties, import taxes, or brokerage fees charged by their country's customs authority. These charges are not collected by Store and are not included in your order total or shipping fee.
 
 We declare shipment values accurately and do not mark parcels as gifts.
 
@@ -99,7 +99,7 @@ Due to customs complexities, international orders are eligible for **exchange or
 
 ### How to Start a Return
 
-1. Email support@odhvica.com within 15 days of delivery.
+1. Email support@example.com within 15 days of delivery.
 2. Use the subject line: **Return Request - Order #[your order number]**
 3. Attach 2-3 clear photos of the item showing the issue.
 4. We will review your request and respond with next steps.
@@ -132,7 +132,7 @@ You will receive an email confirmation once your refund is initiated.
 
 ### Exchanges
 
-If you would like a different size, colour, or product, email support@odhvica.com. We will confirm availability before you return your item. Exchanges are processed once the original item is received and inspected.
+If you would like a different size, colour, or product, email support@example.com. We will confirm availability before you return your item. Exchanges are processed once the original item is received and inspected.
 
 ---
 
@@ -146,7 +146,7 @@ If your item arrives visibly damaged, photograph the packaging before opening an
 
 ### Support
 
-Email: support@odhvica.com  
+Email: support@example.com
 WhatsApp: +91-9588078064  
 Hours: Monday-Friday, 9 AM - 6 PM IST  
 Cancellation window: Same business day, before dispatch.`;
@@ -156,7 +156,7 @@ export default function ShippingReturnsPage() {
     <StaticPolicyPage
       title="Shipping & Returns"
       path="/pages/shipping-returns"
-      description="Read Odhvica shipping timelines, return eligibility, refund handling, and exchange rules."
+      description="Read Store shipping timelines, return eligibility, refund handling, and exchange rules."
       content={content}
     />
   );

@@ -29,7 +29,7 @@ export function CraftPromise() {
     <section className="max-md:py-[var(--ds-space-md)] bg-parchment border-y border-border-subtle">
       <div className="ds-home-container grid gap-[28px] items-start md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div className="max-w-[620px]">
-          <div className="kv-tag">Why Odhvica</div>
+          <div className="kv-tag">Why Store</div>
           <h2 className="kv-title">Handmade, edited, and ready to wear.</h2>
           <p className="kv-sub mt-4">
             The homepage is designed around real product media, short shopping paths,
@@ -45,7 +45,7 @@ export function CraftPromise() {
           </div>
         </div>
 
-        <div className="grid gap-[1px] overflow-hidden border border-border-subtle bg-border-subtle md:grid-cols-2" aria-label="Odhvica commerce promises">
+        <div className="grid gap-[1px] overflow-hidden border border-border-subtle bg-border-subtle md:grid-cols-2" aria-label="Store commerce promises">
           {promises.map(({ icon: Icon, title, copy }) => (
             <div key={title} className="grid grid-cols-[auto_1fr] gap-[12px] p-[18px] bg-surface-paper">
               <Icon size={18} strokeWidth={1.7} aria-hidden="true" className="mt-[2px] text-accent" />

@@ -380,7 +380,7 @@ export function ImageTextSplit({
             className="object-cover object-[center_58%]"
           />
         ) : (
-          <span>{imageLabel || 'Odhvica atelier image'}</span>
+          <span>{imageLabel || 'Store atelier image'}</span>
         )}
       </div>
       <div className="image-text-split__content">

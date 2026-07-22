@@ -82,7 +82,7 @@ export function ArtisanStrip() {
         </div>
 
         <p className="mt-8 text-body-sm leading-[var(--ds-leading-relaxed)] text-muted">
-          Every Odhvica piece is signed by the artisan who made it - their name is on the care label inside.{' '}
+          Every Store piece is signed by the artisan who made it - their name is on the care label inside.{' '}
           <Link href="/about" className="text-primary underline underline-offset-4 hover:text-accent">
             Learn about our makers {'->'}
           </Link>

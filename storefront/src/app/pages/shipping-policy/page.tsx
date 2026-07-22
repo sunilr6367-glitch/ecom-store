@@ -3,9 +3,9 @@ import { Heading } from '@/design-system';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | Odhvica - Domestic & International Delivery',
+  title: 'Shipping Policy | Store - Domestic & International Delivery',
   description:
-    'Read Odhvica shipping charges, dispatch timelines, delivery estimates, tracking process, and customs guidance before placing an order.',
+    'Read Store shipping charges, dispatch timelines, delivery estimates, tracking process, and customs guidance before placing an order.',
 };
 
 const domesticShipping = [
@@ -85,8 +85,8 @@ export default function ShippingPolicyPage() {
           Shipping Policy
         </Heading>
         <p className="mt-4 text-body-lg leading-[var(--ds-leading-relaxed)] text-secondary">
-          This Shipping Policy explains how Odhvica dispatches domestic and
-          international orders placed on odhvica.com.
+          This Shipping Policy explains how Store dispatches domestic and
+          international orders placed on store.com.
         </p>
         <p className="mt-3 text-body-sm text-muted">Effective Date: 7 June 2026</p>
 
@@ -99,7 +99,7 @@ export default function ShippingPolicyPage() {
             Business address: 44C, Vijaypura, Sumel, Jaipur, Rajasthan 302031,
             India
             <br />
-            Support email: support@odhvica.com
+            Support email: support@example.com
             <br />
             WhatsApp: +91-9588078064
           </address>
@@ -165,7 +165,7 @@ export default function ShippingPolicyPage() {
           <p>
             Once your order is dispatched, we send a shipping confirmation email
             with tracking details. You can also track your order at
-            odhvica.com/track using your order reference and purchase email.
+            store.com/track using your order reference and purchase email.
           </p>
         </PolicySection>
 
@@ -178,7 +178,7 @@ export default function ShippingPolicyPage() {
             stated at checkout.
           </p>
           <p>
-            Odhvica declares shipment values accurately and does not mark
+            Store declares shipment values accurately and does not mark
             commercial parcels as gifts.
           </p>
         </PolicySection>
@@ -206,7 +206,7 @@ export default function ShippingPolicyPage() {
 
         <PolicySection title="9. Support">
           <p>
-            Email: support@odhvica.com
+            Email: support@example.com
             <br />
             WhatsApp: +91-9588078064
             <br />

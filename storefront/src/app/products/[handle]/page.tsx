@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const product = await getCanonicalProduct(handle);
     const requestHeaders = await headers();
     return buildProductMetadata(product, {
-      ogLocale: getOgLocaleForLocale(requestHeaders.get('x-odhvica-locale')),
+      ogLocale: getOgLocaleForLocale(requestHeaders.get('x-store-locale')),
     });
   } catch (error: unknown) {
     const isNotFound =

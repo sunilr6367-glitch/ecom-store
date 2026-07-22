@@ -22,7 +22,7 @@ type AdaptProductOptions = {
   includeRelated?: boolean;
 };
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.odhvica.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4100';
 
 function normalizeMediaUrl<T extends string | null | undefined>(url: T): T {
   if (typeof url !== 'string' || url.trim() === '') return url;

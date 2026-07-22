@@ -16,7 +16,7 @@ Allowed: route composition through existing primitives, internal presentation re
 
 ## Visual source of truth and identity
 
-`storefront-visual-art-direction-v1.md` will define distinctive Odhvica editorial luxury, ShopMulmul quality benchmarking without cloning, composition, photography/crops, typography recipes, merchandising, motion, blueprints, mobile adaptation, copy, accessibility, and performance. Identity is monochrome UI, textile-rich imagery, high contrast, low noise, strong editorial hierarchy, and spacious but commerce-efficient composition.
+`storefront-visual-art-direction-v1.md` will define distinctive Store editorial luxury, ShopMulmul quality benchmarking without cloning, composition, photography/crops, typography recipes, merchandising, motion, blueprints, mobile adaptation, copy, accessibility, and performance. Identity is monochrome UI, textile-rich imagery, high contrast, low noise, strong editorial hierarchy, and spacious but commerce-efficient composition.
 
 ## Mandatory approval stages
 
@@ -46,7 +46,7 @@ Typography roles/tokens cannot change: one H1, two-line hero/card limits, senten
 
 ## Quality, testing, and certificate
 
-Odhvica and a dated ShopMulmul capture are scored 1–10 for distinctiveness, hierarchy, photography, typography, composition, merchandising, mobile, polish, conversion, accessibility/performance. Odhvica must score ≥9 in every category and higher in aggregate without sacrificing accessibility/performance; user approval decides acceptance.
+Store and a dated ShopMulmul capture are scored 1–10 for distinctiveness, hierarchy, photography, typography, composition, merchandising, mobile, polish, conversion, accessibility/performance. Store must score ≥9 in every category and higher in aggregate without sacrificing accessibility/performance; user approval decides acceptance.
 
 Test `375/768/1024/1440` across populated/empty/loading/error/missing media/long copy, auth states, cart states, sale/wholesale/multi-currency. Require ≤`0.1%` approved screenshot drift, green freeze audit, unchanged roles, WCAG AA, ≥`44×44`, LCP ≤`2.5s`, CLS ≤`0.1`, INP ≤`200ms`, no overflow/unexpected console/network failures, and keyboard/reduced-motion.
 

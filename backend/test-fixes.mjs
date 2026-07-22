@@ -254,7 +254,7 @@ async function testAdapterLogic() {
 
 async function runAllTests() {
   log('╔═══════════════════════════════════════════════════════════════╗', 'cyan');
-  log('║  🧪 ODHVICA API VERIFICATION TEST SUITE                     ║', 'cyan');
+  log('║  🧪 STORE API VERIFICATION TEST SUITE                     ║', 'cyan');
   log('║  Testing all fixes for Product issues                         ║', 'cyan');
   log('╚═══════════════════════════════════════════════════════════════╝', 'cyan');
 

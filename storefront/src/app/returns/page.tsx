@@ -83,7 +83,7 @@ export default function ReturnsPage() {
       <PageHero
         eyebrow="Returns Support"
         title="Returns, Refunds, and Exchanges"
-        intro="Use this page before or after purchase to understand how Odhvica handles eligible return, refund, and cancellation requests."
+        intro="Use this page before or after purchase to understand how Store handles eligible return, refund, and cancellation requests."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Returns' },

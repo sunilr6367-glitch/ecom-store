@@ -2,9 +2,10 @@
 
 import type { ReactNode } from 'react';
 import { trackEvent } from '@/components/Analytics';
+import { brandConfig } from '@/config/brand';
 
 export function buildWhatsAppHref(message: string) {
-  const url = new URL('https://wa.me/message/odhvica');
+  const url = new URL(brandConfig.whatsappUrl);
   url.searchParams.set('text', message);
   url.searchParams.set('utm_source', 'whatsapp');
   url.searchParams.set('utm_medium', 'cta');

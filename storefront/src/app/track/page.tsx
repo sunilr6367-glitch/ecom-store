@@ -325,7 +325,7 @@ export default function TrackOrderPage() {
               {order.workflow?.customer_note && (
                 <div className="pt-4 border-t border-border-subtle">
                   <p className="text-body-xs font-bold  text-muted mb-1">
-                    Update from Odhvica
+                    Update from Store
                   </p>
                   <p className="text-secondary">{order.workflow.customer_note}</p>
                 </div>

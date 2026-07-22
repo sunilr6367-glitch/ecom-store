@@ -16,13 +16,13 @@ export function NewsletterModal() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (window.localStorage.getItem('odhvica-newsletter-modal-seen')) return;
+    if (window.localStorage.getItem('store-newsletter-modal-seen')) return;
 
     const onScroll = () => {
       if (window.scrollY <= 650) return;
       if (!ConsentManager.getConsent()) return;
 
-      window.localStorage.setItem('odhvica-newsletter-modal-seen', 'true');
+      window.localStorage.setItem('store-newsletter-modal-seen', 'true');
       window.setTimeout(() => setOpen(true), 350);
       window.removeEventListener('scroll', onScroll);
     };

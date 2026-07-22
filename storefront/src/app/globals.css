@@ -3,7 +3,7 @@
 @import '../styles/tokens.css' layer(theme);
 @import '../styles/theme.generated.css' layer(theme);
 
-/* Odhvica storefront design-system compatibility bridges. */
+/* Store storefront design-system compatibility bridges. */
 
 :root {
   --font-display: var(--ds-font-display);
@@ -76,7 +76,7 @@
     var(--kv-desktop-container-max)
   );
 
-  /* Odhvica Header Design Tokens (kv-*) */
+  /* Store Header Design Tokens (kv-*) */
   --kv-ink:          var(--ds-text-primary);
   --kv-ink-2:        var(--ds-text-secondary);
   --kv-ink-3:        var(--ds-text-muted);

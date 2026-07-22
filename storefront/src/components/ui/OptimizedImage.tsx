@@ -22,7 +22,7 @@ export default function OptimizedImage({
     
     // Fallback: If it's a local /uploads path (e.g. from seed data), convert to absolute remote URL
     if (finalSrc.startsWith('/uploads/')) {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.odhvica.com';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4100';
       finalSrc = `${apiUrl.replace(/\/$/, '')}${finalSrc}`;
     }
 

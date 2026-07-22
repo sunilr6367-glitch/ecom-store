@@ -142,7 +142,7 @@ export default function WholesalePage() {
                 Bulk Orders
               </Heading>
               <p className="text-display-sm text-disabled font-light leading-token-relaxed mb-8">
-                Partner with Odhvica to bring authentic artisanal luxury to
+                Partner with Store to bring authentic artisanal luxury to
                 your customers. Exclusive pricing, dedicated support, and global
                 logistics for retailers and distributors worldwide.
               </p>
@@ -169,7 +169,7 @@ export default function WholesalePage() {
           <div className="ds-page-container mx-auto max-w-page">
             <div className="text-center mb-16">
               <h2 className="text-display-lg font-display text-primary mb-4">
-                Why Partner With Odhvica?
+                Why Partner With Store?
               </h2>
               <p className="text-secondary font-light max-w-2xl mx-auto">
                 We provide everything you need to offer premium artisanal
@@ -555,10 +555,10 @@ export default function WholesalePage() {
                 <Mail size={32} className="mx-auto mb-4 text-accent-gold" />
                 <h3 className="font-bold mb-2">Email Us</h3>
                 <a
-                  href="mailto:wholesale@odhvica.com"
+                  href="mailto:wholesale@example.com"
                   className="text-muted hover:text-inverse text-body-sm"
                 >
-                  wholesale@odhvica.com
+                  wholesale@example.com
                 </a>
               </div>
               <div>

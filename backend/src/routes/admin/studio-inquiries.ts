@@ -185,7 +185,7 @@ router.post('/:id/messages', verifyAdmin, async (c) => {
       .values({
         inquiry_id: id,
         sender_type: 'admin',
-        sender_name: parsed.data.sender_name || 'Odhvica Studio',
+        sender_name: parsed.data.sender_name || 'Store Studio',
         message: parsed.data.message,
       })
       .returning({

@@ -65,7 +65,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
 
   // Load from localStorage on mount, then try backend sync
   useEffect(() => {
-    const stored = storage.get<WishlistItem[]>('odhvica_wishlist', []);
+    const stored = storage.get<WishlistItem[]>('store_wishlist', []);
     const timer = setTimeout(async () => {
       // 1. Load localStorage first (instant)
       if (stored && stored.length > 0) {
@@ -96,7 +96,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
             })
           );
           setItems(backendItems);
-          storage.set('odhvica_wishlist', backendItems);
+          storage.set('store_wishlist', backendItems);
         }
       } catch {
         // Not logged in or backend unavailable — localStorage is fine
@@ -108,7 +108,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
   // Save to localStorage when items change
   useEffect(() => {
     if (isLoaded) {
-      storage.set('odhvica_wishlist', items);
+      storage.set('store_wishlist', items);
     }
   }, [items, isLoaded]);
 

@@ -202,7 +202,7 @@ async function seed() {
       image_url: `/uploads/real_products/category_tote_bags_1782214289913.png`,
       alt_text: 'Social Post',
       caption: 'Handcrafted luxury',
-      destination_url: 'https://instagram.com/odhvica',
+      destination_url: 'https://www.instagram.com/',
       sort_order: i,
       is_active: true
     });

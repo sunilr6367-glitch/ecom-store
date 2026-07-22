@@ -1,4 +1,4 @@
-# Product Requirements Document — Odhvica Admin Panel
+# Product Requirements Document — Store Admin Panel
 
 ---
 
@@ -6,7 +6,7 @@
 
 ### What This Admin Panel Does
 
-The Odhvica Admin Panel is a full-featured e-commerce back-office for managing:
+The Store Admin Panel is a full-featured e-commerce back-office for managing:
 
 - Product catalog (products, variants, collections, categories, tags)
 - Order processing and fulfillment

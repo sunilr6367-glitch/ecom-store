@@ -6,7 +6,7 @@ import { MessageCircle, ShoppingBag, Sparkles } from 'lucide-react';
 import { useCart } from '@/context/cart-context';
 
 function whatsappHref(message: string) {
-  return `https://wa.me/message/odhvica?text=${encodeURIComponent(message)}&utm_source=homepage&utm_medium=sticky`;
+  return `https://wa.me/?text=${encodeURIComponent(message)}&utm_source=homepage&utm_medium=sticky`;
 }
 
 export function MobileStickyActions() {
@@ -33,7 +33,7 @@ export function MobileStickyActions() {
         <span>Shop New</span>
       </Link>
       <a
-        href={whatsappHref('Hi, I need help choosing a Odhvica piece')}
+        href={whatsappHref('Hi, I need help choosing a Store piece')}
         target="_blank"
         rel="noopener noreferrer"
       >
