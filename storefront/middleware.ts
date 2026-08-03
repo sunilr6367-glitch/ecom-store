@@ -38,18 +38,14 @@ function shouldSkip(pathname: string) {
 
 async function lookupRedirect(pathname: string) {
   try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout for Edge
-
     const response = await fetch(
       `${API_URL}/redirects/lookup?path=${encodeURIComponent(pathname)}`,
       {
         headers: { accept: 'application/json' },
         cache: 'no-store',
-        signal: controller.signal,
+        signal: AbortSignal.timeout(2000),
       }
     );
-    clearTimeout(timeoutId);
 
     if (!response.ok) return null;
 
