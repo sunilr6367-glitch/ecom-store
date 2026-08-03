@@ -72,6 +72,7 @@ async function runManualMigrations() {
   const client = postgres(connectionString, {
     max: 1,
     ssl: requiresSsl ? { rejectUnauthorized } : false,
+    onnotice: () => {}, // suppress noise to avoid Railway rate limit
   });
 
   console.log('🔄 Running manual SQL migrations...\n');
