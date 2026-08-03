@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const API_URL =
+const RAW_API_URL =
   process.env.INTERNAL_API_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
   process.env.API_URL ||
   'http://localhost:4100';
+const API_URL = RAW_API_URL.replace(/\/+$/, '');
 
 const PUBLIC_FILE = /\.(?:avif|css|gif|ico|jpg|jpeg|js|json|map|png|svg|txt|webp|xml)$/i;
 const LOCALES = new Set(['en-in', 'en-us', 'en-gb', 'en-au', 'en-eu']);
@@ -37,13 +38,19 @@ function shouldSkip(pathname: string) {
 
 async function lookupRedirect(pathname: string) {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout for Edge
+
     const response = await fetch(
       `${API_URL}/redirects/lookup?path=${encodeURIComponent(pathname)}`,
       {
         headers: { accept: 'application/json' },
         cache: 'no-store',
+        signal: controller.signal,
       }
     );
+    clearTimeout(timeoutId);
+
     if (!response.ok) return null;
 
     const payload = (await response.json()) as {
