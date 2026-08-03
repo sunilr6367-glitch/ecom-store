@@ -112,7 +112,7 @@ export async function releaseExpiredInventoryReservations(now = new Date()) {
       and(
         inArray(orders.payment_status, ['awaiting', 'failed']),
         sql`${orders.metadata}->>'inventory_reservation_expires_at' IS NOT NULL`,
-        sql`(${orders.metadata}->>'inventory_reservation_expires_at')::timestamptz <= ${now}`,
+        sql`(${orders.metadata}->>'inventory_reservation_expires_at')::timestamptz <= ${now.toISOString()}`,
         sql`COALESCE(${orders.metadata}->>'inventory_reservation_released_at', '') = ''`
       )
     );

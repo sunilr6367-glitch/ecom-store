@@ -13,7 +13,7 @@ export async function releaseAbandonedOrderInventory() {
       and(
         eq(orders.status, 'draft'),
         eq(orders.payment_status, 'unpaid'),
-        sql`${orders.created_at} < ${thirtyMinutesAgo}`,
+        sql`${orders.created_at} < ${thirtyMinutesAgo.toISOString()}`,
         sql`COALESCE(${orders.metadata}->>'razorpay_order_id', '') = ''`,
         sql`COALESCE(${orders.metadata}->>'paypal_order_id', '') = ''`
       )
