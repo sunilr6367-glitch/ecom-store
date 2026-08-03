@@ -23,6 +23,7 @@ async function runMigration() {
   const migrationClient = postgres(connectionString, {
     max: 1,
     ssl: requiresSsl ? { rejectUnauthorized: false } : false,
+    onnotice: () => {}, // suppress noise to avoid Railway rate limit
   });
   const db = drizzle(migrationClient);
 
