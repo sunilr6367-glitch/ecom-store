@@ -26,7 +26,7 @@ import 'dotenv/config';
 
 // Import db and test connection
 import { healthCheck } from './db/client';
-import { brandConfig } from './config';
+import { brandConfig } from './config/brand';
 
 // Import error handler
 import { errorHandler } from './middleware/error-handler';
