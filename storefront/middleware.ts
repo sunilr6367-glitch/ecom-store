@@ -37,13 +37,16 @@ function shouldSkip(pathname: string) {
 }
 
 async function lookupRedirect(pathname: string) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 2000);
+
   try {
     const response = await fetch(
       `${API_URL}/redirects/lookup?path=${encodeURIComponent(pathname)}`,
       {
         headers: { accept: 'application/json' },
         cache: 'no-store',
-        signal: AbortSignal.timeout(2000),
+        signal: controller.signal,
       }
     );
 
@@ -61,6 +64,8 @@ async function lookupRedirect(pathname: string) {
     return payload.redirect || null;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
