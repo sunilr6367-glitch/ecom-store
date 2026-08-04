@@ -43,6 +43,7 @@ async function lookupRedirect(pathname: string) {
       {
         headers: { accept: 'application/json' },
         cache: 'no-store',
+        signal: AbortSignal.timeout(1500)
       }
     );
 
@@ -65,42 +66,49 @@ async function lookupRedirect(pathname: string) {
 }
 
 export async function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+  try {
+    const { pathname, search } = request.nextUrl;
 
-  if (shouldSkip(pathname)) {
+    if (shouldSkip(pathname)) {
+      return NextResponse.next();
+    }
+
+    const firstSegment = pathname.split('/').filter(Boolean)[0]?.toLowerCase();
+    if (firstSegment && LOCALES.has(firstSegment)) {
+      const url = request.nextUrl.clone();
+      url.pathname = pathname.replace(new RegExp(`^/${firstSegment}`), '') || '/';
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set('x-store-locale', firstSegment);
+      return NextResponse.rewrite(url, {
+        request: {
+          headers: requestHeaders,
+        },
+      });
+    }
+
+    const canonicalPath = canonicalizePath(pathname);
+    if (canonicalPath !== pathname) {
+      const url = request.nextUrl.clone();
+      url.pathname = canonicalPath;
+      url.search = search;
+      return NextResponse.redirect(url, 301);
+    }
+
+    const redirect = await lookupRedirect(pathname);
+    if (redirect?.to_path && redirect.to_path !== pathname) {
+      const target = new URL(redirect.to_path, request.url);
+      target.search = search || target.search;
+      const status = redirect.status_code || redirect.status;
+      return NextResponse.redirect(target, status === 302 ? 302 : 301);
+    }
+
     return NextResponse.next();
-  }
-
-  const firstSegment = pathname.split('/').filter(Boolean)[0]?.toLowerCase();
-  if (firstSegment && LOCALES.has(firstSegment)) {
-    const url = request.nextUrl.clone();
-    url.pathname = pathname.replace(new RegExp(`^/${firstSegment}`), '') || '/';
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-store-locale', firstSegment);
-    return NextResponse.rewrite(url, {
-      request: {
-        headers: requestHeaders,
-      },
+  } catch (error: any) {
+    return new NextResponse(`Middleware Debug Error: ${error.message}\nStack: ${error.stack}`, {
+      status: 500,
+      headers: { 'Content-Type': 'text/plain' },
     });
   }
-
-  const canonicalPath = canonicalizePath(pathname);
-  if (canonicalPath !== pathname) {
-    const url = request.nextUrl.clone();
-    url.pathname = canonicalPath;
-    url.search = search;
-    return NextResponse.redirect(url, 301);
-  }
-
-  const redirect = await lookupRedirect(pathname);
-  if (redirect?.to_path && redirect.to_path !== pathname) {
-    const target = new URL(redirect.to_path, request.url);
-    target.search = search || target.search;
-    const status = redirect.status_code || redirect.status;
-    return NextResponse.redirect(target, status === 302 ? 302 : 301);
-  }
-
-  return NextResponse.next();
 }
 
 export const config = {
